@@ -1,0 +1,37 @@
+{
+  "name": "webweit-gmbh/web-fact-finder-api-client",
+  "version": "1.0.0",
+  "description": "description",
+  "type": "symfony-bundle",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "license": "proprietary",
+  "require": {
+    "php": ">=7.2",
+    "symfony/dependency-injection": "^4.0.10",
+    "symfony/config": "~4.0",
+    "symfony/http-kernel": "~4.0",
+    "symfony/http-client": "^4.0",
+    "psr/http-message": "^1.0",
+    "symfony/dotenv": "^4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Web\\FactFinderApi\\": "src/",
+      "GuzzleHttp6\\": "src/vendor-static/guzzlehttp/guzzle/src/",
+      "GuzzleHttp6\\Psr7\\": "src/vendor-static/guzzlehttp/psr7/src/",
+      "GuzzleHttp6\\Promise\\": "src/vendor-static/guzzlehttp/promises/src/"
+    },
+    "files": [
+      "src/vendor-static/guzzlehttp/guzzle/src/functions_include.php",
+      "src/vendor-static/guzzlehttp/psr7/src/functions_include.php",
+      "src/vendor-static/guzzlehttp/promises/src/functions_include.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": { "Web\\FactFinderApi\\Tests\\": "src/Tests/" }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.2"
+  }
+}
