@@ -19,12 +19,11 @@ abstract class AbstractTestCase extends TestCase
 
     protected function getConfiguration()
     {
-        var_dump($_ENV);
         if (!$this->config) {
             $this->config = new Configuration(
-                $_ENV['WEB_FACT_FINDER_API_USERNAME'],
-                $_ENV['WEB_FACT_FINDER_API_PASSWORD'],
-                $_ENV['WEB_FACT_FINDER_API_URL']
+                getenv('WEB_FACT_FINDER_API_USERNAME'),
+                getenv('WEB_FACT_FINDER_API_PASSWORD'),
+                getenv('WEB_FACT_FINDER_API_URL')
             );
         }
 
@@ -34,7 +33,7 @@ abstract class AbstractTestCase extends TestCase
     protected function getChannel()
     {
         if (!$this->channel) {
-            $this->channel = $_ENV['WEB_FACT_FINDER_API_TEST_CHANNEL'];
+            $this->channel = getenv('WEB_FACT_FINDER_API_TEST_CHANNEL');
         }
 
         return $this->channel;
