@@ -23,7 +23,6 @@ jobs:
         if: steps.composer-cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-progress --no-suggest
       - name: PHPUnit run
-        shell: bash
         env:
           WEB_FACT_FINDER_API_URL: ${{ secrets.WEB_FACT_FINDER_API_URL }}
           WEB_FACT_FINDER_API_USERNAME: ${{ secrets.WEB_FACT_FINDER_API_USERNAME }}
