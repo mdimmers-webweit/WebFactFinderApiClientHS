@@ -24,6 +24,7 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest
       - name: PHPUnit run
         env:
+          TEST_MACZEK: "qwerty"
           WEB_FACT_FINDER_API_URL: ${{ secrets.WEB_FACT_FINDER_API_URL }}
           WEB_FACT_FINDER_API_USERNAME: ${{ secrets.WEB_FACT_FINDER_API_USERNAME }}
           WEB_FACT_FINDER_API_PASSWORD: ${{ secrets.WEB_FACT_FINDER_API_PASSWORD }}
