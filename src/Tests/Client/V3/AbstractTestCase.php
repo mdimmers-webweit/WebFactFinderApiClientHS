@@ -19,6 +19,7 @@ abstract class AbstractTestCase extends TestCase
 
     protected function getConfiguration()
     {
+        var_dump($_ENV);
         if (!$this->config) {
             $this->config = new Configuration(
                 $_ENV['WEB_FACT_FINDER_API_USERNAME'],
