@@ -8,6 +8,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - shell: bash
+        env:
+          WEB_FACT_FINDER_API_URL: ${{ secrets.WEB_FACT_FINDER_API_URL }}
+          WEB_FACT_FINDER_API_USERNAME: ${{ secrets.WEB_FACT_FINDER_API_USERNAME }}
+          WEB_FACT_FINDER_API_PASSWORD: ${{ secrets.WEB_FACT_FINDER_API_PASSWORD }}
+          WEB_FACT_FINDER_API_TEST_CHANNEL: ${{ secrets.WEB_FACT_FINDER_API_TEST_CHANNEL }}
       - uses: actions/checkout@v2
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -22,12 +28,6 @@ jobs:
       - name: Install dependencies
         if: steps.composer-cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-progress --no-suggest
-      - shell: bash
-        env:
-          WEB_FACT_FINDER_API_URL: ${{ secrets.WEB_FACT_FINDER_API_URL }}
-          WEB_FACT_FINDER_API_USERNAME: ${{ secrets.WEB_FACT_FINDER_API_USERNAME }}
-          WEB_FACT_FINDER_API_PASSWORD: ${{ secrets.WEB_FACT_FINDER_API_PASSWORD }}
-          WEB_FACT_FINDER_API_TEST_CHANNEL: ${{ secrets.WEB_FACT_FINDER_API_TEST_CHANNEL }}
       - name: PHPUnit run
         run: ./vendor/phpunit/phpunit/phpunit
 
