@@ -12,26 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Validate composer.json and composer.lock
-      run: composer validate
-
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-
-    - name: Install dependencies
-      if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer install --prefer-dist --no-progress --no-suggest
-
-    - name: PHPUnit run
-      uses: php-actions/phpunit@v1
+    - uses: actions/checkout@v1
+    - uses: php-actions/composer@v1 # or alternative dependency management
+    - uses: php-actions/phpunit@v1
       with:
         config: phpunit.xml.dist
         bootstrap: src/Tests/bootstrap.php
