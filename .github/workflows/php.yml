@@ -34,6 +34,7 @@ jobs:
       uses: php-actions/phpunit@v1
       with:
         config: phpunit.xml.dist
+        bootstrap: src/Tests/bootstrap.php
         memory: 256M
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
