@@ -23,7 +23,7 @@ jobs:
         if: steps.composer-cache.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-progress --no-suggest
       - name: PHPUnit run
-        run: php -dWEB_FACT_FINDER_API_URL=$WEB_FACT_FINDER_API_URL ./vendor/phpunit/phpunit/phpunit
+        run: WEB_FACT_FINDER_API_URL=$WEB_FACT_FINDER_API_URL ./vendor/phpunit/phpunit/phpunit
         env:
           TEST_MACZEK: "qwerty"
           WEB_FACT_FINDER_API_URL: ${{ secrets.WEB_FACT_FINDER_API_URL }}
