@@ -8,30 +8,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Validate composer.json and composer.lock
-      run: composer validate
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-    - name: Install dependencies
-      if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer install --prefer-dist --no-progress --no-suggest
-    - shell: bash
-      env:
-        WEB_FACT_FINDER_API_URL: ${{ secrets.WEB_FACT_FINDER_API_URL }}
-        WEB_FACT_FINDER_API_USERNAME: ${{ secrets.WEB_FACT_FINDER_API_USERNAME }}
-        WEB_FACT_FINDER_API_PASSWORD: ${{ secrets.WEB_FACT_FINDER_API_PASSWORD }}
-        WEB_FACT_FINDER_API_TEST_CHANNEL: ${{ secrets.WEB_FACT_FINDER_API_TEST_CHANNEL }}
-    - name: PHPUnit run
-      run: ./vendor/phpunit/phpunit/phpunit
+      - uses: actions/checkout@v2
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+      - name: Install dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install --prefer-dist --no-progress --no-suggest
+      - shell: bash
+        env:
+          WEB_FACT_FINDER_API_URL: ${{ secrets.WEB_FACT_FINDER_API_URL }}
+          WEB_FACT_FINDER_API_USERNAME: ${{ secrets.WEB_FACT_FINDER_API_USERNAME }}
+          WEB_FACT_FINDER_API_PASSWORD: ${{ secrets.WEB_FACT_FINDER_API_PASSWORD }}
+          WEB_FACT_FINDER_API_TEST_CHANNEL: ${{ secrets.WEB_FACT_FINDER_API_TEST_CHANNEL }}
+      - name: PHPUnit run
+        run: ./vendor/phpunit/phpunit/phpunit
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-    # - name: Run test suite
-    #   run: composer run-script test
+      # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
+      # Docs: https://getcomposer.org/doc/articles/scripts.md
+      # - name: Run test suite
+      #   run: composer run-script test
