@@ -1455,6 +1455,7 @@ class UsersApi extends ApiClient
         $resourcePath = '/rest/v3/user/channel';
         $queryParams = [];
         $httpBody = '';
+
         return $this->getQuery($resourcePath, $queryParams);
     }
 

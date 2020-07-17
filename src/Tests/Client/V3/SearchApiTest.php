@@ -8,9 +8,7 @@ namespace Web\FactFinderApi\Tests\Client\V3;
 
 use Web\FactFinderApi\Client\ApiException;
 use Web\FactFinderApi\Client\V3\Api\SearchApi;
-use Web\FactFinderApi\Client\V3\Api\TrackingApi;
 use Web\FactFinderApi\Client\V3\Model\CategoryNavigation;
-use Web\FactFinderApi\Client\V3\Model\FeedbackEvent;
 use Web\FactFinderApi\Client\V3\Model\NavigationRequest;
 use Web\FactFinderApi\Client\V3\Model\Result;
 use Web\FactFinderApi\Client\V3\Model\ResultSuggestion;

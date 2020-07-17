@@ -23,7 +23,6 @@ use GuzzleHttp6\Psr7\Request;
 use GuzzleHttp6\RequestOptions;
 use Web\FactFinderApi\Client\ApiClient;
 use Web\FactFinderApi\Client\ApiException;
-use Web\FactFinderApi\Client\ObjectSerializer;
 
 /**
  * TrackingApi Class Doc Comment
