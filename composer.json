@@ -18,14 +18,15 @@
   "autoload": {
     "psr-4": {
       "Web\\FactFinderApi\\": "src/",
-      "GuzzleHttp6\\": "src/vendor-static/guzzlehttp/guzzle/src/",
-      "GuzzleHttp6\\Psr7\\": "src/vendor-static/guzzlehttp/psr7/src/",
-      "GuzzleHttp6\\Promise\\": "src/vendor-static/guzzlehttp/promises/src/"
+      "Web\\FactFinderApi\\Tests\\": "tests/",
+      "GuzzleHttp6\\": "vendor-static/guzzlehttp/guzzle/src/",
+      "GuzzleHttp6\\Psr7\\": "vendor-static/guzzlehttp/psr7/src/",
+      "GuzzleHttp6\\Promise\\": "vendor-static/guzzlehttp/promises/src/"
     },
     "files": [
-      "src/vendor-static/guzzlehttp/guzzle/src/functions_include.php",
-      "src/vendor-static/guzzlehttp/psr7/src/functions_include.php",
-      "src/vendor-static/guzzlehttp/promises/src/functions_include.php"
+      "vendor-static/guzzlehttp/guzzle/src/functions_include.php",
+      "vendor-static/guzzlehttp/psr7/src/functions_include.php",
+      "vendor-static/guzzlehttp/promises/src/functions_include.php"
     ]
   },
   "autoload-dev": {
