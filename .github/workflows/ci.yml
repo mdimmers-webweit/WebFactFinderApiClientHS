@@ -1,0 +1,21 @@
+name: Unit Tests
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install --prefer-dist --no-progress --no-suggest
+      - name: Run unit tests
+        run: ./vendor/phpunit/phpunit/phpunit
+        env:
+          WEB_FACT_FINDER_API_URL: ${{ secrets.WEB_FACT_FINDER_API_URL }}
+          WEB_FACT_FINDER_API_USERNAME: ${{ secrets.WEB_FACT_FINDER_API_USERNAME }}
+          WEB_FACT_FINDER_API_PASSWORD: ${{ secrets.WEB_FACT_FINDER_API_PASSWORD }}
+          WEB_FACT_FINDER_API_TEST_CHANNEL: ${{ secrets.WEB_FACT_FINDER_API_TEST_CHANNEL }}
