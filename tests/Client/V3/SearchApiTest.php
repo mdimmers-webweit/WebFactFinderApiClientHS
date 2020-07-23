@@ -53,7 +53,7 @@ class SearchApiTest extends AbstractTestCase
 
         $result = $this->sut->getSuggestionsUsingPOST($searchRequest);
 
-        static::assertInstanceOf(ResultSuggestion::class, $result);
+        static::assertIsArray($result);
     }
 
     /** @test */

@@ -23,7 +23,6 @@ use Web\FactFinderApi\Client\ObjectSerializer;
 use Web\FactFinderApi\Client\V3\Model\CategoryNavigation;
 use Web\FactFinderApi\Client\V3\Model\NavigationRequest;
 use Web\FactFinderApi\Client\V3\Model\Result;
-use Web\FactFinderApi\Client\V3\Model\ResultSuggestion;
 use Web\FactFinderApi\Client\V3\Model\SearchParams;
 use Web\FactFinderApi\Client\V3\Model\SearchRequest;
 
@@ -104,7 +103,7 @@ class SearchApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\ResultSuggestion[]
      */
-    public function getSuggestionsUsingPOST($params)
+    public function getSuggestionsUsingPOST($params): array
     {
         list($response) = $this->getSuggestionsUsingPOSTWithHttpInfo($params);
 
@@ -127,7 +126,7 @@ class SearchApi extends ApiClient
     {
         $request = $this->getSuggestionsUsingPOSTRequest($params);
 
-        return $this->executeRequest($request, ResultSuggestion::class);
+        return $this->executeRequest($request, 'Web\FactFinderApi\Client\V3\Model\ResultSuggestion[]');
     }
 
     /**

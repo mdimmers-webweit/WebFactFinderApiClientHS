@@ -36,7 +36,11 @@ abstract class ApiClient
         ?HeaderSelector $selector = null
     ) {
         $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+        $this->config = $config ?: new Configuration(
+            \getenv('WEB_FACT_FINDER_API_USERNAME'),
+            \getenv('WEB_FACT_FINDER_API_PASSWORD'),
+            \getenv('WEB_FACT_FINDER_API_URL')
+        );
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
@@ -266,7 +270,7 @@ abstract class ApiClient
     /**
      * Create http client option
      *
-     *@throws \RuntimeException on file opening failure
+     * @throws \RuntimeException on file opening failure
      *
      * @return array of http client options
      */
