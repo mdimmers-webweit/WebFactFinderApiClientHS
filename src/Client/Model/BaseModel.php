@@ -80,7 +80,7 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes;
+        return static::$swaggerTypes;
     }
 
     /**
@@ -90,7 +90,7 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats;
+        return static::$swaggerFormats;
     }
 
     /**
@@ -101,7 +101,7 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return static::$attributeMap;
     }
 
     /**
@@ -111,7 +111,7 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
      */
     public static function setters()
     {
-        return self::$setters;
+        return static::$setters;
     }
 
     /**
@@ -121,7 +121,7 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
      */
     public static function getters()
     {
-        return self::$getters;
+        return static::$getters;
     }
 
     /**
@@ -131,7 +131,7 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
      */
     public function getModelName()
     {
-        return self::$swaggerModelName;
+        return static::$swaggerModelName;
     }
 
     /**
