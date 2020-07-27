@@ -289,14 +289,6 @@ class ObjectSerializer
 
             return $data;
         }
-        // If a discriminator is defined and points to a valid subclass, use it.
-        $discriminator = $class::DISCRIMINATOR;
-        if (!empty($discriminator) && isset($data->{$discriminator}) && \is_string($data->{$discriminator})) {
-            $subclass = '\Web\FactFinderApi\Client\Model\\' . $data->{$discriminator};
-            if (\is_subclass_of($subclass, $class)) {
-                $class = $subclass;
-            }
-        }
         $instance = new $class();
         foreach ($instance::swaggerTypes() as $property => $type) {
             $propertySetter = $instance::setters()[$property];

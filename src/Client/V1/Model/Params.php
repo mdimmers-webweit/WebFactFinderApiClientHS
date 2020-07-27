@@ -17,8 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V1\Model;
 
-use Web\FactFinderApi\Client\Model\ModelInterface;
-use Web\FactFinderApi\Client\ObjectSerializer;
+use Web\FactFinderApi\Client\Model\SearchParamsBase;
 
 /**
  * Params Class Doc Comment
@@ -27,10 +26,8 @@ use Web\FactFinderApi\Client\ObjectSerializer;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Params implements ModelInterface, \ArrayAccess
+class Params extends SearchParamsBase
 {
-    const DISCRIMINATOR = null;
-
     /**
      * The original name of the model.
      *
@@ -150,110 +147,19 @@ class Params implements ModelInterface, \ArrayAccess
     ];
 
     /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
     public function __construct(?array $data = null)
     {
+        parent::__construct($data);
         $this->container['ab_test'] = $data['ab_test'] ?? null;
-        $this->container['advisor_status'] = $data['advisor_status'] ?? null;
         $this->container['article_number'] = $data['article_number'] ?? null;
-        $this->container['channel'] = $data['channel'] ?? null;
-        $this->container['custom_parameters'] = $data['custom_parameters'] ?? null;
-        $this->container['filters'] = $data['filters'] ?? null;
         $this->container['follow_search'] = $data['follow_search'] ?? null;
         $this->container['no_article_number_search'] = $data['no_article_number_search'] ?? null;
-        $this->container['page'] = $data['page'] ?? null;
-        $this->container['query'] = $data['query'] ?? null;
         $this->container['results_per_page'] = $data['results_per_page'] ?? null;
-        $this->container['search_field'] = $data['search_field'] ?? null;
         $this->container['seo_path'] = $data['seo_path'] ?? null;
         $this->container['sorts_list'] = $data['sorts_list'] ?? null;
-    }
-
-    /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        if (\defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return \json_encode(
-                ObjectSerializer::sanitizeForSerialization($this),
-                JSON_PRETTY_PRINT
-            );
-        }
-
-        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
-    }
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function swaggerTypes()
-    {
-        return self::$swaggerTypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function swaggerFormats()
-    {
-        return self::$swaggerFormats;
-    }
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters()
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters()
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName()
-    {
-        return self::$swaggerModelName;
     }
 
     /**
@@ -288,17 +194,6 @@ class Params implements ModelInterface, \ArrayAccess
         }
 
         return $invalidProperties;
-    }
-
-    /**
-     * Validate all the properties in the model
-     * return true if all passed
-     *
-     * @return bool True if all properties are valid
-     */
-    public function valid()
-    {
-        return \count($this->listInvalidProperties()) === 0;
     }
 
     /**
@@ -357,26 +252,6 @@ class Params implements ModelInterface, \ArrayAccess
     public function setArticleNumber($article_number)
     {
         $this->container['article_number'] = $article_number;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getChannel()
-    {
-        return $this->container['channel'];
-    }
-
-    /**
-     * @param string $channel channel
-     *
-     * @return $this
-     */
-    public function setChannel($channel)
-    {
-        $this->container['channel'] = $channel;
 
         return $this;
     }
@@ -462,14 +337,6 @@ class Params implements ModelInterface, \ArrayAccess
     }
 
     /**
-     * @return int
-     */
-    public function getPage()
-    {
-        return $this->container['page'];
-    }
-
-    /**
      * @param int $page page
      *
      * @return $this
@@ -477,26 +344,6 @@ class Params implements ModelInterface, \ArrayAccess
     public function setPage($page)
     {
         $this->container['page'] = $page;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getQuery()
-    {
-        return $this->container['query'];
-    }
-
-    /**
-     * @param string $query query
-     *
-     * @return $this
-     */
-    public function setQuery($query)
-    {
-        $this->container['query'] = $query;
 
         return $this;
     }
@@ -517,26 +364,6 @@ class Params implements ModelInterface, \ArrayAccess
     public function setResultsPerPage($results_per_page)
     {
         $this->container['results_per_page'] = $results_per_page;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSearchField()
-    {
-        return $this->container['search_field'];
-    }
-
-    /**
-     * @param string $search_field search_field
-     *
-     * @return $this
-     */
-    public function setSearchField($search_field)
-    {
-        $this->container['search_field'] = $search_field;
 
         return $this;
     }
@@ -579,50 +406,5 @@ class Params implements ModelInterface, \ArrayAccess
         $this->container['sorts_list'] = $sorts_list;
 
         return $this;
-    }
-
-    /**
-     * Returns true if offset exists. False otherwise.
-     *
-     * @param int $offset Offset
-     *
-     * @return bool
-     */
-    public function offsetExists($offset)
-    {
-        return isset($this->container[$offset]);
-    }
-
-    /**
-     * @param int $offset Offset
-     */
-    public function offsetGet($offset)
-    {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
-    }
-
-    /**
-     * Sets value based on offset.
-     *
-     * @param int   $offset Offset
-     * @param mixed $value  Value to be set
-     */
-    public function offsetSet($offset, $value): void
-    {
-        if (\is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    /**
-     * Unsets offset.
-     *
-     * @param int $offset Offset
-     */
-    public function offsetUnset($offset): void
-    {
-        unset($this->container[$offset]);
     }
 }

@@ -11,7 +11,6 @@ use Web\FactFinderApi\Client\V3\Api\SearchApi;
 use Web\FactFinderApi\Client\V3\Model\CategoryNavigation;
 use Web\FactFinderApi\Client\V3\Model\NavigationRequest;
 use Web\FactFinderApi\Client\V3\Model\Result;
-use Web\FactFinderApi\Client\V3\Model\ResultSuggestion;
 use Web\FactFinderApi\Client\V3\Model\SearchParams;
 use Web\FactFinderApi\Client\V3\Model\SearchRequest;
 
