@@ -67,10 +67,7 @@ class RecordsApi extends ApiClient
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
+        public function getConfig(): Configuration
     {
         return $this->config;
     }
@@ -111,52 +108,7 @@ class RecordsApi extends ApiClient
         $returnType = '';
         $request = $this->deleteUsingDELETERequest($channel, $record_id, $save);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 400:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 401:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 403:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 500:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-            }
-            throw $e;
-        }
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\Campaign[]');
     }
 
     /**

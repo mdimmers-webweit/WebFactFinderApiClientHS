@@ -132,19 +132,16 @@ class ResultSuggestion extends ResultSuggestionBase
 
         return $invalidProperties;
     }
-
-    /**
-     * @return map[string,string]
-     */
+    
     public function getAttributes()
     {
         return $this->container['attributes'];
     }
 
     /**
-     * @param map[string,string] $attributes attributes
+     * @param array $attributes Contains additional information for the suggestion. Keys give the names of the attributes, with corresponding values.
      *
-     * @return $this
+     * @return \Web\FactFinderApi\Client\V3\Model\ResultSuggestion
      */
     public function setAttributes($attributes)
     {

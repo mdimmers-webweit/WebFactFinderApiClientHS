@@ -29,6 +29,7 @@
     "psr-4": { "Web\\FactFinderApi\\Tests\\": "src/Tests/" }
   },
   "require-dev": {
-    "phpunit/phpunit": "^9.2"
+    "phpunit/phpunit": "^9.2",
+    "phpstan/phpstan": "^0.12.33"
   }
 }

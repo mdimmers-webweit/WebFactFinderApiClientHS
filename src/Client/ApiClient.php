@@ -88,19 +88,6 @@ abstract class ApiClient
             );
     }
 
-    protected function handleException(ApiException $e): void
-    {
-        if (\in_array($e->getCode(), [400, 401, 403, 500], true)) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                ApiError::class,
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-        }
-        throw $e;
-    }
-
     protected function getQuery(string $resourcePath, array $queryParams): Request
     {
         // body params
@@ -208,7 +195,15 @@ abstract class ApiClient
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
-            $this->handleException($e);
+            if (\in_array($e->getCode(), [400, 401, 403, 500], true)) {
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    ApiError::class,
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+            }
+            throw $e;
         }
     }
 

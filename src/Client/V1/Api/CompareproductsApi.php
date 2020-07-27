@@ -67,10 +67,7 @@ class CompareproductsApi extends ApiClient
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
+    public function getConfig(): Configuration
     {
         return $this->config;
     }

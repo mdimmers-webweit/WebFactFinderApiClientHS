@@ -7,6 +7,7 @@
 namespace Web\FactFinderApi\Client\Model;
 
 use Web\FactFinderApi\Client\ObjectSerializer;
+use Web\FactFinderApi\Client\V1\Model\ResultSuggestion;
 
 abstract class ResultSuggestionBase extends BaseModel
 {
@@ -217,20 +218,17 @@ abstract class ResultSuggestionBase extends BaseModel
         return $invalidProperties;
     }
 
-    /**
-     * @return map[string,object]
-     */
     public function getAttributes()
     {
         return $this->container['attributes'];
     }
 
     /**
-     * @param map[string,object] $attributes Contains additional information for the suggestion. Keys give the names of the attributes, with corresponding values.
+     * @param array $attributes Contains additional information for the suggestion. Keys give the names of the attributes, with corresponding values.
      *
-     * @return ResultSuggestionBase
+     * @return static
      */
-    public function setAttributes($attributes): self
+    public function setAttributes($attributes)
     {
         $this->container['attributes'] = $attributes;
 

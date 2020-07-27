@@ -60,10 +60,7 @@ class CampaignApi extends ApiClient
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
+    public function getConfig(): Configuration
     {
         return $this->config;
     }
@@ -112,52 +109,7 @@ class CampaignApi extends ApiClient
         $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getPageCampaignsUsingGETRequest($channel, $page_id, $ids_only, $sid, $advisor_status);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $this->handleException($e);
-        }
+        return $this->executeRequest($request, $returnType);
     }
 
     /**
@@ -204,52 +156,7 @@ class CampaignApi extends ApiClient
         $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getProductCampaignsUsingGETRequest($channel, $product_number, $ids_only, $sid, $advisor_status);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $this->handleException($e);
-        }
+        return $this->executeRequest($request, $returnType);
     }
 
     /**
@@ -378,74 +285,7 @@ class CampaignApi extends ApiClient
         $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getShoppingCartCampaignsUsingGETRequest($channel, $product_number, $ids_only, $sid, $advisor_status);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        $returnType,
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 401:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 403:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 500:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-            }
-            throw $e;
-        }
+        return $this->executeRequest($request, $returnType);
     }
 
     /**

@@ -17,6 +17,8 @@
 
 namespace Web\FactFinderApi\Client\V3\Model;
 
+use Web\FactFinderApi\Client\Model\ResultSuggestionBase;
+
 /**
  * ResultSuggestion Class Doc Comment
  *
@@ -119,18 +121,15 @@ class ResultSuggestion extends ResultSuggestionBase
         $this->container['score'] = $data['score'] ?? null;
     }
 
-    /**
-     * @return map[string,object]
-     */
     public function getAttributes()
     {
         return $this->container['attributes'];
     }
 
     /**
-     * @param map[string,object] $attributes Contains additional information for the suggestion. Keys give the names of the attributes, with corresponding values.
+     * @param array $attributes Contains additional information for the suggestion. Keys give the names of the attributes, with corresponding values.
      *
-     * @return $this
+     * @return static
      */
     public function setAttributes($attributes)
     {
