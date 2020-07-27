@@ -218,17 +218,6 @@ abstract class ResultSuggestionBase extends BaseModel
     }
 
     /**
-     * Validate all the properties in the model
-     * return true if all passed
-     *
-     * @return bool True if all properties are valid
-     */
-    public function valid()
-    {
-        return \count($this->listInvalidProperties()) === 0;
-    }
-
-    /**
      * @return map[string,object]
      */
     public function getAttributes()
