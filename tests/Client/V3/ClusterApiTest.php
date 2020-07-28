@@ -6,8 +6,10 @@
 
 namespace Web\FactFinderApi\Tests\Client\V3;
 
+use GuzzleHttp6\Client;
 use GuzzleHttp6\Promise\Promise;
 use Web\FactFinderApi\Client\ApiException;
+use Web\FactFinderApi\Client\HeaderSelector;
 use Web\FactFinderApi\Client\V3\Api\ClusterApi;
 use Web\FactFinderApi\Client\V3\Model\DatabaseState;
 
@@ -20,7 +22,7 @@ class ClusterApiTest extends AbstractTestCase
 
     public function setUp(): void
     {
-        $this->sut = new ClusterApi(null, $this->getConfiguration());
+        $this->sut = new ClusterApi(new Client(), $this->getConfiguration(), new HeaderSelector());
     }
 
     /** @test */

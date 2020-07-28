@@ -361,30 +361,6 @@ class Configuration
     }
 
     /**
-     * Gets the default configuration instance
-     *
-     * @return Configuration
-     */
-    public static function getDefaultConfiguration()
-    {
-        if (self::$defaultConfiguration === null) {
-            self::$defaultConfiguration = new Configuration();
-        }
-
-        return self::$defaultConfiguration;
-    }
-
-    /**
-     * Sets the detault configuration instance
-     *
-     * @param Configuration $config An instance of the Configuration Object
-     */
-    public static function setDefaultConfiguration(Configuration $config): void
-    {
-        self::$defaultConfiguration = $config;
-    }
-
-    /**
      * Gets the essential information for debugging
      *
      * @return string The report for debugging
@@ -395,7 +371,7 @@ class Configuration
         $report .= '    OS: ' . \php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    OpenAPI Spec Version: v2' . PHP_EOL;
-        $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
+        $report .= '    Temp Folder Path: ' . \sys_get_temp_dir() . PHP_EOL;
 
         return $report;
     }

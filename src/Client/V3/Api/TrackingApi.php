@@ -501,10 +501,9 @@ class TrackingApi extends ApiClient
      */
     public function trackRecommendationClickUsingPOSTWithHttpInfo(string $channel, array $events): array
     {
-        $returnType = '';
         $request = $this->trackRecommendationClickUsingPOSTRequest($channel, $events);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeEmptyRequest($request);
     }
 
     /**

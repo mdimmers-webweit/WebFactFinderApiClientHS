@@ -160,10 +160,9 @@ class CampaignApi extends ApiClient
      */
     public function getProductCampaignsUsingGETAsyncWithHttpInfo($channel, $product_number, $ids_only = 'false', $sid = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\Campaign[]';
         $request = $this->getProductCampaignsUsingGETRequest($channel, $product_number, $ids_only, $sid);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\Campaign[]');
     }
 
     /**
@@ -250,10 +249,9 @@ class CampaignApi extends ApiClient
      */
     public function getShoppingCartCampaignsUsingGETAsyncWithHttpInfo($channel, $product_number, $ids_only = 'false', $sid = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\Campaign[]';
         $request = $this->getShoppingCartCampaignsUsingGETRequest($channel, $product_number, $ids_only, $sid);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\Campaign[]');
     }
 
     /**

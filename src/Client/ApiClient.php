@@ -31,17 +31,13 @@ abstract class ApiClient
     protected $config;
 
     public function __construct(
-        ?ClientInterface $client = null,
-        ?Configuration $config = null,
-        ?HeaderSelector $selector = null
+        ClientInterface $client,
+        Configuration $config,
+        HeaderSelector $selector
     ) {
-        $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration(
-            \getenv('WEB_FACT_FINDER_API_USERNAME'),
-            \getenv('WEB_FACT_FINDER_API_PASSWORD'),
-            \getenv('WEB_FACT_FINDER_API_URL')
-        );
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->client = $client;
+        $this->config = $config;
+        $this->headerSelector = $selector;
     }
 
     public function getConfig(): Configuration
@@ -98,23 +94,6 @@ abstract class ApiClient
             ['application/json'],
             ['application/json']
         );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
 
         // this endpoint requires HTTP basic authentication
         if (!empty($this->config->getUsername()) || !empty($this->config->getPassword())) {
@@ -191,9 +170,57 @@ abstract class ApiClient
 
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
+                $statusCode,
                 $response->getHeaders(),
             ];
+        } catch (ApiException $e) {
+            if (\in_array($e->getCode(), [400, 401, 403, 500], true)) {
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    ApiError::class,
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * @throws ApiException
+     * @throws \GuzzleHttp6\Exception\GuzzleException
+     */
+    protected function executeEmptyRequest(Request $request): array
+    {
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    \sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             if (\in_array($e->getCode(), [400, 401, 403, 500], true)) {
                 $data = ObjectSerializer::deserialize(
@@ -210,7 +237,7 @@ abstract class ApiClient
     protected function postQuery(string $resourcePath, array $queryParams, $params): Request
     {
         // body params
-        $_tempBody = null;
+        $httpBody = $_tempBody = null;
         if (isset($params)) {
             $_tempBody = $params;
         }
@@ -240,6 +267,12 @@ abstract class ApiClient
         // this endpoint requires HTTP basic authentication
         if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
             $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
         }
 
         $defaultHeaders = [];

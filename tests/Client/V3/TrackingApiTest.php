@@ -6,7 +6,9 @@
 
 namespace Web\FactFinderApi\Tests\Client\V3;
 
+use GuzzleHttp6\Client;
 use GuzzleHttp6\Promise\Promise;
+use Web\FactFinderApi\Client\HeaderSelector;
 use Web\FactFinderApi\Client\V3\Api\ClusterApi;
 use Web\FactFinderApi\Client\V3\Api\TrackingApi;
 use Web\FactFinderApi\Client\V3\Model\CartOrCheckoutEvent;
@@ -20,7 +22,7 @@ class TrackingApiTest extends AbstractTestCase
 
     public function setUp(): void
     {
-        $this->sut = new TrackingApi(null, $this->getConfiguration());
+        $this->sut = new TrackingApi(new Client(), $this->getConfiguration(), new HeaderSelector());
     }
 
     /** @test */
