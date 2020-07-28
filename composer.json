@@ -1,6 +1,6 @@
 {
   "name": "webweit-gmbh/web-fact-finder-api-client",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "description",
   "type": "symfony-bundle",
   "minimum-stability": "dev",
