@@ -34,7 +34,7 @@ abstract class SearchParamsBase extends BaseModel
     /**
      * @param \Web\FactFinderApi\Client\V3\Model\AdvisorCampaignStatusHolder $advisor_status describes the advisor campaign that is currently active
      *
-     * @return \Web\FactFinderApi\Client\V3\Model\SearchParams
+     * @return SearchParamsBase
      */
     public function setAdvisorStatus($advisor_status)
     {
@@ -112,11 +112,11 @@ abstract class SearchParamsBase extends BaseModel
     }
 
     /**
-     * @param int $page the page to be requested within the search result
+     * @param int|null $page the page to be requested within the search result
      *
      * @return $this
      */
-    abstract public function setPage($page);
+    abstract public function setPage(?int $page);
 
     /**
      * @return string

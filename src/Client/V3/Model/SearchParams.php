@@ -63,7 +63,6 @@ class SearchParams extends SearchParamsBase
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'advisor_status' => null,
@@ -238,11 +237,11 @@ class SearchParams extends SearchParamsBase
     }
 
     /**
-     * @param string $article_number_search specifies if the search term should be interpreted as article number
+     * @param string|null $article_number_search specifies if the search term should be interpreted as article number
      *
      * @return $this
      */
-    public function setArticleNumberSearch($article_number_search)
+    public function setArticleNumberSearch(?string $article_number_search)
     {
         $allowedValues = $this->getArticleNumberSearchAllowableValues();
         if (!\is_null($article_number_search) && !\in_array($article_number_search, $allowedValues, true)) {
@@ -307,11 +306,11 @@ class SearchParams extends SearchParamsBase
     }
 
     /**
-     * @param int $hits_per_page number of products on a single page
+     * @param int|null $hits_per_page number of products on a single page
      *
      * @return $this
      */
-    public function setHitsPerPage($hits_per_page)
+    public function setHitsPerPage(?int $hits_per_page)
     {
         if (!\is_null($hits_per_page) && ($hits_per_page < 0)) {
             throw new \InvalidArgumentException('invalid value for $hits_per_page when calling SearchParams., must be bigger than or equal to 0.');
@@ -383,11 +382,11 @@ class SearchParams extends SearchParamsBase
     }
 
     /**
-     * @param int $page the page to be requested within the search result
+     * @param int|null $page the page to be requested within the search result
      *
      * @return $this
      */
-    public function setPage($page)
+    public function setPage(?int $page)
     {
         if (!\is_null($page) && ($page < 1)) {
             throw new \InvalidArgumentException('invalid value for $page when calling SearchParams., must be bigger than or equal to 1.');

@@ -47,7 +47,7 @@ class RecommendationApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\RecommendationResult
      */
-    public function getRecommendationUsingGET($channel, $id, $max_results = '0', $sid = null, $ids_only = 'false', $use_personalization = 'true')
+    public function getRecommendationUsingGET(string $channel, $id, int $max_results = 0, $sid = null, bool $ids_only = false, bool $use_personalization = true)
     {
         list($response) = $this->getRecommendationUsingGETWithHttpInfo($channel, $id, $max_results, $sid, $ids_only, $use_personalization);
 
@@ -69,12 +69,11 @@ class RecommendationApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\RecommendationResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRecommendationUsingGETWithHttpInfo($channel, $id, $max_results = '0', $sid = null, $ids_only = 'false', $use_personalization = 'true')
+    public function getRecommendationUsingGETWithHttpInfo(string $channel, $id, int $max_results = 0, $sid = null, bool $ids_only = false, bool $use_personalization = true)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\RecommendationResult';
         $request = $this->getRecommendationUsingGETRequest($channel, $id, $max_results, $sid, $ids_only, $use_personalization);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\RecommendationResult::class);
     }
 
     /**
@@ -91,7 +90,7 @@ class RecommendationApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getRecommendationUsingGETAsync($channel, $id, $max_results = '0', $sid = null, $ids_only = 'false', $use_personalization = 'true')
+    public function getRecommendationUsingGETAsync(string $channel, $id, int $max_results = 0, $sid = null, bool $ids_only = false, bool $use_personalization = true)
     {
         return $this->getRecommendationUsingGETAsyncWithHttpInfo($channel, $id, $max_results, $sid, $ids_only, $use_personalization)
             ->then(
@@ -115,12 +114,11 @@ class RecommendationApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getRecommendationUsingGETAsyncWithHttpInfo($channel, $id, $max_results = '0', $sid = null, $ids_only = 'false', $use_personalization = 'true')
+    public function getRecommendationUsingGETAsyncWithHttpInfo(string $channel, $id, int $max_results = 0, $sid = null, bool $ids_only = false, bool $use_personalization = true)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\RecommendationResult';
         $request = $this->getRecommendationUsingGETRequest($channel, $id, $max_results, $sid, $ids_only, $use_personalization);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\RecommendationResult::class);
     }
 
     /**
@@ -137,7 +135,7 @@ class RecommendationApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function getRecommendationUsingGETRequest($channel, $id, $max_results = '0', $sid = null, $ids_only = 'false', $use_personalization = 'true')
+    protected function getRecommendationUsingGETRequest(string $channel, $id, int $max_results = 0, $sid = null, bool $ids_only = false, bool $use_personalization = true)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -179,34 +177,10 @@ class RecommendationApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
         return $this->getQuery($resourcePath, $queryParams);
     }
 
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
 
-        return $options;
-    }
 }

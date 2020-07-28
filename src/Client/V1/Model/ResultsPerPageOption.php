@@ -49,7 +49,6 @@ class ResultsPerPageOption extends BaseModel
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'default_value' => null,

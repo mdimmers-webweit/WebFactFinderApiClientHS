@@ -60,7 +60,6 @@ class Params extends SearchParamsBase
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'ab_test' => null,
@@ -337,11 +336,11 @@ class Params extends SearchParamsBase
     }
 
     /**
-     * @param int $page page
+     * @param int|null $page page
      *
      * @return $this
      */
-    public function setPage($page)
+    public function setPage(?int $page)
     {
         $this->container['page'] = $page;
 

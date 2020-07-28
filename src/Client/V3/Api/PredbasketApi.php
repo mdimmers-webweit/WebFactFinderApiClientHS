@@ -47,7 +47,7 @@ class PredbasketApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\PredictiveBasketResult
      */
-    public function getPredictionsUsingGET($channel, $user_id, $max_results = '0', $blacklist = null, $ids_only = 'false')
+    public function getPredictionsUsingGET(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
     {
         list($response) = $this->getPredictionsUsingGETWithHttpInfo($channel, $user_id, $max_results, $blacklist, $ids_only);
 
@@ -68,7 +68,7 @@ class PredbasketApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\PredictiveBasketResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPredictionsUsingGETWithHttpInfo($channel, $user_id, $max_results = '0', $blacklist = null, $ids_only = 'false')
+    public function getPredictionsUsingGETWithHttpInfo(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
     {
         $request = $this->getPredictionsUsingGETRequest($channel, $user_id, $max_results, $blacklist, $ids_only);
 
@@ -88,7 +88,7 @@ class PredbasketApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getPredictionsUsingGETAsync($channel, $user_id, $max_results = '0', $blacklist = null, $ids_only = 'false')
+    public function getPredictionsUsingGETAsync(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
     {
         return $this->getPredictionsUsingGETAsyncWithHttpInfo($channel, $user_id, $max_results, $blacklist, $ids_only)
             ->then(
@@ -111,12 +111,11 @@ class PredbasketApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getPredictionsUsingGETAsyncWithHttpInfo($channel, $user_id, $max_results = '0', $blacklist = null, $ids_only = 'false')
+    public function getPredictionsUsingGETAsyncWithHttpInfo(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\PredictiveBasketResult';
         $request = $this->getPredictionsUsingGETRequest($channel, $user_id, $max_results, $blacklist, $ids_only);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V3\Model\PredictiveBasketResult::class);
     }
 
     /**
@@ -132,7 +131,7 @@ class PredbasketApi extends ApiClient
      *
      * @return Request
      */
-    protected function getPredictionsUsingGETRequest($channel, $user_id, $max_results = '0', $blacklist = null, $ids_only = 'false')
+    protected function getPredictionsUsingGETRequest(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {

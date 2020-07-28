@@ -55,7 +55,7 @@ class SearchApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function categoryNavigationUsingGET(string $channel, $sid = null, $start_level = null, $end_level = null, $filter = null, $substring_filter = null, $latitude = null, $longitude = null, $market_id = null, $use_cache = 'true', $use_geo = 'true'): CategoryNavigation
+    public function categoryNavigationUsingGET(string $channel, $sid = null, $start_level = null, $end_level = null, $filter = null, $substring_filter = null, $latitude = null, $longitude = null, $market_id = null, bool $use_cache = true, bool $use_geo = true): CategoryNavigation
     {
         list($response) = $this->categoryNavigationUsingGETWithHttpInfo($channel, $sid, $start_level, $end_level, $filter, $substring_filter, $latitude, $longitude, $market_id, $use_cache, $use_geo);
 
@@ -84,7 +84,7 @@ class SearchApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\CategoryNavigation, HTTP status code, HTTP response headers (array of strings)
      */
-    public function categoryNavigationUsingGETWithHttpInfo(string $channel, $sid = null, $start_level = null, $end_level = null, $filter = null, $substring_filter = null, $latitude = null, $longitude = null, $market_id = null, $use_cache = 'true', $use_geo = 'true')
+    public function categoryNavigationUsingGETWithHttpInfo(string $channel, $sid = null, $start_level = null, $end_level = null, $filter = null, $substring_filter = null, $latitude = null, $longitude = null, $market_id = null, bool $use_cache = true, bool $use_geo = true)
     {
         $request = $this->categoryNavigationUsingGETRequest($channel, $sid, $start_level, $end_level, $filter, $substring_filter, $latitude, $longitude, $market_id, $use_cache, $use_geo);
 
@@ -224,7 +224,7 @@ class SearchApi extends ApiClient
      *
      * @return Request
      */
-    protected function categoryNavigationUsingGETRequest(string $channel, $sid = null, $start_level = null, $end_level = null, $filter = null, $substring_filter = null, $latitude = null, $longitude = null, $market_id = null, $use_cache = 'true', $use_geo = 'true')
+    protected function categoryNavigationUsingGETRequest(string $channel, $sid = null, $start_level = null, $end_level = null, $filter = null, $substring_filter = null, $latitude = null, $longitude = null, $market_id = null, bool $use_cache = true, bool $use_geo = true)
     {
         $resourcePath = '/rest/v3/navigation/category/{channel}';
         $queryParams = [];
@@ -428,7 +428,7 @@ class SearchApi extends ApiClient
      *
      * @return Request
      */
-    protected function navigationUsingGETRequest(string $channel, $sid = null, $filter = null, $substring_filter = null, $sort = null, $cache_irrelevant = null, $latitude = null, $longitude = null, $market_id = null, $page = null, $hits_per_page = null, $max_count_variants = null, $advisor_status = null, $use_cache = 'true', $use_geo = 'true', $use_search = 'true', $use_asn = 'true', $use_found_words = 'false', $use_campaigns = 'true', $ids_only = 'false', $use_personalization = 'true', $use_semantic_enhancer = 'true', $use_aso = 'true', $use_deduplication = 'true', $deduplication_field = null)
+    protected function navigationUsingGETRequest(string $channel, $sid = null, $filter = null, $substring_filter = null, $sort = null, $cache_irrelevant = null, $latitude = null, $longitude = null, $market_id = null, $page = null, $hits_per_page = null, $max_count_variants = null, $advisor_status = null, bool $use_cache = true, bool $use_geo = true, bool $use_search = true, bool $use_asn = true, bool $use_found_words = false, bool $use_campaigns = true, bool $ids_only = false, bool $use_personalization = true, bool $use_semantic_enhancer = true, bool $use_aso = true, bool $use_deduplication = true, $deduplication_field = null)
     {
         $resourcePath = '/rest/v3/navigation/{channel}';
         $queryParams = [];

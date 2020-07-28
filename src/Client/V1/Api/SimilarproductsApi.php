@@ -47,7 +47,7 @@ class SimilarproductsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\SimilarProducts
      */
-    public function getSimilarProductsUsingGET($channel, $id, $ids_only = 'false', $max_results = '10')
+    public function getSimilarProductsUsingGET(string $channel, $id, bool $ids_only = false, int $max_results = 10)
     {
         list($response) = $this->getSimilarProductsUsingGETWithHttpInfo($channel, $id, $ids_only, $max_results);
 
@@ -69,12 +69,11 @@ class SimilarproductsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\SimilarProducts, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSimilarProductsUsingGETWithHttpInfo($channel, $id, $ids_only = 'false', $max_results = '10')
+    public function getSimilarProductsUsingGETWithHttpInfo(string $channel, $id, bool $ids_only = false, int $max_results = 10)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\SimilarProducts';
         $request = $this->getSimilarProductsUsingGETRequest($channel, $id, $ids_only, $max_results);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\SimilarProducts::class);
     }
 
     /**
@@ -91,7 +90,7 @@ class SimilarproductsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getSimilarProductsUsingGETAsync($channel, $id, $ids_only = 'false', $max_results = '10')
+    public function getSimilarProductsUsingGETAsync(string $channel, $id, bool $ids_only = false, int $max_results = 10)
     {
         return $this->getSimilarProductsUsingGETAsyncWithHttpInfo($channel, $id, $ids_only, $max_results)
             ->then(
@@ -115,12 +114,11 @@ class SimilarproductsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getSimilarProductsUsingGETAsyncWithHttpInfo($channel, $id, $ids_only = 'false', $max_results = '10')
+    public function getSimilarProductsUsingGETAsyncWithHttpInfo(string $channel, $id, bool $ids_only = false, int $max_results = 10)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\SimilarProducts';
         $request = $this->getSimilarProductsUsingGETRequest($channel, $id, $ids_only, $max_results);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\SimilarProducts::class);
     }
 
     /**
@@ -135,7 +133,7 @@ class SimilarproductsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function getSimilarProductsUsingGETRequest($channel, $id, $ids_only = 'false', $max_results = '10')
+    protected function getSimilarProductsUsingGETRequest(string $channel, $id, bool $ids_only = false, int $max_results = 10)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -167,34 +165,10 @@ class SimilarproductsApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
         return $this->getQuery($resourcePath, $queryParams);
     }
 
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
 
-        return $options;
-    }
 }

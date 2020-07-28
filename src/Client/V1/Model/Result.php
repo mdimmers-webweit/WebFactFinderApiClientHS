@@ -73,7 +73,6 @@ class Result extends BaseModel
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'applied_preprocessor_entries' => null,
@@ -397,7 +396,7 @@ class Result extends BaseModel
     }
 
     /**
-     * @return map[string,string]
+     * @return string[]
      */
     public function getFieldRoles()
     {
@@ -405,7 +404,7 @@ class Result extends BaseModel
     }
 
     /**
-     * @param map[string,string] $field_roles field_roles
+     * @param string[] $field_roles field_roles
      *
      * @return $this
      */

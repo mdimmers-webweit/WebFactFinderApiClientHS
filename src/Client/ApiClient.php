@@ -16,11 +16,6 @@ use Web\FactFinderApi\Client\Model\ApiError;
 abstract class ApiClient
 {
     /**
-     * @var HeaderSelector
-     */
-    protected $headerSelector;
-
-    /**
      * @var ClientInterface
      */
     protected $client;
@@ -32,12 +27,10 @@ abstract class ApiClient
 
     public function __construct(
         ClientInterface $client,
-        Configuration $config,
-        HeaderSelector $selector
+        Configuration $config
     ) {
         $this->client = $client;
         $this->config = $config;
-        $this->headerSelector = $selector;
     }
 
     public function getConfig(): Configuration
@@ -90,10 +83,10 @@ abstract class ApiClient
         $_tempBody = null;
         $httpBody = null;
 
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ];
 
         // this endpoint requires HTTP basic authentication
         if (!empty($this->config->getUsername()) || !empty($this->config->getPassword())) {
@@ -234,7 +227,22 @@ abstract class ApiClient
         }
     }
 
-    protected function postQuery(string $resourcePath, array $queryParams, $params): Request
+    protected function postQuery(string $resourcePath, array $queryParams, $params, bool $oauth = false): Request
+    {
+        return $this->query('POST', $resourcePath, $queryParams, $params, $oauth);
+    }
+
+    protected function putQuery(string $resourcePath, array $queryParams, $params, bool $oauth = false): Request
+    {
+        return $this->query('PUT', $resourcePath, $queryParams, $params, $oauth);
+    }
+
+    protected function deleteQuery(string $resourcePath, array $queryParams, $params, bool $oauth = false): Request
+    {
+        return $this->query('DELETE', $resourcePath, $queryParams, $params, $oauth);
+    }
+
+    private function query(string $action, string $resourcePath, array $queryParams, $params, bool $oauth = false): Request
     {
         // body params
         $httpBody = $_tempBody = null;
@@ -242,10 +250,10 @@ abstract class ApiClient
             $_tempBody = $params;
         }
 
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ];
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -264,15 +272,19 @@ abstract class ApiClient
             }
         }
 
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
+        $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
 
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
+        if ($oauth) {
+            // this endpoint requires OAuth (access token)
+            if ($this->config->getAccessToken() !== null) {
+                $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+            }
+        } else {
+            // this endpoint requires API key authentication
+            $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+            if ($apiKey !== null) {
+                $headers['Authorization'] = $apiKey;
+            }
         }
 
         $defaultHeaders = [];
@@ -288,7 +300,7 @@ abstract class ApiClient
         $query = \GuzzleHttp6\Psr7\build_query($queryParams);
 
         return new Request(
-            'POST',
+            $action,
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

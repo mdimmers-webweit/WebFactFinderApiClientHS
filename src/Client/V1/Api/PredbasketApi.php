@@ -45,7 +45,7 @@ class PredbasketApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\PredictiveBasketResult
      */
-    public function getPredictionsUsingGET($channel, $user_id, $max_results = '0', $blacklist = null, $ids_only = 'false')
+    public function getPredictionsUsingGET(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
     {
         list($response) = $this->getPredictionsUsingGETWithHttpInfo($channel, $user_id, $max_results, $blacklist, $ids_only);
 
@@ -66,12 +66,11 @@ class PredbasketApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\PredictiveBasketResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPredictionsUsingGETWithHttpInfo($channel, $user_id, $max_results = '0', $blacklist = null, $ids_only = 'false')
+    public function getPredictionsUsingGETWithHttpInfo(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\PredictiveBasketResult';
         $request = $this->getPredictionsUsingGETRequest($channel, $user_id, $max_results, $blacklist, $ids_only);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\PredictiveBasketResult::class);
     }
 
     /**
@@ -87,7 +86,7 @@ class PredbasketApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getPredictionsUsingGETAsync($channel, $user_id, $max_results = '0', $blacklist = null, $ids_only = 'false')
+    public function getPredictionsUsingGETAsync(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
     {
         return $this->getPredictionsUsingGETAsyncWithHttpInfo($channel, $user_id, $max_results, $blacklist, $ids_only)
             ->then(
@@ -110,12 +109,11 @@ class PredbasketApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getPredictionsUsingGETAsyncWithHttpInfo($channel, $user_id, $max_results = '0', $blacklist = null, $ids_only = 'false')
+    public function getPredictionsUsingGETAsyncWithHttpInfo(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\PredictiveBasketResult';
         $request = $this->getPredictionsUsingGETRequest($channel, $user_id, $max_results, $blacklist, $ids_only);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\PredictiveBasketResult::class);
     }
 
     /**
@@ -131,7 +129,7 @@ class PredbasketApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function getPredictionsUsingGETRequest($channel, $user_id, $max_results = '0', $blacklist = null, $ids_only = 'false')
+    protected function getPredictionsUsingGETRequest(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -169,34 +167,10 @@ class PredbasketApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
         return $this->getQuery($resourcePath, $queryParams);
     }
 
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
 
-        return $options;
-    }
 }

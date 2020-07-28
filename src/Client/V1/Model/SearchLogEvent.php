@@ -64,7 +64,6 @@ class SearchLogEvent extends BaseModel
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'additional_info' => null,
@@ -316,7 +315,7 @@ class SearchLogEvent extends BaseModel
     }
 
     /**
-     * @return map[string,string]
+     * @return string[]
      */
     public function getExtraParams()
     {
@@ -324,7 +323,7 @@ class SearchLogEvent extends BaseModel
     }
 
     /**
-     * @param map[string,string] $extra_params extra_params
+     * @param string[] $extra_params extra_params
      *
      * @return $this
      */

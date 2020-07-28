@@ -48,7 +48,6 @@ class TypedFlatRecord extends BaseModel
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'id' => null,
@@ -133,7 +132,7 @@ class TypedFlatRecord extends BaseModel
     }
 
     /**
-     * @return map[string,object]
+     * @return object[]
      */
     public function getValues()
     {
@@ -141,7 +140,7 @@ class TypedFlatRecord extends BaseModel
     }
 
     /**
-     * @param map[string,object] $values Contains all the fields present in the record and their corresponding values. If variants exists the values of a specific variant (usually the first) are merged into this map.
+     * @param object[] $values Contains all the fields present in the record and their corresponding values. If variants exists the values of a specific variant (usually the first) are merged into this map.
      *
      * @return $this
      */

@@ -9,7 +9,6 @@ namespace Web\FactFinderApi\Tests\Client\V3;
 use GuzzleHttp6\Client;
 use GuzzleHttp6\Promise\Promise;
 use Web\FactFinderApi\Client\ApiException;
-use Web\FactFinderApi\Client\HeaderSelector;
 use Web\FactFinderApi\Client\V3\Api\ClusterApi;
 use Web\FactFinderApi\Client\V3\Model\DatabaseState;
 
@@ -22,7 +21,7 @@ class ClusterApiTest extends AbstractTestCase
 
     public function setUp(): void
     {
-        $this->sut = new ClusterApi(new Client(), $this->getConfiguration(), new HeaderSelector());
+        $this->sut = new ClusterApi(new Client(), $this->getConfiguration());
     }
 
     /** @test */
@@ -166,14 +165,14 @@ class ClusterApiTest extends AbstractTestCase
     /** @test */
     public function itShouldSyncDatabaseUsingPOST(): void
     {
-        $result = $this->sut->syncDatabaseUsingPOST('de', 'false');
+        $result = $this->sut->syncDatabaseUsingPOST('de', false);
         static::assertIsArray($result);
     }
 
     /** @test */
     public function itShouldSyncDatabaseUsingPOSTWithHttpInfo(): void
     {
-        $result = $this->sut->syncDatabaseUsingPOSTWithHttpInfo('de', 'false');
+        $result = $this->sut->syncDatabaseUsingPOSTWithHttpInfo('de', false);
         static::assertIsArray($result);
         static::assertEquals([], $result[0]);
         static::assertEquals(200, $result[1]);
@@ -182,7 +181,7 @@ class ClusterApiTest extends AbstractTestCase
     /** @test */
     public function itShouldSyncDatabaseUsingPOSTAsync(): void
     {
-        $promise = $this->sut->syncDatabaseUsingPOSTAsync('de', 'true');
+        $promise = $this->sut->syncDatabaseUsingPOSTAsync('de', true);
         static::assertInstanceOf(Promise::class, $promise);
         static::assertEquals('pending', $promise->getState());
         $result = $promise->wait();

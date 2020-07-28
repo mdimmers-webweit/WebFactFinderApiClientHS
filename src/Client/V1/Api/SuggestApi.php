@@ -21,6 +21,7 @@ use GuzzleHttp6\Client;
 use GuzzleHttp6\Psr7\Request;
 use GuzzleHttp6\RequestOptions;
 use Web\FactFinderApi\Client\ObjectSerializer;
+use Web\FactFinderApi\Client\V1\Model\Params;
 
 /**
  * SuggestApi Class Doc Comment
@@ -42,7 +43,7 @@ class SuggestApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\ResultSuggestion[]
      */
-    public function getSuggestionsUsingGET($channel, $query)
+    public function getSuggestionsUsingGET(string $channel, $query)
     {
         list($response) = $this->getSuggestionsUsingGETWithHttpInfo($channel, $query);
 
@@ -60,12 +61,11 @@ class SuggestApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\ResultSuggestion[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSuggestionsUsingGETWithHttpInfo($channel, $query)
+    public function getSuggestionsUsingGETWithHttpInfo(string $channel, $query)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ResultSuggestion[]';
         $request = $this->getSuggestionsUsingGETRequest($channel, $query);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V1\Model\ResultSuggestion[]');
     }
 
     /**
@@ -78,7 +78,7 @@ class SuggestApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getSuggestionsUsingGETAsync($channel, $query)
+    public function getSuggestionsUsingGETAsync(string $channel, $query)
     {
         return $this->getSuggestionsUsingGETAsyncWithHttpInfo($channel, $query)
             ->then(
@@ -98,12 +98,11 @@ class SuggestApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getSuggestionsUsingGETAsyncWithHttpInfo($channel, $query)
+    public function getSuggestionsUsingGETAsyncWithHttpInfo(string $channel, $query)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ResultSuggestion[]';
         $request = $this->getSuggestionsUsingGETRequest($channel, $query);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V1\Model\ResultSuggestion[]');
     }
 
     /**
@@ -118,7 +117,7 @@ class SuggestApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\ResultSuggestion[]
      */
-    public function getSuggestionsUsingPOST($params)
+    public function getSuggestionsUsingPOST(Params $params)
     {
         list($response) = $this->getSuggestionsUsingPOSTWithHttpInfo($params);
 
@@ -137,12 +136,11 @@ class SuggestApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\ResultSuggestion[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSuggestionsUsingPOSTWithHttpInfo($params)
+    public function getSuggestionsUsingPOSTWithHttpInfo(Params $params)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ResultSuggestion[]';
         $request = $this->getSuggestionsUsingPOSTRequest($params);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V1\Model\ResultSuggestion[]');
     }
 
     /**
@@ -156,7 +154,7 @@ class SuggestApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getSuggestionsUsingPOSTAsync($params)
+    public function getSuggestionsUsingPOSTAsync(Params $params)
     {
         return $this->getSuggestionsUsingPOSTAsyncWithHttpInfo($params)
             ->then(
@@ -177,12 +175,11 @@ class SuggestApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getSuggestionsUsingPOSTAsyncWithHttpInfo($params)
+    public function getSuggestionsUsingPOSTAsyncWithHttpInfo(Params $params)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ResultSuggestion[]';
         $request = $this->getSuggestionsUsingPOSTRequest($params);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V1\Model\ResultSuggestion[]');
     }
 
     /**
@@ -195,7 +192,7 @@ class SuggestApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function getSuggestionsUsingGETRequest($channel, $query)
+    protected function getSuggestionsUsingGETRequest(string $channel, $query)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -219,13 +216,7 @@ class SuggestApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
         return $this->getQuery($resourcePath, $queryParams);
     }
@@ -239,89 +230,12 @@ class SuggestApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function getSuggestionsUsingPOSTRequest($params)
+    protected function getSuggestionsUsingPOSTRequest(Params $params)
     {
-        // verify the required parameter 'params' is set
-        if ($params === null || (\is_array($params) && \count($params) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $params when calling getSuggestionsUsingPOST'
-            );
-        }
-
         $resourcePath = '/v1/suggest';
-        $queryParams = [];
-        $httpBody = '';
-        // body params
-        $_tempBody = null;
-        if (isset($params)) {
-            $_tempBody = $params;
-        }
 
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, [], $params);
     }
 
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
 
-        return $options;
-    }
 }

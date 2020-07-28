@@ -8,7 +8,6 @@ namespace Web\FactFinderApi\Tests\Client\V3;
 
 use GuzzleHttp6\Client;
 use Web\FactFinderApi\Client\ApiException;
-use Web\FactFinderApi\Client\HeaderSelector;
 use Web\FactFinderApi\Client\V3\Api\SearchApi;
 use Web\FactFinderApi\Client\V3\Model\CategoryNavigation;
 use Web\FactFinderApi\Client\V3\Model\NavigationRequest;
@@ -25,7 +24,7 @@ class SearchApiTest extends AbstractTestCase
 
     public function setUp(): void
     {
-        $this->sut = new SearchApi(new Client(), $this->getConfiguration(), new HeaderSelector());
+        $this->sut = new SearchApi(new Client(), $this->getConfiguration());
     }
 
     /** @test */

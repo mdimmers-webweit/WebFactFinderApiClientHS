@@ -33,7 +33,7 @@ class ObjectSerializer
      * @param string $type   the SwaggerType of the data
      * @param string $format the format of the Swagger type of the data
      *
-     * @return string|object serialized form of $data
+     * @return string|object|array serialized form of $data
      */
     public static function sanitizeForSerialization($data, $type = null, $format = null)
     {
@@ -62,8 +62,8 @@ class ObjectSerializer
                 if ($value !== null
                     && !\in_array($swaggerType, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)
                     && \method_exists($swaggerType, 'getAllowableEnumValues')
-                    && !\in_array($value, $swaggerType::getAllowableEnumValues(), true)) {
-                    $imploded = \implode("', '", $swaggerType::getAllowableEnumValues());
+                    && /* @phpstan-ignore-line */!\in_array($value, $swaggerType::getAllowableEnumValues(), true)) {
+                    $imploded = \implode("', '", $swaggerType::getAllowableEnumValues());/* @phpstan-ignore-line */
                     throw new \InvalidArgumentException("Invalid value for enum '$swaggerType', must be one of: '$imploded'");
                 }
                 if ($value !== null) {
@@ -113,7 +113,7 @@ class ObjectSerializer
      * If it's a string, pass through unchanged. It will be url-encoded
      * later.
      *
-     * @param string[]|string|\DateTime $object an object to be serialized to a string
+     * @param string[]|string|\DateTime|bool $object an object to be serialized to a string
      *
      * @return string the serialized object
      */
@@ -121,6 +121,10 @@ class ObjectSerializer
     {
         if (\is_array($object)) {
             return \implode(',', $object);
+        }
+
+        if (is_bool($object)) {
+            return $object ? 'true' : 'false';
         }
 
         return self::toString($object);
@@ -298,9 +302,7 @@ class ObjectSerializer
             }
 
             $propertyValue = $data->{$instance::attributeMap()[$property]};
-            if (isset($propertyValue)) {
-                $instance->$propertySetter(self::deserialize($propertyValue, $type, null));
-            }
+            $instance->$propertySetter(self::deserialize($propertyValue, $type, null));
         }
 
         return $instance;

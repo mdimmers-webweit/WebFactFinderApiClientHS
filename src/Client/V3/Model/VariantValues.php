@@ -40,16 +40,13 @@ class VariantValues extends BaseModel
      *
      * @var string[]
      */
-    protected static $swaggerTypes = [
-    ];
+    protected static $swaggerTypes = [];
 
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
-    protected static $swaggerFormats = [
-    ];
+    protected static $swaggerFormats = [];
 
     /**
      * Array of attributes where the key is the local name,
@@ -57,40 +54,22 @@ class VariantValues extends BaseModel
      *
      * @var string[]
      */
-    protected static $attributeMap = [
-    ];
+    protected static $attributeMap = [];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
      */
-    protected static $setters = [
-    ];
+    protected static $setters = [];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
      */
-    protected static $getters = [
-    ];
+    protected static $getters = [];
 
-    /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-    }
-
-    /**
-     * Show all the invalid properties with reasons.
-     *
-     * @return array invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        return [];
-    }
+    /* @phpstan-ignore-next-line */
+    public function __construct(?array $data = null){}
 }

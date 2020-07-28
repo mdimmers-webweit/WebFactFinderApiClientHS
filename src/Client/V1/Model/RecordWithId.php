@@ -48,7 +48,6 @@ class RecordWithId extends BaseModel
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'id' => null,
@@ -136,7 +135,7 @@ class RecordWithId extends BaseModel
     }
 
     /**
-     * @return map[string,string]
+     * @return string[]
      */
     public function getRecord()
     {
@@ -144,7 +143,7 @@ class RecordWithId extends BaseModel
     }
 
     /**
-     * @param map[string,string] $record record
+     * @param string[] $record record
      *
      * @return $this
      */

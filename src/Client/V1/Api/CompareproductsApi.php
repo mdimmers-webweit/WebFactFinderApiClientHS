@@ -47,7 +47,7 @@ class CompareproductsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\CompareResult
      */
-    public function compareUsingGET($channel, $id, $ids_only = 'false', $custom_parameters = null)
+    public function compareUsingGET(string $channel, $id, bool $ids_only = false, $custom_parameters = null)
     {
         list($response) = $this->compareUsingGETWithHttpInfo($channel, $id, $ids_only, $custom_parameters);
 
@@ -69,7 +69,7 @@ class CompareproductsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\CompareResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function compareUsingGETWithHttpInfo($channel, $id, $ids_only = 'false', $custom_parameters = null)
+    public function compareUsingGETWithHttpInfo(string $channel, $id, bool $ids_only = false, $custom_parameters = null)
     {
         $request = $this->compareUsingGETRequest($channel, $id, $ids_only, $custom_parameters);
 
@@ -90,7 +90,7 @@ class CompareproductsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function compareUsingGETAsync($channel, $id, $ids_only = 'false', $custom_parameters = null)
+    public function compareUsingGETAsync(string $channel, $id, bool $ids_only = false, $custom_parameters = null)
     {
         return $this->compareUsingGETAsyncWithHttpInfo($channel, $id, $ids_only, $custom_parameters)
             ->then(
@@ -114,12 +114,11 @@ class CompareproductsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function compareUsingGETAsyncWithHttpInfo($channel, $id, $ids_only = 'false', $custom_parameters = null)
+    public function compareUsingGETAsyncWithHttpInfo(string $channel, $id, bool $ids_only = false, $custom_parameters = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\CompareResult';
         $request = $this->compareUsingGETRequest($channel, $id, $ids_only, $custom_parameters);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\CompareResult::class);
     }
 
     /**
@@ -134,7 +133,7 @@ class CompareproductsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function compareUsingGETRequest($channel, $id, $ids_only = 'false', $custom_parameters = null)
+    protected function compareUsingGETRequest(string $channel, $id, bool $ids_only = false, $custom_parameters = null)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -168,34 +167,10 @@ class CompareproductsApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
         return $this->getQuery($resourcePath, $queryParams);
     }
 
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
 
-        return $options;
-    }
 }

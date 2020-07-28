@@ -48,7 +48,7 @@ class RecordsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\CompareResult
      */
-    public function compareUsingGET($channel, $ids_only = 'false', $id = null)
+    public function compareUsingGET(string $channel, bool $ids_only = false, $id = null)
     {
         list($response) = $this->compareUsingGETWithHttpInfo($channel, $ids_only, $id);
 
@@ -69,7 +69,7 @@ class RecordsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\CompareResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function compareUsingGETWithHttpInfo($channel, $ids_only = 'false', $id = null)
+    public function compareUsingGETWithHttpInfo(string $channel, bool $ids_only = false, $id = null)
     {
         $request = $this->compareUsingGETRequest($channel, $ids_only, $id);
 
@@ -89,7 +89,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function compareUsingGETAsync($channel, $ids_only = 'false', $id = null)
+    public function compareUsingGETAsync(string $channel, bool $ids_only = false, $id = null)
     {
         return $this->compareUsingGETAsyncWithHttpInfo($channel, $ids_only, $id)
             ->then(
@@ -112,12 +112,11 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function compareUsingGETAsyncWithHttpInfo($channel, $ids_only = 'false', $id = null)
+    public function compareUsingGETAsyncWithHttpInfo(string $channel, bool $ids_only = false, $id = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\CompareResult';
         $request = $this->compareUsingGETRequest($channel, $ids_only, $id);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V3\Model\CompareResult::class);
     }
 
     /**
@@ -136,7 +135,7 @@ class RecordsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\DeleteResult[]
      */
-    public function deleteUsingDELETE($channel, $record_id = null, $delete_request = null, $id_type = 'productNumber', $verbose = 'false')
+    public function deleteUsingDELETE(string $channel, $record_id = null, $delete_request = null, $id_type = 'productNumber', bool $verbose = false)
     {
         list($response) = $this->deleteUsingDELETEWithHttpInfo($channel, $record_id, $delete_request, $id_type, $verbose);
 
@@ -159,7 +158,7 @@ class RecordsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\DeleteResult[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteUsingDELETEWithHttpInfo($channel, $record_id = null, $delete_request = null, $id_type = 'productNumber', $verbose = 'false')
+    public function deleteUsingDELETEWithHttpInfo(string $channel, $record_id = null, $delete_request = null, $id_type = 'productNumber', bool $verbose = false)
     {
         $request = $this->deleteUsingDELETERequest($channel, $record_id, $delete_request, $id_type, $verbose);
 
@@ -181,7 +180,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function deleteUsingDELETEAsync($channel, $record_id = null, $delete_request = null, $id_type = 'productNumber', $verbose = 'false')
+    public function deleteUsingDELETEAsync(string $channel, $record_id = null, $delete_request = null, $id_type = 'productNumber', bool $verbose = false)
     {
         return $this->deleteUsingDELETEAsyncWithHttpInfo($channel, $record_id, $delete_request, $id_type, $verbose)
             ->then(
@@ -206,12 +205,11 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function deleteUsingDELETEAsyncWithHttpInfo($channel, $record_id = null, $delete_request = null, $id_type = 'productNumber', $verbose = 'false')
+    public function deleteUsingDELETEAsyncWithHttpInfo(string $channel, $record_id = null, $delete_request = null, $id_type = 'productNumber', bool $verbose = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\DeleteResult[]';
         $request = $this->deleteUsingDELETERequest($channel, $record_id, $delete_request, $id_type, $verbose);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\DeleteResult[]');
     }
 
     /**
@@ -238,7 +236,7 @@ class RecordsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\DetailPage
      */
-    public function getDetailPageUsingGET($channel, $id, $id_type = 'id', $ids_only = 'false', $max_results_recommendations = '0', $max_results_similar_products = '10', $use_personalization = 'true', $sid = null, $max_count_variants = '5', $with_campaigns = 'true', $with_recommendations = 'true', $with_similar_products = 'true', $with_record = 'true')
+    public function getDetailPageUsingGET(string $channel, $id, $id_type = 'id', bool $ids_only = false, int $max_results_recommendations = 0, int $max_results_similar_products = 10, bool $use_personalization = true, $sid = null, int $max_count_variants = 5, bool $with_campaigns = true, bool $with_recommendations = true, bool $with_similar_products = true, bool $with_record = true)
     {
         list($response) = $this->getDetailPageUsingGETWithHttpInfo($channel, $id, $id_type, $ids_only, $max_results_recommendations, $max_results_similar_products, $use_personalization, $sid, $max_count_variants, $with_campaigns, $with_recommendations, $with_similar_products, $with_record);
 
@@ -269,12 +267,11 @@ class RecordsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\DetailPage, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDetailPageUsingGETWithHttpInfo($channel, $id, $id_type = 'id', $ids_only = 'false', $max_results_recommendations = '0', $max_results_similar_products = '10', $use_personalization = 'true', $sid = null, $max_count_variants = '5', $with_campaigns = 'true', $with_recommendations = 'true', $with_similar_products = 'true', $with_record = 'true')
+    public function getDetailPageUsingGETWithHttpInfo(string $channel, $id, $id_type = 'id', bool $ids_only = false, int $max_results_recommendations = 0, int $max_results_similar_products = 10, bool $use_personalization = true, $sid = null, int $max_count_variants = 5, bool $with_campaigns = true, bool $with_recommendations = true, bool $with_similar_products = true, bool $with_record = true)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\DetailPage';
         $request = $this->getDetailPageUsingGETRequest($channel, $id, $id_type, $ids_only, $max_results_recommendations, $max_results_similar_products, $use_personalization, $sid, $max_count_variants, $with_campaigns, $with_recommendations, $with_similar_products, $with_record);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V3\Model\DetailPage::class);
     }
 
     /**
@@ -300,7 +297,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getDetailPageUsingGETAsync($channel, $id, $id_type = 'id', $ids_only = 'false', $max_results_recommendations = '0', $max_results_similar_products = '10', $use_personalization = 'true', $sid = null, $max_count_variants = '5', $with_campaigns = 'true', $with_recommendations = 'true', $with_similar_products = 'true', $with_record = 'true')
+    public function getDetailPageUsingGETAsync(string $channel, $id, $id_type = 'id', bool $ids_only = false, int $max_results_recommendations = 0, int $max_results_similar_products = 10, bool $use_personalization = true, $sid = null, int $max_count_variants = 5, bool $with_campaigns = true, bool $with_recommendations = true, bool $with_similar_products = true, bool $with_record = true)
     {
         return $this->getDetailPageUsingGETAsyncWithHttpInfo($channel, $id, $id_type, $ids_only, $max_results_recommendations, $max_results_similar_products, $use_personalization, $sid, $max_count_variants, $with_campaigns, $with_recommendations, $with_similar_products, $with_record)
             ->then(
@@ -333,12 +330,11 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getDetailPageUsingGETAsyncWithHttpInfo($channel, $id, $id_type = 'id', $ids_only = 'false', $max_results_recommendations = '0', $max_results_similar_products = '10', $use_personalization = 'true', $sid = null, $max_count_variants = '5', $with_campaigns = 'true', $with_recommendations = 'true', $with_similar_products = 'true', $with_record = 'true')
+    public function getDetailPageUsingGETAsyncWithHttpInfo(string $channel, $id, $id_type = 'id', bool $ids_only = false, int $max_results_recommendations = 0, int $max_results_similar_products = 10, bool $use_personalization = true, $sid = null, int $max_count_variants = 5, bool $with_campaigns = true, bool $with_recommendations = true, bool $with_similar_products = true, bool $with_record = true)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\DetailPage';
         $request = $this->getDetailPageUsingGETRequest($channel, $id, $id_type, $ids_only, $max_results_recommendations, $max_results_similar_products, $use_personalization, $sid, $max_count_variants, $with_campaigns, $with_recommendations, $with_similar_products, $with_record);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V3\Model\DetailPage::class);
     }
 
     /**
@@ -356,7 +352,7 @@ class RecordsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\RecordWithId[]
      */
-    public function getFullRecordsUsingGET($channel, $record_id, $id_type = 'id', $max_count_variants = '5')
+    public function getFullRecordsUsingGET(string $channel, $record_id, $id_type = 'id', int $max_count_variants = 5)
     {
         list($response) = $this->getFullRecordsUsingGETWithHttpInfo($channel, $record_id, $id_type, $max_count_variants);
 
@@ -378,12 +374,11 @@ class RecordsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\RecordWithId[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFullRecordsUsingGETWithHttpInfo($channel, $record_id, $id_type = 'id', $max_count_variants = '5')
+    public function getFullRecordsUsingGETWithHttpInfo(string $channel, $record_id, $id_type = 'id', int $max_count_variants = 5)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\RecordWithId[]';
         $request = $this->getFullRecordsUsingGETRequest($channel, $record_id, $id_type, $max_count_variants);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\RecordWithId[]');
     }
 
     /**
@@ -400,7 +395,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getFullRecordsUsingGETAsync($channel, $record_id, $id_type = 'id', $max_count_variants = '5')
+    public function getFullRecordsUsingGETAsync(string $channel, $record_id, $id_type = 'id', int $max_count_variants = 5)
     {
         return $this->getFullRecordsUsingGETAsyncWithHttpInfo($channel, $record_id, $id_type, $max_count_variants)
             ->then(
@@ -424,12 +419,11 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getFullRecordsUsingGETAsyncWithHttpInfo($channel, $record_id, $id_type = 'id', $max_count_variants = '5')
+    public function getFullRecordsUsingGETAsyncWithHttpInfo(string $channel, $record_id, $id_type = 'id', int $max_count_variants = 5)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\RecordWithId[]';
         $request = $this->getFullRecordsUsingGETRequest($channel, $record_id, $id_type, $max_count_variants);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\RecordWithId[]');
     }
 
     /**
@@ -447,7 +441,7 @@ class RecordsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\RecommendationResultWithFieldRoles
      */
-    public function getRecommendationUsingGET($channel, $id, $max_results = '0', $sid = null, $ids_only = 'false', $use_personalization = 'true')
+    public function getRecommendationUsingGET(string $channel, $id, int $max_results = 0, $sid = null, bool $ids_only = false, bool $use_personalization = true)
     {
         list($response) = $this->getRecommendationUsingGETWithHttpInfo($channel, $id, $max_results, $sid, $ids_only, $use_personalization);
 
@@ -469,12 +463,11 @@ class RecordsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\RecommendationResultWithFieldRoles, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRecommendationUsingGETWithHttpInfo($channel, $id, $max_results = '0', $sid = null, $ids_only = 'false', $use_personalization = 'true')
+    public function getRecommendationUsingGETWithHttpInfo(string $channel, $id, int $max_results = 0, $sid = null, bool $ids_only = false, bool $use_personalization = true)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\RecommendationResultWithFieldRoles';
         $request = $this->getRecommendationUsingGETRequest($channel, $id, $max_results, $sid, $ids_only, $use_personalization);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V3\Model\RecommendationResultWithFieldRoles::class);
     }
 
     /**
@@ -491,7 +484,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getRecommendationUsingGETAsync($channel, $id, $max_results = '0', $sid = null, $ids_only = 'false', $use_personalization = 'true')
+    public function getRecommendationUsingGETAsync(string $channel, $id, int $max_results = 0, $sid = null, bool $ids_only = false, bool $use_personalization = true)
     {
         return $this->getRecommendationUsingGETAsyncWithHttpInfo($channel, $id, $max_results, $sid, $ids_only, $use_personalization)
             ->then(
@@ -515,12 +508,11 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getRecommendationUsingGETAsyncWithHttpInfo($channel, $id, $max_results = '0', $sid = null, $ids_only = 'false', $use_personalization = 'true')
+    public function getRecommendationUsingGETAsyncWithHttpInfo(string $channel, $id, int $max_results = 0, $sid = null, bool $ids_only = false, bool $use_personalization = true)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\RecommendationResultWithFieldRoles';
         $request = $this->getRecommendationUsingGETRequest($channel, $id, $max_results, $sid, $ids_only, $use_personalization);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V3\Model\RecommendationResultWithFieldRoles::class);
     }
 
     /**
@@ -535,7 +527,7 @@ class RecordsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\Record[]
      */
-    public function getRecordsUsingGET($channel, $product_number, $verbose = 'false')
+    public function getRecordsUsingGET(string $channel, $product_number, bool $verbose = false)
     {
         list($response) = $this->getRecordsUsingGETWithHttpInfo($channel, $product_number, $verbose);
 
@@ -554,12 +546,11 @@ class RecordsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\Record[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRecordsUsingGETWithHttpInfo($channel, $product_number, $verbose = 'false')
+    public function getRecordsUsingGETWithHttpInfo(string $channel, $product_number, bool $verbose = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\Record[]';
         $request = $this->getRecordsUsingGETRequest($channel, $product_number, $verbose);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\Record[]');
     }
 
     /**
@@ -573,7 +564,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getRecordsUsingGETAsync($channel, $product_number, $verbose = 'false')
+    public function getRecordsUsingGETAsync(string $channel, $product_number, bool $verbose = false)
     {
         return $this->getRecordsUsingGETAsyncWithHttpInfo($channel, $product_number, $verbose)
             ->then(
@@ -594,12 +585,11 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getRecordsUsingGETAsyncWithHttpInfo($channel, $product_number, $verbose = 'false')
+    public function getRecordsUsingGETAsyncWithHttpInfo(string $channel, $product_number, bool $verbose = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\Record[]';
         $request = $this->getRecordsUsingGETRequest($channel, $product_number, $verbose);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\Record[]');
     }
 
     /**
@@ -618,7 +608,7 @@ class RecordsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\SimilarProductsWithFieldRoles
      */
-    public function getSimilarProductsUsingGET($channel, $id, $id_type, $ids_only = 'false', $max_results = '10')
+    public function getSimilarProductsUsingGET(string $channel, $id, $id_type, bool $ids_only = false, int $max_results = 10)
     {
         list($response) = $this->getSimilarProductsUsingGETWithHttpInfo($channel, $id, $id_type, $ids_only, $max_results);
 
@@ -641,12 +631,11 @@ class RecordsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\SimilarProductsWithFieldRoles, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSimilarProductsUsingGETWithHttpInfo($channel, $id, $id_type, $ids_only = 'false', $max_results = '10')
+    public function getSimilarProductsUsingGETWithHttpInfo(string $channel, $id, $id_type, bool $ids_only = false, int $max_results = 10)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\SimilarProductsWithFieldRoles';
         $request = $this->getSimilarProductsUsingGETRequest($channel, $id, $id_type, $ids_only, $max_results);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V3\Model\SimilarProductsWithFieldRoles::class);
     }
 
     /**
@@ -664,7 +653,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getSimilarProductsUsingGETAsync($channel, $id, $id_type, $ids_only = 'false', $max_results = '10')
+    public function getSimilarProductsUsingGETAsync(string $channel, $id, $id_type, bool $ids_only = false, int $max_results = 10)
     {
         return $this->getSimilarProductsUsingGETAsyncWithHttpInfo($channel, $id, $id_type, $ids_only, $max_results)
             ->then(
@@ -689,12 +678,11 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getSimilarProductsUsingGETAsyncWithHttpInfo($channel, $id, $id_type, $ids_only = 'false', $max_results = '10')
+    public function getSimilarProductsUsingGETAsyncWithHttpInfo(string $channel, $id, $id_type, bool $ids_only = false, int $max_results = 10)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\SimilarProductsWithFieldRoles';
         $request = $this->getSimilarProductsUsingGETRequest($channel, $id, $id_type, $ids_only, $max_results);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V3\Model\SimilarProductsWithFieldRoles::class);
     }
 
     /**
@@ -711,7 +699,7 @@ class RecordsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]
      */
-    public function insertRecordsUsingPOST($channel, $records, $verbose = 'false')
+    public function insertRecordsUsingPOST(string $channel, $records, bool $verbose = false)
     {
         list($response) = $this->insertRecordsUsingPOSTWithHttpInfo($channel, $records, $verbose);
 
@@ -732,12 +720,11 @@ class RecordsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function insertRecordsUsingPOSTWithHttpInfo($channel, $records, $verbose = 'false')
+    public function insertRecordsUsingPOSTWithHttpInfo(string $channel, $records, bool $verbose = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]';
         $request = $this->insertRecordsUsingPOSTRequest($channel, $records, $verbose);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]');
     }
 
     /**
@@ -753,7 +740,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function insertRecordsUsingPOSTAsync($channel, $records, $verbose = 'false')
+    public function insertRecordsUsingPOSTAsync(string $channel, $records, bool $verbose = false)
     {
         return $this->insertRecordsUsingPOSTAsyncWithHttpInfo($channel, $records, $verbose)
             ->then(
@@ -776,12 +763,11 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function insertRecordsUsingPOSTAsyncWithHttpInfo($channel, $records, $verbose = 'false')
+    public function insertRecordsUsingPOSTAsyncWithHttpInfo(string $channel, $records, bool $verbose = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]';
         $request = $this->insertRecordsUsingPOSTRequest($channel, $records, $verbose);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]');
     }
 
     /**
@@ -798,7 +784,7 @@ class RecordsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]
      */
-    public function updateUsingPUT($channel, $records, $verbose = 'false')
+    public function updateUsingPUT(string $channel, $records, bool $verbose = false)
     {
         list($response) = $this->updateUsingPUTWithHttpInfo($channel, $records, $verbose);
 
@@ -819,12 +805,11 @@ class RecordsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateUsingPUTWithHttpInfo($channel, $records, $verbose = 'false')
+    public function updateUsingPUTWithHttpInfo(string $channel, $records, bool $verbose = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]';
         $request = $this->updateUsingPUTRequest($channel, $records, $verbose);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]');
     }
 
     /**
@@ -840,7 +825,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function updateUsingPUTAsync($channel, $records, $verbose = 'false')
+    public function updateUsingPUTAsync(string $channel, $records, bool $verbose = false)
     {
         return $this->updateUsingPUTAsyncWithHttpInfo($channel, $records, $verbose)
             ->then(
@@ -863,12 +848,11 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function updateUsingPUTAsyncWithHttpInfo($channel, $records, $verbose = 'false')
+    public function updateUsingPUTAsyncWithHttpInfo(string $channel, $records, bool $verbose = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]';
         $request = $this->updateUsingPUTRequest($channel, $records, $verbose);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]');
     }
 
     /**
@@ -885,7 +869,7 @@ class RecordsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]
      */
-    public function upsertRecordsUsingPUT($channel, $records, $verbose = 'false')
+    public function upsertRecordsUsingPUT(string $channel, $records, bool $verbose = false)
     {
         list($response) = $this->upsertRecordsUsingPUTWithHttpInfo($channel, $records, $verbose);
 
@@ -906,12 +890,11 @@ class RecordsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function upsertRecordsUsingPUTWithHttpInfo($channel, $records, $verbose = 'false')
+    public function upsertRecordsUsingPUTWithHttpInfo(string $channel, $records, bool $verbose = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]';
         $request = $this->upsertRecordsUsingPUTRequest($channel, $records, $verbose);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]');
     }
 
     /**
@@ -927,7 +910,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function upsertRecordsUsingPUTAsync($channel, $records, $verbose = 'false')
+    public function upsertRecordsUsingPUTAsync(string $channel, $records, bool $verbose = false)
     {
         return $this->upsertRecordsUsingPUTAsyncWithHttpInfo($channel, $records, $verbose)
             ->then(
@@ -950,12 +933,11 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function upsertRecordsUsingPUTAsyncWithHttpInfo($channel, $records, $verbose = 'false')
+    public function upsertRecordsUsingPUTAsyncWithHttpInfo(string $channel, $records, bool $verbose = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]';
         $request = $this->upsertRecordsUsingPUTRequest($channel, $records, $verbose);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]');
     }
 
     /**
@@ -969,7 +951,7 @@ class RecordsApi extends ApiClient
      *
      * @return Request
      */
-    protected function compareUsingGETRequest($channel, $ids_only = 'false', $id = null)
+    protected function compareUsingGETRequest(string $channel, bool $ids_only = false, $id = null)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -1010,7 +992,7 @@ class RecordsApi extends ApiClient
      *
      * @return Request
      */
-    protected function deleteUsingDELETERequest($channel, $record_id = null, $delete_request = null, $id_type = 'productNumber', $verbose = 'false')
+    protected function deleteUsingDELETERequest(string $channel, $record_id = null, $delete_request = null, $id_type = 'productNumber', bool $verbose = false)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -1045,10 +1027,10 @@ class RecordsApi extends ApiClient
             $_tempBody = $delete_request;
         }
 
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ];
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1117,7 +1099,7 @@ class RecordsApi extends ApiClient
      *
      * @return Request
      */
-    protected function getDetailPageUsingGETRequest($channel, $id, $id_type = 'id', $ids_only = 'false', $max_results_recommendations = '0', $max_results_similar_products = '10', $use_personalization = 'true', $sid = null, $max_count_variants = '5', $with_campaigns = 'true', $with_recommendations = 'true', $with_similar_products = 'true', $with_record = 'true')
+    protected function getDetailPageUsingGETRequest(string $channel, $id, $id_type = 'id', bool $ids_only = false, int $max_results_recommendations = 0, int $max_results_similar_products = 10, bool $use_personalization = true, $sid = null, int $max_count_variants = 5, bool $with_campaigns = true, bool $with_recommendations = true, bool $with_similar_products = true, bool $with_record = true)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -1205,7 +1187,7 @@ class RecordsApi extends ApiClient
      *
      * @return Request
      */
-    protected function getFullRecordsUsingGETRequest($channel, $record_id, $id_type = 'id', $max_count_variants = '5')
+    protected function getFullRecordsUsingGETRequest(string $channel, $record_id, $id_type = 'id', int $max_count_variants = 5)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -1257,14 +1239,8 @@ class RecordsApi extends ApiClient
      *
      * @return Request
      */
-    protected function getRecommendationUsingGETRequest($channel, $id, $max_results = '0', $sid = null, $ids_only = 'false', $use_personalization = 'true')
+    protected function getRecommendationUsingGETRequest(string $channel, $id, int $max_results = 0, $sid = null, bool $ids_only = false, bool $use_personalization = true)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling getRecommendationUsingGET'
-            );
-        }
         // verify the required parameter 'id' is set
         if ($id === null || (\is_array($id) && \count($id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1314,7 +1290,7 @@ class RecordsApi extends ApiClient
      *
      * @return Request
      */
-    protected function getRecordsUsingGETRequest($channel, $product_number, $verbose = 'false')
+    protected function getRecordsUsingGETRequest(string $channel, $product_number, bool $verbose = false)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -1361,24 +1337,12 @@ class RecordsApi extends ApiClient
      *
      * @return Request
      */
-    protected function getSimilarProductsUsingGETRequest($channel, $id, $id_type, $ids_only = 'false', $max_results = '10')
+    protected function getSimilarProductsUsingGETRequest(string $channel, $id, string $id_type, bool $ids_only = false, int $max_results = 10)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling getSimilarProductsUsingGET'
-            );
-        }
         // verify the required parameter 'id' is set
         if ($id === null || (\is_array($id) && \count($id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $id when calling getSimilarProductsUsingGET'
-            );
-        }
-        // verify the required parameter 'id_type' is set
-        if ($id_type === null || (\is_array($id_type) && \count($id_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id_type when calling getSimilarProductsUsingGET'
             );
         }
 
@@ -1418,24 +1382,17 @@ class RecordsApi extends ApiClient
      *
      * @return Request
      */
-    protected function insertRecordsUsingPOSTRequest($channel, $records, $verbose = 'false')
+    protected function insertRecordsUsingPOSTRequest(string $channel, array $records, bool $verbose = false)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling insertRecordsUsingPOST'
-            );
-        }
         // verify the required parameter 'records' is set
-        if ($records === null || (\is_array($records) && \count($records) === 0)) {
+        if (empty($records)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $records when calling insertRecordsUsingPOST'
+                'Missing the required parameter $records when calling updateUsingPUT'
             );
         }
 
         $resourcePath = '/rest/v3/records/{channel}';
         $queryParams = [];
-        $httpBody = '';
         // query params
         if ($verbose !== null) {
             $queryParams['verbose'] = ObjectSerializer::toQueryValue($verbose);
@@ -1443,61 +1400,7 @@ class RecordsApi extends ApiClient
 
         $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-        if (isset($records)) {
-            $_tempBody = $records;
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, $records, true);
     }
 
     /**
@@ -1511,16 +1414,10 @@ class RecordsApi extends ApiClient
      *
      * @return Request
      */
-    protected function updateUsingPUTRequest($channel, $records, $verbose = 'false')
+    protected function updateUsingPUTRequest(string $channel, array $records, bool $verbose = false)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling updateUsingPUT'
-            );
-        }
         // verify the required parameter 'records' is set
-        if ($records === null || (\is_array($records) && \count($records) === 0)) {
+        if (empty($records)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $records when calling updateUsingPUT'
             );
@@ -1528,7 +1425,6 @@ class RecordsApi extends ApiClient
 
         $resourcePath = '/rest/v3/records/{channel}';
         $queryParams = [];
-        $httpBody = '';
         // query params
         if ($verbose !== null) {
             $queryParams['verbose'] = ObjectSerializer::toQueryValue($verbose);
@@ -1536,61 +1432,7 @@ class RecordsApi extends ApiClient
 
         $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-        if (isset($records)) {
-            $_tempBody = $records;
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->putQuery($resourcePath, $queryParams, $records, true);
     }
 
     /**
@@ -1604,18 +1446,12 @@ class RecordsApi extends ApiClient
      *
      * @return Request
      */
-    protected function upsertRecordsUsingPUTRequest($channel, $records, $verbose = 'false')
+    protected function upsertRecordsUsingPUTRequest(string $channel, array $records, bool $verbose = false)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling upsertRecordsUsingPUT'
-            );
-        }
         // verify the required parameter 'records' is set
-        if ($records === null || (\is_array($records) && \count($records) === 0)) {
+        if (empty($records)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $records when calling upsertRecordsUsingPUT'
+                'Missing the required parameter $records when calling updateUsingPUT'
             );
         }
 
@@ -1629,61 +1465,7 @@ class RecordsApi extends ApiClient
 
         $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-        if (isset($records)) {
-            $_tempBody = $records;
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->putQuery($resourcePath, $queryParams, $records, true);
     }
 
     /**

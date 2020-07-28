@@ -44,7 +44,7 @@ class TagcloudApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\TagCloudEntry[]
      */
-    public function getTagCloudUsingGET($channel, $word_count = '0')
+    public function getTagCloudUsingGET(string $channel, int $word_count = 0)
     {
         list($response) = $this->getTagCloudUsingGETWithHttpInfo($channel, $word_count);
 
@@ -64,12 +64,11 @@ class TagcloudApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\TagCloudEntry[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTagCloudUsingGETWithHttpInfo($channel, $word_count = '0')
+    public function getTagCloudUsingGETWithHttpInfo(string $channel, int $word_count = 0)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\TagCloudEntry[]';
         $request = $this->getTagCloudUsingGETRequest($channel, $word_count);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V1\Model\TagCloudEntry[]');
     }
 
     /**
@@ -84,7 +83,7 @@ class TagcloudApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getTagCloudUsingGETAsync($channel, $word_count = '0')
+    public function getTagCloudUsingGETAsync(string $channel, int $word_count = 0)
     {
         return $this->getTagCloudUsingGETAsyncWithHttpInfo($channel, $word_count)
             ->then(
@@ -106,12 +105,11 @@ class TagcloudApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getTagCloudUsingGETAsyncWithHttpInfo($channel, $word_count = '0')
+    public function getTagCloudUsingGETAsyncWithHttpInfo(string $channel, int $word_count = 0)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\TagCloudEntry[]';
         $request = $this->getTagCloudUsingGETRequest($channel, $word_count);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V1\Model\TagCloudEntry[]');
     }
 
     /**
@@ -124,7 +122,7 @@ class TagcloudApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function getTagCloudUsingGETRequest($channel, $word_count = '0')
+    protected function getTagCloudUsingGETRequest(string $channel, int $word_count = 0)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -142,34 +140,10 @@ class TagcloudApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
         return $this->getQuery($resourcePath, $queryParams);
     }
 
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
 
-        return $options;
-    }
 }

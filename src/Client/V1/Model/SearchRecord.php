@@ -52,7 +52,6 @@ class SearchRecord extends BaseModel
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'found_words' => null,
@@ -229,7 +228,7 @@ class SearchRecord extends BaseModel
     }
 
     /**
-     * @return map[string,string]
+     * @return string[]
      */
     public function getRecord()
     {
@@ -237,7 +236,7 @@ class SearchRecord extends BaseModel
     }
 
     /**
-     * @param map[string,string] $record record
+     * @param string[] $record record
      *
      * @return $this
      */

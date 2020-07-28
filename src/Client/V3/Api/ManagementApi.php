@@ -163,10 +163,9 @@ class ManagementApi extends ApiClient
      */
     public function deployUsingPOSTWithHttpInfo($channel, $type)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\MessagesWithChannel[]';
         $request = $this->deployUsingPOSTRequest($channel, $type);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\MessagesWithChannel[]');
     }
 
     /**
@@ -205,10 +204,9 @@ class ManagementApi extends ApiClient
      */
     public function deployUsingPOSTAsyncWithHttpInfo($channel, $type)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\MessagesWithChannel[]';
         $request = $this->deployUsingPOSTRequest($channel, $type);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\MessagesWithChannel[]');
     }
 
     /**
@@ -286,7 +284,7 @@ class ManagementApi extends ApiClient
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -373,7 +371,7 @@ class ManagementApi extends ApiClient
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -426,10 +424,9 @@ class ManagementApi extends ApiClient
      */
     public function getExpirationMessagesUsingGETWithHttpInfo($channel = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\ExpirationMessage[]';
         $request = $this->getExpirationMessagesUsingGETRequest($channel);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\ExpirationMessage[]');
     }
 
     /**
@@ -466,10 +463,9 @@ class ManagementApi extends ApiClient
      */
     public function getExpirationMessagesUsingGETAsyncWithHttpInfo($channel = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\ExpirationMessage[]';
         $request = $this->getExpirationMessagesUsingGETRequest($channel);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\ExpirationMessage[]');
     }
 
     /**
@@ -497,7 +493,6 @@ class ManagementApi extends ApiClient
      */
     public function resetLogLevelUsingPOSTWithHttpInfo()
     {
-        $returnType = '';
         $request = $this->resetLogLevelUsingPOSTRequest();
 
         return $this->executeEmptyRequest($request);
@@ -533,13 +528,12 @@ class ManagementApi extends ApiClient
      */
     public function resetLogLevelUsingPOSTAsyncWithHttpInfo()
     {
-        $returnType = '';
         $request = $this->resetLogLevelUsingPOSTRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -579,64 +573,12 @@ class ManagementApi extends ApiClient
 
         $resourcePath = '/rest/v3/management/changeLogLevel';
         $queryParams = [];
-        $httpBody = '';
         // query params
         if ($log_level !== null) {
             $queryParams['logLevel'] = ObjectSerializer::toQueryValue($log_level);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, '', true);
     }
 
     /**
@@ -652,7 +594,7 @@ class ManagementApi extends ApiClient
     protected function deployUsingPOSTRequest($channel, $type)
     {
         // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
+        if (empty($channel)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $channel when calling deployUsingPOST'
             );
@@ -666,7 +608,6 @@ class ManagementApi extends ApiClient
 
         $resourcePath = '/rest/v3/management/deploy';
         $queryParams = [];
-        $httpBody = '';
         // query params
         if (\is_array($channel)) {
             $queryParams['channel'] = $channel;
@@ -680,58 +621,7 @@ class ManagementApi extends ApiClient
             $queryParams['type'] = ObjectSerializer::toQueryValue($type);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, '', true);
     }
 
     /**
@@ -747,7 +637,6 @@ class ManagementApi extends ApiClient
     {
         $resourcePath = '/rest/v3/management/flushCache';
         $queryParams = [];
-        $httpBody = '';
         // query params
         if (\is_array($channel)) {
             $queryParams['channel'] = $channel;
@@ -755,58 +644,7 @@ class ManagementApi extends ApiClient
             $queryParams['channel'] = ObjectSerializer::toQueryValue($channel);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, '', true);
     }
 
     /**
@@ -819,60 +657,7 @@ class ManagementApi extends ApiClient
     protected function flushLogsUsingPOSTRequest()
     {
         $resourcePath = '/rest/v3/management/flushLogs';
-        $queryParams = [];
-        $httpBody = '';
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, [], '', true);
     }
 
     /**
@@ -909,60 +694,7 @@ class ManagementApi extends ApiClient
     protected function resetLogLevelUsingPOSTRequest()
     {
         $resourcePath = '/rest/v3/management/resetLogLevel';
-        $queryParams = [];
-        $httpBody = '';
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, [], '', true);
     }
 
     /**

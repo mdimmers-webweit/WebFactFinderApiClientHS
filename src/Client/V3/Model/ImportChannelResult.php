@@ -60,7 +60,6 @@ class ImportChannelResult extends BaseModel
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'channel' => null,

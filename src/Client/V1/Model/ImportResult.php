@@ -48,7 +48,6 @@ class ImportResult extends BaseModel
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'messages' => null,
@@ -116,7 +115,7 @@ class ImportResult extends BaseModel
     }
 
     /**
-     * @return map[string,\Web\FactFinderApi\Client\V1\Model\ImportChannelResult]
+     * @return \Web\FactFinderApi\Client\V1\Model\ImportChannelResult[]
      */
     public function getMessages()
     {
@@ -124,7 +123,7 @@ class ImportResult extends BaseModel
     }
 
     /**
-     * @param map[string,\Web\FactFinderApi\Client\V1\Model\ImportChannelResult] $messages messages
+     * @param \Web\FactFinderApi\Client\V1\Model\ImportChannelResult[] $messages messages
      *
      * @return $this
      */

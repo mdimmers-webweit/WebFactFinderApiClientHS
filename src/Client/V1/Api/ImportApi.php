@@ -65,10 +65,9 @@ class ImportApi extends ApiClient
      */
     public function isImportRunningUsingGETWithHttpInfo($channel)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\WrapperBoolean_';
         $request = $this->isImportRunningUsingGETRequest($channel);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\WrapperBoolean_::class);
     }
 
     /**
@@ -105,10 +104,9 @@ class ImportApi extends ApiClient
      */
     public function isImportRunningUsingGETAsyncWithHttpInfo($channel)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\WrapperBoolean_';
         $request = $this->isImportRunningUsingGETRequest($channel);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\WrapperBoolean_::class);
     }
 
     /**
@@ -124,7 +122,7 @@ class ImportApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\ImportResult
      */
-    public function startRecommendationImportUsingPOST($channel = null, $quiet = 'false')
+    public function startRecommendationImportUsingPOST($channel = null, bool $quiet = false)
     {
         list($response) = $this->startRecommendationImportUsingPOSTWithHttpInfo($channel, $quiet);
 
@@ -144,12 +142,11 @@ class ImportApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\ImportResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function startRecommendationImportUsingPOSTWithHttpInfo($channel = null, $quiet = 'false')
+    public function startRecommendationImportUsingPOSTWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ImportResult';
         $request = $this->startRecommendationImportUsingPOSTRequest($channel, $quiet);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\ImportResult::class);
     }
 
     /**
@@ -164,7 +161,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startRecommendationImportUsingPOSTAsync($channel = null, $quiet = 'false')
+    public function startRecommendationImportUsingPOSTAsync($channel = null, bool $quiet = false)
     {
         return $this->startRecommendationImportUsingPOSTAsyncWithHttpInfo($channel, $quiet)
             ->then(
@@ -186,12 +183,11 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startRecommendationImportUsingPOSTAsyncWithHttpInfo($channel = null, $quiet = 'false')
+    public function startRecommendationImportUsingPOSTAsyncWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ImportResult';
         $request = $this->startRecommendationImportUsingPOSTRequest($channel, $quiet);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\ImportResult::class);
     }
 
     /**
@@ -208,7 +204,7 @@ class ImportApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\ImportResult
      */
-    public function startSearchImportUsingPOST($channel = null, $download = 'false', $quiet = 'false')
+    public function startSearchImportUsingPOST($channel = null, bool $download = false, bool $quiet = false)
     {
         list($response) = $this->startSearchImportUsingPOSTWithHttpInfo($channel, $download, $quiet);
 
@@ -229,12 +225,11 @@ class ImportApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\ImportResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function startSearchImportUsingPOSTWithHttpInfo($channel = null, $download = 'false', $quiet = 'false')
+    public function startSearchImportUsingPOSTWithHttpInfo($channel = null, bool $download = false, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ImportResult';
         $request = $this->startSearchImportUsingPOSTRequest($channel, $download, $quiet);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\ImportResult::class);
     }
 
     /**
@@ -250,7 +245,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startSearchImportUsingPOSTAsync($channel = null, $download = 'false', $quiet = 'false')
+    public function startSearchImportUsingPOSTAsync($channel = null, bool $download = false, bool $quiet = false)
     {
         return $this->startSearchImportUsingPOSTAsyncWithHttpInfo($channel, $download, $quiet)
             ->then(
@@ -273,12 +268,11 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startSearchImportUsingPOSTAsyncWithHttpInfo($channel = null, $download = 'false', $quiet = 'false')
+    public function startSearchImportUsingPOSTAsyncWithHttpInfo($channel = null, bool $download = false, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ImportResult';
         $request = $this->startSearchImportUsingPOSTRequest($channel, $download, $quiet);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\ImportResult::class);
     }
 
     /**
@@ -294,7 +288,7 @@ class ImportApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\ImportResult
      */
-    public function startSuggestImportUsingPOST($channel = null, $quiet = 'false')
+    public function startSuggestImportUsingPOST($channel = null, bool $quiet = false)
     {
         list($response) = $this->startSuggestImportUsingPOSTWithHttpInfo($channel, $quiet);
 
@@ -314,12 +308,11 @@ class ImportApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\ImportResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function startSuggestImportUsingPOSTWithHttpInfo($channel = null, $quiet = 'false')
+    public function startSuggestImportUsingPOSTWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ImportResult';
         $request = $this->startSuggestImportUsingPOSTRequest($channel, $quiet);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\ImportResult::class);
     }
 
     /**
@@ -334,7 +327,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startSuggestImportUsingPOSTAsync($channel = null, $quiet = 'false')
+    public function startSuggestImportUsingPOSTAsync($channel = null, bool $quiet = false)
     {
         return $this->startSuggestImportUsingPOSTAsyncWithHttpInfo($channel, $quiet)
             ->then(
@@ -356,12 +349,11 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startSuggestImportUsingPOSTAsyncWithHttpInfo($channel = null, $quiet = 'false')
+    public function startSuggestImportUsingPOSTAsyncWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ImportResult';
         $request = $this->startSuggestImportUsingPOSTRequest($channel, $quiet);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\ImportResult::class);
     }
 
     /**
@@ -405,7 +397,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function startRecommendationImportUsingPOSTRequest($channel = null, $quiet = 'false')
+    protected function startRecommendationImportUsingPOSTRequest($channel = null, bool $quiet = false)
     {
         $resourcePath = '/v1/import/recommendation';
         $queryParams = [];
@@ -435,7 +427,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function startSearchImportUsingPOSTRequest($channel = null, $download = 'false', $quiet = 'false')
+    protected function startSearchImportUsingPOSTRequest($channel = null, bool $download = false, bool $quiet = false)
     {
         $resourcePath = '/v1/import/search';
         $queryParams = [];
@@ -468,7 +460,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function startSuggestImportUsingPOSTRequest($channel = null, $quiet = 'false')
+    protected function startSuggestImportUsingPOSTRequest($channel = null, bool $quiet = false)
     {
         $resourcePath = '/v1/import/suggest';
         $queryParams = [];
@@ -487,23 +479,5 @@ class ImportApi extends ApiClient
         return $this->postQuery($resourcePath, $queryParams);
     }
 
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
 
-        return $options;
-    }
 }

@@ -27,7 +27,6 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats;
 
@@ -64,9 +63,7 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(?array $data = null)
-    {
-    }
+    abstract public function __construct(?array $data = null);
 
     /**
      * Gets the string presentation of the object

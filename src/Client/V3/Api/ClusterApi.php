@@ -195,10 +195,9 @@ class ClusterApi extends ApiClient
      */
     public function pruneUsingPOSTWithHttpInfo(string $channel): array
     {
-        $returnType = 'string';
         $request = $this->pruneUsingPOSTRequest($channel);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, 'string');
     }
 
     /**
@@ -231,10 +230,9 @@ class ClusterApi extends ApiClient
      */
     public function pruneUsingPOSTAsyncWithHttpInfo(string $channel): PromiseInterface
     {
-        $returnType = 'string';
         $request = $this->pruneUsingPOSTRequest($channel);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, 'string');
     }
 
     /**
@@ -243,14 +241,14 @@ class ClusterApi extends ApiClient
      * Synchronize the worldmatch database of this node.
      *
      * @param string $channel channel (required)
-     * @param string $verbose verbose (optional, default to false)
+     * @param bool $verbose verbose (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @throws ApiException              on non-2xx response
      *
      * @return DeltaUpdateResult[]
      */
-    public function syncDatabaseUsingPOST(string $channel, string $verbose = 'false'): array
+    public function syncDatabaseUsingPOST(string $channel, bool $verbose = false): array
     {
         list($response) = $this->syncDatabaseUsingPOSTWithHttpInfo($channel, $verbose);
 
@@ -263,19 +261,18 @@ class ClusterApi extends ApiClient
      * Synchronize the worldmatch database of this node.
      *
      * @param string $channel channel (required)
-     * @param string $verbose verbose (optional, default to false)
+     * @param bool $verbose verbose (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @throws ApiException              on non-2xx response
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function syncDatabaseUsingPOSTWithHttpInfo(string $channel, string $verbose = 'false'): array
+    public function syncDatabaseUsingPOSTWithHttpInfo(string $channel, bool $verbose = false): array
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]';
         $request = $this->syncDatabaseUsingPOSTRequest($channel, $verbose);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]');
     }
 
     /**
@@ -284,11 +281,11 @@ class ClusterApi extends ApiClient
      * Synchronize the worldmatch database of this node.
      *
      * @param string $channel channel (required)
-     * @param string $verbose verbose (optional, default to false)
+     * @param bool $verbose verbose (optional, default to false)
      *
      * @throws \InvalidArgumentException
      */
-    public function syncDatabaseUsingPOSTAsync(string $channel, string $verbose = 'false'): PromiseInterface
+    public function syncDatabaseUsingPOSTAsync(string $channel, bool $verbose = false): PromiseInterface
     {
         return $this->syncDatabaseUsingPOSTAsyncWithHttpInfo($channel, $verbose)
             ->then(
@@ -304,16 +301,15 @@ class ClusterApi extends ApiClient
      * Synchronize the worldmatch database of this node.
      *
      * @param string $channel channel (required)
-     * @param string $verbose verbose (optional, default to false)
+     * @param bool $verbose verbose (optional, default to false)
      *
      * @throws \InvalidArgumentException
      */
-    public function syncDatabaseUsingPOSTAsyncWithHttpInfo(string $channel, string $verbose = 'false'): PromiseInterface
+    public function syncDatabaseUsingPOSTAsyncWithHttpInfo(string $channel, bool $verbose = false): PromiseInterface
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]';
         $request = $this->syncDatabaseUsingPOSTRequest($channel, $verbose);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\DeltaUpdateResult[]');
     }
 
     /**
@@ -353,11 +349,11 @@ class ClusterApi extends ApiClient
      * Create request for operation 'syncDatabaseUsingPOST'
      *
      * @param string $channel channel (required)
-     * @param string $verbose verbose (optional, default to false)
+     * @param bool $verbose verbose (optional, default to false)
      *
      * @throws \InvalidArgumentException
      */
-    protected function syncDatabaseUsingPOSTRequest(string $channel, string $verbose = 'false'): Request
+    protected function syncDatabaseUsingPOSTRequest(string $channel, bool $verbose = false): Request
     {
         $resourcePath = '/rest/v3/cluster/{channel}/database/sync';
         $queryParams = [];

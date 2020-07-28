@@ -52,7 +52,6 @@ class FilterValue extends BaseModel
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'exclude' => null,

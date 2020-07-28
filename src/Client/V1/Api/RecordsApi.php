@@ -44,7 +44,7 @@ class RecordsApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function deleteUsingDELETE($channel, $record_id, $save = 'false'): void
+    public function deleteUsingDELETE(string $channel, $record_id, bool $save = false): void
     {
         $this->deleteUsingDELETEWithHttpInfo($channel, $record_id, $save);
     }
@@ -63,9 +63,8 @@ class RecordsApi extends ApiClient
      *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteUsingDELETEWithHttpInfo($channel, $record_id, $save = 'false')
+    public function deleteUsingDELETEWithHttpInfo(string $channel, $record_id, bool $save = false)
     {
-        $returnType = '';
         $request = $this->deleteUsingDELETERequest($channel, $record_id, $save);
 
         return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\Campaign[]');
@@ -84,7 +83,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function deleteUsingDELETEAsync($channel, $record_id, $save = 'false')
+    public function deleteUsingDELETEAsync(string $channel, $record_id, bool $save = false)
     {
         return $this->deleteUsingDELETEAsyncWithHttpInfo($channel, $record_id, $save)
             ->then(
@@ -107,15 +106,14 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function deleteUsingDELETEAsyncWithHttpInfo($channel, $record_id, $save = 'false')
+    public function deleteUsingDELETEAsyncWithHttpInfo(string $channel, $record_id, bool $save = false)
     {
-        $returnType = '';
         $request = $this->deleteUsingDELETERequest($channel, $record_id, $save);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response)  {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -146,7 +144,7 @@ class RecordsApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\RecordWithId[]
      */
-    public function getRecordsUsingGET($channel, $record_id)
+    public function getRecordsUsingGET(string $channel, $record_id)
     {
         list($response) = $this->getRecordsUsingGETWithHttpInfo($channel, $record_id);
 
@@ -164,12 +162,11 @@ class RecordsApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\RecordWithId[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRecordsUsingGETWithHttpInfo($channel, $record_id)
+    public function getRecordsUsingGETWithHttpInfo(string $channel, $record_id)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\RecordWithId[]';
         $request = $this->getRecordsUsingGETRequest($channel, $record_id);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V1\Model\RecordWithId[]');
     }
 
     /**
@@ -182,7 +179,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getRecordsUsingGETAsync($channel, $record_id)
+    public function getRecordsUsingGETAsync(string $channel, $record_id)
     {
         return $this->getRecordsUsingGETAsyncWithHttpInfo($channel, $record_id)
             ->then(
@@ -202,12 +199,11 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getRecordsUsingGETAsyncWithHttpInfo($channel, $record_id)
+    public function getRecordsUsingGETAsyncWithHttpInfo(string $channel, $record_id)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\RecordWithId[]';
         $request = $this->getRecordsUsingGETRequest($channel, $record_id);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V1\Model\RecordWithId[]');
     }
 
     /**
@@ -222,7 +218,7 @@ class RecordsApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function insertRecordsUsingPOST($channel, $records, $save = 'false'): void
+    public function insertRecordsUsingPOST(string $channel, $records, bool $save = false): void
     {
         $this->insertRecordsUsingPOSTWithHttpInfo($channel, $records, $save);
     }
@@ -241,9 +237,8 @@ class RecordsApi extends ApiClient
      *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function insertRecordsUsingPOSTWithHttpInfo($channel, $records, $save = 'false')
+    public function insertRecordsUsingPOSTWithHttpInfo(string $channel, $records, bool $save = false)
     {
-        $returnType = '';
         $request = $this->insertRecordsUsingPOSTRequest($channel, $records, $save);
 
         return $this->executeEmptyRequest($request);
@@ -262,7 +257,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function insertRecordsUsingPOSTAsync($channel, $records, $save = 'false')
+    public function insertRecordsUsingPOSTAsync(string $channel, $records, bool $save = false)
     {
         return $this->insertRecordsUsingPOSTAsyncWithHttpInfo($channel, $records, $save)
             ->then(
@@ -285,15 +280,14 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function insertRecordsUsingPOSTAsyncWithHttpInfo($channel, $records, $save = 'false')
+    public function insertRecordsUsingPOSTAsyncWithHttpInfo(string $channel, $records, bool $save = false)
     {
-        $returnType = '';
         $request = $this->insertRecordsUsingPOSTRequest($channel, $records, $save);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -325,7 +319,7 @@ class RecordsApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function updateUsingPUT($channel, $records, $save = 'false'): void
+    public function updateUsingPUT(string $channel, $records, bool $save = false): void
     {
         $this->updateUsingPUTWithHttpInfo($channel, $records, $save);
     }
@@ -344,9 +338,8 @@ class RecordsApi extends ApiClient
      *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateUsingPUTWithHttpInfo($channel, $records, $save = 'false')
+    public function updateUsingPUTWithHttpInfo(string $channel, $records, bool $save = false)
     {
-        $returnType = '';
         $request = $this->updateUsingPUTRequest($channel, $records, $save);
 
         return $this->executeEmptyRequest($request);
@@ -365,7 +358,7 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function updateUsingPUTAsync($channel, $records, $save = 'false')
+    public function updateUsingPUTAsync(string $channel, $records, bool $save = false)
     {
         return $this->updateUsingPUTAsyncWithHttpInfo($channel, $records, $save)
             ->then(
@@ -388,15 +381,14 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function updateUsingPUTAsyncWithHttpInfo($channel, $records, $save = 'false')
+    public function updateUsingPUTAsyncWithHttpInfo(string $channel, $records, bool $save = false)
     {
-        $returnType = '';
         $request = $this->updateUsingPUTRequest($channel, $records, $save);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -427,93 +419,29 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function deleteUsingDELETERequest($channel, $record_id, $save = 'false')
+    protected function deleteUsingDELETERequest(string $channel, array $record_id, bool $save = false)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling deleteUsingDELETE'
-            );
-        }
         // verify the required parameter 'record_id' is set
-        if ($record_id === null || (\is_array($record_id) && \count($record_id) === 0)) {
+        if (empty($record_id)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $record_id when calling deleteUsingDELETE'
+                'Missing the required parameter $record_id when calling getRecordsUsingGET'
             );
         }
 
         $resourcePath = '/v1/records/{channel}';
         $queryParams = [];
-        $httpBody = '';
         // query params
-        if (\is_array($record_id)) {
-            $queryParams['recordId'] = $record_id;
-        } elseif ($record_id !== null) {
-            $queryParams['recordId'] = ObjectSerializer::toQueryValue($record_id);
-        }
+
+        $queryParams['recordId'] = $record_id;
         // query params
         if ($save !== null) {
             $queryParams['save'] = ObjectSerializer::toQueryValue($save);
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->deleteQuery($resourcePath, $queryParams);
     }
 
     /**
@@ -526,16 +454,10 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function getRecordsUsingGETRequest($channel, $record_id)
+    protected function getRecordsUsingGETRequest(string $channel, array $record_id)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling getRecordsUsingGET'
-            );
-        }
         // verify the required parameter 'record_id' is set
-        if ($record_id === null || (\is_array($record_id) && \count($record_id) === 0)) {
+        if (empty($record_id)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $record_id when calling getRecordsUsingGET'
             );
@@ -545,20 +467,10 @@ class RecordsApi extends ApiClient
         $queryParams = [];
         $httpBody = '';
         // query params
-        if (\is_array($record_id)) {
-            $queryParams['recordId'] = $record_id;
-        } elseif ($record_id !== null) {
-            $queryParams['recordId'] = ObjectSerializer::toQueryValue($record_id);
-        }
+        $queryParams['recordId'] = $record_id;
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
         return $this->getQuery($resourcePath, $queryParams);
     }
@@ -574,16 +486,10 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function insertRecordsUsingPOSTRequest($channel, $records, $save = 'false')
+    protected function insertRecordsUsingPOSTRequest(string $channel, array $records, bool $save = false)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling insertRecordsUsingPOST'
-            );
-        }
         // verify the required parameter 'records' is set
-        if ($records === null || (\is_array($records) && \count($records) === 0)) {
+        if (empty($records)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $records when calling insertRecordsUsingPOST'
             );
@@ -591,73 +497,15 @@ class RecordsApi extends ApiClient
 
         $resourcePath = '/v1/records/{channel}';
         $queryParams = [];
-        $httpBody = '';
         // query params
         if ($save !== null) {
             $queryParams['save'] = ObjectSerializer::toQueryValue($save);
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-        if (isset($records)) {
-            $_tempBody = $records;
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/xml', 'application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, $records);
     }
 
     /**
@@ -671,109 +519,27 @@ class RecordsApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function updateUsingPUTRequest($channel, $records, $save = 'false')
+    protected function updateUsingPUTRequest(string $channel, array $records, bool $save = false)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling updateUsingPUT'
-            );
-        }
         // verify the required parameter 'records' is set
-        if ($records === null || (\is_array($records) && \count($records) === 0)) {
+        if (empty($records)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $records when calling updateUsingPUT'
+                'Missing the required parameter $records when calling insertRecordsUsingPOST'
             );
         }
 
         $resourcePath = '/v1/records/{channel}';
         $queryParams = [];
-        $httpBody = '';
         // query params
         if ($save !== null) {
             $queryParams['save'] = ObjectSerializer::toQueryValue($save);
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-        if (isset($records)) {
-            $_tempBody = $records;
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/xml', 'application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->putQuery($resourcePath, $queryParams, $records);
     }
 
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
 
-        return $options;
-    }
 }

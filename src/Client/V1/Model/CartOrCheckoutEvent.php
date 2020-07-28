@@ -56,7 +56,6 @@ class CartOrCheckoutEvent extends BaseModel
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'campaign' => null,
@@ -230,7 +229,7 @@ class CartOrCheckoutEvent extends BaseModel
     }
 
     /**
-     * @return map[string,string]
+     * @return string[]
      */
     public function getExtraParams()
     {
@@ -238,7 +237,7 @@ class CartOrCheckoutEvent extends BaseModel
     }
 
     /**
-     * @param map[string,string] $extra_params extra_params
+     * @param string[] $extra_params extra_params
      *
      * @return $this
      */

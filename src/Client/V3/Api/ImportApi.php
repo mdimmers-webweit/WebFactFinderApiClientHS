@@ -67,10 +67,9 @@ class ImportApi extends ApiClient
      */
     public function isImportRunningUsingGETWithHttpInfo($channel)
     {
-        $returnType = 'bool';
         $request = $this->isImportRunningUsingGETRequest($channel);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, 'bool');
     }
 
     /**
@@ -107,10 +106,9 @@ class ImportApi extends ApiClient
      */
     public function isImportRunningUsingGETAsyncWithHttpInfo($channel)
     {
-        $returnType = 'bool';
         $request = $this->isImportRunningUsingGETRequest($channel);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, 'bool');
     }
 
     /**
@@ -188,7 +186,7 @@ class ImportApi extends ApiClient
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -221,7 +219,7 @@ class ImportApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]
      */
-    public function startRankingImportUsingPOST($channel = null, $quiet = 'false')
+    public function startRankingImportUsingPOST($channel = null, bool $quiet = false)
     {
         list($response) = $this->startRankingImportUsingPOSTWithHttpInfo($channel, $quiet);
 
@@ -241,12 +239,11 @@ class ImportApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\ImportChannelResult[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function startRankingImportUsingPOSTWithHttpInfo($channel = null, $quiet = 'false')
+    public function startRankingImportUsingPOSTWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]';
         $request = $this->startRankingImportUsingPOSTRequest($channel, $quiet);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]');
     }
 
     /**
@@ -261,7 +258,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startRankingImportUsingPOSTAsync($channel = null, $quiet = 'false')
+    public function startRankingImportUsingPOSTAsync($channel = null, bool $quiet = false)
     {
         return $this->startRankingImportUsingPOSTAsyncWithHttpInfo($channel, $quiet)
             ->then(
@@ -283,12 +280,11 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startRankingImportUsingPOSTAsyncWithHttpInfo($channel = null, $quiet = 'false')
+    public function startRankingImportUsingPOSTAsyncWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]';
         $request = $this->startRankingImportUsingPOSTRequest($channel, $quiet);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]');
     }
 
     /**
@@ -304,7 +300,7 @@ class ImportApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]
      */
-    public function startRecommendationImportUsingPOST($channel = null, $quiet = 'false')
+    public function startRecommendationImportUsingPOST($channel = null, bool $quiet = false)
     {
         list($response) = $this->startRecommendationImportUsingPOSTWithHttpInfo($channel, $quiet);
 
@@ -324,12 +320,11 @@ class ImportApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\ImportChannelResult[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function startRecommendationImportUsingPOSTWithHttpInfo($channel = null, $quiet = 'false')
+    public function startRecommendationImportUsingPOSTWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]';
         $request = $this->startRecommendationImportUsingPOSTRequest($channel, $quiet);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]');
     }
 
     /**
@@ -344,7 +339,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startRecommendationImportUsingPOSTAsync($channel = null, $quiet = 'false')
+    public function startRecommendationImportUsingPOSTAsync($channel = null, bool $quiet = false)
     {
         return $this->startRecommendationImportUsingPOSTAsyncWithHttpInfo($channel, $quiet)
             ->then(
@@ -366,12 +361,11 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startRecommendationImportUsingPOSTAsyncWithHttpInfo($channel = null, $quiet = 'false')
+    public function startRecommendationImportUsingPOSTAsyncWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]';
         $request = $this->startRecommendationImportUsingPOSTRequest($channel, $quiet);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]');
     }
 
     /**
@@ -389,7 +383,7 @@ class ImportApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]
      */
-    public function startSearchImportUsingPOST($channel = null, $download = 'false', $quiet = 'false', $import_stage = 'FULL')
+    public function startSearchImportUsingPOST($channel = null, bool $download = false, bool $quiet = false, $import_stage = 'FULL')
     {
         list($response) = $this->startSearchImportUsingPOSTWithHttpInfo($channel, $download, $quiet, $import_stage);
 
@@ -411,12 +405,11 @@ class ImportApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\ImportChannelResult[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function startSearchImportUsingPOSTWithHttpInfo($channel = null, $download = 'false', $quiet = 'false', $import_stage = 'FULL')
+    public function startSearchImportUsingPOSTWithHttpInfo($channel = null, bool $download = false, bool $quiet = false, $import_stage = 'FULL')
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]';
         $request = $this->startSearchImportUsingPOSTRequest($channel, $download, $quiet, $import_stage);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]');
     }
 
     /**
@@ -433,7 +426,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startSearchImportUsingPOSTAsync($channel = null, $download = 'false', $quiet = 'false', $import_stage = 'FULL')
+    public function startSearchImportUsingPOSTAsync($channel = null, bool $download = false, bool $quiet = false, $import_stage = 'FULL')
     {
         return $this->startSearchImportUsingPOSTAsyncWithHttpInfo($channel, $download, $quiet, $import_stage)
             ->then(
@@ -457,12 +450,11 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startSearchImportUsingPOSTAsyncWithHttpInfo($channel = null, $download = 'false', $quiet = 'false', $import_stage = 'FULL')
+    public function startSearchImportUsingPOSTAsyncWithHttpInfo($channel = null, bool $download = false, bool $quiet = false, $import_stage = 'FULL')
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]';
         $request = $this->startSearchImportUsingPOSTRequest($channel, $download, $quiet, $import_stage);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]');
     }
 
     /**
@@ -478,7 +470,7 @@ class ImportApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]
      */
-    public function startSuggestImportUsingPOST($channel = null, $quiet = 'false')
+    public function startSuggestImportUsingPOST($channel = null, bool $quiet = false)
     {
         list($response) = $this->startSuggestImportUsingPOSTWithHttpInfo($channel, $quiet);
 
@@ -498,12 +490,11 @@ class ImportApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V3\Model\ImportChannelResult[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function startSuggestImportUsingPOSTWithHttpInfo($channel = null, $quiet = 'false')
+    public function startSuggestImportUsingPOSTWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]';
         $request = $this->startSuggestImportUsingPOSTRequest($channel, $quiet);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]');
     }
 
     /**
@@ -518,7 +509,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startSuggestImportUsingPOSTAsync($channel = null, $quiet = 'false')
+    public function startSuggestImportUsingPOSTAsync($channel = null, bool $quiet = false)
     {
         return $this->startSuggestImportUsingPOSTAsyncWithHttpInfo($channel, $quiet)
             ->then(
@@ -540,12 +531,11 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startSuggestImportUsingPOSTAsyncWithHttpInfo($channel = null, $quiet = 'false')
+    public function startSuggestImportUsingPOSTAsyncWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]';
         $request = $this->startSuggestImportUsingPOSTRequest($channel, $quiet);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\ImportChannelResult[]');
     }
 
     /**
@@ -592,7 +582,6 @@ class ImportApi extends ApiClient
     {
         $resourcePath = '/rest/v3/import/refreshRecommendations';
         $queryParams = [];
-        $httpBody = '';
         // query params
         if (\is_array($channel)) {
             $queryParams['channel'] = $channel;
@@ -600,58 +589,7 @@ class ImportApi extends ApiClient
             $queryParams['channel'] = ObjectSerializer::toQueryValue($channel);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, '', true);
     }
 
     /**
@@ -664,11 +602,10 @@ class ImportApi extends ApiClient
      *
      * @return Request
      */
-    protected function startRankingImportUsingPOSTRequest($channel = null, $quiet = 'false')
+    protected function startRankingImportUsingPOSTRequest($channel = null, bool $quiet = false)
     {
         $resourcePath = '/rest/v3/import/ranking';
         $queryParams = [];
-        $httpBody = '';
         // query params
         if (\is_array($channel)) {
             $queryParams['channel'] = $channel;
@@ -680,58 +617,7 @@ class ImportApi extends ApiClient
             $queryParams['quiet'] = ObjectSerializer::toQueryValue($quiet);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, '', true);
     }
 
     /**
@@ -744,11 +630,10 @@ class ImportApi extends ApiClient
      *
      * @return Request
      */
-    protected function startRecommendationImportUsingPOSTRequest($channel = null, $quiet = 'false')
+    protected function startRecommendationImportUsingPOSTRequest($channel = null, bool $quiet = false)
     {
         $resourcePath = '/rest/v3/import/recommendation';
         $queryParams = [];
-        $httpBody = '';
         // query params
         if (\is_array($channel)) {
             $queryParams['channel'] = $channel;
@@ -760,58 +645,7 @@ class ImportApi extends ApiClient
             $queryParams['quiet'] = ObjectSerializer::toQueryValue($quiet);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, '', true);
     }
 
     /**
@@ -826,7 +660,7 @@ class ImportApi extends ApiClient
      *
      * @return Request
      */
-    protected function startSearchImportUsingPOSTRequest($channel = null, $download = 'false', $quiet = 'false', $import_stage = 'FULL')
+    protected function startSearchImportUsingPOSTRequest($channel = null, bool $download = false, bool $quiet = false, $import_stage = 'FULL')
     {
         $resourcePath = '/rest/v3/import/search';
         $queryParams = [];
@@ -850,58 +684,7 @@ class ImportApi extends ApiClient
             $queryParams['importStage'] = ObjectSerializer::toQueryValue($import_stage);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, '', true);
     }
 
     /**
@@ -914,11 +697,10 @@ class ImportApi extends ApiClient
      *
      * @return Request
      */
-    protected function startSuggestImportUsingPOSTRequest($channel = null, $quiet = 'false')
+    protected function startSuggestImportUsingPOSTRequest($channel = null, bool $quiet = false)
     {
         $resourcePath = '/rest/v3/import/suggest';
         $queryParams = [];
-        $httpBody = '';
         // query params
         if (\is_array($channel)) {
             $queryParams['channel'] = $channel;
@@ -930,58 +712,7 @@ class ImportApi extends ApiClient
             $queryParams['quiet'] = ObjectSerializer::toQueryValue($quiet);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, '', true);
     }
 
     /**

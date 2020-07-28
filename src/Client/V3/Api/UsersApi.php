@@ -23,7 +23,9 @@ use GuzzleHttp6\RequestOptions;
 use Web\FactFinderApi\Client\ApiClient;
 use Web\FactFinderApi\Client\ObjectSerializer;
 use Web\FactFinderApi\Client\V3\Model\Group;
+use Web\FactFinderApi\Client\V3\Model\User;
 use Web\FactFinderApi\Client\V3\Model\UserNoPassword;
+use Web\FactFinderApi\Client\V3\Model\UserNoRequiredPassword;
 
 /**
  * UsersApi Class Doc Comment
@@ -67,10 +69,9 @@ class UsersApi extends ApiClient
      */
     public function createGroupUsingPOSTWithHttpInfo($group)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\Group';
         $request = $this->createGroupUsingPOSTRequest($group);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V3\Model\Group::class);
     }
 
     /**
@@ -107,10 +108,9 @@ class UsersApi extends ApiClient
      */
     public function createGroupUsingPOSTAsyncWithHttpInfo($group)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\Group';
         $request = $this->createGroupUsingPOSTRequest($group);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V3\Model\Group::class);
     }
 
     /**
@@ -185,10 +185,9 @@ class UsersApi extends ApiClient
      */
     public function createUserUsingPOSTAsyncWithHttpInfo($user)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\UserNoPassword';
         $request = $this->createUserUsingPOSTRequest($user);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V3\Model\UserNoPassword::class);
     }
 
     /**
@@ -263,10 +262,9 @@ class UsersApi extends ApiClient
      */
     public function deleteGroupUsingDELETEAsyncWithHttpInfo($name)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\Group';
         $request = $this->deleteGroupUsingDELETERequest($name);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V3\Model\Group::class);
     }
 
     /**
@@ -341,10 +339,9 @@ class UsersApi extends ApiClient
      */
     public function deleteGroupsUsingDELETEAsyncWithHttpInfo($name)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\Group[]';
         $request = $this->deleteGroupsUsingDELETERequest($name);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\Group[]');
     }
 
     /**
@@ -419,10 +416,9 @@ class UsersApi extends ApiClient
      */
     public function deleteUserUsingDELETEAsyncWithHttpInfo($username)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\UserNoPassword';
         $request = $this->deleteUserUsingDELETERequest($username);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V3\Model\UserNoPassword::class);
     }
 
     /**
@@ -458,10 +454,9 @@ class UsersApi extends ApiClient
      */
     public function deleteUsersUsingDELETEWithHttpInfo($name)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\UserNoPassword[]';
         $request = $this->deleteUsersUsingDELETERequest($name);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\UserNoPassword[]');
     }
 
     /**
@@ -498,10 +493,9 @@ class UsersApi extends ApiClient
      */
     public function deleteUsersUsingDELETEAsyncWithHttpInfo($name)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\UserNoPassword[]';
         $request = $this->deleteUsersUsingDELETERequest($name);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\UserNoPassword[]');
     }
 
     /**
@@ -535,10 +529,9 @@ class UsersApi extends ApiClient
      */
     public function getGroupsUsingGETWithHttpInfo($name = null, $role = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\Group[]';
         $request = $this->getGroupsUsingGETRequest($name, $role);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\Group[]');
     }
 
     /**
@@ -573,10 +566,9 @@ class UsersApi extends ApiClient
      */
     public function getGroupsUsingGETAsyncWithHttpInfo($name = null, $role = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\Group[]';
         $request = $this->getGroupsUsingGETRequest($name, $role);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\Group[]');
     }
 
     /**
@@ -614,10 +606,9 @@ class UsersApi extends ApiClient
      */
     public function getUsersUsingGETWithHttpInfo($name = null, $role = null, $channel = null, $group = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\UserNoPassword[]';
         $request = $this->getUsersUsingGETRequest($name, $role, $channel, $group);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\UserNoPassword[]');
     }
 
     /**
@@ -656,10 +647,9 @@ class UsersApi extends ApiClient
      */
     public function getUsersUsingGETAsyncWithHttpInfo($name = null, $role = null, $channel = null, $group = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\UserNoPassword[]';
         $request = $this->getUsersUsingGETRequest($name, $role, $channel, $group);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V3\Model\UserNoPassword[]');
     }
 
     /**
@@ -691,10 +681,9 @@ class UsersApi extends ApiClient
      */
     public function getVisibleChannelsUsingGETWithHttpInfo()
     {
-        $returnType = 'string[]';
         $request = $this->getVisibleChannelsUsingGETRequest();
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, 'string[]');
     }
 
     /**
@@ -727,10 +716,9 @@ class UsersApi extends ApiClient
      */
     public function getVisibleChannelsUsingGETAsyncWithHttpInfo()
     {
-        $returnType = 'string[]';
         $request = $this->getVisibleChannelsUsingGETRequest();
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, 'string[]');
     }
 
     /**
@@ -766,10 +754,9 @@ class UsersApi extends ApiClient
      */
     public function updateGroupUsingPUTWithHttpInfo($group)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\Group';
         $request = $this->updateGroupUsingPUTRequest($group);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V3\Model\Group::class);
     }
 
     /**
@@ -806,10 +793,9 @@ class UsersApi extends ApiClient
      */
     public function updateGroupUsingPUTAsyncWithHttpInfo($group)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\Group';
         $request = $this->updateGroupUsingPUTRequest($group);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V3\Model\Group::class);
     }
 
     /**
@@ -845,10 +831,9 @@ class UsersApi extends ApiClient
      */
     public function updateUserUsingPUTWithHttpInfo($user)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\UserNoPassword';
         $request = $this->updateUserUsingPUTRequest($user);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V3\Model\UserNoPassword::class);
     }
 
     /**
@@ -885,10 +870,9 @@ class UsersApi extends ApiClient
      */
     public function updateUserUsingPUTAsyncWithHttpInfo($user)
     {
-        $returnType = '\Web\FactFinderApi\Client\V3\Model\UserNoPassword';
         $request = $this->updateUserUsingPUTRequest($user);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V3\Model\UserNoPassword::class);
     }
 
     /**
@@ -900,73 +884,11 @@ class UsersApi extends ApiClient
      *
      * @return Request
      */
-    protected function createGroupUsingPOSTRequest($group)
+    protected function createGroupUsingPOSTRequest(Group $group)
     {
-        // verify the required parameter 'group' is set
-        if ($group === null || (\is_array($group) && \count($group) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $group when calling createGroupUsingPOST'
-            );
-        }
-
         $resourcePath = '/rest/v3/groups';
-        $queryParams = [];
-        $httpBody = '';
-        // body params
-        $_tempBody = null;
-        if (isset($group)) {
-            $_tempBody = $group;
-        }
 
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, [], $group, true);
     }
 
     /**
@@ -978,73 +900,11 @@ class UsersApi extends ApiClient
      *
      * @return Request
      */
-    protected function createUserUsingPOSTRequest($user)
+    protected function createUserUsingPOSTRequest(User $user)
     {
-        // verify the required parameter 'user' is set
-        if ($user === null || (\is_array($user) && \count($user) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $user when calling createUserUsingPOST'
-            );
-        }
-
         $resourcePath = '/rest/v3/users';
-        $queryParams = [];
-        $httpBody = '';
-        // body params
-        $_tempBody = null;
-        if (isset($user)) {
-            $_tempBody = $user;
-        }
 
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, [], $user, true);
     }
 
     /**
@@ -1056,79 +916,17 @@ class UsersApi extends ApiClient
      *
      * @return Request
      */
-    protected function deleteGroupUsingDELETERequest($name)
+    protected function deleteGroupUsingDELETERequest(string $name)
     {
-        // verify the required parameter 'name' is set
-        if ($name === null || (\is_array($name) && \count($name) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $name when calling deleteGroupUsingDELETE'
-            );
-        }
-
         $resourcePath = '/rest/v3/groups/{name}';
-        $queryParams = [];
-        $httpBody = '';
         // path params
-        if ($name !== null) {
-            $resourcePath = \str_replace(
-                '{name}',
-                ObjectSerializer::toPathValue($name),
-                $resourcePath
-            );
-        }
-
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
+        $resourcePath = \str_replace(
+            '{name}',
+            ObjectSerializer::toPathValue($name),
+            $resourcePath
         );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->deleteQuery($resourcePath, [], '', true);
     }
 
     /**
@@ -1140,77 +938,25 @@ class UsersApi extends ApiClient
      *
      * @return Request
      */
-    protected function deleteGroupsUsingDELETERequest($name)
+    protected function deleteGroupsUsingDELETERequest(array $name)
     {
         // verify the required parameter 'name' is set
-        if ($name === null || (\is_array($name) && \count($name) === 0)) {
+        if (empty($name)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $name when calling deleteGroupsUsingDELETE'
             );
         }
 
         $resourcePath = '/rest/v3/groups';
-        $queryParams = [];
-        $httpBody = '';
+
         // query params
         if (\is_array($name)) {
             $queryParams['name'] = $name;
-        } elseif ($name !== null) {
+        } else {
             $queryParams['name'] = ObjectSerializer::toQueryValue($name);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->deleteQuery($resourcePath, $queryParams, '', true);
     }
 
     /**
@@ -1222,18 +968,9 @@ class UsersApi extends ApiClient
      *
      * @return Request
      */
-    protected function deleteUserUsingDELETERequest($username)
+    protected function deleteUserUsingDELETERequest(string $username)
     {
-        // verify the required parameter 'username' is set
-        if ($username === null || (\is_array($username) && \count($username) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $username when calling deleteUserUsingDELETE'
-            );
-        }
-
         $resourcePath = '/rest/v3/users/{username}';
-        $queryParams = [];
-        $httpBody = '';
         // path params
         if ($username !== null) {
             $resourcePath = \str_replace(
@@ -1243,58 +980,7 @@ class UsersApi extends ApiClient
             );
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->deleteQuery($resourcePath, [], '', true);
     }
 
     /**
@@ -1306,10 +992,10 @@ class UsersApi extends ApiClient
      *
      * @return Request
      */
-    protected function deleteUsersUsingDELETERequest($name)
+    protected function deleteUsersUsingDELETERequest(array $name)
     {
         // verify the required parameter 'name' is set
-        if ($name === null || (\is_array($name) && \count($name) === 0)) {
+        if (empty($name)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $name when calling deleteUsersUsingDELETE'
             );
@@ -1317,7 +1003,6 @@ class UsersApi extends ApiClient
 
         $resourcePath = '/rest/v3/users';
         $queryParams = [];
-        $httpBody = '';
         // query params
         if (\is_array($name)) {
             $queryParams['name'] = $name;
@@ -1325,58 +1010,7 @@ class UsersApi extends ApiClient
             $queryParams['name'] = ObjectSerializer::toQueryValue($name);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->deleteQuery($resourcePath, $queryParams, '', true);
     }
 
     /**
@@ -1468,73 +1102,10 @@ class UsersApi extends ApiClient
      *
      * @return Request
      */
-    protected function updateGroupUsingPUTRequest($group)
+    protected function updateGroupUsingPUTRequest(Group $group)
     {
-        // verify the required parameter 'group' is set
-        if ($group === null || (\is_array($group) && \count($group) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $group when calling updateGroupUsingPUT'
-            );
-        }
-
         $resourcePath = '/rest/v3/groups';
-        $queryParams = [];
-        $httpBody = '';
-        // body params
-        $_tempBody = null;
-        if (isset($group)) {
-            $_tempBody = $group;
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->putQuery($resourcePath, [], $group, true);
     }
 
     /**
@@ -1546,73 +1117,10 @@ class UsersApi extends ApiClient
      *
      * @return Request
      */
-    protected function updateUserUsingPUTRequest($user)
+    protected function updateUserUsingPUTRequest(UserNoRequiredPassword $user)
     {
-        // verify the required parameter 'user' is set
-        if ($user === null || (\is_array($user) && \count($user) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $user when calling updateUserUsingPUT'
-            );
-        }
-
         $resourcePath = '/rest/v3/users';
-        $queryParams = [];
-        $httpBody = '';
-        // body params
-        $_tempBody = null;
-        if (isset($user)) {
-            $_tempBody = $user;
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->putQuery($resourcePath, [], $user, true);
     }
 
     /**

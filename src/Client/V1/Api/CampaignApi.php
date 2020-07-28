@@ -40,7 +40,7 @@ class CampaignApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\Campaign[]
      */
-    public function getPageCampaignsUsingGET($channel, $page_id, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getPageCampaignsUsingGET(string $channel, $page_id, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         list($response) = $this->getPageCampaignsUsingGETWithHttpInfo($channel, $page_id, $ids_only, $sid, $advisor_status);
 
@@ -63,12 +63,11 @@ class CampaignApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\Campaign[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageCampaignsUsingGETWithHttpInfo($channel, $page_id, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getPageCampaignsUsingGETWithHttpInfo(string $channel, $page_id, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getPageCampaignsUsingGETRequest($channel, $page_id, $ids_only, $sid, $advisor_status);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V1\Model\Campaign[]');
     }
 
     /**
@@ -87,7 +86,7 @@ class CampaignApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\Campaign[]
      */
-    public function getProductCampaignsUsingGET($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getProductCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         list($response) = $this->getProductCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only, $sid, $advisor_status);
 
@@ -110,12 +109,11 @@ class CampaignApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\Campaign[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProductCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getProductCampaignsUsingGETWithHttpInfo(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getProductCampaignsUsingGETRequest($channel, $product_number, $ids_only, $sid, $advisor_status);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V1\Model\Campaign[]');
     }
 
     /**
@@ -133,7 +131,7 @@ class CampaignApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getProductCampaignsUsingGETAsync($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getProductCampaignsUsingGETAsync(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         return $this->getProductCampaignsUsingGETAsyncWithHttpInfo($channel, $product_number, $ids_only, $sid, $advisor_status)
             ->then(
@@ -158,12 +156,11 @@ class CampaignApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getProductCampaignsUsingGETAsyncWithHttpInfo($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getProductCampaignsUsingGETAsyncWithHttpInfo(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getProductCampaignsUsingGETRequest($channel, $product_number, $ids_only, $sid, $advisor_status);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V1\Model\Campaign[]');
     }
 
     /**
@@ -182,7 +179,7 @@ class CampaignApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\Campaign[]
      */
-    public function getShoppingCartCampaignsUsingGET($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getShoppingCartCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         list($response) = $this->getShoppingCartCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only, $sid, $advisor_status);
 
@@ -205,12 +202,11 @@ class CampaignApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\Campaign[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getShoppingCartCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getShoppingCartCampaignsUsingGETWithHttpInfo(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getShoppingCartCampaignsUsingGETRequest($channel, $product_number, $ids_only, $sid, $advisor_status);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V1\Model\Campaign[]');
     }
 
     /**
@@ -228,7 +224,7 @@ class CampaignApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getShoppingCartCampaignsUsingGETAsync($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getShoppingCartCampaignsUsingGETAsync(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         return $this->getShoppingCartCampaignsUsingGETAsyncWithHttpInfo($channel, $product_number, $ids_only, $sid, $advisor_status)
             ->then(
@@ -253,12 +249,11 @@ class CampaignApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getShoppingCartCampaignsUsingGETAsyncWithHttpInfo($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getShoppingCartCampaignsUsingGETAsyncWithHttpInfo(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getShoppingCartCampaignsUsingGETRequest($channel, $product_number, $ids_only, $sid, $advisor_status);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V1\Model\Campaign[]');
     }
 
     /**
@@ -274,7 +269,7 @@ class CampaignApi extends ApiClient
      *
      * @return Request
      */
-    protected function getPageCampaignsUsingGETRequest(string $channel, string $page_id, $ids_only = 'false', $sid = null, $advisor_status = null)
+    protected function getPageCampaignsUsingGETRequest(string $channel, string $page_id, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         $resourcePath = '/v1/campaign/{channel}/page';
         $queryParams = [];
@@ -298,36 +293,12 @@ class CampaignApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
         return $this->getQuery($resourcePath, $queryParams);
     }
 
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
 
-        return $options;
-    }
 
     /**
      * Create request for operation 'getProductCampaignsUsingGET'
@@ -342,7 +313,7 @@ class CampaignApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function getProductCampaignsUsingGETRequest($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    protected function getProductCampaignsUsingGETRequest(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -378,13 +349,7 @@ class CampaignApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
         return $this->getQuery($resourcePath, $queryParams);
     }
@@ -402,7 +367,7 @@ class CampaignApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function getShoppingCartCampaignsUsingGETRequest($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    protected function getShoppingCartCampaignsUsingGETRequest(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -440,13 +405,7 @@ class CampaignApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
         return $this->getQuery($resourcePath, $queryParams);
     }

@@ -44,7 +44,7 @@ class ManagementApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function importWhatsHotUsingPOST($channel = null, $send_notifications = 'false'): void
+    public function importWhatsHotUsingPOST($channel = null, bool $send_notifications = false): void
     {
         $this->importWhatsHotUsingPOSTWithHttpInfo($channel, $send_notifications);
     }
@@ -62,7 +62,7 @@ class ManagementApi extends ApiClient
      *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function importWhatsHotUsingPOSTWithHttpInfo($channel = null, $send_notifications = 'false')
+    public function importWhatsHotUsingPOSTWithHttpInfo($channel = null, bool $send_notifications = false)
     {
         $returnType = '';
         $request = $this->importWhatsHotUsingPOSTRequest($channel, $send_notifications);
@@ -82,7 +82,7 @@ class ManagementApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function importWhatsHotUsingPOSTAsync($channel = null, $send_notifications = 'false')
+    public function importWhatsHotUsingPOSTAsync($channel = null, bool $send_notifications = false)
     {
         return $this->importWhatsHotUsingPOSTAsyncWithHttpInfo($channel, $send_notifications)
             ->then(
@@ -104,15 +104,14 @@ class ManagementApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function importWhatsHotUsingPOSTAsyncWithHttpInfo($channel = null, $send_notifications = 'false')
+    public function importWhatsHotUsingPOSTAsyncWithHttpInfo($channel = null, bool $send_notifications = false)
     {
-        $returnType = '';
         $request = $this->importWhatsHotUsingPOSTRequest($channel, $send_notifications);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -201,13 +200,12 @@ class ManagementApi extends ApiClient
      */
     public function reloadConfigurationUsingPOSTAsyncWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->reloadConfigurationUsingPOSTRequest($channel);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -237,7 +235,7 @@ class ManagementApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function importWhatsHotUsingPOSTRequest($channel = null, $send_notifications = 'false')
+    protected function importWhatsHotUsingPOSTRequest($channel = null, bool $send_notifications = false)
     {
         $resourcePath = '/v1/management/whatshot';
         $queryParams = [];
@@ -280,23 +278,5 @@ class ManagementApi extends ApiClient
         return $this->postQuery($resourcePath, $queryParams);
     }
 
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
 
-        return $options;
-    }
 }

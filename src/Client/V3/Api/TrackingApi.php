@@ -331,7 +331,7 @@ class TrackingApi extends ApiClient
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function trackLogUsingPOST($channel, $events): void
+    public function trackLogUsingPOST(string $channel, $events): void
     {
         $this->trackLogUsingPOSTWithHttpInfo($channel, $events);
     }
@@ -406,7 +406,7 @@ class TrackingApi extends ApiClient
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function trackLoginUsingPOST($channel, $events): void
+    public function trackLoginUsingPOST(string $channel, $events): void
     {
         $this->trackLoginUsingPOSTWithHttpInfo($channel, $events);
     }

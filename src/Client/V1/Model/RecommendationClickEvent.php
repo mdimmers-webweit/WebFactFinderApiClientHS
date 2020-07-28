@@ -54,7 +54,6 @@ class RecommendationClickEvent extends BaseModel
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'cookie_id' => null,
@@ -175,7 +174,7 @@ class RecommendationClickEvent extends BaseModel
     }
 
     /**
-     * @return map[string,string]
+     * @return string[]
      */
     public function getExtraParams()
     {
@@ -183,7 +182,7 @@ class RecommendationClickEvent extends BaseModel
     }
 
     /**
-     * @param map[string,string] $extra_params extra_params
+     * @param string[] $extra_params extra_params
      *
      * @return $this
      */

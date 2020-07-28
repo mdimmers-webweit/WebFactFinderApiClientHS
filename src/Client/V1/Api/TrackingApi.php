@@ -43,7 +43,7 @@ class TrackingApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function trackCartUsingPOST($channel, $events): void
+    public function trackCartUsingPOST(string $channel, $events): void
     {
         $this->trackCartUsingPOSTWithHttpInfo($channel, $events);
     }
@@ -61,7 +61,7 @@ class TrackingApi extends ApiClient
      *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function trackCartUsingPOSTWithHttpInfo($channel, $events)
+    public function trackCartUsingPOSTWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackCartUsingPOSTRequest($channel, $events);
@@ -81,7 +81,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackCartUsingPOSTAsync($channel, $events)
+    public function trackCartUsingPOSTAsync(string $channel, $events)
     {
         return $this->trackCartUsingPOSTAsyncWithHttpInfo($channel, $events)
             ->then(
@@ -103,7 +103,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackCartUsingPOSTAsyncWithHttpInfo($channel, $events)
+    public function trackCartUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackCartUsingPOSTRequest($channel, $events);
@@ -111,7 +111,7 @@ class TrackingApi extends ApiClient
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -142,7 +142,7 @@ class TrackingApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function trackCheckoutUsingPOST($channel, $events): void
+    public function trackCheckoutUsingPOST(string $channel, $events): void
     {
         $this->trackCheckoutUsingPOSTWithHttpInfo($channel, $events);
     }
@@ -160,7 +160,7 @@ class TrackingApi extends ApiClient
      *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function trackCheckoutUsingPOSTWithHttpInfo($channel, $events)
+    public function trackCheckoutUsingPOSTWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackCheckoutUsingPOSTRequest($channel, $events);
@@ -180,7 +180,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackCheckoutUsingPOSTAsync($channel, $events)
+    public function trackCheckoutUsingPOSTAsync(string $channel, $events)
     {
         return $this->trackCheckoutUsingPOSTAsyncWithHttpInfo($channel, $events)
             ->then(
@@ -202,7 +202,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackCheckoutUsingPOSTAsyncWithHttpInfo($channel, $events)
+    public function trackCheckoutUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackCheckoutUsingPOSTRequest($channel, $events);
@@ -210,7 +210,7 @@ class TrackingApi extends ApiClient
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -241,7 +241,7 @@ class TrackingApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function trackClickUsingPOST($channel, $events): void
+    public function trackClickUsingPOST(string $channel, $events): void
     {
         $this->trackClickUsingPOSTWithHttpInfo($channel, $events);
     }
@@ -259,7 +259,7 @@ class TrackingApi extends ApiClient
      *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function trackClickUsingPOSTWithHttpInfo($channel, $events)
+    public function trackClickUsingPOSTWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackClickUsingPOSTRequest($channel, $events);
@@ -279,7 +279,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackClickUsingPOSTAsync($channel, $events)
+    public function trackClickUsingPOSTAsync(string $channel, $events)
     {
         return $this->trackClickUsingPOSTAsyncWithHttpInfo($channel, $events)
             ->then(
@@ -301,7 +301,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackClickUsingPOSTAsyncWithHttpInfo($channel, $events)
+    public function trackClickUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackClickUsingPOSTRequest($channel, $events);
@@ -309,7 +309,7 @@ class TrackingApi extends ApiClient
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -340,7 +340,7 @@ class TrackingApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function trackFeedbackUsingPOST($channel, $events): void
+    public function trackFeedbackUsingPOST(string $channel, $events): void
     {
         $this->trackFeedbackUsingPOSTWithHttpInfo($channel, $events);
     }
@@ -358,7 +358,7 @@ class TrackingApi extends ApiClient
      *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function trackFeedbackUsingPOSTWithHttpInfo($channel, $events)
+    public function trackFeedbackUsingPOSTWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackFeedbackUsingPOSTRequest($channel, $events);
@@ -378,7 +378,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackFeedbackUsingPOSTAsync($channel, $events)
+    public function trackFeedbackUsingPOSTAsync(string $channel, $events)
     {
         return $this->trackFeedbackUsingPOSTAsyncWithHttpInfo($channel, $events)
             ->then(
@@ -400,7 +400,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackFeedbackUsingPOSTAsyncWithHttpInfo($channel, $events)
+    public function trackFeedbackUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackFeedbackUsingPOSTRequest($channel, $events);
@@ -408,7 +408,7 @@ class TrackingApi extends ApiClient
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -439,7 +439,7 @@ class TrackingApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function trackLogUsingPOST($channel, $events): void
+    public function trackLogUsingPOST(string $channel, $events): void
     {
         $this->trackLogUsingPOSTWithHttpInfo($channel, $events);
     }
@@ -457,7 +457,7 @@ class TrackingApi extends ApiClient
      *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function trackLogUsingPOSTWithHttpInfo($channel, $events)
+    public function trackLogUsingPOSTWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackLogUsingPOSTRequest($channel, $events);
@@ -477,7 +477,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackLogUsingPOSTAsync($channel, $events)
+    public function trackLogUsingPOSTAsync(string $channel, $events)
     {
         return $this->trackLogUsingPOSTAsyncWithHttpInfo($channel, $events)
             ->then(
@@ -499,7 +499,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackLogUsingPOSTAsyncWithHttpInfo($channel, $events)
+    public function trackLogUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackLogUsingPOSTRequest($channel, $events);
@@ -507,7 +507,7 @@ class TrackingApi extends ApiClient
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -538,7 +538,7 @@ class TrackingApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function trackLoginUsingPOST($channel, $events): void
+    public function trackLoginUsingPOST(string $channel, $events): void
     {
         $this->trackLoginUsingPOSTWithHttpInfo($channel, $events);
     }
@@ -556,7 +556,7 @@ class TrackingApi extends ApiClient
      *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function trackLoginUsingPOSTWithHttpInfo($channel, $events)
+    public function trackLoginUsingPOSTWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackLoginUsingPOSTRequest($channel, $events);
@@ -576,7 +576,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackLoginUsingPOSTAsync($channel, $events)
+    public function trackLoginUsingPOSTAsync(string $channel, $events)
     {
         return $this->trackLoginUsingPOSTAsyncWithHttpInfo($channel, $events)
             ->then(
@@ -598,7 +598,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackLoginUsingPOSTAsyncWithHttpInfo($channel, $events)
+    public function trackLoginUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackLoginUsingPOSTRequest($channel, $events);
@@ -606,7 +606,7 @@ class TrackingApi extends ApiClient
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -637,7 +637,7 @@ class TrackingApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function trackRecommendationClickUsingPOST($channel, $events): void
+    public function trackRecommendationClickUsingPOST(string $channel, $events): void
     {
         $this->trackRecommendationClickUsingPOSTWithHttpInfo($channel, $events);
     }
@@ -655,7 +655,7 @@ class TrackingApi extends ApiClient
      *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function trackRecommendationClickUsingPOSTWithHttpInfo($channel, $events)
+    public function trackRecommendationClickUsingPOSTWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackRecommendationClickUsingPOSTRequest($channel, $events);
@@ -675,7 +675,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackRecommendationClickUsingPOSTAsync($channel, $events)
+    public function trackRecommendationClickUsingPOSTAsync(string $channel, $events)
     {
         return $this->trackRecommendationClickUsingPOSTAsyncWithHttpInfo($channel, $events)
             ->then(
@@ -697,7 +697,7 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function trackRecommendationClickUsingPOSTAsyncWithHttpInfo($channel, $events)
+    public function trackRecommendationClickUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
         $returnType = '';
         $request = $this->trackRecommendationClickUsingPOSTRequest($channel, $events);
@@ -705,7 +705,7 @@ class TrackingApi extends ApiClient
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -735,16 +735,10 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function trackCartUsingPOSTRequest($channel, $events)
+    protected function trackCartUsingPOSTRequest(string $channel, array $events)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling trackCartUsingPOST'
-            );
-        }
         // verify the required parameter 'events' is set
-        if ($events === null || (\is_array($events) && \count($events) === 0)) {
+        if (empty($events)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $events when calling trackCartUsingPOST'
             );
@@ -752,68 +746,10 @@ class TrackingApi extends ApiClient
 
         $resourcePath = '/v1/track/{channel}/cart';
         $queryParams = [];
-        $httpBody = '';
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-        if (isset($events)) {
-            $_tempBody = $events;
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/xml', 'application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, $events);
     }
 
     /**
@@ -826,85 +762,22 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function trackCheckoutUsingPOSTRequest($channel, $events)
+    protected function trackCheckoutUsingPOSTRequest(string $channel, array $events)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling trackCheckoutUsingPOST'
-            );
-        }
         // verify the required parameter 'events' is set
-        if ($events === null || (\is_array($events) && \count($events) === 0)) {
+        if (empty($events)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $events when calling trackCheckoutUsingPOST'
+                'Missing the required parameter $events when calling trackCartUsingPOST'
             );
         }
 
         $resourcePath = '/v1/track/{channel}/checkout';
         $queryParams = [];
-        $httpBody = '';
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-        if (isset($events)) {
-            $_tempBody = $events;
-        }
 
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/xml', 'application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, $events);
     }
 
     /**
@@ -917,85 +790,22 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function trackClickUsingPOSTRequest($channel, $events)
+    protected function trackClickUsingPOSTRequest(string $channel, array $events)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling trackClickUsingPOST'
-            );
-        }
         // verify the required parameter 'events' is set
-        if ($events === null || (\is_array($events) && \count($events) === 0)) {
+        if (empty($events)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $events when calling trackClickUsingPOST'
+                'Missing the required parameter $events when calling trackCartUsingPOST'
             );
         }
 
         $resourcePath = '/v1/track/{channel}/click';
         $queryParams = [];
-        $httpBody = '';
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-        if (isset($events)) {
-            $_tempBody = $events;
-        }
 
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/xml', 'application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams, $events);
     }
 
     /**
@@ -1008,85 +818,20 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function trackFeedbackUsingPOSTRequest($channel, $events)
+    protected function trackFeedbackUsingPOSTRequest(string $channel, array $events)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling trackFeedbackUsingPOST'
-            );
-        }
         // verify the required parameter 'events' is set
-        if ($events === null || (\is_array($events) && \count($events) === 0)) {
+        if (empty($events)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $events when calling trackFeedbackUsingPOST'
+                'Missing the required parameter $events when calling trackCartUsingPOST'
             );
         }
 
         $resourcePath = '/v1/track/{channel}/feedback';
-        $queryParams = [];
-        $httpBody = '';
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-        if (isset($events)) {
-            $_tempBody = $events;
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/xml', 'application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, [], $events);
     }
 
     /**
@@ -1099,18 +844,12 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function trackLogUsingPOSTRequest($channel, $events)
+    protected function trackLogUsingPOSTRequest(string $channel, array $events)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling trackLogUsingPOST'
-            );
-        }
         // verify the required parameter 'events' is set
-        if ($events === null || (\is_array($events) && \count($events) === 0)) {
+        if (empty($events)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $events when calling trackLogUsingPOST'
+                'Missing the required parameter $events when calling trackCartUsingPOST'
             );
         }
 
@@ -1118,66 +857,9 @@ class TrackingApi extends ApiClient
         $queryParams = [];
         $httpBody = '';
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-        if (isset($events)) {
-            $_tempBody = $events;
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/xml', 'application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, [], $events);
     }
 
     /**
@@ -1190,85 +872,21 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function trackLoginUsingPOSTRequest($channel, $events)
+    protected function trackLoginUsingPOSTRequest(string $channel, array $events)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling trackLoginUsingPOST'
-            );
-        }
         // verify the required parameter 'events' is set
-        if ($events === null || (\is_array($events) && \count($events) === 0)) {
+        if (empty($events)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $events when calling trackLoginUsingPOST'
+                'Missing the required parameter $events when calling trackCartUsingPOST'
             );
         }
 
         $resourcePath = '/v1/track/{channel}/login';
-        $queryParams = [];
-        $httpBody = '';
+
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-        if (isset($events)) {
-            $_tempBody = $events;
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/xml', 'application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, [], $events);
     }
 
     /**
@@ -1281,104 +899,21 @@ class TrackingApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function trackRecommendationClickUsingPOSTRequest($channel, $events)
+    protected function trackRecommendationClickUsingPOSTRequest(string $channel, array $events)
     {
-        // verify the required parameter 'channel' is set
-        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $channel when calling trackRecommendationClickUsingPOST'
-            );
-        }
         // verify the required parameter 'events' is set
-        if ($events === null || (\is_array($events) && \count($events) === 0)) {
+        if (empty($events)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $events when calling trackRecommendationClickUsingPOST'
+                'Missing the required parameter $events when calling trackCartUsingPOST'
             );
         }
 
         $resourcePath = '/v1/track/{channel}/recommendationClick';
-        $queryParams = [];
-        $httpBody = '';
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-        if (isset($events)) {
-            $_tempBody = $events;
-        }
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/xml', 'application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, [], $events);
     }
 
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
 
-        return $options;
-    }
 }

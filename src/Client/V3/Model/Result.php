@@ -65,7 +65,6 @@ class Result extends BaseModel
     /**
      * Array of property to format mappings. Used for (de)serialization
      *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'answers' => null,
@@ -363,7 +362,7 @@ class Result extends BaseModel
     }
 
     /**
-     * @return map[string,string]
+     * @return string[]
      */
     public function getFieldRoles()
     {
@@ -371,7 +370,7 @@ class Result extends BaseModel
     }
 
     /**
-     * @param map[string,string] $field_roles A field to role mapping. For example, a field role may be 'brand', meaning that the field contains the manufacturer's name. (key = field role, value = field name)
+     * @param string[] $field_roles A field to role mapping. For example, a field role may be 'brand', meaning that the field contains the manufacturer's name. (key = field role, value = field name)
      *
      * @return $this
      */
