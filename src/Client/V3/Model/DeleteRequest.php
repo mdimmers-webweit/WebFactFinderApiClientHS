@@ -95,7 +95,7 @@ class DeleteRequest extends BaseModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 

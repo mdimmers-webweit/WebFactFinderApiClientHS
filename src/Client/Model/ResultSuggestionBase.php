@@ -6,9 +6,6 @@
 
 namespace Web\FactFinderApi\Client\Model;
 
-use Web\FactFinderApi\Client\ObjectSerializer;
-use Web\FactFinderApi\Client\V1\Model\ResultSuggestion;
-
 abstract class ResultSuggestionBase extends BaseModel
 {
     /**
@@ -37,7 +34,7 @@ abstract class ResultSuggestionBase extends BaseModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -134,17 +131,17 @@ abstract class ResultSuggestionBase extends BaseModel
         return $this;
     }
 
-    public function getSearchParams()
+    public function getSearchParams(): SearchParamsBase
     {
         return $this->container['search_params'];
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V3\Model\SearchParams $search_params defines the search that should be executed when clicking on Suggest entry
+     * @param SearchParamsBase $search_params defines the search that should be executed when clicking on Suggest entry
      *
      * @return $this
      */
-    public function setSearchParams($search_params)
+    public function setSearchParams(SearchParamsBase $search_params)
     {
         $this->container['search_params'] = $search_params;
 
@@ -169,50 +166,5 @@ abstract class ResultSuggestionBase extends BaseModel
         $this->container['type'] = $type;
 
         return $this;
-    }
-
-    /**
-     * Returns true if offset exists. False otherwise.
-     *
-     * @param int $offset Offset
-     *
-     * @return bool
-     */
-    public function offsetExists($offset)
-    {
-        return isset($this->container[$offset]);
-    }
-
-    /**
-     * @param int $offset Offset
-     */
-    public function offsetGet($offset)
-    {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
-    }
-
-    /**
-     * Sets value based on offset.
-     *
-     * @param int   $offset Offset
-     * @param mixed $value  Value to be set
-     */
-    public function offsetSet($offset, $value): void
-    {
-        if (\is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    /**
-     * Unsets offset.
-     *
-     * @param int $offset Offset
-     */
-    public function offsetUnset($offset): void
-    {
-        unset($this->container[$offset]);
     }
 }

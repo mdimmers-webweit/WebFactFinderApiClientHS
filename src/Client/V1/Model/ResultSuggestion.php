@@ -18,6 +18,7 @@
 namespace Web\FactFinderApi\Client\V1\Model;
 
 use Web\FactFinderApi\Client\Model\ResultSuggestionBase;
+use Web\FactFinderApi\Client\Model\SearchParamsBase;
 
 /**
  * ResultSuggestion Class Doc Comment
@@ -39,7 +40,7 @@ class ResultSuggestion extends ResultSuggestionBase
         'image' => 'string',
         'name' => 'string',
         'priority' => 'int',
-        'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+        'search_params' => Params::class,
         'type' => 'string',
     ];
 
@@ -119,7 +120,7 @@ class ResultSuggestion extends ResultSuggestionBase
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = parent::listInvalidProperties();
 
@@ -133,27 +134,7 @@ class ResultSuggestion extends ResultSuggestionBase
         return $invalidProperties;
     }
 
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * @param array $attributes Contains additional information for the suggestion. Keys give the names of the attributes, with corresponding values.
-     *
-     * @return \Web\FactFinderApi\Client\V3\Model\ResultSuggestion
-     */
-    public function setAttributes($attributes)
-    {
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPriority()
+    public function getPriority(): int
     {
         return $this->container['priority'];
     }
@@ -163,7 +144,7 @@ class ResultSuggestion extends ResultSuggestionBase
      *
      * @return $this
      */
-    public function setPriority($priority)
+    public function setPriority(int $priority)
     {
         $this->container['priority'] = $priority;
 
@@ -171,19 +152,19 @@ class ResultSuggestion extends ResultSuggestionBase
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Params
+     * @return Params
      */
-    public function getSearchParams()
+    public function getSearchParams(): SearchParamsBase
     {
         return $this->container['search_params'];
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $search_params search_params
+     * @param Params $search_params search_params
      *
      * @return $this
      */
-    public function setSearchParams($search_params)
+    public function setSearchParams(SearchParamsBase $search_params)
     {
         $this->container['search_params'] = $search_params;
 

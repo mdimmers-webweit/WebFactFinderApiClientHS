@@ -167,7 +167,7 @@ class Params extends SearchParamsBase
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -197,7 +197,7 @@ class Params extends SearchParamsBase
     }
 
     /**
-     * @return map[string,string]
+     * @return string[]
      */
     public function getAbTest()
     {
@@ -205,7 +205,7 @@ class Params extends SearchParamsBase
     }
 
     /**
-     * @param map[string,string] $ab_test ab_test
+     * @param string[] $ab_test ab_test
      *
      * @return $this
      */

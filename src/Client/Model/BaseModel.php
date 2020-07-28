@@ -61,6 +61,14 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
     protected $container = [];
 
     /**
+     * @param mixed[] $data Associated array of property values
+     *                      initializing the model
+     */
+    public function __construct(?array $data = null)
+    {
+    }
+
+    /**
      * Gets the string presentation of the object
      *
      * @return string
@@ -75,20 +83,16 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return static::$swaggerTypes;
     }
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return static::$swaggerFormats;
     }
@@ -96,40 +100,32 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return static::$attributeMap;
     }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return static::$setters;
     }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return static::$getters;
     }
 
     /**
      * The original name of the model.
-     *
-     * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return static::$swaggerModelName;
     }
@@ -151,7 +147,7 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -184,7 +180,7 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         return [];
     }
@@ -195,7 +191,7 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return \count($this->listInvalidProperties()) === 0;
     }

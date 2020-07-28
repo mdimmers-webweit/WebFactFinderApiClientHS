@@ -67,7 +67,7 @@ class TagcloudApi extends ApiClient
         $this->headerSelector = $selector ?: new HeaderSelector();
     }
 
-        public function getConfig(): Configuration
+    public function getConfig(): Configuration
     {
         return $this->config;
     }

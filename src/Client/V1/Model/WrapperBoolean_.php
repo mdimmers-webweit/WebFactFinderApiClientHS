@@ -34,12 +34,4 @@ class WrapperBoolean_ extends BaseModel
      * @var string
      */
     protected static $swaggerModelName = 'Wrapper«boolean»';
-
-    /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-    }
 }

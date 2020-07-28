@@ -18,6 +18,7 @@
 namespace Web\FactFinderApi\Client\V3\Model;
 
 use Web\FactFinderApi\Client\Model\ResultSuggestionBase;
+use Web\FactFinderApi\Client\Model\SearchParamsBase;
 
 /**
  * ResultSuggestion Class Doc Comment
@@ -29,13 +30,6 @@ use Web\FactFinderApi\Client\Model\ResultSuggestionBase;
 class ResultSuggestion extends ResultSuggestionBase
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'ResultSuggestion';
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
@@ -46,7 +40,7 @@ class ResultSuggestion extends ResultSuggestionBase
         'image' => 'string',
         'name' => 'string',
         'score' => 'double',
-        'search_params' => '\Web\FactFinderApi\Client\V3\Model\SearchParams',
+        'search_params' => SearchParams::class,
         'type' => 'string',
     ];
 
@@ -121,23 +115,6 @@ class ResultSuggestion extends ResultSuggestionBase
         $this->container['score'] = $data['score'] ?? null;
     }
 
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * @param array $attributes Contains additional information for the suggestion. Keys give the names of the attributes, with corresponding values.
-     *
-     * @return static
-     */
-    public function setAttributes($attributes)
-    {
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
     /**
      * @return float
      */
@@ -159,19 +136,19 @@ class ResultSuggestion extends ResultSuggestionBase
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\SearchParams
+     * @return SearchParams
      */
-    public function getSearchParams()
+    public function getSearchParams(): SearchParamsBase
     {
         return $this->container['search_params'];
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V3\Model\SearchParams $search_params defines the search that should be executed when clicking on Suggest entry
+     * @param SearchParams $search_params defines the search that should be executed when clicking on Suggest entry
      *
      * @return $this
      */
-    public function setSearchParams($search_params)
+    public function setSearchParams(SearchParamsBase $search_params)
     {
         $this->container['search_params'] = $search_params;
 
