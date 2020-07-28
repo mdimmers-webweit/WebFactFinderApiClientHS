@@ -19,89 +19,6 @@ abstract class ResultSuggestionBase extends BaseModel
     protected static $swaggerModelName = 'ResultSuggestion';
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'attributes' => 'map[string,object]',
-        'hit_count' => 'int',
-        'image' => 'string',
-        'name' => 'string',
-        'score' => 'double',
-        'search_params' => '\Web\FactFinderApi\Client\V3\Model\SearchParams',
-        'type' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerFormats = [
-        'attributes' => null,
-        'hit_count' => 'int32',
-        'image' => null,
-        'name' => null,
-        'score' => 'double',
-        'search_params' => null,
-        'type' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'hit_count' => 'hitCount',
-        'image' => 'image',
-        'name' => 'name',
-        'score' => 'score',
-        'search_params' => 'searchParams',
-        'type' => 'type',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'attributes' => 'setAttributes',
-        'hit_count' => 'setHitCount',
-        'image' => 'setImage',
-        'name' => 'setName',
-        'score' => 'setScore',
-        'search_params' => 'setSearchParams',
-        'type' => 'setType',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'attributes' => 'getAttributes',
-        'hit_count' => 'getHitCount',
-        'image' => 'getImage',
-        'name' => 'getName',
-        'score' => 'getScore',
-        'search_params' => 'getSearchParams',
-        'type' => 'getType',
-    ];
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -113,84 +30,6 @@ abstract class ResultSuggestionBase extends BaseModel
         $this->container['name'] = $data['name'] ?? null;
         $this->container['search_params'] = $data['search_params'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
-    }
-
-    /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        if (\defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return \json_encode(
-                ObjectSerializer::sanitizeForSerialization($this),
-                JSON_PRETTY_PRINT
-            );
-        }
-
-        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
-    }
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function swaggerTypes()
-    {
-        return self::$swaggerTypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function swaggerFormats()
-    {
-        return self::$swaggerFormats;
-    }
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters()
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters()
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName()
-    {
-        return self::$swaggerModelName;
     }
 
     /**
@@ -291,26 +130,6 @@ abstract class ResultSuggestionBase extends BaseModel
     public function setName($name)
     {
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return float
-     */
-    public function getScore()
-    {
-        return $this->container['score'];
-    }
-
-    /**
-     * @param float $score defines how well the suggestion matches the query
-     *
-     * @return $this
-     */
-    public function setScore($score)
-    {
-        $this->container['score'] = $score;
 
         return $this;
     }

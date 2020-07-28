@@ -132,7 +132,7 @@ class ResultSuggestion extends ResultSuggestionBase
 
         return $invalidProperties;
     }
-    
+
     public function getAttributes()
     {
         return $this->container['attributes'];
