@@ -14,26 +14,7 @@ class ApiClient extends ApiClientBase
 {
     protected function getQuery(string $resourcePath, array $queryParams): Request
     {
-        $headers = [
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-        ];
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
+        $headers = $this->configureHeaders();
 
         $query = \GuzzleHttp6\Psr7\build_query($queryParams);
 
@@ -61,15 +42,14 @@ class ApiClient extends ApiClientBase
 
     private function query(string $action, string $resourcePath, array $queryParams, $params = null): Request
     {
-        $headers = [
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-        ];
+        $headers = $this->configureHeaders();
 
         $httpBody = null;
         // for model (json/xml)
         if ($params) {
             if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = $params;
+
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($params instanceof \stdClass) {
                     $httpBody = \json_encode($params);
@@ -81,10 +61,34 @@ class ApiClient extends ApiClientBase
             }
         }
 
+        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
+
+        return new Request(
+            $action,
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * @return array
+     */
+    protected function configureHeaders(): array
+    {
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ];
+
         // this endpoint requires API key authentication
         $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
         if ($apiKey !== null) {
             $headers['Authorization'] = $apiKey;
+        } else {
+            $timestamp = time() * 1000;
+            $password = \md5(\sprintf('%s%s%s%s', $this->config->getPrefix(), $timestamp, \md5($this->config->getPassword()), $this->config->getPostfix()));
+            $headers['Authorization'] = $this->config->getUsername().':'.$password.':'.$timestamp;//'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
         }
 
         $defaultHeaders = [];
@@ -96,14 +100,6 @@ class ApiClient extends ApiClientBase
             $defaultHeaders,
             $headers
         );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            $action,
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $headers;
     }
 }

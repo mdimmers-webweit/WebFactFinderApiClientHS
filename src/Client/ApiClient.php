@@ -79,10 +79,6 @@ abstract class ApiClient
 
     protected function getQuery(string $resourcePath, array $queryParams): Request
     {
-        // body params
-        $_tempBody = null;
-        $httpBody = null;
-
         $headers = [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
@@ -112,8 +108,7 @@ abstract class ApiClient
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
+            $headers
         );
     }
 
@@ -244,33 +239,11 @@ abstract class ApiClient
 
     private function query(string $action, string $resourcePath, array $queryParams, $params, bool $oauth = false): Request
     {
-        // body params
-        $httpBody = $_tempBody = null;
-        if (isset($params)) {
-            $_tempBody = $params;
-        }
 
         $headers = [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
         ];
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
 
         $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
 
@@ -296,6 +269,21 @@ abstract class ApiClient
             $defaultHeaders,
             $headers
         );
+
+        $httpBody = null;
+        // for model (json/xml)
+        if ($params) {
+            $httpBody = $params;
+
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass) {
+                $httpBody = \GuzzleHttp6\json_encode($httpBody);
+            }
+            // array has no __toString(), so we should encode it manually
+            if (\is_array($httpBody)) {
+                $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+            }
+        }
 
         $query = \GuzzleHttp6\Psr7\build_query($queryParams);
 

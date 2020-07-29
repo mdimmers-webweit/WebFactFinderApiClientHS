@@ -97,7 +97,15 @@ class Configuration
      */
     protected $tempFolderPath;
 
-    private static $defaultConfiguration;
+    /**
+     * @var string
+     */
+    private $prefix;
+
+    /**
+     * @var string
+     */
+    private $postfix;
 
     public function __construct(string $username, string $password, string $host)
     {
@@ -392,5 +400,25 @@ class Configuration
         }
 
         return $keyWithPrefix;
+    }
+
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+
+    public function getPostfix()
+    {
+        return $this->postfix;
+    }
+
+    public function setPostfix($postfix): void
+    {
+        $this->postfix = $postfix;
+    }
+
+    public function setPrefix($prefix): void
+    {
+        $this->prefix = $prefix;
     }
 }
