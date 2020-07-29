@@ -6,7 +6,11 @@
 
 use Symfony\Component\Dotenv\Dotenv;
 
-require 'vendor/autoload.php';
+if (file_exists(__DIR__.'/../vendor/autoload.php')) {
+    require __DIR__.'/../vendor/autoload.php';
+} else {
+    require 'vendor/autoload.php';
+}
 
 if (\method_exists(Dotenv::class, 'loadEnv')) {
     (new Dotenv())->loadEnv(\dirname(__DIR__) . '/.env');
