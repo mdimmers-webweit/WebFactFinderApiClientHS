@@ -50,7 +50,6 @@ class ErrorDescription extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'name' => null,

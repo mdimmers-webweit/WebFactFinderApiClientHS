@@ -57,7 +57,6 @@ class SearchControlParams extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'deduplication_field' => null,

@@ -44,7 +44,6 @@ class VariantValues extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [];
 
@@ -71,5 +70,7 @@ class VariantValues extends BaseModel
     protected static $getters = [];
 
     /* @phpstan-ignore-next-line */
-    public function __construct(?array $data = null){}
+    public function __construct(?array $data = null)
+    {
+    }
 }

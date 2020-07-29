@@ -48,7 +48,6 @@ class DatabaseState extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'database_version' => 'int64',

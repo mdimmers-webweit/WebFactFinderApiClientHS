@@ -17,9 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V1\Api;
 
-use GuzzleHttp6\Client;
 use GuzzleHttp6\Psr7\Request;
-use GuzzleHttp6\RequestOptions;
 use Web\FactFinderApi\Client\ObjectSerializer;
 use Web\FactFinderApi\Client\V1\Model\Params;
 
@@ -236,6 +234,4 @@ class SuggestApi extends ApiClient
 
         return $this->postQuery($resourcePath, [], $params);
     }
-
-
 }

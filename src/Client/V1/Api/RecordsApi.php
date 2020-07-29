@@ -17,9 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V1\Api;
 
-use GuzzleHttp6\Client;
 use GuzzleHttp6\Psr7\Request;
-use GuzzleHttp6\RequestOptions;
 use Web\FactFinderApi\Client\ApiException;
 use Web\FactFinderApi\Client\ObjectSerializer;
 
@@ -113,7 +111,7 @@ class RecordsApi extends ApiClient
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response)  {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -540,6 +538,4 @@ class RecordsApi extends ApiClient
 
         return $this->putQuery($resourcePath, $queryParams, $records);
     }
-
-
 }

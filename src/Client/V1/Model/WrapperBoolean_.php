@@ -36,5 +36,7 @@ class WrapperBoolean_ extends BaseModel
     protected static $swaggerModelName = 'Wrapper«boolean»';
 
     /* @phpstan-ignore-next-line */
-    public function __construct(?array $data = null){}
+    public function __construct(?array $data = null)
+    {
+    }
 }

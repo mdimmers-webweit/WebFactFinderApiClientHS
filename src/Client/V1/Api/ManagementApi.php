@@ -17,9 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V1\Api;
 
-use GuzzleHttp6\Client;
 use GuzzleHttp6\Psr7\Request;
-use GuzzleHttp6\RequestOptions;
 use Web\FactFinderApi\Client\ApiException;
 use Web\FactFinderApi\Client\Configuration;
 use Web\FactFinderApi\Client\ObjectSerializer;
@@ -277,6 +275,4 @@ class ManagementApi extends ApiClient
 
         return $this->postQuery($resourcePath, $queryParams);
     }
-
-
 }

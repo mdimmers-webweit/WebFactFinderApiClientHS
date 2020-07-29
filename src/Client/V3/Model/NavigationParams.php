@@ -55,7 +55,6 @@ class NavigationParams extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'advisor_status' => null,

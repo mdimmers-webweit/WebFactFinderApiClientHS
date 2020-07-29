@@ -55,7 +55,6 @@ class BreadCrumbTrailItem extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'associated_field_name' => null,

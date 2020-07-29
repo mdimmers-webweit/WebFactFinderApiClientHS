@@ -72,7 +72,6 @@ class Result extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'applied_preprocessor_entries' => null,

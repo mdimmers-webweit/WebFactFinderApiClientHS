@@ -26,7 +26,6 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats;
 

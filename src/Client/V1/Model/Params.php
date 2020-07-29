@@ -59,7 +59,6 @@ class Params extends SearchParamsBase
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'ab_test' => null,

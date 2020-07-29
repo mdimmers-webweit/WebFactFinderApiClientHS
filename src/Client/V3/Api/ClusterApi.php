@@ -241,7 +241,7 @@ class ClusterApi extends ApiClient
      * Synchronize the worldmatch database of this node.
      *
      * @param string $channel channel (required)
-     * @param bool $verbose verbose (optional, default to false)
+     * @param bool   $verbose verbose (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @throws ApiException              on non-2xx response
@@ -261,7 +261,7 @@ class ClusterApi extends ApiClient
      * Synchronize the worldmatch database of this node.
      *
      * @param string $channel channel (required)
-     * @param bool $verbose verbose (optional, default to false)
+     * @param bool   $verbose verbose (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @throws ApiException              on non-2xx response
@@ -281,7 +281,7 @@ class ClusterApi extends ApiClient
      * Synchronize the worldmatch database of this node.
      *
      * @param string $channel channel (required)
-     * @param bool $verbose verbose (optional, default to false)
+     * @param bool   $verbose verbose (optional, default to false)
      *
      * @throws \InvalidArgumentException
      */
@@ -301,7 +301,7 @@ class ClusterApi extends ApiClient
      * Synchronize the worldmatch database of this node.
      *
      * @param string $channel channel (required)
-     * @param bool $verbose verbose (optional, default to false)
+     * @param bool   $verbose verbose (optional, default to false)
      *
      * @throws \InvalidArgumentException
      */
@@ -349,7 +349,7 @@ class ClusterApi extends ApiClient
      * Create request for operation 'syncDatabaseUsingPOST'
      *
      * @param string $channel channel (required)
-     * @param bool $verbose verbose (optional, default to false)
+     * @param bool   $verbose verbose (optional, default to false)
      *
      * @throws \InvalidArgumentException
      */

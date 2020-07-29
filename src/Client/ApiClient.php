@@ -237,9 +237,41 @@ abstract class ApiClient
         return $this->query('DELETE', $resourcePath, $queryParams, $params, $oauth);
     }
 
+    /**
+     * Create http client option
+     *
+     * @throws \RuntimeException on file opening failure
+     *
+     * @return array of http client options
+     */
+    protected function createHttpClientOption()
+    {
+        $options = [];
+        if ($this->config->getDebug()) {
+            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
+            if (!$options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            }
+        }
+
+        return $options;
+    }
+
+    protected function addChannelToResourcePath($channel, string $resourcePath): string
+    {
+        if ($channel !== null) {
+            $resourcePath = \str_replace(
+                '{channel}',
+                ObjectSerializer::toPathValue($channel),
+                $resourcePath
+            );
+        }
+
+        return $resourcePath;
+    }
+
     private function query(string $action, string $resourcePath, array $queryParams, $params, bool $oauth = false): Request
     {
-
         $headers = [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
@@ -293,38 +325,5 @@ abstract class ApiClient
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
-    }
-
-    protected function addChannelToResourcePath($channel, string $resourcePath): string
-    {
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
-
-        return $resourcePath;
     }
 }

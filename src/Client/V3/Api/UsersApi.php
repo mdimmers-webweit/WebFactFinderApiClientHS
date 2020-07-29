@@ -1105,6 +1105,7 @@ class UsersApi extends ApiClient
     protected function updateGroupUsingPUTRequest(Group $group)
     {
         $resourcePath = '/rest/v3/groups';
+
         return $this->putQuery($resourcePath, [], $group, true);
     }
 
@@ -1120,6 +1121,7 @@ class UsersApi extends ApiClient
     protected function updateUserUsingPUTRequest(UserNoRequiredPassword $user)
     {
         $resourcePath = '/rest/v3/users';
+
         return $this->putQuery($resourcePath, [], $user, true);
     }
 

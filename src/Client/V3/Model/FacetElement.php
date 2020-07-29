@@ -57,7 +57,6 @@ class FacetElement extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'absolute_max_value' => 'double',

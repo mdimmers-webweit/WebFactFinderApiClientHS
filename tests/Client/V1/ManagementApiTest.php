@@ -7,8 +7,6 @@
 namespace Web\FactFinderApi\Tests\Client\V1;
 
 use GuzzleHttp6\Client;
-use GuzzleHttp6\Promise\Promise;
-use Web\FactFinderApi\Client\ApiException;
 use Web\FactFinderApi\Client\V1\Api\ManagementApi;
 
 class ManagementApiTest extends AbstractTestCase

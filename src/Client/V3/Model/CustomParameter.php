@@ -48,7 +48,6 @@ class CustomParameter extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'cache_irrelevant' => null,

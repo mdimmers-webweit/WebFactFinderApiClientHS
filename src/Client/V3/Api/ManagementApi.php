@@ -657,6 +657,7 @@ class ManagementApi extends ApiClient
     protected function flushLogsUsingPOSTRequest()
     {
         $resourcePath = '/rest/v3/management/flushLogs';
+
         return $this->postQuery($resourcePath, [], '', true);
     }
 
@@ -694,6 +695,7 @@ class ManagementApi extends ApiClient
     protected function resetLogLevelUsingPOSTRequest()
     {
         $resourcePath = '/rest/v3/management/resetLogLevel';
+
         return $this->postQuery($resourcePath, [], '', true);
     }
 

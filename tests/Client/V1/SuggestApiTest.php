@@ -7,11 +7,8 @@
 namespace Web\FactFinderApi\Tests\Client\V1;
 
 use GuzzleHttp6\Client;
-use Web\FactFinderApi\Client\ApiException;
 use Web\FactFinderApi\Client\V1\Api\SuggestApi;
 use Web\FactFinderApi\Client\V1\Model\Params;
-use Web\FactFinderApi\Client\V1\Model\Result;
-use Web\FactFinderApi\Client\V1\Model\SearchRequest;
 
 class SuggestApiTest extends AbstractTestCase
 {

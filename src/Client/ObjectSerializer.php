@@ -63,7 +63,7 @@ class ObjectSerializer
                     && !\in_array($swaggerType, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)
                     && \method_exists($swaggerType, 'getAllowableEnumValues')
                     && /* @phpstan-ignore-line */!\in_array($value, $swaggerType::getAllowableEnumValues(), true)) {
-                    $imploded = \implode("', '", $swaggerType::getAllowableEnumValues());/* @phpstan-ignore-line */
+                    $imploded = \implode("', '", $swaggerType::getAllowableEnumValues()); /* @phpstan-ignore-line */
                     throw new \InvalidArgumentException("Invalid value for enum '$swaggerType', must be one of: '$imploded'");
                 }
                 if ($value !== null) {
@@ -123,7 +123,7 @@ class ObjectSerializer
             return \implode(',', $object);
         }
 
-        if (is_bool($object)) {
+        if (\is_bool($object)) {
             return $object ? 'true' : 'false';
         }
 

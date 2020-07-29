@@ -51,7 +51,6 @@ class SearchRecord extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'found_words' => null,

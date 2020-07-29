@@ -47,7 +47,6 @@ class Target extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'destination' => null,

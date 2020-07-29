@@ -59,7 +59,6 @@ class Campaign extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'active_questions' => null,

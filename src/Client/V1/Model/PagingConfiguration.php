@@ -50,7 +50,6 @@ class PagingConfiguration extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'default_results_per_page' => 'int32',

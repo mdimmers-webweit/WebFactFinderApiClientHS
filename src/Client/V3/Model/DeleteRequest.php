@@ -46,7 +46,6 @@ class DeleteRequest extends BaseModel
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
      */
     protected static $swaggerFormats = [
         'record_ids' => null,

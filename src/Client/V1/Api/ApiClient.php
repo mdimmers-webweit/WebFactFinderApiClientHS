@@ -40,6 +40,36 @@ class ApiClient extends ApiClientBase
         return $this->query('PUT', $resourcePath, $queryParams, $params);
     }
 
+    protected function configureHeaders(): array
+    {
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ];
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        } else {
+            $timestamp = \time() * 1000;
+            $password = \md5(\sprintf('%s%s%s%s', $this->config->getPrefix(), $timestamp, \md5($this->config->getPassword()), $this->config->getPostfix()));
+            $headers['Authorization'] = $this->config->getUsername() . ':' . $password . ':' . $timestamp; //'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = \array_merge(
+            $defaultHeaders,
+            $headers
+        );
+
+        return $headers;
+    }
+
     private function query(string $action, string $resourcePath, array $queryParams, $params = null): Request
     {
         $headers = $this->configureHeaders();
@@ -69,37 +99,5 @@ class ApiClient extends ApiClientBase
             $headers,
             $httpBody
         );
-    }
-
-    /**
-     * @return array
-     */
-    protected function configureHeaders(): array
-    {
-        $headers = [
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-        ];
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        } else {
-            $timestamp = time() * 1000;
-            $password = \md5(\sprintf('%s%s%s%s', $this->config->getPrefix(), $timestamp, \md5($this->config->getPassword()), $this->config->getPostfix()));
-            $headers['Authorization'] = $this->config->getUsername().':'.$password.':'.$timestamp;//'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-        return $headers;
     }
 }
