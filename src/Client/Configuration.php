@@ -97,7 +97,15 @@ class Configuration
      */
     protected $tempFolderPath;
 
-    private static $defaultConfiguration;
+    /**
+     * @var string
+     */
+    private $prefix;
+
+    /**
+     * @var string
+     */
+    private $postfix;
 
     public function __construct(string $username, string $password, string $host)
     {
@@ -128,11 +136,11 @@ class Configuration
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
      *
-     * @return string API key or token
+     * @return string|null API key or token
      */
     public function getApiKey($apiKeyIdentifier)
     {
-        return isset($this->apiKeys[$apiKeyIdentifier]) ? $this->apiKeys[$apiKeyIdentifier] : null;
+        return $this->apiKeys[$apiKeyIdentifier] ?? null;
     }
 
     /**
@@ -155,11 +163,11 @@ class Configuration
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
      *
-     * @return string
+     * @return string|null
      */
     public function getApiKeyPrefix($apiKeyIdentifier)
     {
-        return isset($this->apiKeyPrefixes[$apiKeyIdentifier]) ? $this->apiKeyPrefixes[$apiKeyIdentifier] : null;
+        return $this->apiKeyPrefixes[$apiKeyIdentifier] ?? null;
     }
 
     /**
@@ -361,30 +369,6 @@ class Configuration
     }
 
     /**
-     * Gets the default configuration instance
-     *
-     * @return Configuration
-     */
-    public static function getDefaultConfiguration()
-    {
-        if (self::$defaultConfiguration === null) {
-            self::$defaultConfiguration = new Configuration();
-        }
-
-        return self::$defaultConfiguration;
-    }
-
-    /**
-     * Sets the detault configuration instance
-     *
-     * @param Configuration $config An instance of the Configuration Object
-     */
-    public static function setDefaultConfiguration(Configuration $config): void
-    {
-        self::$defaultConfiguration = $config;
-    }
-
-    /**
      * Gets the essential information for debugging
      *
      * @return string The report for debugging
@@ -395,19 +379,12 @@ class Configuration
         $report .= '    OS: ' . \php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    OpenAPI Spec Version: v2' . PHP_EOL;
-        $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
+        $report .= '    Temp Folder Path: ' . \sys_get_temp_dir() . PHP_EOL;
 
         return $report;
     }
 
-    /**
-     * Get API key (with prefix if set)
-     *
-     * @param string $apiKeyIdentifier name of apikey
-     *
-     * @return string API key with the prefix
-     */
-    public function getApiKeyWithPrefix($apiKeyIdentifier)
+    public function getApiKeyWithPrefix(string $apiKeyIdentifier): ?string
     {
         $prefix = $this->getApiKeyPrefix($apiKeyIdentifier);
         $apiKey = $this->getApiKey($apiKeyIdentifier);
@@ -423,5 +400,25 @@ class Configuration
         }
 
         return $keyWithPrefix;
+    }
+
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+
+    public function getPostfix()
+    {
+        return $this->postfix;
+    }
+
+    public function setPostfix($postfix): void
+    {
+        $this->postfix = $postfix;
+    }
+
+    public function setPrefix($prefix): void
+    {
+        $this->prefix = $prefix;
     }
 }

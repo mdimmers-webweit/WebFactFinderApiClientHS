@@ -17,8 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V3\Model;
 
-use Web\FactFinderApi\Client\Model\ModelInterface;
-use Web\FactFinderApi\Client\ObjectSerializer;
+use Web\FactFinderApi\Client\Model\BaseModel;
 
 /**
  * UserNoRequiredPassword Class Doc Comment
@@ -27,10 +26,8 @@ use Web\FactFinderApi\Client\ObjectSerializer;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class UserNoRequiredPassword implements ModelInterface, \ArrayAccess
+class UserNoRequiredPassword extends BaseModel
 {
-    const DISCRIMINATOR = null;
-
     const ROLES_AFTER_SEARCH_NAVIGATION_MANAGER = 'AfterSearchNavigationManager';
     const ROLES_BACKUP_MANAGER = 'BackupManager';
     const ROLES_CACHE_MANAGER = 'CacheManager';
@@ -93,8 +90,6 @@ class UserNoRequiredPassword implements ModelInterface, \ArrayAccess
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'name' => null,
@@ -165,13 +160,6 @@ class UserNoRequiredPassword implements ModelInterface, \ArrayAccess
     ];
 
     /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -187,84 +175,6 @@ class UserNoRequiredPassword implements ModelInterface, \ArrayAccess
         $this->container['enable_advanced_mode'] = $data['enable_advanced_mode'] ?? null;
         $this->container['allow_all_current_and_future_channels'] = $data['allow_all_current_and_future_channels'] ?? null;
         $this->container['locale'] = $data['locale'] ?? null;
-    }
-
-    /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        if (\defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return \json_encode(
-                ObjectSerializer::sanitizeForSerialization($this),
-                JSON_PRETTY_PRINT
-            );
-        }
-
-        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
-    }
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function swaggerTypes()
-    {
-        return self::$swaggerTypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function swaggerFormats()
-    {
-        return self::$swaggerFormats;
-    }
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters()
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters()
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName()
-    {
-        return self::$swaggerModelName;
     }
 
     /**
@@ -317,7 +227,7 @@ class UserNoRequiredPassword implements ModelInterface, \ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -347,17 +257,6 @@ class UserNoRequiredPassword implements ModelInterface, \ArrayAccess
         }
 
         return $invalidProperties;
-    }
-
-    /**
-     * Validate all the properties in the model
-     * return true if all passed
-     *
-     * @return bool True if all properties are valid
-     */
-    public function valid()
-    {
-        return \count($this->listInvalidProperties()) === 0;
     }
 
     /**
@@ -567,50 +466,5 @@ class UserNoRequiredPassword implements ModelInterface, \ArrayAccess
         $this->container['locale'] = $locale;
 
         return $this;
-    }
-
-    /**
-     * Returns true if offset exists. False otherwise.
-     *
-     * @param int $offset Offset
-     *
-     * @return bool
-     */
-    public function offsetExists($offset)
-    {
-        return isset($this->container[$offset]);
-    }
-
-    /**
-     * @param int $offset Offset
-     */
-    public function offsetGet($offset)
-    {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
-    }
-
-    /**
-     * Sets value based on offset.
-     *
-     * @param int   $offset Offset
-     * @param mixed $value  Value to be set
-     */
-    public function offsetSet($offset, $value): void
-    {
-        if (\is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    /**
-     * Unsets offset.
-     *
-     * @param int $offset Offset
-     */
-    public function offsetUnset($offset): void
-    {
-        unset($this->container[$offset]);
     }
 }

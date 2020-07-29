@@ -17,8 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V1\Model;
 
-use Web\FactFinderApi\Client\Model\ModelInterface;
-use Web\FactFinderApi\Client\ObjectSerializer;
+use Web\FactFinderApi\Client\Model\BaseModel;
 
 /**
  * Result Class Doc Comment
@@ -27,10 +26,8 @@ use Web\FactFinderApi\Client\ObjectSerializer;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Result implements ModelInterface, \ArrayAccess
+class Result extends BaseModel
 {
-    const DISCRIMINATOR = null;
-
     const RESULT_ARTICLE_NUMBER_STATUS_NO_ARTICLE_NUMBER_SEARCH = 'noArticleNumberSearch';
     const RESULT_ARTICLE_NUMBER_STATUS_NOTHING_FOUND = 'nothingFound';
     const RESULT_ARTICLE_NUMBER_STATUS_RESULTS_FOUND = 'resultsFound';
@@ -75,8 +72,6 @@ class Result implements ModelInterface, \ArrayAccess
 
     /**
      * Array of property to format mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     protected static $swaggerFormats = [
         'applied_preprocessor_entries' => null,
@@ -187,13 +182,6 @@ class Result implements ModelInterface, \ArrayAccess
     ];
 
     /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -219,84 +207,6 @@ class Result implements ModelInterface, \ArrayAccess
         $this->container['single_word_results'] = $data['single_word_results'] ?? null;
         $this->container['sorts_list'] = $data['sorts_list'] ?? null;
         $this->container['timed_out'] = $data['timed_out'] ?? null;
-    }
-
-    /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        if (\defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return \json_encode(
-                ObjectSerializer::sanitizeForSerialization($this),
-                JSON_PRETTY_PRINT
-            );
-        }
-
-        return \json_encode(ObjectSerializer::sanitizeForSerialization($this));
-    }
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function swaggerTypes()
-    {
-        return self::$swaggerTypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function swaggerFormats()
-    {
-        return self::$swaggerFormats;
-    }
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters()
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters()
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName()
-    {
-        return self::$swaggerModelName;
     }
 
     /**
@@ -332,7 +242,7 @@ class Result implements ModelInterface, \ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -402,17 +312,6 @@ class Result implements ModelInterface, \ArrayAccess
         }
 
         return $invalidProperties;
-    }
-
-    /**
-     * Validate all the properties in the model
-     * return true if all passed
-     *
-     * @return bool True if all properties are valid
-     */
-    public function valid()
-    {
-        return \count($this->listInvalidProperties()) === 0;
     }
 
     /**
@@ -496,7 +395,7 @@ class Result implements ModelInterface, \ArrayAccess
     }
 
     /**
-     * @return map[string,string]
+     * @return string[]
      */
     public function getFieldRoles()
     {
@@ -504,7 +403,7 @@ class Result implements ModelInterface, \ArrayAccess
     }
 
     /**
-     * @param map[string,string] $field_roles field_roles
+     * @param string[] $field_roles field_roles
      *
      * @return $this
      */
@@ -831,50 +730,5 @@ class Result implements ModelInterface, \ArrayAccess
         $this->container['timed_out'] = $timed_out;
 
         return $this;
-    }
-
-    /**
-     * Returns true if offset exists. False otherwise.
-     *
-     * @param int $offset Offset
-     *
-     * @return bool
-     */
-    public function offsetExists($offset)
-    {
-        return isset($this->container[$offset]);
-    }
-
-    /**
-     * @param int $offset Offset
-     */
-    public function offsetGet($offset)
-    {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
-    }
-
-    /**
-     * Sets value based on offset.
-     *
-     * @param int   $offset Offset
-     * @param mixed $value  Value to be set
-     */
-    public function offsetSet($offset, $value): void
-    {
-        if (\is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    /**
-     * Unsets offset.
-     *
-     * @param int $offset Offset
-     */
-    public function offsetUnset($offset): void
-    {
-        unset($this->container[$offset]);
     }
 }

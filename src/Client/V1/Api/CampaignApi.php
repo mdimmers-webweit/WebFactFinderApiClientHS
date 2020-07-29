@@ -17,57 +17,11 @@
 
 namespace Web\FactFinderApi\Client\V1\Api;
 
-use GuzzleHttp6\Client;
-use GuzzleHttp6\ClientInterface;
-use GuzzleHttp6\Exception\RequestException;
 use GuzzleHttp6\Psr7\Request;
-use GuzzleHttp6\RequestOptions;
-use Web\FactFinderApi\Client\ApiClient;
-use Web\FactFinderApi\Client\ApiException;
-use Web\FactFinderApi\Client\Configuration;
-use Web\FactFinderApi\Client\HeaderSelector;
 use Web\FactFinderApi\Client\ObjectSerializer;
 
 class CampaignApi extends ApiClient
 {
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
-
-    /**
-     * @var Configuration
-     */
-    protected $config;
-
-    /**
-     * @var HeaderSelector
-     */
-    protected $headerSelector;
-
-    /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     */
-    public function __construct(
-        ?ClientInterface $client = null,
-        ?Configuration $config = null,
-        ?HeaderSelector $selector = null
-    ) {
-        $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
     /**
      * Operation getPageCampaignsUsingGET
      *
@@ -84,7 +38,7 @@ class CampaignApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\Campaign[]
      */
-    public function getPageCampaignsUsingGET($channel, $page_id, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getPageCampaignsUsingGET(string $channel, $page_id, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         list($response) = $this->getPageCampaignsUsingGETWithHttpInfo($channel, $page_id, $ids_only, $sid, $advisor_status);
 
@@ -107,57 +61,11 @@ class CampaignApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\Campaign[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageCampaignsUsingGETWithHttpInfo($channel, $page_id, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getPageCampaignsUsingGETWithHttpInfo(string $channel, $page_id, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getPageCampaignsUsingGETRequest($channel, $page_id, $ids_only, $sid, $advisor_status);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $this->handleException($e);
-        }
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V1\Model\Campaign[]');
     }
 
     /**
@@ -176,7 +84,7 @@ class CampaignApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\Campaign[]
      */
-    public function getProductCampaignsUsingGET($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getProductCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         list($response) = $this->getProductCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only, $sid, $advisor_status);
 
@@ -199,57 +107,11 @@ class CampaignApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\Campaign[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProductCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getProductCampaignsUsingGETWithHttpInfo(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getProductCampaignsUsingGETRequest($channel, $product_number, $ids_only, $sid, $advisor_status);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $this->handleException($e);
-        }
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V1\Model\Campaign[]');
     }
 
     /**
@@ -267,7 +129,7 @@ class CampaignApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getProductCampaignsUsingGETAsync($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getProductCampaignsUsingGETAsync(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         return $this->getProductCampaignsUsingGETAsyncWithHttpInfo($channel, $product_number, $ids_only, $sid, $advisor_status)
             ->then(
@@ -292,46 +154,11 @@ class CampaignApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getProductCampaignsUsingGETAsyncWithHttpInfo($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getProductCampaignsUsingGETAsyncWithHttpInfo(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getProductCampaignsUsingGETRequest($channel, $product_number, $ids_only, $sid, $advisor_status);
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                            $content = \json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        \sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V1\Model\Campaign[]');
     }
 
     /**
@@ -350,7 +177,7 @@ class CampaignApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\Campaign[]
      */
-    public function getShoppingCartCampaignsUsingGET($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getShoppingCartCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         list($response) = $this->getShoppingCartCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only, $sid, $advisor_status);
 
@@ -373,79 +200,11 @@ class CampaignApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\Campaign[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getShoppingCartCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getShoppingCartCampaignsUsingGETWithHttpInfo(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getShoppingCartCampaignsUsingGETRequest($channel, $product_number, $ids_only, $sid, $advisor_status);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        $returnType,
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 401:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 403:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 500:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-            }
-            throw $e;
-        }
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V1\Model\Campaign[]');
     }
 
     /**
@@ -463,7 +222,7 @@ class CampaignApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getShoppingCartCampaignsUsingGETAsync($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getShoppingCartCampaignsUsingGETAsync(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         return $this->getShoppingCartCampaignsUsingGETAsyncWithHttpInfo($channel, $product_number, $ids_only, $sid, $advisor_status)
             ->then(
@@ -488,46 +247,11 @@ class CampaignApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getShoppingCartCampaignsUsingGETAsyncWithHttpInfo($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    public function getShoppingCartCampaignsUsingGETAsyncWithHttpInfo(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Campaign[]';
         $request = $this->getShoppingCartCampaignsUsingGETRequest($channel, $product_number, $ids_only, $sid, $advisor_status);
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                            $content = \json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        \sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return $this->executeAsyncRequest($request, '\Web\FactFinderApi\Client\V1\Model\Campaign[]');
     }
 
     /**
@@ -543,7 +267,7 @@ class CampaignApi extends ApiClient
      *
      * @return Request
      */
-    protected function getPageCampaignsUsingGETRequest(string $channel, string $page_id, $ids_only = 'false', $sid = null, $advisor_status = null)
+    protected function getPageCampaignsUsingGETRequest(string $channel, string $page_id, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         $resourcePath = '/v1/campaign/{channel}/page';
         $queryParams = [];
@@ -567,83 +291,9 @@ class CampaignApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
+        return $this->getQuery($resourcePath, $queryParams);
     }
 
     /**
@@ -659,7 +309,7 @@ class CampaignApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function getProductCampaignsUsingGETRequest($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    protected function getProductCampaignsUsingGETRequest(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -695,63 +345,9 @@ class CampaignApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->getQuery($resourcePath, $queryParams);
     }
 
     /**
@@ -767,7 +363,7 @@ class CampaignApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function getShoppingCartCampaignsUsingGETRequest($channel, $product_number, $ids_only = 'false', $sid = null, $advisor_status = null)
+    protected function getShoppingCartCampaignsUsingGETRequest(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -805,62 +401,8 @@ class CampaignApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->getQuery($resourcePath, $queryParams);
     }
 }

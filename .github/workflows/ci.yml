@@ -1,21 +1,37 @@
 name: Unit Tests
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    push:
+        branches: [ master ]
+    pull_request:
+        branches: [ master ]
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install dependencies
-        if: steps.composer-cache.outputs.cache-hit != 'true'
-        run: composer install --prefer-dist --no-progress --no-suggest
-      - name: Run unit tests
-        run: ./vendor/phpunit/phpunit/phpunit
-        env:
-          WEB_FACT_FINDER_API_URL: ${{ secrets.WEB_FACT_FINDER_API_URL }}
-          WEB_FACT_FINDER_API_USERNAME: ${{ secrets.WEB_FACT_FINDER_API_USERNAME }}
-          WEB_FACT_FINDER_API_PASSWORD: ${{ secrets.WEB_FACT_FINDER_API_PASSWORD }}
-          WEB_FACT_FINDER_API_TEST_CHANNEL: ${{ secrets.WEB_FACT_FINDER_API_TEST_CHANNEL }}
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v2
+            -   name: Get Composer Cache Directory
+                id: composer-cache
+                run: |
+                    echo "::set-output name=dir::$(composer config cache-files-dir)"
+            -   uses: actions/cache@v2
+                with:
+                    path: ${{ steps.composer-cache.outputs.dir }}
+                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: |
+                        ${{ runner.os }}-composer-
+            -   name: Install dependencies
+                if: steps.composer-cache.outputs.cache-hit != 'true'
+                run: composer install --prefer-dist --no-progress --no-suggest
+            -   name: Run unit tests
+                run: ./vendor/phpunit/phpunit/phpunit
+                env:
+                    WEB_FACT_FINDER_API_URL: ${{ secrets.WEB_FACT_FINDER_API_URL }}
+                    WEB_FACT_FINDER_API_USERNAME: ${{ secrets.WEB_FACT_FINDER_API_USERNAME }}
+                    WEB_FACT_FINDER_API_PASSWORD: ${{ secrets.WEB_FACT_FINDER_API_PASSWORD }}
+                    WEB_FACT_FINDER_API_TEST_CHANNEL: ${{ secrets.WEB_FACT_FINDER_API_TEST_CHANNEL }}
+                    WEB_FACT_FINDER_73_API_URL: ${{ secrets.WEB_FACT_FINDER_73_API_URL }}
+                    WEB_FACT_FINDER_73_API_USERNAME: ${{ secrets.WEB_FACT_FINDER_73_API_USERNAME }}
+                    WEB_FACT_FINDER_73_API_PASSWORD: ${{ secrets.WEB_FACT_FINDER_73_API_PASSWORD }}
+                    WEB_FACT_FINDER_73_API_TEST_CHANNEL: ${{ secrets.WEB_FACT_FINDER_73_API_TEST_CHANNEL }}
+                    WEB_FACT_FINDER_73_API_PREFIX: ${{ secrets.WEB_FACT_FINDER_73_API_PREFIX }}
+                    WEB_FACT_FINDER_73_API_POSTFIX: ${{ secrets.WEB_FACT_FINDER_73_API_POSTFIX }}

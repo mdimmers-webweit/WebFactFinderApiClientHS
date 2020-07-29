@@ -17,15 +17,8 @@
 
 namespace Web\FactFinderApi\Client\V1\Api;
 
-use GuzzleHttp6\Client;
-use GuzzleHttp6\ClientInterface;
-use GuzzleHttp6\Exception\RequestException;
 use GuzzleHttp6\Psr7\Request;
-use GuzzleHttp6\RequestOptions;
-use Web\FactFinderApi\Client\ApiClient;
-use Web\FactFinderApi\Client\ApiException;
 use Web\FactFinderApi\Client\Configuration;
-use Web\FactFinderApi\Client\HeaderSelector;
 use Web\FactFinderApi\Client\ObjectSerializer;
 
 /**
@@ -37,44 +30,6 @@ use Web\FactFinderApi\Client\ObjectSerializer;
  */
 class ImportApi extends ApiClient
 {
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
-
-    /**
-     * @var Configuration
-     */
-    protected $config;
-
-    /**
-     * @var HeaderSelector
-     */
-    protected $headerSelector;
-
-    /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     */
-    public function __construct(
-        ?ClientInterface $client = null,
-        ?Configuration $config = null,
-        ?HeaderSelector $selector = null
-    ) {
-        $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
     /**
      * Operation isImportRunningUsingGET
      *
@@ -108,77 +63,9 @@ class ImportApi extends ApiClient
      */
     public function isImportRunningUsingGETWithHttpInfo($channel)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\WrapperBoolean_';
         $request = $this->isImportRunningUsingGETRequest($channel);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        $returnType,
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 401:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 403:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 500:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-            }
-            throw $e;
-        }
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\WrapperBoolean_::class);
     }
 
     /**
@@ -215,44 +102,9 @@ class ImportApi extends ApiClient
      */
     public function isImportRunningUsingGETAsyncWithHttpInfo($channel)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\WrapperBoolean_';
         $request = $this->isImportRunningUsingGETRequest($channel);
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                            $content = \json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        \sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\WrapperBoolean_::class);
     }
 
     /**
@@ -268,7 +120,7 @@ class ImportApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\ImportResult
      */
-    public function startRecommendationImportUsingPOST($channel = null, $quiet = 'false')
+    public function startRecommendationImportUsingPOST($channel = null, bool $quiet = false)
     {
         list($response) = $this->startRecommendationImportUsingPOSTWithHttpInfo($channel, $quiet);
 
@@ -288,79 +140,11 @@ class ImportApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\ImportResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function startRecommendationImportUsingPOSTWithHttpInfo($channel = null, $quiet = 'false')
+    public function startRecommendationImportUsingPOSTWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ImportResult';
         $request = $this->startRecommendationImportUsingPOSTRequest($channel, $quiet);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        $returnType,
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 401:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 403:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 500:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-            }
-            throw $e;
-        }
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\ImportResult::class);
     }
 
     /**
@@ -375,7 +159,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startRecommendationImportUsingPOSTAsync($channel = null, $quiet = 'false')
+    public function startRecommendationImportUsingPOSTAsync($channel = null, bool $quiet = false)
     {
         return $this->startRecommendationImportUsingPOSTAsyncWithHttpInfo($channel, $quiet)
             ->then(
@@ -397,46 +181,11 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startRecommendationImportUsingPOSTAsyncWithHttpInfo($channel = null, $quiet = 'false')
+    public function startRecommendationImportUsingPOSTAsyncWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ImportResult';
         $request = $this->startRecommendationImportUsingPOSTRequest($channel, $quiet);
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                            $content = \json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        \sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\ImportResult::class);
     }
 
     /**
@@ -453,7 +202,7 @@ class ImportApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\ImportResult
      */
-    public function startSearchImportUsingPOST($channel = null, $download = 'false', $quiet = 'false')
+    public function startSearchImportUsingPOST($channel = null, bool $download = false, bool $quiet = false)
     {
         list($response) = $this->startSearchImportUsingPOSTWithHttpInfo($channel, $download, $quiet);
 
@@ -474,79 +223,11 @@ class ImportApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\ImportResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function startSearchImportUsingPOSTWithHttpInfo($channel = null, $download = 'false', $quiet = 'false')
+    public function startSearchImportUsingPOSTWithHttpInfo($channel = null, bool $download = false, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ImportResult';
         $request = $this->startSearchImportUsingPOSTRequest($channel, $download, $quiet);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        $returnType,
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 401:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 403:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 500:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-            }
-            throw $e;
-        }
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\ImportResult::class);
     }
 
     /**
@@ -562,7 +243,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startSearchImportUsingPOSTAsync($channel = null, $download = 'false', $quiet = 'false')
+    public function startSearchImportUsingPOSTAsync($channel = null, bool $download = false, bool $quiet = false)
     {
         return $this->startSearchImportUsingPOSTAsyncWithHttpInfo($channel, $download, $quiet)
             ->then(
@@ -585,46 +266,11 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startSearchImportUsingPOSTAsyncWithHttpInfo($channel = null, $download = 'false', $quiet = 'false')
+    public function startSearchImportUsingPOSTAsyncWithHttpInfo($channel = null, bool $download = false, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ImportResult';
         $request = $this->startSearchImportUsingPOSTRequest($channel, $download, $quiet);
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                            $content = \json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        \sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\ImportResult::class);
     }
 
     /**
@@ -640,7 +286,7 @@ class ImportApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\ImportResult
      */
-    public function startSuggestImportUsingPOST($channel = null, $quiet = 'false')
+    public function startSuggestImportUsingPOST($channel = null, bool $quiet = false)
     {
         list($response) = $this->startSuggestImportUsingPOSTWithHttpInfo($channel, $quiet);
 
@@ -660,79 +306,11 @@ class ImportApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\ImportResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function startSuggestImportUsingPOSTWithHttpInfo($channel = null, $quiet = 'false')
+    public function startSuggestImportUsingPOSTWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ImportResult';
         $request = $this->startSuggestImportUsingPOSTRequest($channel, $quiet);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        $returnType,
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 401:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 403:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 500:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-            }
-            throw $e;
-        }
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\ImportResult::class);
     }
 
     /**
@@ -747,7 +325,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startSuggestImportUsingPOSTAsync($channel = null, $quiet = 'false')
+    public function startSuggestImportUsingPOSTAsync($channel = null, bool $quiet = false)
     {
         return $this->startSuggestImportUsingPOSTAsyncWithHttpInfo($channel, $quiet)
             ->then(
@@ -769,46 +347,11 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function startSuggestImportUsingPOSTAsyncWithHttpInfo($channel = null, $quiet = 'false')
+    public function startSuggestImportUsingPOSTAsyncWithHttpInfo($channel = null, bool $quiet = false)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\ImportResult';
         $request = $this->startSuggestImportUsingPOSTRequest($channel, $quiet);
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                            $content = \json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        \sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\ImportResult::class);
     }
 
     /**
@@ -839,55 +382,7 @@ class ImportApi extends ApiClient
             $queryParams['channel'] = ObjectSerializer::toQueryValue($channel);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->getQuery($resourcePath, $queryParams);
     }
 
     /**
@@ -900,7 +395,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function startRecommendationImportUsingPOSTRequest($channel = null, $quiet = 'false')
+    protected function startRecommendationImportUsingPOSTRequest($channel = null, bool $quiet = false)
     {
         $resourcePath = '/v1/import/recommendation';
         $queryParams = [];
@@ -916,55 +411,7 @@ class ImportApi extends ApiClient
             $queryParams['quiet'] = ObjectSerializer::toQueryValue($quiet);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams);
     }
 
     /**
@@ -978,7 +425,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function startSearchImportUsingPOSTRequest($channel = null, $download = 'false', $quiet = 'false')
+    protected function startSearchImportUsingPOSTRequest($channel = null, bool $download = false, bool $quiet = false)
     {
         $resourcePath = '/v1/import/search';
         $queryParams = [];
@@ -998,55 +445,7 @@ class ImportApi extends ApiClient
             $queryParams['quiet'] = ObjectSerializer::toQueryValue($quiet);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams);
     }
 
     /**
@@ -1059,7 +458,7 @@ class ImportApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function startSuggestImportUsingPOSTRequest($channel = null, $quiet = 'false')
+    protected function startSuggestImportUsingPOSTRequest($channel = null, bool $quiet = false)
     {
         $resourcePath = '/v1/import/suggest';
         $queryParams = [];
@@ -1075,74 +474,6 @@ class ImportApi extends ApiClient
             $queryParams['quiet'] = ObjectSerializer::toQueryValue($quiet);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
+        return $this->postQuery($resourcePath, $queryParams);
     }
 }

@@ -40,8 +40,6 @@ class ApiException extends \Exception
 
     /**
      * The deserialized response object
-     *
-     * @var;
      */
     protected $responseObject;
 

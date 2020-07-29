@@ -17,15 +17,9 @@
 
 namespace Web\FactFinderApi\Client\V1\Api;
 
-use GuzzleHttp6\Client;
-use GuzzleHttp6\ClientInterface;
-use GuzzleHttp6\Exception\RequestException;
 use GuzzleHttp6\Psr7\Request;
-use GuzzleHttp6\RequestOptions;
-use Web\FactFinderApi\Client\ApiClient;
 use Web\FactFinderApi\Client\ApiException;
 use Web\FactFinderApi\Client\Configuration;
-use Web\FactFinderApi\Client\HeaderSelector;
 use Web\FactFinderApi\Client\ObjectSerializer;
 
 /**
@@ -38,44 +32,6 @@ use Web\FactFinderApi\Client\ObjectSerializer;
 class ManagementApi extends ApiClient
 {
     /**
-     * @var ClientInterface
-     */
-    protected $client;
-
-    /**
-     * @var Configuration
-     */
-    protected $config;
-
-    /**
-     * @var HeaderSelector
-     */
-    protected $headerSelector;
-
-    /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     */
-    public function __construct(
-        ?ClientInterface $client = null,
-        ?Configuration $config = null,
-        ?HeaderSelector $selector = null
-    ) {
-        $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
-    /**
      * Operation importWhatsHotUsingPOST
      *
      * Execute whatshot import(s)
@@ -86,7 +42,7 @@ class ManagementApi extends ApiClient
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      */
-    public function importWhatsHotUsingPOST($channel = null, $send_notifications = 'false'): void
+    public function importWhatsHotUsingPOST($channel = null, bool $send_notifications = false): void
     {
         $this->importWhatsHotUsingPOSTWithHttpInfo($channel, $send_notifications);
     }
@@ -104,57 +60,12 @@ class ManagementApi extends ApiClient
      *
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function importWhatsHotUsingPOSTWithHttpInfo($channel = null, $send_notifications = 'false')
+    public function importWhatsHotUsingPOSTWithHttpInfo($channel = null, bool $send_notifications = false)
     {
         $returnType = '';
         $request = $this->importWhatsHotUsingPOSTRequest($channel, $send_notifications);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 400:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 401:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 403:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 500:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-            }
-            throw $e;
-        }
+        return $this->executeEmptyRequest($request);
     }
 
     /**
@@ -169,7 +80,7 @@ class ManagementApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function importWhatsHotUsingPOSTAsync($channel = null, $send_notifications = 'false')
+    public function importWhatsHotUsingPOSTAsync($channel = null, bool $send_notifications = false)
     {
         return $this->importWhatsHotUsingPOSTAsyncWithHttpInfo($channel, $send_notifications)
             ->then(
@@ -191,15 +102,14 @@ class ManagementApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function importWhatsHotUsingPOSTAsyncWithHttpInfo($channel = null, $send_notifications = 'false')
+    public function importWhatsHotUsingPOSTAsyncWithHttpInfo($channel = null, bool $send_notifications = false)
     {
-        $returnType = '';
         $request = $this->importWhatsHotUsingPOSTRequest($channel, $send_notifications);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -251,52 +161,7 @@ class ManagementApi extends ApiClient
         $returnType = '';
         $request = $this->reloadConfigurationUsingPOSTRequest($channel);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 400:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 401:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 403:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 500:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-            }
-            throw $e;
-        }
+        return $this->executeEmptyRequest($request);
     }
 
     /**
@@ -333,13 +198,12 @@ class ManagementApi extends ApiClient
      */
     public function reloadConfigurationUsingPOSTAsyncWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->reloadConfigurationUsingPOSTRequest($channel);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception): void {
@@ -369,7 +233,7 @@ class ManagementApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function importWhatsHotUsingPOSTRequest($channel = null, $send_notifications = 'false')
+    protected function importWhatsHotUsingPOSTRequest($channel = null, bool $send_notifications = false)
     {
         $resourcePath = '/v1/management/whatshot';
         $queryParams = [];
@@ -385,55 +249,7 @@ class ManagementApi extends ApiClient
             $queryParams['sendNotifications'] = ObjectSerializer::toQueryValue($send_notifications);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->postQuery($resourcePath, $queryParams);
     }
 
     /**
@@ -457,74 +273,6 @@ class ManagementApi extends ApiClient
             $queryParams['channel'] = ObjectSerializer::toQueryValue($channel);
         }
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
+        return $this->postQuery($resourcePath, $queryParams);
     }
 }

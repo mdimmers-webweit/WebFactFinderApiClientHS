@@ -17,16 +17,9 @@
 
 namespace Web\FactFinderApi\Client\V1\Api;
 
-use GuzzleHttp6\Client;
-use GuzzleHttp6\ClientInterface;
-use GuzzleHttp6\Exception\RequestException;
 use GuzzleHttp6\Psr7\Request;
-use GuzzleHttp6\RequestOptions;
-use Web\FactFinderApi\Client\ApiClient;
-use Web\FactFinderApi\Client\ApiException;
-use Web\FactFinderApi\Client\Configuration;
-use Web\FactFinderApi\Client\HeaderSelector;
 use Web\FactFinderApi\Client\ObjectSerializer;
+use Web\FactFinderApi\Client\V1\Model\SearchRequest;
 
 /**
  * SearchApi Class Doc Comment
@@ -37,41 +30,6 @@ use Web\FactFinderApi\Client\ObjectSerializer;
  */
 class SearchApi extends ApiClient
 {
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
-
-    /**
-     * @var Configuration
-     */
-    protected $config;
-
-    /**
-     * @var HeaderSelector
-     */
-    protected $headerSelector;
-
-    /**
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     */
-    public function __construct(
-        ?ClientInterface $client = null,
-        ?Configuration $config = null,
-        ?HeaderSelector $selector = null
-    ) {
-        $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
-    }
-
-    public function getConfig(): Configuration
-    {
-        return $this->config;
-    }
-
     /**
      * Operation searchUsingGET
      *
@@ -108,7 +66,7 @@ class SearchApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\Result
      */
-    public function searchUsingGET($channel, $sid = null, $user_input = null, $page = null, $products_per_page = null, $no_article_number_search = null, $search_field = null, $follow_search = null, $seo_path = null, $query = null, $use_asn = 'true', $use_found_words = 'false', $use_campaigns = 'true', $ids_only = 'false', $use_keywords = 'false', $generate_advisor_tree = 'true', $disable_cache = 'false', $use_personalization = 'true', $use_semantic_enhancer = 'true', $use_aso = 'true', $filter_facet_id = null, $navigation = 'false', $sort_fieldname = null, $query_from_suggest = null, $advisor_status = null)
+    public function searchUsingGET(string $channel, $sid = null, $user_input = null, $page = null, $products_per_page = null, $no_article_number_search = null, $search_field = null, $follow_search = null, $seo_path = null, $query = null, bool $use_asn = true, bool $use_found_words = false, bool $use_campaigns = true, bool $ids_only = false, bool $use_keywords = false, bool $generate_advisor_tree = true, bool $disable_cache = false, bool $use_personalization = true, bool $use_semantic_enhancer = true, bool $use_aso = true, $filter_facet_id = null, bool $navigation = false, $sort_fieldname = null, $query_from_suggest = null, $advisor_status = null)
     {
         list($response) = $this->searchUsingGETWithHttpInfo($channel, $sid, $user_input, $page, $products_per_page, $no_article_number_search, $search_field, $follow_search, $seo_path, $query, $use_asn, $use_found_words, $use_campaigns, $ids_only, $use_keywords, $generate_advisor_tree, $disable_cache, $use_personalization, $use_semantic_enhancer, $use_aso, $filter_facet_id, $navigation, $sort_fieldname, $query_from_suggest, $advisor_status);
 
@@ -151,79 +109,11 @@ class SearchApi extends ApiClient
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\Result, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchUsingGETWithHttpInfo($channel, $sid = null, $user_input = null, $page = null, $products_per_page = null, $no_article_number_search = null, $search_field = null, $follow_search = null, $seo_path = null, $query = null, $use_asn = 'true', $use_found_words = 'false', $use_campaigns = 'true', $ids_only = 'false', $use_keywords = 'false', $generate_advisor_tree = 'true', $disable_cache = 'false', $use_personalization = 'true', $use_semantic_enhancer = 'true', $use_aso = 'true', $filter_facet_id = null, $navigation = 'false', $sort_fieldname = null, $query_from_suggest = null, $advisor_status = null)
+    public function searchUsingGETWithHttpInfo(string $channel, $sid = null, $user_input = null, $page = null, $products_per_page = null, $no_article_number_search = null, $search_field = null, $follow_search = null, $seo_path = null, $query = null, bool $use_asn = true, bool $use_found_words = false, bool $use_campaigns = true, bool $ids_only = false, bool $use_keywords = false, bool $generate_advisor_tree = true, bool $disable_cache = false, bool $use_personalization = true, bool $use_semantic_enhancer = true, bool $use_aso = true, $filter_facet_id = null, bool $navigation = false, $sort_fieldname = null, $query_from_suggest = null, $advisor_status = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Result';
         $request = $this->searchUsingGETRequest($channel, $sid, $user_input, $page, $products_per_page, $no_article_number_search, $search_field, $follow_search, $seo_path, $query, $use_asn, $use_found_words, $use_campaigns, $ids_only, $use_keywords, $generate_advisor_tree, $disable_cache, $use_personalization, $use_semantic_enhancer, $use_aso, $filter_facet_id, $navigation, $sort_fieldname, $query_from_suggest, $advisor_status);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        $returnType,
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 401:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 403:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 500:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-            }
-            throw $e;
-        }
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\Result::class);
     }
 
     /**
@@ -261,7 +151,7 @@ class SearchApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function searchUsingGETAsync($channel, $sid = null, $user_input = null, $page = null, $products_per_page = null, $no_article_number_search = null, $search_field = null, $follow_search = null, $seo_path = null, $query = null, $use_asn = 'true', $use_found_words = 'false', $use_campaigns = 'true', $ids_only = 'false', $use_keywords = 'false', $generate_advisor_tree = 'true', $disable_cache = 'false', $use_personalization = 'true', $use_semantic_enhancer = 'true', $use_aso = 'true', $filter_facet_id = null, $navigation = 'false', $sort_fieldname = null, $query_from_suggest = null, $advisor_status = null)
+    public function searchUsingGETAsync(string $channel, $sid = null, $user_input = null, $page = null, $products_per_page = null, $no_article_number_search = null, $search_field = null, $follow_search = null, $seo_path = null, $query = null, bool $use_asn = true, bool $use_found_words = false, bool $use_campaigns = true, bool $ids_only = false, bool $use_keywords = false, bool $generate_advisor_tree = true, bool $disable_cache = false, bool $use_personalization = true, bool $use_semantic_enhancer = true, bool $use_aso = true, $filter_facet_id = null, bool $navigation = false, $sort_fieldname = null, $query_from_suggest = null, $advisor_status = null)
     {
         return $this->searchUsingGETAsyncWithHttpInfo($channel, $sid, $user_input, $page, $products_per_page, $no_article_number_search, $search_field, $follow_search, $seo_path, $query, $use_asn, $use_found_words, $use_campaigns, $ids_only, $use_keywords, $generate_advisor_tree, $disable_cache, $use_personalization, $use_semantic_enhancer, $use_aso, $filter_facet_id, $navigation, $sort_fieldname, $query_from_suggest, $advisor_status)
             ->then(
@@ -306,46 +196,11 @@ class SearchApi extends ApiClient
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function searchUsingGETAsyncWithHttpInfo($channel, $sid = null, $user_input = null, $page = null, $products_per_page = null, $no_article_number_search = null, $search_field = null, $follow_search = null, $seo_path = null, $query = null, $use_asn = 'true', $use_found_words = 'false', $use_campaigns = 'true', $ids_only = 'false', $use_keywords = 'false', $generate_advisor_tree = 'true', $disable_cache = 'false', $use_personalization = 'true', $use_semantic_enhancer = 'true', $use_aso = 'true', $filter_facet_id = null, $navigation = 'false', $sort_fieldname = null, $query_from_suggest = null, $advisor_status = null)
+    public function searchUsingGETAsyncWithHttpInfo(string $channel, $sid = null, $user_input = null, $page = null, $products_per_page = null, $no_article_number_search = null, $search_field = null, $follow_search = null, $seo_path = null, $query = null, bool $use_asn = true, bool $use_found_words = false, bool $use_campaigns = true, bool $ids_only = false, bool $use_keywords = false, bool $generate_advisor_tree = true, bool $disable_cache = false, bool $use_personalization = true, bool $use_semantic_enhancer = true, bool $use_aso = true, $filter_facet_id = null, bool $navigation = false, $sort_fieldname = null, $query_from_suggest = null, $advisor_status = null)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Result';
         $request = $this->searchUsingGETRequest($channel, $sid, $user_input, $page, $products_per_page, $no_article_number_search, $search_field, $follow_search, $seo_path, $query, $use_asn, $use_found_words, $use_campaigns, $ids_only, $use_keywords, $generate_advisor_tree, $disable_cache, $use_personalization, $use_semantic_enhancer, $use_aso, $filter_facet_id, $navigation, $sort_fieldname, $query_from_suggest, $advisor_status);
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                            $content = \json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        \sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\Result::class);
     }
 
     /**
@@ -381,77 +236,9 @@ class SearchApi extends ApiClient
      */
     public function searchUsingPOSTWithHttpInfo($search_request)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Result';
         $request = $this->searchUsingPOSTRequest($search_request);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        $returnType,
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 401:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 403:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-                case 500:
-                    $e->setResponseObject($this->prepareErrorObject($e));
-                    break;
-            }
-            throw $e;
-        }
+        return $this->executeRequest($request, \Web\FactFinderApi\Client\V1\Model\Result::class);
     }
 
     /**
@@ -488,44 +275,9 @@ class SearchApi extends ApiClient
      */
     public function searchUsingPOSTAsyncWithHttpInfo($search_request)
     {
-        $returnType = '\Web\FactFinderApi\Client\V1\Model\Result';
         $request = $this->searchUsingPOSTRequest($search_request);
 
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                            $content = \json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders(),
-                    ];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        \sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V1\Model\Result::class);
     }
 
     /**
@@ -561,7 +313,7 @@ class SearchApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function searchUsingGETRequest($channel, $sid = null, $user_input = null, $page = null, $products_per_page = null, $no_article_number_search = null, $search_field = null, $follow_search = null, $seo_path = null, $query = null, $use_asn = 'true', $use_found_words = 'false', $use_campaigns = 'true', $ids_only = 'false', $use_keywords = 'false', $generate_advisor_tree = 'true', $disable_cache = 'false', $use_personalization = 'true', $use_semantic_enhancer = 'true', $use_aso = 'true', $filter_facet_id = null, $navigation = 'false', $sort_fieldname = null, $query_from_suggest = null, $advisor_status = null)
+    protected function searchUsingGETRequest(string $channel, $sid = null, $user_input = null, $page = null, $products_per_page = null, $no_article_number_search = null, $search_field = null, $follow_search = null, $seo_path = null, $query = null, bool $use_asn = true, bool $use_found_words = false, bool $use_campaigns = true, bool $ids_only = false, bool $use_keywords = false, bool $generate_advisor_tree = true, bool $disable_cache = false, bool $use_personalization = true, bool $use_semantic_enhancer = true, bool $use_aso = true, $filter_facet_id = null, bool $navigation = false, $sort_fieldname = null, $query_from_suggest = null, $advisor_status = null)
     {
         // verify the required parameter 'channel' is set
         if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
@@ -671,63 +423,9 @@ class SearchApi extends ApiClient
         }
 
         // path params
-        if ($channel !== null) {
-            $resourcePath = \str_replace(
-                '{channel}',
-                ObjectSerializer::toPathValue($channel),
-                $resourcePath
-            );
-        }
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
 
-        // body params
-        $_tempBody = null;
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->getQuery($resourcePath, $queryParams);
     }
 
     /**
@@ -739,89 +437,11 @@ class SearchApi extends ApiClient
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function searchUsingPOSTRequest($search_request)
+    protected function searchUsingPOSTRequest(SearchRequest $search_request)
     {
-        // verify the required parameter 'search_request' is set
-        if ($search_request === null || (\is_array($search_request) && \count($search_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $search_request when calling searchUsingPOST'
-            );
-        }
-
         $resourcePath = '/v1/search';
         $queryParams = [];
-        $httpBody = '';
-        // body params
-        $_tempBody = null;
-        if (isset($search_request)) {
-            $_tempBody = $search_request;
-        }
 
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/xml', 'application/json'],
-            ['application/json']
-        );
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if ($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp6\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if (\is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp6\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = \array_merge(
-            $defaultHeaders,
-            $headers
-        );
-
-        $query = \GuzzleHttp6\Psr7\build_query($queryParams);
-
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
+        return $this->postQuery($resourcePath, $queryParams, $search_request);
     }
 }
