@@ -29,72 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class SearchRequest extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'SearchRequest';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'params' => '\Web\FactFinderApi\Client\V1\Model\Params',
-        'search_control_params' => '\Web\FactFinderApi\Client\V1\Model\SearchControlParams',
-        'sid' => 'string',
-        'user_input' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'params' => null,
-        'search_control_params' => null,
-        'sid' => null,
-        'user_input' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'params' => 'params',
-        'search_control_params' => 'searchControlParams',
-        'sid' => 'sid',
-        'user_input' => 'userInput',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'params' => 'setParams',
-        'search_control_params' => 'setSearchControlParams',
-        'sid' => 'setSid',
-        'user_input' => 'setUserInput',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'params' => 'getParams',
-        'search_control_params' => 'getSearchControlParams',
-        'sid' => 'getSid',
-        'user_input' => 'getUserInput',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -104,6 +38,80 @@ class SearchRequest extends BaseModel
         $this->container['search_control_params'] = $data['search_control_params'] ?? null;
         $this->container['sid'] = $data['sid'] ?? null;
         $this->container['user_input'] = $data['user_input'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+            'search_control_params' => '\Web\FactFinderApi\Client\V1\Model\SearchControlParams',
+            'sid' => 'string',
+            'user_input' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'params' => null,
+            'search_control_params' => null,
+            'sid' => null,
+            'user_input' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'params' => 'params',
+            'search_control_params' => 'searchControlParams',
+            'sid' => 'sid',
+            'user_input' => 'userInput',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'params' => 'setParams',
+            'search_control_params' => 'setSearchControlParams',
+            'sid' => 'setSid',
+            'user_input' => 'setUserInput',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'params' => 'getParams',
+            'search_control_params' => 'getSearchControlParams',
+            'sid' => 'getSid',
+            'user_input' => 'getUserInput',
+        ];
     }
 
     /**

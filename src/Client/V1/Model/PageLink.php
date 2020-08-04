@@ -29,72 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class PageLink extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'PageLink';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'caption' => 'string',
-        'current_page' => 'bool',
-        'number' => 'int',
-        'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'caption' => null,
-        'current_page' => null,
-        'number' => 'int32',
-        'search_params' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'caption' => 'caption',
-        'current_page' => 'currentPage',
-        'number' => 'number',
-        'search_params' => 'searchParams',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'caption' => 'setCaption',
-        'current_page' => 'setCurrentPage',
-        'number' => 'setNumber',
-        'search_params' => 'setSearchParams',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'caption' => 'getCaption',
-        'current_page' => 'getCurrentPage',
-        'number' => 'getNumber',
-        'search_params' => 'getSearchParams',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -104,6 +38,80 @@ class PageLink extends BaseModel
         $this->container['current_page'] = $data['current_page'] ?? null;
         $this->container['number'] = $data['number'] ?? null;
         $this->container['search_params'] = $data['search_params'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'caption' => 'string',
+            'current_page' => 'bool',
+            'number' => 'int',
+            'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'caption' => null,
+            'current_page' => null,
+            'number' => 'int32',
+            'search_params' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'caption' => 'caption',
+            'current_page' => 'currentPage',
+            'number' => 'number',
+            'search_params' => 'searchParams',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'caption' => 'setCaption',
+            'current_page' => 'setCurrentPage',
+            'number' => 'setNumber',
+            'search_params' => 'setSearchParams',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'caption' => 'getCaption',
+            'current_page' => 'getCurrentPage',
+            'number' => 'getNumber',
+            'search_params' => 'getSearchParams',
+        ];
     }
 
     /**

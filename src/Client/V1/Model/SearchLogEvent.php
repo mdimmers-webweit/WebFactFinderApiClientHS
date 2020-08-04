@@ -29,142 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class SearchLogEvent extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'SearchLogEvent';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'additional_info' => 'string',
-        'best_simi' => 'int',
-        'cookie_id' => 'string',
-        'custom_sorting' => 'bool',
-        'extra_params' => 'map[string,string]',
-        'filters' => '\Web\FactFinderApi\Client\V1\Model\Filter[]',
-        'hit_count' => 'int',
-        'id' => 'string',
-        'master_id' => 'string',
-        'min_simi' => 'int',
-        'page' => 'int',
-        'page_size' => 'int',
-        'query' => 'string',
-        'search_field' => 'string',
-        'search_time' => 'int',
-        'sid' => 'string',
-        'title' => 'string',
-        'user_id' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'additional_info' => null,
-        'best_simi' => 'int32',
-        'cookie_id' => null,
-        'custom_sorting' => null,
-        'extra_params' => null,
-        'filters' => null,
-        'hit_count' => 'int32',
-        'id' => null,
-        'master_id' => null,
-        'min_simi' => 'int32',
-        'page' => 'int32',
-        'page_size' => 'int32',
-        'query' => null,
-        'search_field' => null,
-        'search_time' => 'int32',
-        'sid' => null,
-        'title' => null,
-        'user_id' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'additional_info' => 'additionalInfo',
-        'best_simi' => 'bestSimi',
-        'cookie_id' => 'cookieId',
-        'custom_sorting' => 'customSorting',
-        'extra_params' => 'extraParams',
-        'filters' => 'filters',
-        'hit_count' => 'hitCount',
-        'id' => 'id',
-        'master_id' => 'masterId',
-        'min_simi' => 'minSimi',
-        'page' => 'page',
-        'page_size' => 'pageSize',
-        'query' => 'query',
-        'search_field' => 'searchField',
-        'search_time' => 'searchTime',
-        'sid' => 'sid',
-        'title' => 'title',
-        'user_id' => 'userId',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'additional_info' => 'setAdditionalInfo',
-        'best_simi' => 'setBestSimi',
-        'cookie_id' => 'setCookieId',
-        'custom_sorting' => 'setCustomSorting',
-        'extra_params' => 'setExtraParams',
-        'filters' => 'setFilters',
-        'hit_count' => 'setHitCount',
-        'id' => 'setId',
-        'master_id' => 'setMasterId',
-        'min_simi' => 'setMinSimi',
-        'page' => 'setPage',
-        'page_size' => 'setPageSize',
-        'query' => 'setQuery',
-        'search_field' => 'setSearchField',
-        'search_time' => 'setSearchTime',
-        'sid' => 'setSid',
-        'title' => 'setTitle',
-        'user_id' => 'setUserId',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'additional_info' => 'getAdditionalInfo',
-        'best_simi' => 'getBestSimi',
-        'cookie_id' => 'getCookieId',
-        'custom_sorting' => 'getCustomSorting',
-        'extra_params' => 'getExtraParams',
-        'filters' => 'getFilters',
-        'hit_count' => 'getHitCount',
-        'id' => 'getId',
-        'master_id' => 'getMasterId',
-        'min_simi' => 'getMinSimi',
-        'page' => 'getPage',
-        'page_size' => 'getPageSize',
-        'query' => 'getQuery',
-        'search_field' => 'getSearchField',
-        'search_time' => 'getSearchTime',
-        'sid' => 'getSid',
-        'title' => 'getTitle',
-        'user_id' => 'getUserId',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -188,6 +52,150 @@ class SearchLogEvent extends BaseModel
         $this->container['sid'] = $data['sid'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'additional_info' => 'string',
+            'best_simi' => 'int',
+            'cookie_id' => 'string',
+            'custom_sorting' => 'bool',
+            'extra_params' => 'map[string,string]',
+            'filters' => '\Web\FactFinderApi\Client\V1\Model\Filter[]',
+            'hit_count' => 'int',
+            'id' => 'string',
+            'master_id' => 'string',
+            'min_simi' => 'int',
+            'page' => 'int',
+            'page_size' => 'int',
+            'query' => 'string',
+            'search_field' => 'string',
+            'search_time' => 'int',
+            'sid' => 'string',
+            'title' => 'string',
+            'user_id' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'additional_info' => null,
+            'best_simi' => 'int32',
+            'cookie_id' => null,
+            'custom_sorting' => null,
+            'extra_params' => null,
+            'filters' => null,
+            'hit_count' => 'int32',
+            'id' => null,
+            'master_id' => null,
+            'min_simi' => 'int32',
+            'page' => 'int32',
+            'page_size' => 'int32',
+            'query' => null,
+            'search_field' => null,
+            'search_time' => 'int32',
+            'sid' => null,
+            'title' => null,
+            'user_id' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'additional_info' => 'additionalInfo',
+            'best_simi' => 'bestSimi',
+            'cookie_id' => 'cookieId',
+            'custom_sorting' => 'customSorting',
+            'extra_params' => 'extraParams',
+            'filters' => 'filters',
+            'hit_count' => 'hitCount',
+            'id' => 'id',
+            'master_id' => 'masterId',
+            'min_simi' => 'minSimi',
+            'page' => 'page',
+            'page_size' => 'pageSize',
+            'query' => 'query',
+            'search_field' => 'searchField',
+            'search_time' => 'searchTime',
+            'sid' => 'sid',
+            'title' => 'title',
+            'user_id' => 'userId',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'additional_info' => 'setAdditionalInfo',
+            'best_simi' => 'setBestSimi',
+            'cookie_id' => 'setCookieId',
+            'custom_sorting' => 'setCustomSorting',
+            'extra_params' => 'setExtraParams',
+            'filters' => 'setFilters',
+            'hit_count' => 'setHitCount',
+            'id' => 'setId',
+            'master_id' => 'setMasterId',
+            'min_simi' => 'setMinSimi',
+            'page' => 'setPage',
+            'page_size' => 'setPageSize',
+            'query' => 'setQuery',
+            'search_field' => 'setSearchField',
+            'search_time' => 'setSearchTime',
+            'sid' => 'setSid',
+            'title' => 'setTitle',
+            'user_id' => 'setUserId',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'additional_info' => 'getAdditionalInfo',
+            'best_simi' => 'getBestSimi',
+            'cookie_id' => 'getCookieId',
+            'custom_sorting' => 'getCustomSorting',
+            'extra_params' => 'getExtraParams',
+            'filters' => 'getFilters',
+            'hit_count' => 'getHitCount',
+            'id' => 'getId',
+            'master_id' => 'getMasterId',
+            'min_simi' => 'getMinSimi',
+            'page' => 'getPage',
+            'page_size' => 'getPageSize',
+            'query' => 'getQuery',
+            'search_field' => 'getSearchField',
+            'search_time' => 'getSearchTime',
+            'sid' => 'getSid',
+            'title' => 'getTitle',
+            'user_id' => 'getUserId',
+        ];
     }
 
     /**

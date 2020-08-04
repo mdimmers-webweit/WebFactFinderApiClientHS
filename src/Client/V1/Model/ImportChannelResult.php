@@ -29,62 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class ImportChannelResult extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'ImportChannelResult';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'error_messages' => 'string[]',
-        'status_messages' => 'string[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'error_messages' => null,
-        'status_messages' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'error_messages' => 'errorMessages',
-        'status_messages' => 'statusMessages',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'error_messages' => 'setErrorMessages',
-        'status_messages' => 'setStatusMessages',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'error_messages' => 'getErrorMessages',
-        'status_messages' => 'getStatusMessages',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -92,6 +36,70 @@ class ImportChannelResult extends BaseModel
     {
         $this->container['error_messages'] = $data['error_messages'] ?? null;
         $this->container['status_messages'] = $data['status_messages'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'error_messages' => 'string[]',
+            'status_messages' => 'string[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'error_messages' => null,
+            'status_messages' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'error_messages' => 'errorMessages',
+            'status_messages' => 'statusMessages',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'error_messages' => 'setErrorMessages',
+            'status_messages' => 'setStatusMessages',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'error_messages' => 'getErrorMessages',
+            'status_messages' => 'getStatusMessages',
+        ];
     }
 
     /**

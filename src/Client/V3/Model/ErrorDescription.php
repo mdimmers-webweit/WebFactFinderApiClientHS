@@ -31,67 +31,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class ErrorDescription extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'ErrorDescription';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'name' => 'string',
-        'description' => 'string',
-        'stacktrace' => 'string[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'name' => null,
-        'description' => null,
-        'stacktrace' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'name' => 'name',
-        'description' => 'description',
-        'stacktrace' => 'stacktrace',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'stacktrace' => 'setStacktrace',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'stacktrace' => 'getStacktrace',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -100,6 +39,75 @@ class ErrorDescription extends BaseModel
         $this->container['name'] = $data['name'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['stacktrace'] = $data['stacktrace'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'name' => 'string',
+            'description' => 'string',
+            'stacktrace' => 'string[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'name' => null,
+            'description' => null,
+            'stacktrace' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'name' => 'name',
+            'description' => 'description',
+            'stacktrace' => 'stacktrace',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'name' => 'setName',
+            'description' => 'setDescription',
+            'stacktrace' => 'setStacktrace',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'name' => 'getName',
+            'description' => 'getDescription',
+            'stacktrace' => 'getStacktrace',
+        ];
     }
 
     /**

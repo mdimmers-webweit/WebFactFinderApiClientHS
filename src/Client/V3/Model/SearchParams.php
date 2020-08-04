@@ -33,117 +33,6 @@ class SearchParams extends SearchParamsBase
     const ARTICLE_NUMBER_SEARCH_NEVER = 'NEVER';
 
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'SearchParams';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'advisor_status' => '\Web\FactFinderApi\Client\V3\Model\AdvisorCampaignStatusHolder',
-        'article_number_search' => 'string',
-        'channel' => 'string',
-        'custom_parameters' => '\Web\FactFinderApi\Client\V3\Model\CustomParameter[]',
-        'filters' => '\Web\FactFinderApi\Client\V3\Model\Filter[]',
-        'hits_per_page' => 'int',
-        'location' => '\Web\FactFinderApi\Client\V3\Model\Location',
-        'market_id' => '\Web\FactFinderApi\Client\V3\Model\Filter',
-        'max_count_variants' => 'int',
-        'page' => 'int',
-        'query' => 'string',
-        'search_field' => 'string',
-        'sort_items' => '\Web\FactFinderApi\Client\V3\Model\SortItem[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'advisor_status' => null,
-        'article_number_search' => null,
-        'channel' => null,
-        'custom_parameters' => null,
-        'filters' => null,
-        'hits_per_page' => 'int32',
-        'location' => null,
-        'market_id' => null,
-        'max_count_variants' => 'int32',
-        'page' => 'int32',
-        'query' => null,
-        'search_field' => null,
-        'sort_items' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'advisor_status' => 'advisorStatus',
-        'article_number_search' => 'articleNumberSearch',
-        'channel' => 'channel',
-        'custom_parameters' => 'customParameters',
-        'filters' => 'filters',
-        'hits_per_page' => 'hitsPerPage',
-        'location' => 'location',
-        'market_id' => 'marketId',
-        'max_count_variants' => 'maxCountVariants',
-        'page' => 'page',
-        'query' => 'query',
-        'search_field' => 'searchField',
-        'sort_items' => 'sortItems',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'advisor_status' => 'setAdvisorStatus',
-        'article_number_search' => 'setArticleNumberSearch',
-        'channel' => 'setChannel',
-        'custom_parameters' => 'setCustomParameters',
-        'filters' => 'setFilters',
-        'hits_per_page' => 'setHitsPerPage',
-        'location' => 'setLocation',
-        'market_id' => 'setMarketId',
-        'max_count_variants' => 'setMaxCountVariants',
-        'page' => 'setPage',
-        'query' => 'setQuery',
-        'search_field' => 'setSearchField',
-        'sort_items' => 'setSortItems',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'advisor_status' => 'getAdvisorStatus',
-        'article_number_search' => 'getArticleNumberSearch',
-        'channel' => 'getChannel',
-        'custom_parameters' => 'getCustomParameters',
-        'filters' => 'getFilters',
-        'hits_per_page' => 'getHitsPerPage',
-        'location' => 'getLocation',
-        'market_id' => 'getMarketId',
-        'max_count_variants' => 'getMaxCountVariants',
-        'page' => 'getPage',
-        'query' => 'getQuery',
-        'search_field' => 'getSearchField',
-        'sort_items' => 'getSortItems',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -156,6 +45,125 @@ class SearchParams extends SearchParamsBase
         $this->container['market_id'] = $data['market_id'] ?? null;
         $this->container['max_count_variants'] = $data['max_count_variants'] ?? null;
         $this->container['sort_items'] = $data['sort_items'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'advisor_status' => '\Web\FactFinderApi\Client\V3\Model\AdvisorCampaignStatusHolder',
+            'article_number_search' => 'string',
+            'channel' => 'string',
+            'custom_parameters' => '\Web\FactFinderApi\Client\V3\Model\CustomParameter[]',
+            'filters' => '\Web\FactFinderApi\Client\V3\Model\Filter[]',
+            'hits_per_page' => 'int',
+            'location' => '\Web\FactFinderApi\Client\V3\Model\Location',
+            'market_id' => '\Web\FactFinderApi\Client\V3\Model\Filter',
+            'max_count_variants' => 'int',
+            'page' => 'int',
+            'query' => 'string',
+            'search_field' => 'string',
+            'sort_items' => '\Web\FactFinderApi\Client\V3\Model\SortItem[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'advisor_status' => null,
+            'article_number_search' => null,
+            'channel' => null,
+            'custom_parameters' => null,
+            'filters' => null,
+            'hits_per_page' => 'int32',
+            'location' => null,
+            'market_id' => null,
+            'max_count_variants' => 'int32',
+            'page' => 'int32',
+            'query' => null,
+            'search_field' => null,
+            'sort_items' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'advisor_status' => 'advisorStatus',
+            'article_number_search' => 'articleNumberSearch',
+            'channel' => 'channel',
+            'custom_parameters' => 'customParameters',
+            'filters' => 'filters',
+            'hits_per_page' => 'hitsPerPage',
+            'location' => 'location',
+            'market_id' => 'marketId',
+            'max_count_variants' => 'maxCountVariants',
+            'page' => 'page',
+            'query' => 'query',
+            'search_field' => 'searchField',
+            'sort_items' => 'sortItems',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'advisor_status' => 'setAdvisorStatus',
+            'article_number_search' => 'setArticleNumberSearch',
+            'channel' => 'setChannel',
+            'custom_parameters' => 'setCustomParameters',
+            'filters' => 'setFilters',
+            'hits_per_page' => 'setHitsPerPage',
+            'location' => 'setLocation',
+            'market_id' => 'setMarketId',
+            'max_count_variants' => 'setMaxCountVariants',
+            'page' => 'setPage',
+            'query' => 'setQuery',
+            'search_field' => 'setSearchField',
+            'sort_items' => 'setSortItems',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'advisor_status' => 'getAdvisorStatus',
+            'article_number_search' => 'getArticleNumberSearch',
+            'channel' => 'getChannel',
+            'custom_parameters' => 'getCustomParameters',
+            'filters' => 'getFilters',
+            'hits_per_page' => 'getHitsPerPage',
+            'location' => 'getLocation',
+            'market_id' => 'getMarketId',
+            'max_count_variants' => 'getMaxCountVariants',
+            'page' => 'getPage',
+            'query' => 'getQuery',
+            'search_field' => 'getSearchField',
+            'sort_items' => 'getSortItems',
+        ];
     }
 
     /**

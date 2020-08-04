@@ -29,72 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class SingleWordSearchResult extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'SingleWordSearchResult';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'preview_records' => '\Web\FactFinderApi\Client\V1\Model\SearchRecord[]',
-        'record_count' => 'int',
-        'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
-        'word' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'preview_records' => null,
-        'record_count' => 'int32',
-        'search_params' => null,
-        'word' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'preview_records' => 'previewRecords',
-        'record_count' => 'recordCount',
-        'search_params' => 'searchParams',
-        'word' => 'word',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'preview_records' => 'setPreviewRecords',
-        'record_count' => 'setRecordCount',
-        'search_params' => 'setSearchParams',
-        'word' => 'setWord',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'preview_records' => 'getPreviewRecords',
-        'record_count' => 'getRecordCount',
-        'search_params' => 'getSearchParams',
-        'word' => 'getWord',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -104,6 +38,80 @@ class SingleWordSearchResult extends BaseModel
         $this->container['record_count'] = $data['record_count'] ?? null;
         $this->container['search_params'] = $data['search_params'] ?? null;
         $this->container['word'] = $data['word'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'preview_records' => '\Web\FactFinderApi\Client\V1\Model\SearchRecord[]',
+            'record_count' => 'int',
+            'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+            'word' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'preview_records' => null,
+            'record_count' => 'int32',
+            'search_params' => null,
+            'word' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'preview_records' => 'previewRecords',
+            'record_count' => 'recordCount',
+            'search_params' => 'searchParams',
+            'word' => 'word',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'preview_records' => 'setPreviewRecords',
+            'record_count' => 'setRecordCount',
+            'search_params' => 'setSearchParams',
+            'word' => 'setWord',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'preview_records' => 'getPreviewRecords',
+            'record_count' => 'getRecordCount',
+            'search_params' => 'getSearchParams',
+            'word' => 'getWord',
+        ];
     }
 
     /**

@@ -6,7 +6,7 @@
 
 use Symfony\Component\Dotenv\Dotenv;
 
-if (file_exists(\dirname(__DIR__) . '/vendor/autoload.php')) {
+if (\file_exists(\dirname(__DIR__) . '/vendor/autoload.php')) {
     require \dirname(__DIR__) . '/vendor/autoload.php';
 } else {
     require 'vendor/autoload.php';
@@ -27,7 +27,7 @@ $variables = [
     'WEB_FACT_FINDER_73_API_PASSWORD',
     'WEB_FACT_FINDER_73_API_TEST_CHANNEL',
     'WEB_FACT_FINDER_73_API_PREFIX',
-    'WEB_FACT_FINDER_73_API_POSTFIX'
+    'WEB_FACT_FINDER_73_API_POSTFIX',
 ];
 
 foreach ($variables as $var) {

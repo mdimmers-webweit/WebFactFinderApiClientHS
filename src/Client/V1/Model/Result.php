@@ -36,152 +36,6 @@ class Result extends BaseModel
     const RESULT_STATUS_ERROR_OCCURED = 'errorOccured';
 
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'Result';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'applied_preprocessor_entries' => '\Web\FactFinderApi\Client\V1\Model\PreprocessorEntry[]',
-        'asn_groups' => '\Web\FactFinderApi\Client\V1\Model\Group[]',
-        'bread_crumb_trail' => '\Web\FactFinderApi\Client\V1\Model\BreadCrumbTrailItem[]',
-        'campaigns_list' => '\Web\FactFinderApi\Client\V1\Model\Campaign[]',
-        'field_roles' => 'map[string,string]',
-        'filters' => '\Web\FactFinderApi\Client\V1\Model\Filter[]',
-        'paging' => '\Web\FactFinderApi\Client\V1\Model\Paging',
-        'records' => '\Web\FactFinderApi\Client\V1\Model\SearchRecord[]',
-        'result_article_number_status' => 'string',
-        'result_count' => 'int',
-        'result_status' => 'string',
-        'results_per_page_list' => '\Web\FactFinderApi\Client\V1\Model\ResultsPerPageOptionWithSearchParams[]',
-        'search_control_params' => '\Web\FactFinderApi\Client\V1\Model\SearchControlParams',
-        'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
-        'search_time' => 'int',
-        'simi_first_record' => 'int',
-        'simi_last_record' => 'int',
-        'single_word_results' => '\Web\FactFinderApi\Client\V1\Model\SingleWordSearchResult[]',
-        'sorts_list' => '\Web\FactFinderApi\Client\V1\Model\ResultSortItem[]',
-        'timed_out' => 'bool',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'applied_preprocessor_entries' => null,
-        'asn_groups' => null,
-        'bread_crumb_trail' => null,
-        'campaigns_list' => null,
-        'field_roles' => null,
-        'filters' => null,
-        'paging' => null,
-        'records' => null,
-        'result_article_number_status' => null,
-        'result_count' => 'int32',
-        'result_status' => null,
-        'results_per_page_list' => null,
-        'search_control_params' => null,
-        'search_params' => null,
-        'search_time' => 'int64',
-        'simi_first_record' => 'int32',
-        'simi_last_record' => 'int32',
-        'single_word_results' => null,
-        'sorts_list' => null,
-        'timed_out' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'applied_preprocessor_entries' => 'appliedPreprocessorEntries',
-        'asn_groups' => 'asnGroups',
-        'bread_crumb_trail' => 'breadCrumbTrail',
-        'campaigns_list' => 'campaignsList',
-        'field_roles' => 'fieldRoles',
-        'filters' => 'filters',
-        'paging' => 'paging',
-        'records' => 'records',
-        'result_article_number_status' => 'resultArticleNumberStatus',
-        'result_count' => 'resultCount',
-        'result_status' => 'resultStatus',
-        'results_per_page_list' => 'resultsPerPageList',
-        'search_control_params' => 'searchControlParams',
-        'search_params' => 'searchParams',
-        'search_time' => 'searchTime',
-        'simi_first_record' => 'simiFirstRecord',
-        'simi_last_record' => 'simiLastRecord',
-        'single_word_results' => 'singleWordResults',
-        'sorts_list' => 'sortsList',
-        'timed_out' => 'timedOut',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'applied_preprocessor_entries' => 'setAppliedPreprocessorEntries',
-        'asn_groups' => 'setAsnGroups',
-        'bread_crumb_trail' => 'setBreadCrumbTrail',
-        'campaigns_list' => 'setCampaignsList',
-        'field_roles' => 'setFieldRoles',
-        'filters' => 'setFilters',
-        'paging' => 'setPaging',
-        'records' => 'setRecords',
-        'result_article_number_status' => 'setResultArticleNumberStatus',
-        'result_count' => 'setResultCount',
-        'result_status' => 'setResultStatus',
-        'results_per_page_list' => 'setResultsPerPageList',
-        'search_control_params' => 'setSearchControlParams',
-        'search_params' => 'setSearchParams',
-        'search_time' => 'setSearchTime',
-        'simi_first_record' => 'setSimiFirstRecord',
-        'simi_last_record' => 'setSimiLastRecord',
-        'single_word_results' => 'setSingleWordResults',
-        'sorts_list' => 'setSortsList',
-        'timed_out' => 'setTimedOut',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'applied_preprocessor_entries' => 'getAppliedPreprocessorEntries',
-        'asn_groups' => 'getAsnGroups',
-        'bread_crumb_trail' => 'getBreadCrumbTrail',
-        'campaigns_list' => 'getCampaignsList',
-        'field_roles' => 'getFieldRoles',
-        'filters' => 'getFilters',
-        'paging' => 'getPaging',
-        'records' => 'getRecords',
-        'result_article_number_status' => 'getResultArticleNumberStatus',
-        'result_count' => 'getResultCount',
-        'result_status' => 'getResultStatus',
-        'results_per_page_list' => 'getResultsPerPageList',
-        'search_control_params' => 'getSearchControlParams',
-        'search_params' => 'getSearchParams',
-        'search_time' => 'getSearchTime',
-        'simi_first_record' => 'getSimiFirstRecord',
-        'simi_last_record' => 'getSimiLastRecord',
-        'single_word_results' => 'getSingleWordResults',
-        'sorts_list' => 'getSortsList',
-        'timed_out' => 'getTimedOut',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -207,6 +61,160 @@ class Result extends BaseModel
         $this->container['single_word_results'] = $data['single_word_results'] ?? null;
         $this->container['sorts_list'] = $data['sorts_list'] ?? null;
         $this->container['timed_out'] = $data['timed_out'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'applied_preprocessor_entries' => '\Web\FactFinderApi\Client\V1\Model\PreprocessorEntry[]',
+            'asn_groups' => '\Web\FactFinderApi\Client\V1\Model\Group[]',
+            'bread_crumb_trail' => '\Web\FactFinderApi\Client\V1\Model\BreadCrumbTrailItem[]',
+            'campaigns_list' => '\Web\FactFinderApi\Client\V1\Model\Campaign[]',
+            'field_roles' => 'map[string,string]',
+            'filters' => '\Web\FactFinderApi\Client\V1\Model\Filter[]',
+            'paging' => '\Web\FactFinderApi\Client\V1\Model\Paging',
+            'records' => '\Web\FactFinderApi\Client\V1\Model\SearchRecord[]',
+            'result_article_number_status' => 'string',
+            'result_count' => 'int',
+            'result_status' => 'string',
+            'results_per_page_list' => '\Web\FactFinderApi\Client\V1\Model\ResultsPerPageOptionWithSearchParams[]',
+            'search_control_params' => '\Web\FactFinderApi\Client\V1\Model\SearchControlParams',
+            'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+            'search_time' => 'int',
+            'simi_first_record' => 'int',
+            'simi_last_record' => 'int',
+            'single_word_results' => '\Web\FactFinderApi\Client\V1\Model\SingleWordSearchResult[]',
+            'sorts_list' => '\Web\FactFinderApi\Client\V1\Model\ResultSortItem[]',
+            'timed_out' => 'bool',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'applied_preprocessor_entries' => null,
+            'asn_groups' => null,
+            'bread_crumb_trail' => null,
+            'campaigns_list' => null,
+            'field_roles' => null,
+            'filters' => null,
+            'paging' => null,
+            'records' => null,
+            'result_article_number_status' => null,
+            'result_count' => 'int32',
+            'result_status' => null,
+            'results_per_page_list' => null,
+            'search_control_params' => null,
+            'search_params' => null,
+            'search_time' => 'int64',
+            'simi_first_record' => 'int32',
+            'simi_last_record' => 'int32',
+            'single_word_results' => null,
+            'sorts_list' => null,
+            'timed_out' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'applied_preprocessor_entries' => 'appliedPreprocessorEntries',
+            'asn_groups' => 'asnGroups',
+            'bread_crumb_trail' => 'breadCrumbTrail',
+            'campaigns_list' => 'campaignsList',
+            'field_roles' => 'fieldRoles',
+            'filters' => 'filters',
+            'paging' => 'paging',
+            'records' => 'records',
+            'result_article_number_status' => 'resultArticleNumberStatus',
+            'result_count' => 'resultCount',
+            'result_status' => 'resultStatus',
+            'results_per_page_list' => 'resultsPerPageList',
+            'search_control_params' => 'searchControlParams',
+            'search_params' => 'searchParams',
+            'search_time' => 'searchTime',
+            'simi_first_record' => 'simiFirstRecord',
+            'simi_last_record' => 'simiLastRecord',
+            'single_word_results' => 'singleWordResults',
+            'sorts_list' => 'sortsList',
+            'timed_out' => 'timedOut',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'applied_preprocessor_entries' => 'setAppliedPreprocessorEntries',
+            'asn_groups' => 'setAsnGroups',
+            'bread_crumb_trail' => 'setBreadCrumbTrail',
+            'campaigns_list' => 'setCampaignsList',
+            'field_roles' => 'setFieldRoles',
+            'filters' => 'setFilters',
+            'paging' => 'setPaging',
+            'records' => 'setRecords',
+            'result_article_number_status' => 'setResultArticleNumberStatus',
+            'result_count' => 'setResultCount',
+            'result_status' => 'setResultStatus',
+            'results_per_page_list' => 'setResultsPerPageList',
+            'search_control_params' => 'setSearchControlParams',
+            'search_params' => 'setSearchParams',
+            'search_time' => 'setSearchTime',
+            'simi_first_record' => 'setSimiFirstRecord',
+            'simi_last_record' => 'setSimiLastRecord',
+            'single_word_results' => 'setSingleWordResults',
+            'sorts_list' => 'setSortsList',
+            'timed_out' => 'setTimedOut',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'applied_preprocessor_entries' => 'getAppliedPreprocessorEntries',
+            'asn_groups' => 'getAsnGroups',
+            'bread_crumb_trail' => 'getBreadCrumbTrail',
+            'campaigns_list' => 'getCampaignsList',
+            'field_roles' => 'getFieldRoles',
+            'filters' => 'getFilters',
+            'paging' => 'getPaging',
+            'records' => 'getRecords',
+            'result_article_number_status' => 'getResultArticleNumberStatus',
+            'result_count' => 'getResultCount',
+            'result_status' => 'getResultStatus',
+            'results_per_page_list' => 'getResultsPerPageList',
+            'search_control_params' => 'getSearchControlParams',
+            'search_params' => 'getSearchParams',
+            'search_time' => 'getSearchTime',
+            'simi_first_record' => 'getSimiFirstRecord',
+            'simi_last_record' => 'getSimiLastRecord',
+            'single_word_results' => 'getSingleWordResults',
+            'sorts_list' => 'getSortsList',
+            'timed_out' => 'getTimedOut',
+        ];
     }
 
     /**

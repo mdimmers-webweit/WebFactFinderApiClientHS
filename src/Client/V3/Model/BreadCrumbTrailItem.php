@@ -34,77 +34,6 @@ class BreadCrumbTrailItem extends BaseModel
     const TYPE_UNSPECIFIED = 'unspecified';
 
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'BreadCrumbTrailItem';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'associated_field_name' => 'string',
-        'search_params' => '\Web\FactFinderApi\Client\V3\Model\SearchParams',
-        'text' => 'string',
-        'type' => 'string',
-        'value' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'associated_field_name' => null,
-        'search_params' => null,
-        'text' => null,
-        'type' => null,
-        'value' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'associated_field_name' => 'associatedFieldName',
-        'search_params' => 'searchParams',
-        'text' => 'text',
-        'type' => 'type',
-        'value' => 'value',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'associated_field_name' => 'setAssociatedFieldName',
-        'search_params' => 'setSearchParams',
-        'text' => 'setText',
-        'type' => 'setType',
-        'value' => 'setValue',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'associated_field_name' => 'getAssociatedFieldName',
-        'search_params' => 'getSearchParams',
-        'text' => 'getText',
-        'type' => 'getType',
-        'value' => 'getValue',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -115,6 +44,85 @@ class BreadCrumbTrailItem extends BaseModel
         $this->container['text'] = $data['text'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['value'] = $data['value'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'associated_field_name' => 'string',
+            'search_params' => '\Web\FactFinderApi\Client\V3\Model\SearchParams',
+            'text' => 'string',
+            'type' => 'string',
+            'value' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'associated_field_name' => null,
+            'search_params' => null,
+            'text' => null,
+            'type' => null,
+            'value' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'associated_field_name' => 'associatedFieldName',
+            'search_params' => 'searchParams',
+            'text' => 'text',
+            'type' => 'type',
+            'value' => 'value',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'associated_field_name' => 'setAssociatedFieldName',
+            'search_params' => 'setSearchParams',
+            'text' => 'setText',
+            'type' => 'setType',
+            'value' => 'setValue',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'associated_field_name' => 'getAssociatedFieldName',
+            'search_params' => 'getSearchParams',
+            'text' => 'getText',
+            'type' => 'getType',
+            'value' => 'getValue',
+        ];
     }
 
     /**

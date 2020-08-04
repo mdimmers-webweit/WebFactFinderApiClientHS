@@ -30,24 +30,29 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  */
 class Record extends BaseModel
 {
-    /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'Record';
+    /* @phpstan-ignore-next-line */
+    public function __construct(?array $data = null)
+    {
+    }
 
     /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
      */
-    protected static $swaggerTypes = [];
+    public static function swaggerTypes(): array
+    {
+        return [];
+    }
 
     /**
      * Array of property to format mappings. Used for (de)serialization
      */
-    protected static $swaggerFormats = [];
+    public static function swaggerFormats(): array
+    {
+        return [
+        ];
+    }
 
     /**
      * Array of attributes where the key is the local name,
@@ -55,24 +60,31 @@ class Record extends BaseModel
      *
      * @var string[]
      */
-    protected static $attributeMap = [];
+    public static function attributeMap(): array
+    {
+        return [
+        ];
+    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
      */
-    protected static $setters = [];
+    public static function setters(): array
+    {
+        return [
+        ];
+    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
      */
-    protected static $getters = [];
-
-    /* @phpstan-ignore-next-line */
-    public function __construct(?array $data = null)
+    public static function getters(): array
     {
+        return [
+        ];
     }
 }

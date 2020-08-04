@@ -29,27 +29,35 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class DeleteRequest extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
+     * @param mixed[] $data Associated array of property values
+     *                      initializing the model
      */
-    protected static $swaggerModelName = 'DeleteRequest';
+    public function __construct(?array $data = null)
+    {
+        $this->container['record_ids'] = $data['record_ids'] ?? null;
+    }
 
     /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
      */
-    protected static $swaggerTypes = [
-        'record_ids' => 'string[]',
-    ];
+    public static function swaggerTypes(): array
+    {
+        return [
+            'record_ids' => 'string[]',
+        ];
+    }
 
     /**
      * Array of property to format mappings. Used for (de)serialization
      */
-    protected static $swaggerFormats = [
-        'record_ids' => null,
-    ];
+    public static function swaggerFormats(): array
+    {
+        return [
+            'record_ids' => null,
+        ];
+    }
 
     /**
      * Array of attributes where the key is the local name,
@@ -57,35 +65,35 @@ class DeleteRequest extends BaseModel
      *
      * @var string[]
      */
-    protected static $attributeMap = [
-        'record_ids' => 'recordIds',
-    ];
+    public static function attributeMap(): array
+    {
+        return [
+            'record_ids' => 'recordIds',
+        ];
+    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
      */
-    protected static $setters = [
-        'record_ids' => 'setRecordIds',
-    ];
+    public static function setters(): array
+    {
+        return [
+            'record_ids' => 'setRecordIds',
+        ];
+    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
      */
-    protected static $getters = [
-        'record_ids' => 'getRecordIds',
-    ];
-
-    /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
+    public static function getters(): array
     {
-        $this->container['record_ids'] = $data['record_ids'] ?? null;
+        return [
+            'record_ids' => 'getRecordIds',
+        ];
     }
 
     /**

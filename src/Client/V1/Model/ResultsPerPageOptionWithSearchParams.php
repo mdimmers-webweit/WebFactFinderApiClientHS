@@ -29,72 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class ResultsPerPageOptionWithSearchParams extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'ResultsPerPageOptionWithSearchParams';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'default_value' => 'bool',
-        'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
-        'selected' => 'bool',
-        'value' => 'int',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'default_value' => null,
-        'search_params' => null,
-        'selected' => null,
-        'value' => 'int32',
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'default_value' => 'defaultValue',
-        'search_params' => 'searchParams',
-        'selected' => 'selected',
-        'value' => 'value',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'default_value' => 'setDefaultValue',
-        'search_params' => 'setSearchParams',
-        'selected' => 'setSelected',
-        'value' => 'setValue',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'default_value' => 'getDefaultValue',
-        'search_params' => 'getSearchParams',
-        'selected' => 'getSelected',
-        'value' => 'getValue',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -104,6 +38,80 @@ class ResultsPerPageOptionWithSearchParams extends BaseModel
         $this->container['search_params'] = $data['search_params'] ?? null;
         $this->container['selected'] = $data['selected'] ?? null;
         $this->container['value'] = $data['value'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'default_value' => 'bool',
+            'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+            'selected' => 'bool',
+            'value' => 'int',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'default_value' => null,
+            'search_params' => null,
+            'selected' => null,
+            'value' => 'int32',
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'default_value' => 'defaultValue',
+            'search_params' => 'searchParams',
+            'selected' => 'selected',
+            'value' => 'value',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'default_value' => 'setDefaultValue',
+            'search_params' => 'setSearchParams',
+            'selected' => 'setSelected',
+            'value' => 'setValue',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'default_value' => 'getDefaultValue',
+            'search_params' => 'getSearchParams',
+            'selected' => 'getSelected',
+            'value' => 'getValue',
+        ];
     }
 
     /**

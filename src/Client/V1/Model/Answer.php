@@ -29,72 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class Answer extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'Answer';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'id' => 'string',
-        'params' => '\Web\FactFinderApi\Client\V1\Model\Params',
-        'questions' => '\Web\FactFinderApi\Client\V1\Model\Question[]',
-        'text' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'id' => null,
-        'params' => null,
-        'questions' => null,
-        'text' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'id' => 'id',
-        'params' => 'params',
-        'questions' => 'questions',
-        'text' => 'text',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'id' => 'setId',
-        'params' => 'setParams',
-        'questions' => 'setQuestions',
-        'text' => 'setText',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'id' => 'getId',
-        'params' => 'getParams',
-        'questions' => 'getQuestions',
-        'text' => 'getText',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -104,6 +38,80 @@ class Answer extends BaseModel
         $this->container['params'] = $data['params'] ?? null;
         $this->container['questions'] = $data['questions'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'id' => 'string',
+            'params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+            'questions' => '\Web\FactFinderApi\Client\V1\Model\Question[]',
+            'text' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'id' => null,
+            'params' => null,
+            'questions' => null,
+            'text' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'id' => 'id',
+            'params' => 'params',
+            'questions' => 'questions',
+            'text' => 'text',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'id' => 'setId',
+            'params' => 'setParams',
+            'questions' => 'setQuestions',
+            'text' => 'setText',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'id' => 'getId',
+            'params' => 'getParams',
+            'questions' => 'getQuestions',
+            'text' => 'getText',
+        ];
     }
 
     /**

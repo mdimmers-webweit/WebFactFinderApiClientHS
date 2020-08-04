@@ -64,102 +64,6 @@ class User extends BaseModel
     const ROLES_API_USERS = 'ApiUsers';
 
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'User';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'name' => 'string',
-        'password' => 'string',
-        'roles' => 'string[]',
-        'channels' => 'string[]',
-        'groups' => 'string[]',
-        'hide_inactive_modules' => 'bool',
-        'hide_error_notifications' => 'bool',
-        'enable_advanced_mode' => 'bool',
-        'allow_all_current_and_future_channels' => 'bool',
-        'locale' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'name' => null,
-        'password' => null,
-        'roles' => null,
-        'channels' => null,
-        'groups' => null,
-        'hide_inactive_modules' => null,
-        'hide_error_notifications' => null,
-        'enable_advanced_mode' => null,
-        'allow_all_current_and_future_channels' => null,
-        'locale' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'name' => 'name',
-        'password' => 'password',
-        'roles' => 'roles',
-        'channels' => 'channels',
-        'groups' => 'groups',
-        'hide_inactive_modules' => 'hideInactiveModules',
-        'hide_error_notifications' => 'hideErrorNotifications',
-        'enable_advanced_mode' => 'enableAdvancedMode',
-        'allow_all_current_and_future_channels' => 'allowAllCurrentAndFutureChannels',
-        'locale' => 'locale',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'name' => 'setName',
-        'password' => 'setPassword',
-        'roles' => 'setRoles',
-        'channels' => 'setChannels',
-        'groups' => 'setGroups',
-        'hide_inactive_modules' => 'setHideInactiveModules',
-        'hide_error_notifications' => 'setHideErrorNotifications',
-        'enable_advanced_mode' => 'setEnableAdvancedMode',
-        'allow_all_current_and_future_channels' => 'setAllowAllCurrentAndFutureChannels',
-        'locale' => 'setLocale',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'name' => 'getName',
-        'password' => 'getPassword',
-        'roles' => 'getRoles',
-        'channels' => 'getChannels',
-        'groups' => 'getGroups',
-        'hide_inactive_modules' => 'getHideInactiveModules',
-        'hide_error_notifications' => 'getHideErrorNotifications',
-        'enable_advanced_mode' => 'getEnableAdvancedMode',
-        'allow_all_current_and_future_channels' => 'getAllowAllCurrentAndFutureChannels',
-        'locale' => 'getLocale',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -175,6 +79,110 @@ class User extends BaseModel
         $this->container['enable_advanced_mode'] = $data['enable_advanced_mode'] ?? null;
         $this->container['allow_all_current_and_future_channels'] = $data['allow_all_current_and_future_channels'] ?? null;
         $this->container['locale'] = $data['locale'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'name' => 'string',
+            'password' => 'string',
+            'roles' => 'string[]',
+            'channels' => 'string[]',
+            'groups' => 'string[]',
+            'hide_inactive_modules' => 'bool',
+            'hide_error_notifications' => 'bool',
+            'enable_advanced_mode' => 'bool',
+            'allow_all_current_and_future_channels' => 'bool',
+            'locale' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'name' => null,
+            'password' => null,
+            'roles' => null,
+            'channels' => null,
+            'groups' => null,
+            'hide_inactive_modules' => null,
+            'hide_error_notifications' => null,
+            'enable_advanced_mode' => null,
+            'allow_all_current_and_future_channels' => null,
+            'locale' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'name' => 'name',
+            'password' => 'password',
+            'roles' => 'roles',
+            'channels' => 'channels',
+            'groups' => 'groups',
+            'hide_inactive_modules' => 'hideInactiveModules',
+            'hide_error_notifications' => 'hideErrorNotifications',
+            'enable_advanced_mode' => 'enableAdvancedMode',
+            'allow_all_current_and_future_channels' => 'allowAllCurrentAndFutureChannels',
+            'locale' => 'locale',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'name' => 'setName',
+            'password' => 'setPassword',
+            'roles' => 'setRoles',
+            'channels' => 'setChannels',
+            'groups' => 'setGroups',
+            'hide_inactive_modules' => 'setHideInactiveModules',
+            'hide_error_notifications' => 'setHideErrorNotifications',
+            'enable_advanced_mode' => 'setEnableAdvancedMode',
+            'allow_all_current_and_future_channels' => 'setAllowAllCurrentAndFutureChannels',
+            'locale' => 'setLocale',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'name' => 'getName',
+            'password' => 'getPassword',
+            'roles' => 'getRoles',
+            'channels' => 'getChannels',
+            'groups' => 'getGroups',
+            'hide_inactive_modules' => 'getHideInactiveModules',
+            'hide_error_notifications' => 'getHideErrorNotifications',
+            'enable_advanced_mode' => 'getEnableAdvancedMode',
+            'allow_all_current_and_future_channels' => 'getAllowAllCurrentAndFutureChannels',
+            'locale' => 'getLocale',
+        ];
     }
 
     /**

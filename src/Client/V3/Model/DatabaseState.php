@@ -29,67 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class DatabaseState extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'DatabaseState';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'database_version' => 'int',
-        'delta_error_count' => 'int',
-        'delta_version' => 'int',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'database_version' => 'int64',
-        'delta_error_count' => 'int64',
-        'delta_version' => 'int64',
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'database_version' => 'databaseVersion',
-        'delta_error_count' => 'deltaErrorCount',
-        'delta_version' => 'deltaVersion',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'database_version' => 'setDatabaseVersion',
-        'delta_error_count' => 'setDeltaErrorCount',
-        'delta_version' => 'setDeltaVersion',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'database_version' => 'getDatabaseVersion',
-        'delta_error_count' => 'getDeltaErrorCount',
-        'delta_version' => 'getDeltaVersion',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -98,6 +37,75 @@ class DatabaseState extends BaseModel
         $this->container['database_version'] = $data['database_version'] ?? null;
         $this->container['delta_error_count'] = $data['delta_error_count'] ?? null;
         $this->container['delta_version'] = $data['delta_version'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'database_version' => 'int',
+            'delta_error_count' => 'int',
+            'delta_version' => 'int',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'database_version' => 'int64',
+            'delta_error_count' => 'int64',
+            'delta_version' => 'int64',
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'database_version' => 'databaseVersion',
+            'delta_error_count' => 'deltaErrorCount',
+            'delta_version' => 'deltaVersion',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'database_version' => 'setDatabaseVersion',
+            'delta_error_count' => 'setDeltaErrorCount',
+            'delta_version' => 'setDeltaVersion',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'database_version' => 'getDatabaseVersion',
+            'delta_error_count' => 'getDeltaErrorCount',
+            'delta_version' => 'getDeltaVersion',
+        ];
     }
 
     /**

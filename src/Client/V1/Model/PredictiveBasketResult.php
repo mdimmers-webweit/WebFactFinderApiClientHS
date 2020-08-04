@@ -29,27 +29,35 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class PredictiveBasketResult extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
+     * @param mixed[] $data Associated array of property values
+     *                      initializing the model
      */
-    protected static $swaggerModelName = 'PredictiveBasketResult';
+    public function __construct(?array $data = null)
+    {
+        $this->container['result_records'] = $data['result_records'] ?? null;
+    }
 
     /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
      */
-    protected static $swaggerTypes = [
-        'result_records' => '\Web\FactFinderApi\Client\V1\Model\RecordWithId[]',
-    ];
+    public static function swaggerTypes(): array
+    {
+        return [
+            'result_records' => '\Web\FactFinderApi\Client\V1\Model\RecordWithId[]',
+        ];
+    }
 
     /**
      * Array of property to format mappings. Used for (de)serialization
      */
-    protected static $swaggerFormats = [
-        'result_records' => null,
-    ];
+    public static function swaggerFormats(): array
+    {
+        return [
+            'result_records' => null,
+        ];
+    }
 
     /**
      * Array of attributes where the key is the local name,
@@ -57,35 +65,35 @@ class PredictiveBasketResult extends BaseModel
      *
      * @var string[]
      */
-    protected static $attributeMap = [
-        'result_records' => 'resultRecords',
-    ];
+    public static function attributeMap(): array
+    {
+        return [
+            'result_records' => 'resultRecords',
+        ];
+    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
      */
-    protected static $setters = [
-        'result_records' => 'setResultRecords',
-    ];
+    public static function setters(): array
+    {
+        return [
+            'result_records' => 'setResultRecords',
+        ];
+    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
      */
-    protected static $getters = [
-        'result_records' => 'getResultRecords',
-    ];
-
-    /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
+    public static function getters(): array
     {
-        $this->container['result_records'] = $data['result_records'] ?? null;
+        return [
+            'result_records' => 'getResultRecords',
+        ];
     }
 
     /**

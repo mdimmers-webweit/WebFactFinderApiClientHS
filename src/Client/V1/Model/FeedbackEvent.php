@@ -29,72 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class FeedbackEvent extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'FeedbackEvent';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'message' => 'string',
-        'positive' => 'bool',
-        'query' => 'string',
-        'sid' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'message' => null,
-        'positive' => null,
-        'query' => null,
-        'sid' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'message' => 'message',
-        'positive' => 'positive',
-        'query' => 'query',
-        'sid' => 'sid',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'message' => 'setMessage',
-        'positive' => 'setPositive',
-        'query' => 'setQuery',
-        'sid' => 'setSid',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'message' => 'getMessage',
-        'positive' => 'getPositive',
-        'query' => 'getQuery',
-        'sid' => 'getSid',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -104,6 +38,75 @@ class FeedbackEvent extends BaseModel
         $this->container['positive'] = $data['positive'] ?? null;
         $this->container['query'] = $data['query'] ?? null;
         $this->container['sid'] = $data['sid'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [1];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'message' => null,
+            'positive' => null,
+            'query' => null,
+            'sid' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'message' => 'message',
+            'positive' => 'positive',
+            'query' => 'query',
+            'sid' => 'sid',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'message' => 'setMessage',
+            'positive' => 'setPositive',
+            'query' => 'setQuery',
+            'sid' => 'setSid',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'message' => 'getMessage',
+            'positive' => 'getPositive',
+            'query' => 'getQuery',
+            'sid' => 'getSid',
+        ];
     }
 
     /**

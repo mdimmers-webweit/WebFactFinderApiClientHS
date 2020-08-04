@@ -28,13 +28,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  */
 class WrapperBoolean_ extends BaseModel
 {
-    /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'Wrapper«boolean»';
-
     /* @phpstan-ignore-next-line */
     public function __construct(?array $data = null)
     {

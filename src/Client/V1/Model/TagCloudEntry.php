@@ -29,77 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class TagCloudEntry extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'TagCloudEntry';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'nr' => 'int',
-        'params' => '\Web\FactFinderApi\Client\V1\Model\Params',
-        'search_count' => 'int',
-        'search_term' => 'string',
-        'weight' => 'double',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'nr' => 'int32',
-        'params' => null,
-        'search_count' => 'int32',
-        'search_term' => null,
-        'weight' => 'double',
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'nr' => 'nr',
-        'params' => 'params',
-        'search_count' => 'searchCount',
-        'search_term' => 'searchTerm',
-        'weight' => 'weight',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'nr' => 'setNr',
-        'params' => 'setParams',
-        'search_count' => 'setSearchCount',
-        'search_term' => 'setSearchTerm',
-        'weight' => 'setWeight',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'nr' => 'getNr',
-        'params' => 'getParams',
-        'search_count' => 'getSearchCount',
-        'search_term' => 'getSearchTerm',
-        'weight' => 'getWeight',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -110,6 +39,85 @@ class TagCloudEntry extends BaseModel
         $this->container['search_count'] = $data['search_count'] ?? null;
         $this->container['search_term'] = $data['search_term'] ?? null;
         $this->container['weight'] = $data['weight'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'nr' => 'int',
+            'params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+            'search_count' => 'int',
+            'search_term' => 'string',
+            'weight' => 'double',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'nr' => 'int32',
+            'params' => null,
+            'search_count' => 'int32',
+            'search_term' => null,
+            'weight' => 'double',
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'nr' => 'nr',
+            'params' => 'params',
+            'search_count' => 'searchCount',
+            'search_term' => 'searchTerm',
+            'weight' => 'weight',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'nr' => 'setNr',
+            'params' => 'setParams',
+            'search_count' => 'setSearchCount',
+            'search_term' => 'setSearchTerm',
+            'weight' => 'setWeight',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'nr' => 'getNr',
+            'params' => 'getParams',
+            'search_count' => 'getSearchCount',
+            'search_term' => 'getSearchTerm',
+            'weight' => 'getWeight',
+        ];
     }
 
     /**

@@ -32,72 +32,6 @@ class JobTriggerResult extends BaseModel
     const STATUS_FAILURE = 'FAILURE';
 
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'JobTriggerResult';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'error_message' => 'string',
-        'job_group' => 'string',
-        'job_name' => 'string',
-        'status' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'error_message' => null,
-        'job_group' => null,
-        'job_name' => null,
-        'status' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'error_message' => 'errorMessage',
-        'job_group' => 'jobGroup',
-        'job_name' => 'jobName',
-        'status' => 'status',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'error_message' => 'setErrorMessage',
-        'job_group' => 'setJobGroup',
-        'job_name' => 'setJobName',
-        'status' => 'setStatus',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'error_message' => 'getErrorMessage',
-        'job_group' => 'getJobGroup',
-        'job_name' => 'getJobName',
-        'status' => 'getStatus',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -107,6 +41,80 @@ class JobTriggerResult extends BaseModel
         $this->container['job_group'] = $data['job_group'] ?? null;
         $this->container['job_name'] = $data['job_name'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'error_message' => 'string',
+            'job_group' => 'string',
+            'job_name' => 'string',
+            'status' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'error_message' => null,
+            'job_group' => null,
+            'job_name' => null,
+            'status' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'error_message' => 'errorMessage',
+            'job_group' => 'jobGroup',
+            'job_name' => 'jobName',
+            'status' => 'status',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'error_message' => 'setErrorMessage',
+            'job_group' => 'setJobGroup',
+            'job_name' => 'setJobName',
+            'status' => 'setStatus',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'error_message' => 'getErrorMessage',
+            'job_group' => 'getJobGroup',
+            'job_name' => 'getJobName',
+            'status' => 'getStatus',
+        ];
     }
 
     /**

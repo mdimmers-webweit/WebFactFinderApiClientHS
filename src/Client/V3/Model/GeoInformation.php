@@ -29,72 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class GeoInformation extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'GeoInformation';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'distance' => 'double',
-        'location' => '\Web\FactFinderApi\Client\V3\Model\Location',
-        'master_values' => 'object',
-        'variant_values' => '\Web\FactFinderApi\Client\V3\Model\VariantValues[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'distance' => 'double',
-        'location' => null,
-        'master_values' => null,
-        'variant_values' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'distance' => 'distance',
-        'location' => 'location',
-        'master_values' => 'masterValues',
-        'variant_values' => 'variantValues',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'distance' => 'setDistance',
-        'location' => 'setLocation',
-        'master_values' => 'setMasterValues',
-        'variant_values' => 'setVariantValues',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'distance' => 'getDistance',
-        'location' => 'getLocation',
-        'master_values' => 'getMasterValues',
-        'variant_values' => 'getVariantValues',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -104,6 +38,80 @@ class GeoInformation extends BaseModel
         $this->container['location'] = $data['location'] ?? null;
         $this->container['master_values'] = $data['master_values'] ?? null;
         $this->container['variant_values'] = $data['variant_values'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'distance' => 'double',
+            'location' => '\Web\FactFinderApi\Client\V3\Model\Location',
+            'master_values' => 'object',
+            'variant_values' => '\Web\FactFinderApi\Client\V3\Model\VariantValues[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'distance' => 'double',
+            'location' => null,
+            'master_values' => null,
+            'variant_values' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'distance' => 'distance',
+            'location' => 'location',
+            'master_values' => 'masterValues',
+            'variant_values' => 'variantValues',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'distance' => 'setDistance',
+            'location' => 'setLocation',
+            'master_values' => 'setMasterValues',
+            'variant_values' => 'setVariantValues',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'distance' => 'getDistance',
+            'location' => 'getLocation',
+            'master_values' => 'getMasterValues',
+            'variant_values' => 'getVariantValues',
+        ];
     }
 
     /**

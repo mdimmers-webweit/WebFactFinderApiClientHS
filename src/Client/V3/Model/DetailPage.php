@@ -29,77 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class DetailPage extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'DetailPage';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'campaigns' => '\Web\FactFinderApi\Client\V3\Model\Campaign[]',
-        'field_roles' => 'map[string,string]',
-        'recommendations' => '\Web\FactFinderApi\Client\V3\Model\RecommendationResult',
-        'record' => '\Web\FactFinderApi\Client\V3\Model\RecordWithId',
-        'similar_products' => '\Web\FactFinderApi\Client\V3\Model\SimilarProducts',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'campaigns' => null,
-        'field_roles' => null,
-        'recommendations' => null,
-        'record' => null,
-        'similar_products' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'campaigns' => 'campaigns',
-        'field_roles' => 'fieldRoles',
-        'recommendations' => 'recommendations',
-        'record' => 'record',
-        'similar_products' => 'similarProducts',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'campaigns' => 'setCampaigns',
-        'field_roles' => 'setFieldRoles',
-        'recommendations' => 'setRecommendations',
-        'record' => 'setRecord',
-        'similar_products' => 'setSimilarProducts',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'campaigns' => 'getCampaigns',
-        'field_roles' => 'getFieldRoles',
-        'recommendations' => 'getRecommendations',
-        'record' => 'getRecord',
-        'similar_products' => 'getSimilarProducts',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -110,6 +39,85 @@ class DetailPage extends BaseModel
         $this->container['recommendations'] = $data['recommendations'] ?? null;
         $this->container['record'] = $data['record'] ?? null;
         $this->container['similar_products'] = $data['similar_products'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'campaigns' => '\Web\FactFinderApi\Client\V3\Model\Campaign[]',
+            'field_roles' => 'map[string,string]',
+            'recommendations' => '\Web\FactFinderApi\Client\V3\Model\RecommendationResult',
+            'record' => '\Web\FactFinderApi\Client\V3\Model\RecordWithId',
+            'similar_products' => '\Web\FactFinderApi\Client\V3\Model\SimilarProducts',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'campaigns' => null,
+            'field_roles' => null,
+            'recommendations' => null,
+            'record' => null,
+            'similar_products' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'campaigns' => 'campaigns',
+            'field_roles' => 'fieldRoles',
+            'recommendations' => 'recommendations',
+            'record' => 'record',
+            'similar_products' => 'similarProducts',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'campaigns' => 'setCampaigns',
+            'field_roles' => 'setFieldRoles',
+            'recommendations' => 'setRecommendations',
+            'record' => 'setRecord',
+            'similar_products' => 'setSimilarProducts',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'campaigns' => 'getCampaigns',
+            'field_roles' => 'getFieldRoles',
+            'recommendations' => 'getRecommendations',
+            'record' => 'getRecord',
+            'similar_products' => 'getSimilarProducts',
+        ];
     }
 
     /**

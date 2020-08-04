@@ -29,67 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class NavigationRequest extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'NavigationRequest';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'params' => '\Web\FactFinderApi\Client\V3\Model\NavigationParams',
-        'search_control_params' => '\Web\FactFinderApi\Client\V3\Model\SearchControlParams',
-        'sid' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'params' => null,
-        'search_control_params' => null,
-        'sid' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'params' => 'params',
-        'search_control_params' => 'searchControlParams',
-        'sid' => 'sid',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'params' => 'setParams',
-        'search_control_params' => 'setSearchControlParams',
-        'sid' => 'setSid',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'params' => 'getParams',
-        'search_control_params' => 'getSearchControlParams',
-        'sid' => 'getSid',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -98,6 +37,75 @@ class NavigationRequest extends BaseModel
         $this->container['params'] = $data['params'] ?? null;
         $this->container['search_control_params'] = $data['search_control_params'] ?? null;
         $this->container['sid'] = $data['sid'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'params' => '\Web\FactFinderApi\Client\V3\Model\NavigationParams',
+            'search_control_params' => '\Web\FactFinderApi\Client\V3\Model\SearchControlParams',
+            'sid' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'params' => null,
+            'search_control_params' => null,
+            'sid' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'params' => 'params',
+            'search_control_params' => 'searchControlParams',
+            'sid' => 'sid',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'params' => 'setParams',
+            'search_control_params' => 'setSearchControlParams',
+            'sid' => 'setSid',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'params' => 'getParams',
+            'search_control_params' => 'getSearchControlParams',
+            'sid' => 'getSid',
+        ];
     }
 
     /**

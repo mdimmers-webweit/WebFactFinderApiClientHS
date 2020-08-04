@@ -29,147 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class Result extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'Result';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'answers' => '\Web\FactFinderApi\Client\V3\Model\Answer[]',
-        'article_number_search' => 'bool',
-        'bread_crumb_trail' => '\Web\FactFinderApi\Client\V3\Model\BreadCrumbTrailItem[]',
-        'campaigns' => '\Web\FactFinderApi\Client\V3\Model\Campaign[]',
-        'facets' => '\Web\FactFinderApi\Client\V3\Model\Facet[]',
-        'field_roles' => 'map[string,string]',
-        'filters' => '\Web\FactFinderApi\Client\V3\Model\Filter[]',
-        'hits' => '\Web\FactFinderApi\Client\V3\Model\SearchRecord[]',
-        'paging' => '\Web\FactFinderApi\Client\V3\Model\Paging',
-        'score_first_hit' => 'double',
-        'score_last_hit' => 'double',
-        'search_control_params' => '\Web\FactFinderApi\Client\V3\Model\SearchControlParams',
-        'search_params' => '\Web\FactFinderApi\Client\V3\Model\SearchParams',
-        'single_word_results' => '\Web\FactFinderApi\Client\V3\Model\SingleWordSearchResult[]',
-        'sort_items' => '\Web\FactFinderApi\Client\V3\Model\DescribedSortItem[]',
-        'timed_out' => 'bool',
-        'took_total' => 'int',
-        'took_worldmatch' => 'int',
-        'total_hits' => 'int',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'answers' => null,
-        'article_number_search' => null,
-        'bread_crumb_trail' => null,
-        'campaigns' => null,
-        'facets' => null,
-        'field_roles' => null,
-        'filters' => null,
-        'hits' => null,
-        'paging' => null,
-        'score_first_hit' => 'double',
-        'score_last_hit' => 'double',
-        'search_control_params' => null,
-        'search_params' => null,
-        'single_word_results' => null,
-        'sort_items' => null,
-        'timed_out' => null,
-        'took_total' => 'int64',
-        'took_worldmatch' => 'int64',
-        'total_hits' => 'int32',
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'answers' => 'answers',
-        'article_number_search' => 'articleNumberSearch',
-        'bread_crumb_trail' => 'breadCrumbTrail',
-        'campaigns' => 'campaigns',
-        'facets' => 'facets',
-        'field_roles' => 'fieldRoles',
-        'filters' => 'filters',
-        'hits' => 'hits',
-        'paging' => 'paging',
-        'score_first_hit' => 'scoreFirstHit',
-        'score_last_hit' => 'scoreLastHit',
-        'search_control_params' => 'searchControlParams',
-        'search_params' => 'searchParams',
-        'single_word_results' => 'singleWordResults',
-        'sort_items' => 'sortItems',
-        'timed_out' => 'timedOut',
-        'took_total' => 'tookTotal',
-        'took_worldmatch' => 'tookWorldmatch',
-        'total_hits' => 'totalHits',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'answers' => 'setAnswers',
-        'article_number_search' => 'setArticleNumberSearch',
-        'bread_crumb_trail' => 'setBreadCrumbTrail',
-        'campaigns' => 'setCampaigns',
-        'facets' => 'setFacets',
-        'field_roles' => 'setFieldRoles',
-        'filters' => 'setFilters',
-        'hits' => 'setHits',
-        'paging' => 'setPaging',
-        'score_first_hit' => 'setScoreFirstHit',
-        'score_last_hit' => 'setScoreLastHit',
-        'search_control_params' => 'setSearchControlParams',
-        'search_params' => 'setSearchParams',
-        'single_word_results' => 'setSingleWordResults',
-        'sort_items' => 'setSortItems',
-        'timed_out' => 'setTimedOut',
-        'took_total' => 'setTookTotal',
-        'took_worldmatch' => 'setTookWorldmatch',
-        'total_hits' => 'setTotalHits',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'answers' => 'getAnswers',
-        'article_number_search' => 'getArticleNumberSearch',
-        'bread_crumb_trail' => 'getBreadCrumbTrail',
-        'campaigns' => 'getCampaigns',
-        'facets' => 'getFacets',
-        'field_roles' => 'getFieldRoles',
-        'filters' => 'getFilters',
-        'hits' => 'getHits',
-        'paging' => 'getPaging',
-        'score_first_hit' => 'getScoreFirstHit',
-        'score_last_hit' => 'getScoreLastHit',
-        'search_control_params' => 'getSearchControlParams',
-        'search_params' => 'getSearchParams',
-        'single_word_results' => 'getSingleWordResults',
-        'sort_items' => 'getSortItems',
-        'timed_out' => 'getTimedOut',
-        'took_total' => 'getTookTotal',
-        'took_worldmatch' => 'getTookWorldmatch',
-        'total_hits' => 'getTotalHits',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -194,6 +53,155 @@ class Result extends BaseModel
         $this->container['took_total'] = $data['took_total'] ?? null;
         $this->container['took_worldmatch'] = $data['took_worldmatch'] ?? null;
         $this->container['total_hits'] = $data['total_hits'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'answers' => '\Web\FactFinderApi\Client\V3\Model\Answer[]',
+            'article_number_search' => 'bool',
+            'bread_crumb_trail' => '\Web\FactFinderApi\Client\V3\Model\BreadCrumbTrailItem[]',
+            'campaigns' => '\Web\FactFinderApi\Client\V3\Model\Campaign[]',
+            'facets' => '\Web\FactFinderApi\Client\V3\Model\Facet[]',
+            'field_roles' => 'map[string,string]',
+            'filters' => '\Web\FactFinderApi\Client\V3\Model\Filter[]',
+            'hits' => '\Web\FactFinderApi\Client\V3\Model\SearchRecord[]',
+            'paging' => '\Web\FactFinderApi\Client\V3\Model\Paging',
+            'score_first_hit' => 'double',
+            'score_last_hit' => 'double',
+            'search_control_params' => '\Web\FactFinderApi\Client\V3\Model\SearchControlParams',
+            'search_params' => '\Web\FactFinderApi\Client\V3\Model\SearchParams',
+            'single_word_results' => '\Web\FactFinderApi\Client\V3\Model\SingleWordSearchResult[]',
+            'sort_items' => '\Web\FactFinderApi\Client\V3\Model\DescribedSortItem[]',
+            'timed_out' => 'bool',
+            'took_total' => 'int',
+            'took_worldmatch' => 'int',
+            'total_hits' => 'int',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'answers' => null,
+            'article_number_search' => null,
+            'bread_crumb_trail' => null,
+            'campaigns' => null,
+            'facets' => null,
+            'field_roles' => null,
+            'filters' => null,
+            'hits' => null,
+            'paging' => null,
+            'score_first_hit' => 'double',
+            'score_last_hit' => 'double',
+            'search_control_params' => null,
+            'search_params' => null,
+            'single_word_results' => null,
+            'sort_items' => null,
+            'timed_out' => null,
+            'took_total' => 'int64',
+            'took_worldmatch' => 'int64',
+            'total_hits' => 'int32',
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'answers' => 'answers',
+            'article_number_search' => 'articleNumberSearch',
+            'bread_crumb_trail' => 'breadCrumbTrail',
+            'campaigns' => 'campaigns',
+            'facets' => 'facets',
+            'field_roles' => 'fieldRoles',
+            'filters' => 'filters',
+            'hits' => 'hits',
+            'paging' => 'paging',
+            'score_first_hit' => 'scoreFirstHit',
+            'score_last_hit' => 'scoreLastHit',
+            'search_control_params' => 'searchControlParams',
+            'search_params' => 'searchParams',
+            'single_word_results' => 'singleWordResults',
+            'sort_items' => 'sortItems',
+            'timed_out' => 'timedOut',
+            'took_total' => 'tookTotal',
+            'took_worldmatch' => 'tookWorldmatch',
+            'total_hits' => 'totalHits',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'answers' => 'setAnswers',
+            'article_number_search' => 'setArticleNumberSearch',
+            'bread_crumb_trail' => 'setBreadCrumbTrail',
+            'campaigns' => 'setCampaigns',
+            'facets' => 'setFacets',
+            'field_roles' => 'setFieldRoles',
+            'filters' => 'setFilters',
+            'hits' => 'setHits',
+            'paging' => 'setPaging',
+            'score_first_hit' => 'setScoreFirstHit',
+            'score_last_hit' => 'setScoreLastHit',
+            'search_control_params' => 'setSearchControlParams',
+            'search_params' => 'setSearchParams',
+            'single_word_results' => 'setSingleWordResults',
+            'sort_items' => 'setSortItems',
+            'timed_out' => 'setTimedOut',
+            'took_total' => 'setTookTotal',
+            'took_worldmatch' => 'setTookWorldmatch',
+            'total_hits' => 'setTotalHits',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'answers' => 'getAnswers',
+            'article_number_search' => 'getArticleNumberSearch',
+            'bread_crumb_trail' => 'getBreadCrumbTrail',
+            'campaigns' => 'getCampaigns',
+            'facets' => 'getFacets',
+            'field_roles' => 'getFieldRoles',
+            'filters' => 'getFilters',
+            'hits' => 'getHits',
+            'paging' => 'getPaging',
+            'score_first_hit' => 'getScoreFirstHit',
+            'score_last_hit' => 'getScoreLastHit',
+            'search_control_params' => 'getSearchControlParams',
+            'search_params' => 'getSearchParams',
+            'single_word_results' => 'getSingleWordResults',
+            'sort_items' => 'getSortItems',
+            'timed_out' => 'getTimedOut',
+            'took_total' => 'getTookTotal',
+            'took_worldmatch' => 'getTookWorldmatch',
+            'total_hits' => 'getTotalHits',
+        ];
     }
 
     /**

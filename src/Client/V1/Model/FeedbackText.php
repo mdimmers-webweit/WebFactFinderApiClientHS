@@ -29,82 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class FeedbackText extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'FeedbackText';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'html' => 'bool',
-        'id' => 'int',
-        'label' => 'string',
-        'position' => 'int',
-        'teaser' => 'bool',
-        'text' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'html' => null,
-        'id' => 'int32',
-        'label' => null,
-        'position' => 'int32',
-        'teaser' => null,
-        'text' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'html' => 'html',
-        'id' => 'id',
-        'label' => 'label',
-        'position' => 'position',
-        'teaser' => 'teaser',
-        'text' => 'text',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'html' => 'setHtml',
-        'id' => 'setId',
-        'label' => 'setLabel',
-        'position' => 'setPosition',
-        'teaser' => 'setTeaser',
-        'text' => 'setText',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'html' => 'getHtml',
-        'id' => 'getId',
-        'label' => 'getLabel',
-        'position' => 'getPosition',
-        'teaser' => 'getTeaser',
-        'text' => 'getText',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -116,6 +40,90 @@ class FeedbackText extends BaseModel
         $this->container['position'] = $data['position'] ?? null;
         $this->container['teaser'] = $data['teaser'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'html' => 'bool',
+            'id' => 'int',
+            'label' => 'string',
+            'position' => 'int',
+            'teaser' => 'bool',
+            'text' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'html' => null,
+            'id' => 'int32',
+            'label' => null,
+            'position' => 'int32',
+            'teaser' => null,
+            'text' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'html' => 'html',
+            'id' => 'id',
+            'label' => 'label',
+            'position' => 'position',
+            'teaser' => 'teaser',
+            'text' => 'text',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'html' => 'setHtml',
+            'id' => 'setId',
+            'label' => 'setLabel',
+            'position' => 'setPosition',
+            'teaser' => 'setTeaser',
+            'text' => 'setText',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'html' => 'getHtml',
+            'id' => 'getId',
+            'label' => 'getLabel',
+            'position' => 'getPosition',
+            'teaser' => 'getTeaser',
+            'text' => 'getText',
+        ];
     }
 
     /**

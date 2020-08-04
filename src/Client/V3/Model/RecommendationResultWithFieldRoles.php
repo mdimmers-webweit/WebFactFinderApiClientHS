@@ -29,67 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class RecommendationResultWithFieldRoles extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'RecommendationResultWithFieldRoles';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'field_roles' => 'map[string,string]',
-        'hits' => '\Web\FactFinderApi\Client\V3\Model\TypedFlatRecord[]',
-        'timed_out' => 'bool',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'field_roles' => null,
-        'hits' => null,
-        'timed_out' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'field_roles' => 'fieldRoles',
-        'hits' => 'hits',
-        'timed_out' => 'timedOut',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'field_roles' => 'setFieldRoles',
-        'hits' => 'setHits',
-        'timed_out' => 'setTimedOut',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'field_roles' => 'getFieldRoles',
-        'hits' => 'getHits',
-        'timed_out' => 'getTimedOut',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -98,6 +37,75 @@ class RecommendationResultWithFieldRoles extends BaseModel
         $this->container['field_roles'] = $data['field_roles'] ?? null;
         $this->container['hits'] = $data['hits'] ?? null;
         $this->container['timed_out'] = $data['timed_out'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'field_roles' => 'map[string,string]',
+            'hits' => '\Web\FactFinderApi\Client\V3\Model\TypedFlatRecord[]',
+            'timed_out' => 'bool',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'field_roles' => null,
+            'hits' => null,
+            'timed_out' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'field_roles' => 'fieldRoles',
+            'hits' => 'hits',
+            'timed_out' => 'timedOut',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'field_roles' => 'setFieldRoles',
+            'hits' => 'setHits',
+            'timed_out' => 'setTimedOut',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'field_roles' => 'getFieldRoles',
+            'hits' => 'getHits',
+            'timed_out' => 'getTimedOut',
+        ];
     }
 
     /**

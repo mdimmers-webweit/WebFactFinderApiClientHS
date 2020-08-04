@@ -29,72 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class PreprocessorEntry extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'PreprocessorEntry';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'from' => 'string',
-        'group' => 'string',
-        'sort' => 'int',
-        'to' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'from' => null,
-        'group' => null,
-        'sort' => 'int32',
-        'to' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'from' => 'from',
-        'group' => 'group',
-        'sort' => 'sort',
-        'to' => 'to',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'from' => 'setFrom',
-        'group' => 'setGroup',
-        'sort' => 'setSort',
-        'to' => 'setTo',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'from' => 'getFrom',
-        'group' => 'getGroup',
-        'sort' => 'getSort',
-        'to' => 'getTo',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -104,6 +38,80 @@ class PreprocessorEntry extends BaseModel
         $this->container['group'] = $data['group'] ?? null;
         $this->container['sort'] = $data['sort'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'from' => 'string',
+            'group' => 'string',
+            'sort' => 'int',
+            'to' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'from' => null,
+            'group' => null,
+            'sort' => 'int32',
+            'to' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'from' => 'from',
+            'group' => 'group',
+            'sort' => 'sort',
+            'to' => 'to',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'from' => 'setFrom',
+            'group' => 'setGroup',
+            'sort' => 'setSort',
+            'to' => 'setTo',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'from' => 'getFrom',
+            'group' => 'getGroup',
+            'sort' => 'getSort',
+            'to' => 'getTo',
+        ];
     }
 
     /**

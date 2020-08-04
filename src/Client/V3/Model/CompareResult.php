@@ -29,67 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class CompareResult extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'CompareResult';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'attributes' => '\Web\FactFinderApi\Client\V3\Model\CompareAttribute[]',
-        'field_roles' => 'map[string,string]',
-        'records' => '\Web\FactFinderApi\Client\V3\Model\TypedFlatRecord[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'attributes' => null,
-        'field_roles' => null,
-        'records' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'field_roles' => 'fieldRoles',
-        'records' => 'records',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'attributes' => 'setAttributes',
-        'field_roles' => 'setFieldRoles',
-        'records' => 'setRecords',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'attributes' => 'getAttributes',
-        'field_roles' => 'getFieldRoles',
-        'records' => 'getRecords',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -98,6 +37,75 @@ class CompareResult extends BaseModel
         $this->container['attributes'] = $data['attributes'] ?? null;
         $this->container['field_roles'] = $data['field_roles'] ?? null;
         $this->container['records'] = $data['records'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'attributes' => '\Web\FactFinderApi\Client\V3\Model\CompareAttribute[]',
+            'field_roles' => 'map[string,string]',
+            'records' => '\Web\FactFinderApi\Client\V3\Model\TypedFlatRecord[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'attributes' => null,
+            'field_roles' => null,
+            'records' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'attributes' => 'attributes',
+            'field_roles' => 'fieldRoles',
+            'records' => 'records',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'attributes' => 'setAttributes',
+            'field_roles' => 'setFieldRoles',
+            'records' => 'setRecords',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'attributes' => 'getAttributes',
+            'field_roles' => 'getFieldRoles',
+            'records' => 'getRecords',
+        ];
     }
 
     /**

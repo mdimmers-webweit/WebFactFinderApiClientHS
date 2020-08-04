@@ -35,92 +35,6 @@ class ImportChannelResult extends BaseModel
     const IMPORT_TYPE_RANKING = 'RANKING';
 
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'ImportChannelResult';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'channel' => 'string',
-        'duration_in_seconds' => 'int',
-        'error_messages' => 'string[]',
-        'import_type' => 'string',
-        'imported_fields' => 'int',
-        'imported_records' => 'int',
-        'start_date' => '\DateTime',
-        'status_messages' => 'string[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'channel' => null,
-        'duration_in_seconds' => 'int64',
-        'error_messages' => null,
-        'import_type' => null,
-        'imported_fields' => 'int32',
-        'imported_records' => 'int32',
-        'start_date' => 'date-time',
-        'status_messages' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'channel' => 'channel',
-        'duration_in_seconds' => 'durationInSeconds',
-        'error_messages' => 'errorMessages',
-        'import_type' => 'importType',
-        'imported_fields' => 'importedFields',
-        'imported_records' => 'importedRecords',
-        'start_date' => 'startDate',
-        'status_messages' => 'statusMessages',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'channel' => 'setChannel',
-        'duration_in_seconds' => 'setDurationInSeconds',
-        'error_messages' => 'setErrorMessages',
-        'import_type' => 'setImportType',
-        'imported_fields' => 'setImportedFields',
-        'imported_records' => 'setImportedRecords',
-        'start_date' => 'setStartDate',
-        'status_messages' => 'setStatusMessages',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'channel' => 'getChannel',
-        'duration_in_seconds' => 'getDurationInSeconds',
-        'error_messages' => 'getErrorMessages',
-        'import_type' => 'getImportType',
-        'imported_fields' => 'getImportedFields',
-        'imported_records' => 'getImportedRecords',
-        'start_date' => 'getStartDate',
-        'status_messages' => 'getStatusMessages',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -134,6 +48,100 @@ class ImportChannelResult extends BaseModel
         $this->container['imported_records'] = $data['imported_records'] ?? null;
         $this->container['start_date'] = $data['start_date'] ?? null;
         $this->container['status_messages'] = $data['status_messages'] ?? null;
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'channel' => null,
+            'duration_in_seconds' => 'int64',
+            'error_messages' => null,
+            'import_type' => null,
+            'imported_fields' => 'int32',
+            'imported_records' => 'int32',
+            'start_date' => 'date-time',
+            'status_messages' => null,
+        ];
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'channel' => 'string',
+            'duration_in_seconds' => 'int',
+            'error_messages' => 'string[]',
+            'import_type' => 'string',
+            'imported_fields' => 'int',
+            'imported_records' => 'int',
+            'start_date' => '\DateTime',
+            'status_messages' => 'string[]',
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'channel' => 'channel',
+            'duration_in_seconds' => 'durationInSeconds',
+            'error_messages' => 'errorMessages',
+            'import_type' => 'importType',
+            'imported_fields' => 'importedFields',
+            'imported_records' => 'importedRecords',
+            'start_date' => 'startDate',
+            'status_messages' => 'statusMessages',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'channel' => 'setChannel',
+            'duration_in_seconds' => 'setDurationInSeconds',
+            'error_messages' => 'setErrorMessages',
+            'import_type' => 'setImportType',
+            'imported_fields' => 'setImportedFields',
+            'imported_records' => 'setImportedRecords',
+            'start_date' => 'setStartDate',
+            'status_messages' => 'setStatusMessages',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'channel' => 'getChannel',
+            'duration_in_seconds' => 'getDurationInSeconds',
+            'error_messages' => 'getErrorMessages',
+            'import_type' => 'getImportType',
+            'imported_fields' => 'getImportedFields',
+            'imported_records' => 'getImportedRecords',
+            'start_date' => 'getStartDate',
+            'status_messages' => 'getStatusMessages',
+        ];
     }
 
     /**

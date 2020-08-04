@@ -29,92 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class RecommendationClickEvent extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'RecommendationClickEvent';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'cookie_id' => 'string',
-        'extra_params' => 'map[string,string]',
-        'id' => 'string',
-        'main_id' => 'string',
-        'master_id' => 'string',
-        'sid' => 'string',
-        'title' => 'string',
-        'user_id' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'cookie_id' => null,
-        'extra_params' => null,
-        'id' => null,
-        'main_id' => null,
-        'master_id' => null,
-        'sid' => null,
-        'title' => null,
-        'user_id' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'cookie_id' => 'cookieId',
-        'extra_params' => 'extraParams',
-        'id' => 'id',
-        'main_id' => 'mainId',
-        'master_id' => 'masterId',
-        'sid' => 'sid',
-        'title' => 'title',
-        'user_id' => 'userId',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'cookie_id' => 'setCookieId',
-        'extra_params' => 'setExtraParams',
-        'id' => 'setId',
-        'main_id' => 'setMainId',
-        'master_id' => 'setMasterId',
-        'sid' => 'setSid',
-        'title' => 'setTitle',
-        'user_id' => 'setUserId',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'cookie_id' => 'getCookieId',
-        'extra_params' => 'getExtraParams',
-        'id' => 'getId',
-        'main_id' => 'getMainId',
-        'master_id' => 'getMasterId',
-        'sid' => 'getSid',
-        'title' => 'getTitle',
-        'user_id' => 'getUserId',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -128,6 +42,100 @@ class RecommendationClickEvent extends BaseModel
         $this->container['sid'] = $data['sid'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'cookie_id' => 'string',
+            'extra_params' => 'map[string,string]',
+            'id' => 'string',
+            'main_id' => 'string',
+            'master_id' => 'string',
+            'sid' => 'string',
+            'title' => 'string',
+            'user_id' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'cookie_id' => null,
+            'extra_params' => null,
+            'id' => null,
+            'main_id' => null,
+            'master_id' => null,
+            'sid' => null,
+            'title' => null,
+            'user_id' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'cookie_id' => 'cookieId',
+            'extra_params' => 'extraParams',
+            'id' => 'id',
+            'main_id' => 'mainId',
+            'master_id' => 'masterId',
+            'sid' => 'sid',
+            'title' => 'title',
+            'user_id' => 'userId',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'cookie_id' => 'setCookieId',
+            'extra_params' => 'setExtraParams',
+            'id' => 'setId',
+            'main_id' => 'setMainId',
+            'master_id' => 'setMasterId',
+            'sid' => 'setSid',
+            'title' => 'setTitle',
+            'user_id' => 'setUserId',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'cookie_id' => 'getCookieId',
+            'extra_params' => 'getExtraParams',
+            'id' => 'getId',
+            'main_id' => 'getMainId',
+            'master_id' => 'getMasterId',
+            'sid' => 'getSid',
+            'title' => 'getTitle',
+            'user_id' => 'getUserId',
+        ];
     }
 
     /**

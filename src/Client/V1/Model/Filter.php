@@ -29,67 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class Filter extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'Filter';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'name' => 'string',
-        'substring' => 'bool',
-        'value_list' => '\Web\FactFinderApi\Client\V1\Model\FilterValue[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'name' => null,
-        'substring' => null,
-        'value_list' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'name' => 'name',
-        'substring' => 'substring',
-        'value_list' => 'valueList',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'name' => 'setName',
-        'substring' => 'setSubstring',
-        'value_list' => 'setValueList',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'name' => 'getName',
-        'substring' => 'getSubstring',
-        'value_list' => 'getValueList',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -98,6 +37,75 @@ class Filter extends BaseModel
         $this->container['name'] = $data['name'] ?? null;
         $this->container['substring'] = $data['substring'] ?? null;
         $this->container['value_list'] = $data['value_list'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'name' => 'string',
+            'substring' => 'bool',
+            'value_list' => '\Web\FactFinderApi\Client\V1\Model\FilterValue[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'name' => null,
+            'substring' => null,
+            'value_list' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'name' => 'name',
+            'substring' => 'substring',
+            'value_list' => 'valueList',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'name' => 'setName',
+            'substring' => 'setSubstring',
+            'value_list' => 'setValueList',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'name' => 'getName',
+            'substring' => 'getSubstring',
+            'value_list' => 'getValueList',
+        ];
     }
 
     /**

@@ -9,13 +9,6 @@ namespace Web\FactFinderApi\Client\Model;
 abstract class ResultSuggestionBase extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'ResultSuggestion';
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */

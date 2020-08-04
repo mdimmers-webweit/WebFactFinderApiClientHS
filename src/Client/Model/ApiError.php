@@ -29,67 +29,6 @@ namespace Web\FactFinderApi\Client\Model;
 class ApiError extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'ApiError';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'error' => 'string',
-        'error_description' => 'string',
-        'stacktrace' => 'string[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'error' => null,
-        'error_description' => null,
-        'stacktrace' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'error' => 'error',
-        'error_description' => 'errorDescription',
-        'stacktrace' => 'stacktrace',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'error' => 'setError',
-        'error_description' => 'setErrorDescription',
-        'stacktrace' => 'setStacktrace',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'error' => 'getError',
-        'error_description' => 'getErrorDescription',
-        'stacktrace' => 'getStacktrace',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -98,6 +37,75 @@ class ApiError extends BaseModel
         $this->container['error'] = $data['error'] ?? null;
         $this->container['error_description'] = $data['error_description'] ?? null;
         $this->container['stacktrace'] = $data['stacktrace'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'error' => 'string',
+            'error_description' => 'string',
+            'stacktrace' => 'string[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'error' => null,
+            'error_description' => null,
+            'stacktrace' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'error' => 'error',
+            'error_description' => 'errorDescription',
+            'stacktrace' => 'stacktrace',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'error' => 'setError',
+            'error_description' => 'setErrorDescription',
+            'stacktrace' => 'setStacktrace',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'error' => 'getError',
+            'error_description' => 'getErrorDescription',
+            'stacktrace' => 'getStacktrace',
+        ];
     }
 
     /**

@@ -29,27 +29,35 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class PredictiveBasketResult extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
+     * @param mixed[] $data Associated array of property values
+     *                      initializing the model
      */
-    protected static $swaggerModelName = 'PredictiveBasketResult';
+    public function __construct(?array $data = null)
+    {
+        $this->container['hits'] = $data['hits'] ?? null;
+    }
 
     /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
      */
-    protected static $swaggerTypes = [
-        'hits' => '\Web\FactFinderApi\Client\V3\Model\TypedFlatRecord[]',
-    ];
+    public static function swaggerTypes(): array
+    {
+        return [
+            'hits' => '\Web\FactFinderApi\Client\V3\Model\TypedFlatRecord[]',
+        ];
+    }
 
     /**
      * Array of property to format mappings. Used for (de)serialization
      */
-    protected static $swaggerFormats = [
-        'hits' => null,
-    ];
+    public static function swaggerFormats(): array
+    {
+        return [
+            'hits' => null,
+        ];
+    }
 
     /**
      * Array of attributes where the key is the local name,
@@ -57,35 +65,35 @@ class PredictiveBasketResult extends BaseModel
      *
      * @var string[]
      */
-    protected static $attributeMap = [
-        'hits' => 'hits',
-    ];
+    public static function attributeMap(): array
+    {
+        return [
+            'hits' => 'hits',
+        ];
+    }
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      *
      * @var string[]
      */
-    protected static $setters = [
-        'hits' => 'setHits',
-    ];
+    public static function setters(): array
+    {
+        return [
+            'hits' => 'setHits',
+        ];
+    }
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      *
      * @var string[]
      */
-    protected static $getters = [
-        'hits' => 'getHits',
-    ];
-
-    /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
+    public static function getters(): array
     {
-        $this->container['hits'] = $data['hits'] ?? null;
+        return [
+            'hits' => 'getHits',
+        ];
     }
 
     /**

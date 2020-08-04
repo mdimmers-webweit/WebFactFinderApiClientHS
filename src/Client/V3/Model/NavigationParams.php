@@ -29,102 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class NavigationParams extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'NavigationParams';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'advisor_status' => '\Web\FactFinderApi\Client\V3\Model\AdvisorCampaignStatusHolder',
-        'channel' => 'string',
-        'custom_parameters' => '\Web\FactFinderApi\Client\V3\Model\CustomParameter[]',
-        'filters' => '\Web\FactFinderApi\Client\V3\Model\Filter[]',
-        'hits_per_page' => 'int',
-        'location' => '\Web\FactFinderApi\Client\V3\Model\Location',
-        'market_id' => '\Web\FactFinderApi\Client\V3\Model\Filter',
-        'max_count_variants' => 'int',
-        'page' => 'int',
-        'sort_items' => '\Web\FactFinderApi\Client\V3\Model\SortItem[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'advisor_status' => null,
-        'channel' => null,
-        'custom_parameters' => null,
-        'filters' => null,
-        'hits_per_page' => 'int32',
-        'location' => null,
-        'market_id' => null,
-        'max_count_variants' => 'int32',
-        'page' => 'int32',
-        'sort_items' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'advisor_status' => 'advisorStatus',
-        'channel' => 'channel',
-        'custom_parameters' => 'customParameters',
-        'filters' => 'filters',
-        'hits_per_page' => 'hitsPerPage',
-        'location' => 'location',
-        'market_id' => 'marketId',
-        'max_count_variants' => 'maxCountVariants',
-        'page' => 'page',
-        'sort_items' => 'sortItems',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'advisor_status' => 'setAdvisorStatus',
-        'channel' => 'setChannel',
-        'custom_parameters' => 'setCustomParameters',
-        'filters' => 'setFilters',
-        'hits_per_page' => 'setHitsPerPage',
-        'location' => 'setLocation',
-        'market_id' => 'setMarketId',
-        'max_count_variants' => 'setMaxCountVariants',
-        'page' => 'setPage',
-        'sort_items' => 'setSortItems',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'advisor_status' => 'getAdvisorStatus',
-        'channel' => 'getChannel',
-        'custom_parameters' => 'getCustomParameters',
-        'filters' => 'getFilters',
-        'hits_per_page' => 'getHitsPerPage',
-        'location' => 'getLocation',
-        'market_id' => 'getMarketId',
-        'max_count_variants' => 'getMaxCountVariants',
-        'page' => 'getPage',
-        'sort_items' => 'getSortItems',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -140,6 +44,110 @@ class NavigationParams extends BaseModel
         $this->container['max_count_variants'] = $data['max_count_variants'] ?? null;
         $this->container['page'] = $data['page'] ?? null;
         $this->container['sort_items'] = $data['sort_items'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'advisor_status' => '\Web\FactFinderApi\Client\V3\Model\AdvisorCampaignStatusHolder',
+            'channel' => 'string',
+            'custom_parameters' => '\Web\FactFinderApi\Client\V3\Model\CustomParameter[]',
+            'filters' => '\Web\FactFinderApi\Client\V3\Model\Filter[]',
+            'hits_per_page' => 'int',
+            'location' => '\Web\FactFinderApi\Client\V3\Model\Location',
+            'market_id' => '\Web\FactFinderApi\Client\V3\Model\Filter',
+            'max_count_variants' => 'int',
+            'page' => 'int',
+            'sort_items' => '\Web\FactFinderApi\Client\V3\Model\SortItem[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'advisor_status' => null,
+            'channel' => null,
+            'custom_parameters' => null,
+            'filters' => null,
+            'hits_per_page' => 'int32',
+            'location' => null,
+            'market_id' => null,
+            'max_count_variants' => 'int32',
+            'page' => 'int32',
+            'sort_items' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'advisor_status' => 'advisorStatus',
+            'channel' => 'channel',
+            'custom_parameters' => 'customParameters',
+            'filters' => 'filters',
+            'hits_per_page' => 'hitsPerPage',
+            'location' => 'location',
+            'market_id' => 'marketId',
+            'max_count_variants' => 'maxCountVariants',
+            'page' => 'page',
+            'sort_items' => 'sortItems',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'advisor_status' => 'setAdvisorStatus',
+            'channel' => 'setChannel',
+            'custom_parameters' => 'setCustomParameters',
+            'filters' => 'setFilters',
+            'hits_per_page' => 'setHitsPerPage',
+            'location' => 'setLocation',
+            'market_id' => 'setMarketId',
+            'max_count_variants' => 'setMaxCountVariants',
+            'page' => 'setPage',
+            'sort_items' => 'setSortItems',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'advisor_status' => 'getAdvisorStatus',
+            'channel' => 'getChannel',
+            'custom_parameters' => 'getCustomParameters',
+            'filters' => 'getFilters',
+            'hits_per_page' => 'getHitsPerPage',
+            'location' => 'getLocation',
+            'market_id' => 'getMarketId',
+            'max_count_variants' => 'getMaxCountVariants',
+            'page' => 'getPage',
+            'sort_items' => 'getSortItems',
+        ];
     }
 
     /**

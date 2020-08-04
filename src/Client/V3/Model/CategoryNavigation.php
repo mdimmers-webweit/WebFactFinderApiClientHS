@@ -29,62 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class CategoryNavigation extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'CategoryNavigation';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'facets' => '\Web\FactFinderApi\Client\V3\Model\Facet[]',
-        'timed_out' => 'bool',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'facets' => null,
-        'timed_out' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'facets' => 'facets',
-        'timed_out' => 'timedOut',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'facets' => 'setFacets',
-        'timed_out' => 'setTimedOut',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'facets' => 'getFacets',
-        'timed_out' => 'getTimedOut',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -92,6 +36,70 @@ class CategoryNavigation extends BaseModel
     {
         $this->container['facets'] = $data['facets'] ?? null;
         $this->container['timed_out'] = $data['timed_out'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'facets' => '\Web\FactFinderApi\Client\V3\Model\Facet[]',
+            'timed_out' => 'bool',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'facets' => null,
+            'timed_out' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'facets' => 'facets',
+            'timed_out' => 'timedOut',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'facets' => 'setFacets',
+            'timed_out' => 'setTimedOut',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'facets' => 'getFacets',
+            'timed_out' => 'getTimedOut',
+        ];
     }
 
     /**

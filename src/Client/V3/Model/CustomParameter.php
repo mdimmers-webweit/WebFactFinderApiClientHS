@@ -29,67 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class CustomParameter extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'CustomParameter';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'cache_irrelevant' => 'bool',
-        'name' => 'string',
-        'values' => 'string[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'cache_irrelevant' => null,
-        'name' => null,
-        'values' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'cache_irrelevant' => 'cacheIrrelevant',
-        'name' => 'name',
-        'values' => 'values',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'cache_irrelevant' => 'setCacheIrrelevant',
-        'name' => 'setName',
-        'values' => 'setValues',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'cache_irrelevant' => 'getCacheIrrelevant',
-        'name' => 'getName',
-        'values' => 'getValues',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -98,6 +37,75 @@ class CustomParameter extends BaseModel
         $this->container['cache_irrelevant'] = $data['cache_irrelevant'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['values'] = $data['values'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'cache_irrelevant' => 'bool',
+            'name' => 'string',
+            'values' => 'string[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'cache_irrelevant' => null,
+            'name' => null,
+            'values' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'cache_irrelevant' => 'cacheIrrelevant',
+            'name' => 'name',
+            'values' => 'values',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'cache_irrelevant' => 'setCacheIrrelevant',
+            'name' => 'setName',
+            'values' => 'setValues',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'cache_irrelevant' => 'getCacheIrrelevant',
+            'name' => 'getName',
+            'values' => 'getValues',
+        ];
     }
 
     /**

@@ -29,72 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class DeltaUpdateResult extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'DeltaUpdateResult';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'error' => '\Web\FactFinderApi\Client\V3\Model\ErrorDescription',
-        'record' => '\Web\FactFinderApi\Client\V3\Model\Record',
-        'success' => 'bool',
-        'warnings' => '\Web\FactFinderApi\Client\V3\Model\ErrorDescription[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'error' => null,
-        'record' => null,
-        'success' => null,
-        'warnings' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'error' => 'error',
-        'record' => 'record',
-        'success' => 'success',
-        'warnings' => 'warnings',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'error' => 'setError',
-        'record' => 'setRecord',
-        'success' => 'setSuccess',
-        'warnings' => 'setWarnings',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'error' => 'getError',
-        'record' => 'getRecord',
-        'success' => 'getSuccess',
-        'warnings' => 'getWarnings',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -104,6 +38,80 @@ class DeltaUpdateResult extends BaseModel
         $this->container['record'] = $data['record'] ?? null;
         $this->container['success'] = $data['success'] ?? null;
         $this->container['warnings'] = $data['warnings'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'error' => '\Web\FactFinderApi\Client\V3\Model\ErrorDescription',
+            'record' => '\Web\FactFinderApi\Client\V3\Model\Record',
+            'success' => 'bool',
+            'warnings' => '\Web\FactFinderApi\Client\V3\Model\ErrorDescription[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'error' => null,
+            'record' => null,
+            'success' => null,
+            'warnings' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'error' => 'error',
+            'record' => 'record',
+            'success' => 'success',
+            'warnings' => 'warnings',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'error' => 'setError',
+            'record' => 'setRecord',
+            'success' => 'setSuccess',
+            'warnings' => 'setWarnings',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'error' => 'getError',
+            'record' => 'getRecord',
+            'success' => 'getSuccess',
+            'warnings' => 'getWarnings',
+        ];
     }
 
     /**

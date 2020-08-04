@@ -29,97 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class Paging extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'Paging';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'current_page' => 'int',
-        'first_link' => '\Web\FactFinderApi\Client\V1\Model\PageLink',
-        'last_link' => '\Web\FactFinderApi\Client\V1\Model\PageLink',
-        'next_link' => '\Web\FactFinderApi\Client\V1\Model\PageLink',
-        'page_count' => 'int',
-        'page_links' => '\Web\FactFinderApi\Client\V1\Model\PageLink[]',
-        'paging_config' => '\Web\FactFinderApi\Client\V1\Model\PagingConfiguration',
-        'previous_link' => '\Web\FactFinderApi\Client\V1\Model\PageLink',
-        'results_per_page' => 'int',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'current_page' => 'int32',
-        'first_link' => null,
-        'last_link' => null,
-        'next_link' => null,
-        'page_count' => 'int32',
-        'page_links' => null,
-        'paging_config' => null,
-        'previous_link' => null,
-        'results_per_page' => 'int32',
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'current_page' => 'currentPage',
-        'first_link' => 'firstLink',
-        'last_link' => 'lastLink',
-        'next_link' => 'nextLink',
-        'page_count' => 'pageCount',
-        'page_links' => 'pageLinks',
-        'paging_config' => 'pagingConfig',
-        'previous_link' => 'previousLink',
-        'results_per_page' => 'resultsPerPage',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'current_page' => 'setCurrentPage',
-        'first_link' => 'setFirstLink',
-        'last_link' => 'setLastLink',
-        'next_link' => 'setNextLink',
-        'page_count' => 'setPageCount',
-        'page_links' => 'setPageLinks',
-        'paging_config' => 'setPagingConfig',
-        'previous_link' => 'setPreviousLink',
-        'results_per_page' => 'setResultsPerPage',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'current_page' => 'getCurrentPage',
-        'first_link' => 'getFirstLink',
-        'last_link' => 'getLastLink',
-        'next_link' => 'getNextLink',
-        'page_count' => 'getPageCount',
-        'page_links' => 'getPageLinks',
-        'paging_config' => 'getPagingConfig',
-        'previous_link' => 'getPreviousLink',
-        'results_per_page' => 'getResultsPerPage',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -134,6 +43,105 @@ class Paging extends BaseModel
         $this->container['paging_config'] = $data['paging_config'] ?? null;
         $this->container['previous_link'] = $data['previous_link'] ?? null;
         $this->container['results_per_page'] = $data['results_per_page'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'current_page' => 'int',
+            'first_link' => '\Web\FactFinderApi\Client\V1\Model\PageLink',
+            'last_link' => '\Web\FactFinderApi\Client\V1\Model\PageLink',
+            'next_link' => '\Web\FactFinderApi\Client\V1\Model\PageLink',
+            'page_count' => 'int',
+            'page_links' => '\Web\FactFinderApi\Client\V1\Model\PageLink[]',
+            'paging_config' => '\Web\FactFinderApi\Client\V1\Model\PagingConfiguration',
+            'previous_link' => '\Web\FactFinderApi\Client\V1\Model\PageLink',
+            'results_per_page' => 'int',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'current_page' => 'int32',
+            'first_link' => null,
+            'last_link' => null,
+            'next_link' => null,
+            'page_count' => 'int32',
+            'page_links' => null,
+            'paging_config' => null,
+            'previous_link' => null,
+            'results_per_page' => 'int32',
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'current_page' => 'currentPage',
+            'first_link' => 'firstLink',
+            'last_link' => 'lastLink',
+            'next_link' => 'nextLink',
+            'page_count' => 'pageCount',
+            'page_links' => 'pageLinks',
+            'paging_config' => 'pagingConfig',
+            'previous_link' => 'previousLink',
+            'results_per_page' => 'resultsPerPage',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'current_page' => 'setCurrentPage',
+            'first_link' => 'setFirstLink',
+            'last_link' => 'setLastLink',
+            'next_link' => 'setNextLink',
+            'page_count' => 'setPageCount',
+            'page_links' => 'setPageLinks',
+            'paging_config' => 'setPagingConfig',
+            'previous_link' => 'setPreviousLink',
+            'results_per_page' => 'setResultsPerPage',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'current_page' => 'getCurrentPage',
+            'first_link' => 'getFirstLink',
+            'last_link' => 'getLastLink',
+            'next_link' => 'getNextLink',
+            'page_count' => 'getPageCount',
+            'page_links' => 'getPageLinks',
+            'paging_config' => 'getPagingConfig',
+            'previous_link' => 'getPreviousLink',
+            'results_per_page' => 'getResultsPerPage',
+        ];
     }
 
     /**

@@ -29,67 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class CompareAttribute extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'CompareAttribute';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'different' => 'bool',
-        'name' => 'string',
-        'source_field' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'different' => null,
-        'name' => null,
-        'source_field' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'different' => 'different',
-        'name' => 'name',
-        'source_field' => 'sourceField',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'different' => 'setDifferent',
-        'name' => 'setName',
-        'source_field' => 'setSourceField',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'different' => 'getDifferent',
-        'name' => 'getName',
-        'source_field' => 'getSourceField',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -98,6 +37,75 @@ class CompareAttribute extends BaseModel
         $this->container['different'] = $data['different'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['source_field'] = $data['source_field'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'different' => 'bool',
+            'name' => 'string',
+            'source_field' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'different' => null,
+            'name' => null,
+            'source_field' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'different' => 'different',
+            'name' => 'name',
+            'source_field' => 'sourceField',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'different' => 'setDifferent',
+            'name' => 'setName',
+            'source_field' => 'setSourceField',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'different' => 'getDifferent',
+            'name' => 'getName',
+            'source_field' => 'getSourceField',
+        ];
     }
 
     /**

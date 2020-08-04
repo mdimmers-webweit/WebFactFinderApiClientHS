@@ -29,102 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class SearchControlParams extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'SearchControlParams';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'disable_cache' => 'bool',
-        'generate_advisor_tree' => 'bool',
-        'ids_only' => 'bool',
-        'use_asn' => 'bool',
-        'use_aso' => 'bool',
-        'use_campaigns' => 'bool',
-        'use_found_words' => 'bool',
-        'use_keywords' => 'bool',
-        'use_personalization' => 'bool',
-        'use_semantic_enhancer' => 'bool',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'disable_cache' => null,
-        'generate_advisor_tree' => null,
-        'ids_only' => null,
-        'use_asn' => null,
-        'use_aso' => null,
-        'use_campaigns' => null,
-        'use_found_words' => null,
-        'use_keywords' => null,
-        'use_personalization' => null,
-        'use_semantic_enhancer' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'disable_cache' => 'disableCache',
-        'generate_advisor_tree' => 'generateAdvisorTree',
-        'ids_only' => 'idsOnly',
-        'use_asn' => 'useAsn',
-        'use_aso' => 'useAso',
-        'use_campaigns' => 'useCampaigns',
-        'use_found_words' => 'useFoundWords',
-        'use_keywords' => 'useKeywords',
-        'use_personalization' => 'usePersonalization',
-        'use_semantic_enhancer' => 'useSemanticEnhancer',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'disable_cache' => 'setDisableCache',
-        'generate_advisor_tree' => 'setGenerateAdvisorTree',
-        'ids_only' => 'setIdsOnly',
-        'use_asn' => 'setUseAsn',
-        'use_aso' => 'setUseAso',
-        'use_campaigns' => 'setUseCampaigns',
-        'use_found_words' => 'setUseFoundWords',
-        'use_keywords' => 'setUseKeywords',
-        'use_personalization' => 'setUsePersonalization',
-        'use_semantic_enhancer' => 'setUseSemanticEnhancer',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'disable_cache' => 'getDisableCache',
-        'generate_advisor_tree' => 'getGenerateAdvisorTree',
-        'ids_only' => 'getIdsOnly',
-        'use_asn' => 'getUseAsn',
-        'use_aso' => 'getUseAso',
-        'use_campaigns' => 'getUseCampaigns',
-        'use_found_words' => 'getUseFoundWords',
-        'use_keywords' => 'getUseKeywords',
-        'use_personalization' => 'getUsePersonalization',
-        'use_semantic_enhancer' => 'getUseSemanticEnhancer',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -140,6 +44,110 @@ class SearchControlParams extends BaseModel
         $this->container['use_keywords'] = $data['use_keywords'] ?? null;
         $this->container['use_personalization'] = $data['use_personalization'] ?? null;
         $this->container['use_semantic_enhancer'] = $data['use_semantic_enhancer'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'disable_cache' => 'bool',
+            'generate_advisor_tree' => 'bool',
+            'ids_only' => 'bool',
+            'use_asn' => 'bool',
+            'use_aso' => 'bool',
+            'use_campaigns' => 'bool',
+            'use_found_words' => 'bool',
+            'use_keywords' => 'bool',
+            'use_personalization' => 'bool',
+            'use_semantic_enhancer' => 'bool',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'disable_cache' => null,
+            'generate_advisor_tree' => null,
+            'ids_only' => null,
+            'use_asn' => null,
+            'use_aso' => null,
+            'use_campaigns' => null,
+            'use_found_words' => null,
+            'use_keywords' => null,
+            'use_personalization' => null,
+            'use_semantic_enhancer' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'disable_cache' => 'disableCache',
+            'generate_advisor_tree' => 'generateAdvisorTree',
+            'ids_only' => 'idsOnly',
+            'use_asn' => 'useAsn',
+            'use_aso' => 'useAso',
+            'use_campaigns' => 'useCampaigns',
+            'use_found_words' => 'useFoundWords',
+            'use_keywords' => 'useKeywords',
+            'use_personalization' => 'usePersonalization',
+            'use_semantic_enhancer' => 'useSemanticEnhancer',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'disable_cache' => 'setDisableCache',
+            'generate_advisor_tree' => 'setGenerateAdvisorTree',
+            'ids_only' => 'setIdsOnly',
+            'use_asn' => 'setUseAsn',
+            'use_aso' => 'setUseAso',
+            'use_campaigns' => 'setUseCampaigns',
+            'use_found_words' => 'setUseFoundWords',
+            'use_keywords' => 'setUseKeywords',
+            'use_personalization' => 'setUsePersonalization',
+            'use_semantic_enhancer' => 'setUseSemanticEnhancer',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'disable_cache' => 'getDisableCache',
+            'generate_advisor_tree' => 'getGenerateAdvisorTree',
+            'ids_only' => 'getIdsOnly',
+            'use_asn' => 'getUseAsn',
+            'use_aso' => 'getUseAso',
+            'use_campaigns' => 'getUseCampaigns',
+            'use_found_words' => 'getUseFoundWords',
+            'use_keywords' => 'getUseKeywords',
+            'use_personalization' => 'getUsePersonalization',
+            'use_semantic_enhancer' => 'getUseSemanticEnhancer',
+        ];
     }
 
     /**

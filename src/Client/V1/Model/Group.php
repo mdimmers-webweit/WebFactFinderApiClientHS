@@ -42,102 +42,6 @@ class Group extends BaseModel
     const TYPE_CATEGORY_PATH = 'categoryPath';
 
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'Group';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'detailed_links' => 'int',
-        'elements' => '\Web\FactFinderApi\Client\V1\Model\GroupElement[]',
-        'filter_style' => 'string',
-        'group_order' => 'int',
-        'name' => 'string',
-        'selected_elements' => '\Web\FactFinderApi\Client\V1\Model\GroupElement[]',
-        'selection_type' => 'string',
-        'show_preview_images' => 'bool',
-        'type' => 'string',
-        'unit' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'detailed_links' => 'int32',
-        'elements' => null,
-        'filter_style' => null,
-        'group_order' => 'int32',
-        'name' => null,
-        'selected_elements' => null,
-        'selection_type' => null,
-        'show_preview_images' => null,
-        'type' => null,
-        'unit' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'detailed_links' => 'detailedLinks',
-        'elements' => 'elements',
-        'filter_style' => 'filterStyle',
-        'group_order' => 'groupOrder',
-        'name' => 'name',
-        'selected_elements' => 'selectedElements',
-        'selection_type' => 'selectionType',
-        'show_preview_images' => 'showPreviewImages',
-        'type' => 'type',
-        'unit' => 'unit',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'detailed_links' => 'setDetailedLinks',
-        'elements' => 'setElements',
-        'filter_style' => 'setFilterStyle',
-        'group_order' => 'setGroupOrder',
-        'name' => 'setName',
-        'selected_elements' => 'setSelectedElements',
-        'selection_type' => 'setSelectionType',
-        'show_preview_images' => 'setShowPreviewImages',
-        'type' => 'setType',
-        'unit' => 'setUnit',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'detailed_links' => 'getDetailedLinks',
-        'elements' => 'getElements',
-        'filter_style' => 'getFilterStyle',
-        'group_order' => 'getGroupOrder',
-        'name' => 'getName',
-        'selected_elements' => 'getSelectedElements',
-        'selection_type' => 'getSelectionType',
-        'show_preview_images' => 'getShowPreviewImages',
-        'type' => 'getType',
-        'unit' => 'getUnit',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -153,6 +57,110 @@ class Group extends BaseModel
         $this->container['show_preview_images'] = $data['show_preview_images'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['unit'] = $data['unit'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'detailed_links' => 'int',
+            'elements' => '\Web\FactFinderApi\Client\V1\Model\GroupElement[]',
+            'filter_style' => 'string',
+            'group_order' => 'int',
+            'name' => 'string',
+            'selected_elements' => '\Web\FactFinderApi\Client\V1\Model\GroupElement[]',
+            'selection_type' => 'string',
+            'show_preview_images' => 'bool',
+            'type' => 'string',
+            'unit' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'detailed_links' => 'int32',
+            'elements' => null,
+            'filter_style' => null,
+            'group_order' => 'int32',
+            'name' => null,
+            'selected_elements' => null,
+            'selection_type' => null,
+            'show_preview_images' => null,
+            'type' => null,
+            'unit' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'detailed_links' => 'detailedLinks',
+            'elements' => 'elements',
+            'filter_style' => 'filterStyle',
+            'group_order' => 'groupOrder',
+            'name' => 'name',
+            'selected_elements' => 'selectedElements',
+            'selection_type' => 'selectionType',
+            'show_preview_images' => 'showPreviewImages',
+            'type' => 'type',
+            'unit' => 'unit',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'detailed_links' => 'setDetailedLinks',
+            'elements' => 'setElements',
+            'filter_style' => 'setFilterStyle',
+            'group_order' => 'setGroupOrder',
+            'name' => 'setName',
+            'selected_elements' => 'setSelectedElements',
+            'selection_type' => 'setSelectionType',
+            'show_preview_images' => 'setShowPreviewImages',
+            'type' => 'setType',
+            'unit' => 'setUnit',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'detailed_links' => 'getDetailedLinks',
+            'elements' => 'getElements',
+            'filter_style' => 'getFilterStyle',
+            'group_order' => 'getGroupOrder',
+            'name' => 'getName',
+            'selected_elements' => 'getSelectedElements',
+            'selection_type' => 'getSelectionType',
+            'show_preview_images' => 'getShowPreviewImages',
+            'type' => 'getType',
+            'unit' => 'getUnit',
+        ];
     }
 
     /**

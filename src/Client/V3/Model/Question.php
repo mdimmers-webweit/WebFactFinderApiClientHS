@@ -29,72 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class Question extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'Question';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'answers' => '\Web\FactFinderApi\Client\V3\Model\Answer[]',
-        'id' => 'string',
-        'text' => 'string',
-        'visible' => 'bool',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'answers' => null,
-        'id' => null,
-        'text' => null,
-        'visible' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'answers' => 'answers',
-        'id' => 'id',
-        'text' => 'text',
-        'visible' => 'visible',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'answers' => 'setAnswers',
-        'id' => 'setId',
-        'text' => 'setText',
-        'visible' => 'setVisible',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'answers' => 'getAnswers',
-        'id' => 'getId',
-        'text' => 'getText',
-        'visible' => 'getVisible',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -104,6 +38,80 @@ class Question extends BaseModel
         $this->container['id'] = $data['id'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
         $this->container['visible'] = $data['visible'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'answers' => '\Web\FactFinderApi\Client\V3\Model\Answer[]',
+            'id' => 'string',
+            'text' => 'string',
+            'visible' => 'bool',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'answers' => null,
+            'id' => null,
+            'text' => null,
+            'visible' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'answers' => 'answers',
+            'id' => 'id',
+            'text' => 'text',
+            'visible' => 'visible',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'answers' => 'setAnswers',
+            'id' => 'setId',
+            'text' => 'setText',
+            'visible' => 'setVisible',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'answers' => 'getAnswers',
+            'id' => 'getId',
+            'text' => 'getText',
+            'visible' => 'getVisible',
+        ];
     }
 
     /**

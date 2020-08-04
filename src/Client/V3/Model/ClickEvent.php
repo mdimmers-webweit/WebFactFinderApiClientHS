@@ -29,107 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class ClickEvent extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'ClickEvent';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'campaign' => 'string',
-        'id' => 'string',
-        'master_id' => 'string',
-        'page' => 'int',
-        'page_size' => 'int',
-        'pos' => 'int',
-        'query' => 'string',
-        'score' => 'double',
-        'sid' => 'string',
-        'title' => 'string',
-        'user_id' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'campaign' => null,
-        'id' => null,
-        'master_id' => null,
-        'page' => 'int32',
-        'page_size' => 'int32',
-        'pos' => 'int32',
-        'query' => null,
-        'score' => 'double',
-        'sid' => null,
-        'title' => null,
-        'user_id' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'campaign' => 'campaign',
-        'id' => 'id',
-        'master_id' => 'masterId',
-        'page' => 'page',
-        'page_size' => 'pageSize',
-        'pos' => 'pos',
-        'query' => 'query',
-        'score' => 'score',
-        'sid' => 'sid',
-        'title' => 'title',
-        'user_id' => 'userId',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'campaign' => 'setCampaign',
-        'id' => 'setId',
-        'master_id' => 'setMasterId',
-        'page' => 'setPage',
-        'page_size' => 'setPageSize',
-        'pos' => 'setPos',
-        'query' => 'setQuery',
-        'score' => 'setScore',
-        'sid' => 'setSid',
-        'title' => 'setTitle',
-        'user_id' => 'setUserId',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'campaign' => 'getCampaign',
-        'id' => 'getId',
-        'master_id' => 'getMasterId',
-        'page' => 'getPage',
-        'page_size' => 'getPageSize',
-        'pos' => 'getPos',
-        'query' => 'getQuery',
-        'score' => 'getScore',
-        'sid' => 'getSid',
-        'title' => 'getTitle',
-        'user_id' => 'getUserId',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -146,6 +45,115 @@ class ClickEvent extends BaseModel
         $this->container['sid'] = $data['sid'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'campaign' => 'string',
+            'id' => 'string',
+            'master_id' => 'string',
+            'page' => 'int',
+            'page_size' => 'int',
+            'pos' => 'int',
+            'query' => 'string',
+            'score' => 'double',
+            'sid' => 'string',
+            'title' => 'string',
+            'user_id' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'campaign' => null,
+            'id' => null,
+            'master_id' => null,
+            'page' => 'int32',
+            'page_size' => 'int32',
+            'pos' => 'int32',
+            'query' => null,
+            'score' => 'double',
+            'sid' => null,
+            'title' => null,
+            'user_id' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'campaign' => 'campaign',
+            'id' => 'id',
+            'master_id' => 'masterId',
+            'page' => 'page',
+            'page_size' => 'pageSize',
+            'pos' => 'pos',
+            'query' => 'query',
+            'score' => 'score',
+            'sid' => 'sid',
+            'title' => 'title',
+            'user_id' => 'userId',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'campaign' => 'setCampaign',
+            'id' => 'setId',
+            'master_id' => 'setMasterId',
+            'page' => 'setPage',
+            'page_size' => 'setPageSize',
+            'pos' => 'setPos',
+            'query' => 'setQuery',
+            'score' => 'setScore',
+            'sid' => 'setSid',
+            'title' => 'setTitle',
+            'user_id' => 'setUserId',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'campaign' => 'getCampaign',
+            'id' => 'getId',
+            'master_id' => 'getMasterId',
+            'page' => 'getPage',
+            'page_size' => 'getPageSize',
+            'pos' => 'getPos',
+            'query' => 'getQuery',
+            'score' => 'getScore',
+            'sid' => 'getSid',
+            'title' => 'getTitle',
+            'user_id' => 'getUserId',
+        ];
     }
 
     /**

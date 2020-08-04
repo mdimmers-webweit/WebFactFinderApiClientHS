@@ -34,97 +34,6 @@ class Campaign extends BaseModel
     const FLAVOUR_PRODUCT = 'PRODUCT';
 
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'Campaign';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'active_questions' => '\Web\FactFinderApi\Client\V3\Model\Question[]',
-        'advisor_tree' => '\Web\FactFinderApi\Client\V3\Model\Question[]',
-        'category' => 'string',
-        'feedback_texts' => '\Web\FactFinderApi\Client\V3\Model\FeedbackText[]',
-        'flavour' => 'string',
-        'hits' => '\Web\FactFinderApi\Client\V3\Model\TypedFlatRecord[]',
-        'id' => 'string',
-        'name' => 'string',
-        'target' => '\Web\FactFinderApi\Client\V3\Model\Target',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'active_questions' => null,
-        'advisor_tree' => null,
-        'category' => null,
-        'feedback_texts' => null,
-        'flavour' => null,
-        'hits' => null,
-        'id' => null,
-        'name' => null,
-        'target' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'active_questions' => 'activeQuestions',
-        'advisor_tree' => 'advisorTree',
-        'category' => 'category',
-        'feedback_texts' => 'feedbackTexts',
-        'flavour' => 'flavour',
-        'hits' => 'hits',
-        'id' => 'id',
-        'name' => 'name',
-        'target' => 'target',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'active_questions' => 'setActiveQuestions',
-        'advisor_tree' => 'setAdvisorTree',
-        'category' => 'setCategory',
-        'feedback_texts' => 'setFeedbackTexts',
-        'flavour' => 'setFlavour',
-        'hits' => 'setHits',
-        'id' => 'setId',
-        'name' => 'setName',
-        'target' => 'setTarget',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'active_questions' => 'getActiveQuestions',
-        'advisor_tree' => 'getAdvisorTree',
-        'category' => 'getCategory',
-        'feedback_texts' => 'getFeedbackTexts',
-        'flavour' => 'getFlavour',
-        'hits' => 'getHits',
-        'id' => 'getId',
-        'name' => 'getName',
-        'target' => 'getTarget',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -139,6 +48,105 @@ class Campaign extends BaseModel
         $this->container['id'] = $data['id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
         $this->container['target'] = $data['target'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'active_questions' => '\Web\FactFinderApi\Client\V3\Model\Question[]',
+            'advisor_tree' => '\Web\FactFinderApi\Client\V3\Model\Question[]',
+            'category' => 'string',
+            'feedback_texts' => '\Web\FactFinderApi\Client\V3\Model\FeedbackText[]',
+            'flavour' => 'string',
+            'hits' => '\Web\FactFinderApi\Client\V3\Model\TypedFlatRecord[]',
+            'id' => 'string',
+            'name' => 'string',
+            'target' => '\Web\FactFinderApi\Client\V3\Model\Target',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'active_questions' => null,
+            'advisor_tree' => null,
+            'category' => null,
+            'feedback_texts' => null,
+            'flavour' => null,
+            'hits' => null,
+            'id' => null,
+            'name' => null,
+            'target' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'active_questions' => 'activeQuestions',
+            'advisor_tree' => 'advisorTree',
+            'category' => 'category',
+            'feedback_texts' => 'feedbackTexts',
+            'flavour' => 'flavour',
+            'hits' => 'hits',
+            'id' => 'id',
+            'name' => 'name',
+            'target' => 'target',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'active_questions' => 'setActiveQuestions',
+            'advisor_tree' => 'setAdvisorTree',
+            'category' => 'setCategory',
+            'feedback_texts' => 'setFeedbackTexts',
+            'flavour' => 'setFlavour',
+            'hits' => 'setHits',
+            'id' => 'setId',
+            'name' => 'setName',
+            'target' => 'setTarget',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'active_questions' => 'getActiveQuestions',
+            'advisor_tree' => 'getAdvisorTree',
+            'category' => 'getCategory',
+            'feedback_texts' => 'getFeedbackTexts',
+            'flavour' => 'getFlavour',
+            'hits' => 'getHits',
+            'id' => 'getId',
+            'name' => 'getName',
+            'target' => 'getTarget',
+        ];
     }
 
     /**

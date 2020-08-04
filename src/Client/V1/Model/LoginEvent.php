@@ -29,67 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class LoginEvent extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'LoginEvent';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'cookie_id' => 'string',
-        'sid' => 'string',
-        'user_id' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'cookie_id' => null,
-        'sid' => null,
-        'user_id' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'cookie_id' => 'cookieId',
-        'sid' => 'sid',
-        'user_id' => 'userId',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'cookie_id' => 'setCookieId',
-        'sid' => 'setSid',
-        'user_id' => 'setUserId',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'cookie_id' => 'getCookieId',
-        'sid' => 'getSid',
-        'user_id' => 'getUserId',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -98,6 +37,75 @@ class LoginEvent extends BaseModel
         $this->container['cookie_id'] = $data['cookie_id'] ?? null;
         $this->container['sid'] = $data['sid'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'cookie_id' => 'string',
+            'sid' => 'string',
+            'user_id' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'cookie_id' => null,
+            'sid' => null,
+            'user_id' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'cookie_id' => 'cookieId',
+            'sid' => 'sid',
+            'user_id' => 'userId',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'cookie_id' => 'setCookieId',
+            'sid' => 'setSid',
+            'user_id' => 'setUserId',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'cookie_id' => 'getCookieId',
+            'sid' => 'getSid',
+            'user_id' => 'getUserId',
+        ];
     }
 
     /**

@@ -29,77 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class PagingConfiguration extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'PagingConfiguration';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'default_results_per_page' => 'int',
-        'link_count' => 'int',
-        'next_caption' => 'string',
-        'previous_caption' => 'string',
-        'results_per_page' => '\Web\FactFinderApi\Client\V1\Model\ResultsPerPageOption[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'default_results_per_page' => 'int32',
-        'link_count' => 'int32',
-        'next_caption' => null,
-        'previous_caption' => null,
-        'results_per_page' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'default_results_per_page' => 'defaultResultsPerPage',
-        'link_count' => 'linkCount',
-        'next_caption' => 'nextCaption',
-        'previous_caption' => 'previousCaption',
-        'results_per_page' => 'resultsPerPage',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'default_results_per_page' => 'setDefaultResultsPerPage',
-        'link_count' => 'setLinkCount',
-        'next_caption' => 'setNextCaption',
-        'previous_caption' => 'setPreviousCaption',
-        'results_per_page' => 'setResultsPerPage',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'default_results_per_page' => 'getDefaultResultsPerPage',
-        'link_count' => 'getLinkCount',
-        'next_caption' => 'getNextCaption',
-        'previous_caption' => 'getPreviousCaption',
-        'results_per_page' => 'getResultsPerPage',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -110,6 +39,85 @@ class PagingConfiguration extends BaseModel
         $this->container['next_caption'] = $data['next_caption'] ?? null;
         $this->container['previous_caption'] = $data['previous_caption'] ?? null;
         $this->container['results_per_page'] = $data['results_per_page'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'default_results_per_page' => 'int',
+            'link_count' => 'int',
+            'next_caption' => 'string',
+            'previous_caption' => 'string',
+            'results_per_page' => '\Web\FactFinderApi\Client\V1\Model\ResultsPerPageOption[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'default_results_per_page' => 'int32',
+            'link_count' => 'int32',
+            'next_caption' => null,
+            'previous_caption' => null,
+            'results_per_page' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'default_results_per_page' => 'defaultResultsPerPage',
+            'link_count' => 'linkCount',
+            'next_caption' => 'nextCaption',
+            'previous_caption' => 'previousCaption',
+            'results_per_page' => 'resultsPerPage',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'default_results_per_page' => 'setDefaultResultsPerPage',
+            'link_count' => 'setLinkCount',
+            'next_caption' => 'setNextCaption',
+            'previous_caption' => 'setPreviousCaption',
+            'results_per_page' => 'setResultsPerPage',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'default_results_per_page' => 'getDefaultResultsPerPage',
+            'link_count' => 'getLinkCount',
+            'next_caption' => 'getNextCaption',
+            'previous_caption' => 'getPreviousCaption',
+            'results_per_page' => 'getResultsPerPage',
+        ];
     }
 
     /**

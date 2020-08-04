@@ -29,62 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class ExpirationMessage extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'ExpirationMessage';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'channel' => 'string',
-        'expiration_data' => '\Web\FactFinderApi\Client\V3\Model\ExpirationData[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'channel' => null,
-        'expiration_data' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'channel' => 'channel',
-        'expiration_data' => 'expirationData',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'channel' => 'setChannel',
-        'expiration_data' => 'setExpirationData',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'channel' => 'getChannel',
-        'expiration_data' => 'getExpirationData',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -92,6 +36,70 @@ class ExpirationMessage extends BaseModel
     {
         $this->container['channel'] = $data['channel'] ?? null;
         $this->container['expiration_data'] = $data['expiration_data'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'channel' => 'string',
+            'expiration_data' => '\Web\FactFinderApi\Client\V3\Model\ExpirationData[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'channel' => null,
+            'expiration_data' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'channel' => 'channel',
+            'expiration_data' => 'expirationData',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'channel' => 'setChannel',
+            'expiration_data' => 'setExpirationData',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'channel' => 'getChannel',
+            'expiration_data' => 'getExpirationData',
+        ];
     }
 
     /**

@@ -29,67 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class RecordWithId extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'RecordWithId';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'id' => 'string',
-        'master_values' => 'map[string,object]',
-        'variant_values' => '\Web\FactFinderApi\Client\V3\Model\VariantValues[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'id' => null,
-        'master_values' => null,
-        'variant_values' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'id' => 'id',
-        'master_values' => 'masterValues',
-        'variant_values' => 'variantValues',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'id' => 'setId',
-        'master_values' => 'setMasterValues',
-        'variant_values' => 'setVariantValues',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'id' => 'getId',
-        'master_values' => 'getMasterValues',
-        'variant_values' => 'getVariantValues',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -98,6 +37,75 @@ class RecordWithId extends BaseModel
         $this->container['id'] = $data['id'] ?? null;
         $this->container['master_values'] = $data['master_values'] ?? null;
         $this->container['variant_values'] = $data['variant_values'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'id' => 'string',
+            'master_values' => 'map[string,object]',
+            'variant_values' => '\Web\FactFinderApi\Client\V3\Model\VariantValues[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'id' => null,
+            'master_values' => null,
+            'variant_values' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'id' => 'id',
+            'master_values' => 'masterValues',
+            'variant_values' => 'variantValues',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'id' => 'setId',
+            'master_values' => 'setMasterValues',
+            'variant_values' => 'setVariantValues',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'id' => 'getId',
+            'master_values' => 'getMasterValues',
+            'variant_values' => 'getVariantValues',
+        ];
     }
 
     /**

@@ -29,127 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class ClickEvent extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'ClickEvent';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'campaign' => 'string',
-        'cookie_id' => 'string',
-        'extra_params' => 'map[string,string]',
-        'id' => 'string',
-        'master_id' => 'string',
-        'orig_page_size' => 'int',
-        'orig_pos' => 'int',
-        'page' => 'int',
-        'page_size' => 'int',
-        'pos' => 'int',
-        'query' => 'string',
-        'sid' => 'string',
-        'simi' => 'double',
-        'title' => 'string',
-        'user_id' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'campaign' => null,
-        'cookie_id' => null,
-        'extra_params' => null,
-        'id' => null,
-        'master_id' => null,
-        'orig_page_size' => 'int32',
-        'orig_pos' => 'int32',
-        'page' => 'int32',
-        'page_size' => 'int32',
-        'pos' => 'int32',
-        'query' => null,
-        'sid' => null,
-        'simi' => 'double',
-        'title' => null,
-        'user_id' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'campaign' => 'campaign',
-        'cookie_id' => 'cookieId',
-        'extra_params' => 'extraParams',
-        'id' => 'id',
-        'master_id' => 'masterId',
-        'orig_page_size' => 'origPageSize',
-        'orig_pos' => 'origPos',
-        'page' => 'page',
-        'page_size' => 'pageSize',
-        'pos' => 'pos',
-        'query' => 'query',
-        'sid' => 'sid',
-        'simi' => 'simi',
-        'title' => 'title',
-        'user_id' => 'userId',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'campaign' => 'setCampaign',
-        'cookie_id' => 'setCookieId',
-        'extra_params' => 'setExtraParams',
-        'id' => 'setId',
-        'master_id' => 'setMasterId',
-        'orig_page_size' => 'setOrigPageSize',
-        'orig_pos' => 'setOrigPos',
-        'page' => 'setPage',
-        'page_size' => 'setPageSize',
-        'pos' => 'setPos',
-        'query' => 'setQuery',
-        'sid' => 'setSid',
-        'simi' => 'setSimi',
-        'title' => 'setTitle',
-        'user_id' => 'setUserId',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'campaign' => 'getCampaign',
-        'cookie_id' => 'getCookieId',
-        'extra_params' => 'getExtraParams',
-        'id' => 'getId',
-        'master_id' => 'getMasterId',
-        'orig_page_size' => 'getOrigPageSize',
-        'orig_pos' => 'getOrigPos',
-        'page' => 'getPage',
-        'page_size' => 'getPageSize',
-        'pos' => 'getPos',
-        'query' => 'getQuery',
-        'sid' => 'getSid',
-        'simi' => 'getSimi',
-        'title' => 'getTitle',
-        'user_id' => 'getUserId',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -170,6 +49,135 @@ class ClickEvent extends BaseModel
         $this->container['simi'] = $data['simi'] ?? null;
         $this->container['title'] = $data['title'] ?? null;
         $this->container['user_id'] = $data['user_id'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'campaign' => 'string',
+            'cookie_id' => 'string',
+            'extra_params' => 'map[string,string]',
+            'id' => 'string',
+            'master_id' => 'string',
+            'orig_page_size' => 'int',
+            'orig_pos' => 'int',
+            'page' => 'int',
+            'page_size' => 'int',
+            'pos' => 'int',
+            'query' => 'string',
+            'sid' => 'string',
+            'simi' => 'double',
+            'title' => 'string',
+            'user_id' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'campaign' => null,
+            'cookie_id' => null,
+            'extra_params' => null,
+            'id' => null,
+            'master_id' => null,
+            'orig_page_size' => 'int32',
+            'orig_pos' => 'int32',
+            'page' => 'int32',
+            'page_size' => 'int32',
+            'pos' => 'int32',
+            'query' => null,
+            'sid' => null,
+            'simi' => 'double',
+            'title' => null,
+            'user_id' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'campaign' => 'campaign',
+            'cookie_id' => 'cookieId',
+            'extra_params' => 'extraParams',
+            'id' => 'id',
+            'master_id' => 'masterId',
+            'orig_page_size' => 'origPageSize',
+            'orig_pos' => 'origPos',
+            'page' => 'page',
+            'page_size' => 'pageSize',
+            'pos' => 'pos',
+            'query' => 'query',
+            'sid' => 'sid',
+            'simi' => 'simi',
+            'title' => 'title',
+            'user_id' => 'userId',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'campaign' => 'setCampaign',
+            'cookie_id' => 'setCookieId',
+            'extra_params' => 'setExtraParams',
+            'id' => 'setId',
+            'master_id' => 'setMasterId',
+            'orig_page_size' => 'setOrigPageSize',
+            'orig_pos' => 'setOrigPos',
+            'page' => 'setPage',
+            'page_size' => 'setPageSize',
+            'pos' => 'setPos',
+            'query' => 'setQuery',
+            'sid' => 'setSid',
+            'simi' => 'setSimi',
+            'title' => 'setTitle',
+            'user_id' => 'setUserId',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'campaign' => 'getCampaign',
+            'cookie_id' => 'getCookieId',
+            'extra_params' => 'getExtraParams',
+            'id' => 'getId',
+            'master_id' => 'getMasterId',
+            'orig_page_size' => 'getOrigPageSize',
+            'orig_pos' => 'getOrigPos',
+            'page' => 'getPage',
+            'page_size' => 'getPageSize',
+            'pos' => 'getPos',
+            'query' => 'getQuery',
+            'sid' => 'getSid',
+            'simi' => 'getSimi',
+            'title' => 'getTitle',
+            'user_id' => 'getUserId',
+        ];
     }
 
     /**

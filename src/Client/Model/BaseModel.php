@@ -11,47 +11,6 @@ use Web\FactFinderApi\Client\ObjectSerializer;
 abstract class BaseModel implements ModelInterface, \ArrayAccess
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName;
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes;
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats;
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap;
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters;
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters;
-
-    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -75,55 +34,6 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
-    }
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     */
-    public static function swaggerTypes(): array
-    {
-        return static::$swaggerTypes;
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return static::$swaggerFormats;
-    }
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     */
-    public static function attributeMap(): array
-    {
-        return static::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     */
-    public static function setters(): array
-    {
-        return static::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     */
-    public static function getters(): array
-    {
-        return static::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     */
-    public function getModelName(): string
-    {
-        return static::$swaggerModelName;
     }
 
     /**

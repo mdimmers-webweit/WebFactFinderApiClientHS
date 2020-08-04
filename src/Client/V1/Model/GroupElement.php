@@ -29,112 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class GroupElement extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'GroupElement';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'absolute_max_value' => 'double',
-        'absolute_min_value' => 'double',
-        'active' => 'bool',
-        'associated_field_name' => 'string',
-        'cluster_level' => 'int',
-        'preview_image_url' => 'string',
-        'record_count' => 'int',
-        'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
-        'selected' => 'bool',
-        'selected_max_value' => 'double',
-        'selected_min_value' => 'double',
-        'text' => 'string',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'absolute_max_value' => 'double',
-        'absolute_min_value' => 'double',
-        'active' => null,
-        'associated_field_name' => null,
-        'cluster_level' => 'int32',
-        'preview_image_url' => null,
-        'record_count' => 'int32',
-        'search_params' => null,
-        'selected' => null,
-        'selected_max_value' => 'double',
-        'selected_min_value' => 'double',
-        'text' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'absolute_max_value' => 'absoluteMaxValue',
-        'absolute_min_value' => 'absoluteMinValue',
-        'active' => 'active',
-        'associated_field_name' => 'associatedFieldName',
-        'cluster_level' => 'clusterLevel',
-        'preview_image_url' => 'previewImageURL',
-        'record_count' => 'recordCount',
-        'search_params' => 'searchParams',
-        'selected' => 'selected',
-        'selected_max_value' => 'selectedMaxValue',
-        'selected_min_value' => 'selectedMinValue',
-        'text' => 'text',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'absolute_max_value' => 'setAbsoluteMaxValue',
-        'absolute_min_value' => 'setAbsoluteMinValue',
-        'active' => 'setActive',
-        'associated_field_name' => 'setAssociatedFieldName',
-        'cluster_level' => 'setClusterLevel',
-        'preview_image_url' => 'setPreviewImageUrl',
-        'record_count' => 'setRecordCount',
-        'search_params' => 'setSearchParams',
-        'selected' => 'setSelected',
-        'selected_max_value' => 'setSelectedMaxValue',
-        'selected_min_value' => 'setSelectedMinValue',
-        'text' => 'setText',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'absolute_max_value' => 'getAbsoluteMaxValue',
-        'absolute_min_value' => 'getAbsoluteMinValue',
-        'active' => 'getActive',
-        'associated_field_name' => 'getAssociatedFieldName',
-        'cluster_level' => 'getClusterLevel',
-        'preview_image_url' => 'getPreviewImageUrl',
-        'record_count' => 'getRecordCount',
-        'search_params' => 'getSearchParams',
-        'selected' => 'getSelected',
-        'selected_max_value' => 'getSelectedMaxValue',
-        'selected_min_value' => 'getSelectedMinValue',
-        'text' => 'getText',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -152,6 +46,120 @@ class GroupElement extends BaseModel
         $this->container['selected_max_value'] = $data['selected_max_value'] ?? null;
         $this->container['selected_min_value'] = $data['selected_min_value'] ?? null;
         $this->container['text'] = $data['text'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'absolute_max_value' => 'double',
+            'absolute_min_value' => 'double',
+            'active' => 'bool',
+            'associated_field_name' => 'string',
+            'cluster_level' => 'int',
+            'preview_image_url' => 'string',
+            'record_count' => 'int',
+            'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+            'selected' => 'bool',
+            'selected_max_value' => 'double',
+            'selected_min_value' => 'double',
+            'text' => 'string',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'absolute_max_value' => 'double',
+            'absolute_min_value' => 'double',
+            'active' => null,
+            'associated_field_name' => null,
+            'cluster_level' => 'int32',
+            'preview_image_url' => null,
+            'record_count' => 'int32',
+            'search_params' => null,
+            'selected' => null,
+            'selected_max_value' => 'double',
+            'selected_min_value' => 'double',
+            'text' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'absolute_max_value' => 'absoluteMaxValue',
+            'absolute_min_value' => 'absoluteMinValue',
+            'active' => 'active',
+            'associated_field_name' => 'associatedFieldName',
+            'cluster_level' => 'clusterLevel',
+            'preview_image_url' => 'previewImageURL',
+            'record_count' => 'recordCount',
+            'search_params' => 'searchParams',
+            'selected' => 'selected',
+            'selected_max_value' => 'selectedMaxValue',
+            'selected_min_value' => 'selectedMinValue',
+            'text' => 'text',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'absolute_max_value' => 'setAbsoluteMaxValue',
+            'absolute_min_value' => 'setAbsoluteMinValue',
+            'active' => 'setActive',
+            'associated_field_name' => 'setAssociatedFieldName',
+            'cluster_level' => 'setClusterLevel',
+            'preview_image_url' => 'setPreviewImageUrl',
+            'record_count' => 'setRecordCount',
+            'search_params' => 'setSearchParams',
+            'selected' => 'setSelected',
+            'selected_max_value' => 'setSelectedMaxValue',
+            'selected_min_value' => 'setSelectedMinValue',
+            'text' => 'setText',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'absolute_max_value' => 'getAbsoluteMaxValue',
+            'absolute_min_value' => 'getAbsoluteMinValue',
+            'active' => 'getActive',
+            'associated_field_name' => 'getAssociatedFieldName',
+            'cluster_level' => 'getClusterLevel',
+            'preview_image_url' => 'getPreviewImageUrl',
+            'record_count' => 'getRecordCount',
+            'search_params' => 'getSearchParams',
+            'selected' => 'getSelected',
+            'selected_max_value' => 'getSelectedMaxValue',
+            'selected_min_value' => 'getSelectedMinValue',
+            'text' => 'getText',
+        ];
     }
 
     /**

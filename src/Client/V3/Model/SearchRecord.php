@@ -29,87 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class SearchRecord extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'SearchRecord';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'found_words' => 'string[]',
-        'geo_information' => '\Web\FactFinderApi\Client\V3\Model\GeoInformation',
-        'id' => 'string',
-        'master_values' => 'map[string,object]',
-        'position' => 'int',
-        'score' => 'float',
-        'variant_values' => '\Web\FactFinderApi\Client\V3\Model\VariantValues[]',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'found_words' => null,
-        'geo_information' => null,
-        'id' => null,
-        'master_values' => null,
-        'position' => 'int32',
-        'score' => 'float',
-        'variant_values' => null,
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'found_words' => 'foundWords',
-        'geo_information' => 'geoInformation',
-        'id' => 'id',
-        'master_values' => 'masterValues',
-        'position' => 'position',
-        'score' => 'score',
-        'variant_values' => 'variantValues',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'found_words' => 'setFoundWords',
-        'geo_information' => 'setGeoInformation',
-        'id' => 'setId',
-        'master_values' => 'setMasterValues',
-        'position' => 'setPosition',
-        'score' => 'setScore',
-        'variant_values' => 'setVariantValues',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'found_words' => 'getFoundWords',
-        'geo_information' => 'getGeoInformation',
-        'id' => 'getId',
-        'master_values' => 'getMasterValues',
-        'position' => 'getPosition',
-        'score' => 'getScore',
-        'variant_values' => 'getVariantValues',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -122,6 +41,95 @@ class SearchRecord extends BaseModel
         $this->container['position'] = $data['position'] ?? null;
         $this->container['score'] = $data['score'] ?? null;
         $this->container['variant_values'] = $data['variant_values'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'found_words' => 'string[]',
+            'geo_information' => '\Web\FactFinderApi\Client\V3\Model\GeoInformation',
+            'id' => 'string',
+            'master_values' => 'map[string,object]',
+            'position' => 'int',
+            'score' => 'float',
+            'variant_values' => '\Web\FactFinderApi\Client\V3\Model\VariantValues[]',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'found_words' => null,
+            'geo_information' => null,
+            'id' => null,
+            'master_values' => null,
+            'position' => 'int32',
+            'score' => 'float',
+            'variant_values' => null,
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'found_words' => 'foundWords',
+            'geo_information' => 'geoInformation',
+            'id' => 'id',
+            'master_values' => 'masterValues',
+            'position' => 'position',
+            'score' => 'score',
+            'variant_values' => 'variantValues',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'found_words' => 'setFoundWords',
+            'geo_information' => 'setGeoInformation',
+            'id' => 'setId',
+            'master_values' => 'setMasterValues',
+            'position' => 'setPosition',
+            'score' => 'setScore',
+            'variant_values' => 'setVariantValues',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'found_words' => 'getFoundWords',
+            'geo_information' => 'getGeoInformation',
+            'id' => 'getId',
+            'master_values' => 'getMasterValues',
+            'position' => 'getPosition',
+            'score' => 'getScore',
+            'variant_values' => 'getVariantValues',
+        ];
     }
 
     /**

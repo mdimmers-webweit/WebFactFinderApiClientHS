@@ -29,82 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class SearchRecord extends BaseModel
 {
     /**
-     * The original name of the model.
-     *
-     * @var string
-     */
-    protected static $swaggerModelName = 'SearchRecord';
-
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    protected static $swaggerTypes = [
-        'found_words' => 'string[]',
-        'id' => 'string',
-        'keywords' => 'string[]',
-        'position' => 'int',
-        'record' => 'map[string,string]',
-        'search_similarity' => 'float',
-    ];
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    protected static $swaggerFormats = [
-        'found_words' => null,
-        'id' => null,
-        'keywords' => null,
-        'position' => 'int32',
-        'record' => null,
-        'search_similarity' => 'float',
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'found_words' => 'foundWords',
-        'id' => 'id',
-        'keywords' => 'keywords',
-        'position' => 'position',
-        'record' => 'record',
-        'search_similarity' => 'searchSimilarity',
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'found_words' => 'setFoundWords',
-        'id' => 'setId',
-        'keywords' => 'setKeywords',
-        'position' => 'setPosition',
-        'record' => 'setRecord',
-        'search_similarity' => 'setSearchSimilarity',
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'found_words' => 'getFoundWords',
-        'id' => 'getId',
-        'keywords' => 'getKeywords',
-        'position' => 'getPosition',
-        'record' => 'getRecord',
-        'search_similarity' => 'getSearchSimilarity',
-    ];
-
-    /**
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
@@ -116,6 +40,90 @@ class SearchRecord extends BaseModel
         $this->container['position'] = $data['position'] ?? null;
         $this->container['record'] = $data['record'] ?? null;
         $this->container['search_similarity'] = $data['search_similarity'] ?? null;
+    }
+
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     *
+     * @var string[]
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'found_words' => 'string[]',
+            'id' => 'string',
+            'keywords' => 'string[]',
+            'position' => 'int',
+            'record' => 'map[string,string]',
+            'search_similarity' => 'float',
+        ];
+    }
+
+    /**
+     * Array of property to format mappings. Used for (de)serialization
+     */
+    public static function swaggerFormats(): array
+    {
+        return [
+            'found_words' => null,
+            'id' => null,
+            'keywords' => null,
+            'position' => 'int32',
+            'record' => null,
+            'search_similarity' => 'float',
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     *
+     * @var string[]
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'found_words' => 'foundWords',
+            'id' => 'id',
+            'keywords' => 'keywords',
+            'position' => 'position',
+            'record' => 'record',
+            'search_similarity' => 'searchSimilarity',
+        ];
+    }
+
+    /**
+     * Array of attributes to setter functions (for deserialization of responses)
+     *
+     * @var string[]
+     */
+    public static function setters(): array
+    {
+        return [
+            'found_words' => 'setFoundWords',
+            'id' => 'setId',
+            'keywords' => 'setKeywords',
+            'position' => 'setPosition',
+            'record' => 'setRecord',
+            'search_similarity' => 'setSearchSimilarity',
+        ];
+    }
+
+    /**
+     * Array of attributes to getter functions (for serialization of requests)
+     *
+     * @var string[]
+     */
+    public static function getters(): array
+    {
+        return [
+            'found_words' => 'getFoundWords',
+            'id' => 'getId',
+            'keywords' => 'getKeywords',
+            'position' => 'getPosition',
+            'record' => 'getRecord',
+            'search_similarity' => 'getSearchSimilarity',
+        ];
     }
 
     /**
