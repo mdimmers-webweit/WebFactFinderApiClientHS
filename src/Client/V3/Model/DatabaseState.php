@@ -29,17 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class DatabaseState extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['database_version'] = $data['database_version'] ?? null;
-        $this->container['delta_error_count'] = $data['delta_error_count'] ?? null;
-        $this->container['delta_version'] = $data['delta_version'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

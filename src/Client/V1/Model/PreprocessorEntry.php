@@ -29,18 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class PreprocessorEntry extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['from'] = $data['from'] ?? null;
-        $this->container['group'] = $data['group'] ?? null;
-        $this->container['sort'] = $data['sort'] ?? null;
-        $this->container['to'] = $data['to'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

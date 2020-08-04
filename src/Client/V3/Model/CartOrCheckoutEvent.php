@@ -29,22 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class CartOrCheckoutEvent extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['campaign'] = $data['campaign'] ?? null;
-        $this->container['count'] = $data['count'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['master_id'] = $data['master_id'] ?? null;
-        $this->container['price'] = $data['price'] ?? null;
-        $this->container['sid'] = $data['sid'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['user_id'] = $data['user_id'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

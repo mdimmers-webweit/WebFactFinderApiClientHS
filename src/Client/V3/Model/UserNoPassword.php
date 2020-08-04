@@ -66,26 +66,6 @@ class UserNoPassword extends BaseModel
     const ORIGIN_REMOTE = 'REMOTE';
 
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['roles'] = $data['roles'] ?? null;
-        $this->container['channels'] = $data['channels'] ?? null;
-        $this->container['groups'] = $data['groups'] ?? null;
-        $this->container['hide_inactive_modules'] = $data['hide_inactive_modules'] ?? null;
-        $this->container['hide_error_notifications'] = $data['hide_error_notifications'] ?? null;
-        $this->container['enable_advanced_mode'] = $data['enable_advanced_mode'] ?? null;
-        $this->container['allow_all_current_and_future_channels'] = $data['allow_all_current_and_future_channels'] ?? null;
-        $this->container['last_active'] = $data['last_active'] ?? null;
-        $this->container['origin'] = $data['origin'] ?? null;
-        $this->container['locale'] = $data['locale'] ?? null;
-    }
-
-    /**
      * Array of property to format mappings. Used for (de)serialization
      */
     public static function swaggerFormats(): array

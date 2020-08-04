@@ -29,32 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class SearchLogEvent extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['additional_info'] = $data['additional_info'] ?? null;
-        $this->container['best_simi'] = $data['best_simi'] ?? null;
-        $this->container['cookie_id'] = $data['cookie_id'] ?? null;
-        $this->container['custom_sorting'] = $data['custom_sorting'] ?? null;
-        $this->container['extra_params'] = $data['extra_params'] ?? null;
-        $this->container['filters'] = $data['filters'] ?? null;
-        $this->container['hit_count'] = $data['hit_count'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['master_id'] = $data['master_id'] ?? null;
-        $this->container['min_simi'] = $data['min_simi'] ?? null;
-        $this->container['page'] = $data['page'] ?? null;
-        $this->container['page_size'] = $data['page_size'] ?? null;
-        $this->container['query'] = $data['query'] ?? null;
-        $this->container['search_field'] = $data['search_field'] ?? null;
-        $this->container['search_time'] = $data['search_time'] ?? null;
-        $this->container['sid'] = $data['sid'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['user_id'] = $data['user_id'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

@@ -34,19 +34,6 @@ class BreadCrumbTrailItem extends BaseModel
     const TYPE_UNSPECIFIED = 'unspecified';
 
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['associated_field_name'] = $data['associated_field_name'] ?? null;
-        $this->container['search_params'] = $data['search_params'] ?? null;
-        $this->container['text'] = $data['text'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['value'] = $data['value'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

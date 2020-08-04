@@ -35,22 +35,6 @@ class ImportChannelResult extends BaseModel
     const IMPORT_TYPE_RANKING = 'RANKING';
 
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['channel'] = $data['channel'] ?? null;
-        $this->container['duration_in_seconds'] = $data['duration_in_seconds'] ?? null;
-        $this->container['error_messages'] = $data['error_messages'] ?? null;
-        $this->container['import_type'] = $data['import_type'] ?? null;
-        $this->container['imported_fields'] = $data['imported_fields'] ?? null;
-        $this->container['imported_records'] = $data['imported_records'] ?? null;
-        $this->container['start_date'] = $data['start_date'] ?? null;
-        $this->container['status_messages'] = $data['status_messages'] ?? null;
-    }
-
-    /**
      * Array of property to format mappings. Used for (de)serialization
      */
     public static function swaggerFormats(): array

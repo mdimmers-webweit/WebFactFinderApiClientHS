@@ -29,17 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class ResultsPerPageOption extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['default_value'] = $data['default_value'] ?? null;
-        $this->container['selected'] = $data['selected'] ?? null;
-        $this->container['value'] = $data['value'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

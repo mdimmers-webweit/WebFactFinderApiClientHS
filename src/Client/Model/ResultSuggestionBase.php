@@ -9,20 +9,6 @@ namespace Web\FactFinderApi\Client\Model;
 abstract class ResultSuggestionBase extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['attributes'] = $data['attributes'] ?? null;
-        $this->container['hit_count'] = $data['hit_count'] ?? null;
-        $this->container['image'] = $data['image'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['search_params'] = $data['search_params'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons

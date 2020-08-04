@@ -29,22 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class RecommendationClickEvent extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['cookie_id'] = $data['cookie_id'] ?? null;
-        $this->container['extra_params'] = $data['extra_params'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['main_id'] = $data['main_id'] ?? null;
-        $this->container['master_id'] = $data['master_id'] ?? null;
-        $this->container['sid'] = $data['sid'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['user_id'] = $data['user_id'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

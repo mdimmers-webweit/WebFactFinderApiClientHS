@@ -29,15 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class DeleteRequest extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['record_ids'] = $data['record_ids'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

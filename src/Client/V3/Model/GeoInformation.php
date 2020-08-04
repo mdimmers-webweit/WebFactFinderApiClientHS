@@ -29,18 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class GeoInformation extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['distance'] = $data['distance'] ?? null;
-        $this->container['location'] = $data['location'] ?? null;
-        $this->container['master_values'] = $data['master_values'] ?? null;
-        $this->container['variant_values'] = $data['variant_values'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

@@ -29,18 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class FeedbackEvent extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['message'] = $data['message'] ?? null;
-        $this->container['positive'] = $data['positive'] ?? null;
-        $this->container['query'] = $data['query'] ?? null;
-        $this->container['sid'] = $data['sid'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

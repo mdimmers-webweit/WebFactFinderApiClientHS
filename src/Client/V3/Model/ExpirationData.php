@@ -29,18 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class ExpirationData extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['database'] = $data['database'] ?? null;
-        $this->container['error'] = $data['error'] ?? null;
-        $this->container['modified'] = $data['modified'] ?? null;
-        $this->container['modified_loaded'] = $data['modified_loaded'] ?? null;
-    }
-
-    /**
      * Array of property to format mappings. Used for (de)serialization
      */
     public static function swaggerFormats(): array

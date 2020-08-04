@@ -29,25 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class ClickEvent extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['campaign'] = $data['campaign'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['master_id'] = $data['master_id'] ?? null;
-        $this->container['page'] = $data['page'] ?? null;
-        $this->container['page_size'] = $data['page_size'] ?? null;
-        $this->container['pos'] = $data['pos'] ?? null;
-        $this->container['query'] = $data['query'] ?? null;
-        $this->container['score'] = $data['score'] ?? null;
-        $this->container['sid'] = $data['sid'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['user_id'] = $data['user_id'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

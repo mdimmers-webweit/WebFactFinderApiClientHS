@@ -34,23 +34,6 @@ class Campaign extends BaseModel
     const FLAVOUR_PRODUCT = 'PRODUCT';
 
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['active_questions'] = $data['active_questions'] ?? null;
-        $this->container['advisor_tree'] = $data['advisor_tree'] ?? null;
-        $this->container['category'] = $data['category'] ?? null;
-        $this->container['feedback_texts'] = $data['feedback_texts'] ?? null;
-        $this->container['flavour'] = $data['flavour'] ?? null;
-        $this->container['hits'] = $data['hits'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['target'] = $data['target'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

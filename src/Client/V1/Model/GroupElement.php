@@ -29,26 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class GroupElement extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['absolute_max_value'] = $data['absolute_max_value'] ?? null;
-        $this->container['absolute_min_value'] = $data['absolute_min_value'] ?? null;
-        $this->container['active'] = $data['active'] ?? null;
-        $this->container['associated_field_name'] = $data['associated_field_name'] ?? null;
-        $this->container['cluster_level'] = $data['cluster_level'] ?? null;
-        $this->container['preview_image_url'] = $data['preview_image_url'] ?? null;
-        $this->container['record_count'] = $data['record_count'] ?? null;
-        $this->container['search_params'] = $data['search_params'] ?? null;
-        $this->container['selected'] = $data['selected'] ?? null;
-        $this->container['selected_max_value'] = $data['selected_max_value'] ?? null;
-        $this->container['selected_min_value'] = $data['selected_min_value'] ?? null;
-        $this->container['text'] = $data['text'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

@@ -28,8 +28,4 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  */
 class WrapperBoolean_ extends BaseModel
 {
-    /* @phpstan-ignore-next-line */
-    public function __construct(?array $data = null)
-    {
-    }
 }

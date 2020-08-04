@@ -32,17 +32,6 @@ class FilterValue extends BaseModel
     const TYPE__AND = 'and';
 
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['exclude'] = $data['exclude'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['value'] = $data['value'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

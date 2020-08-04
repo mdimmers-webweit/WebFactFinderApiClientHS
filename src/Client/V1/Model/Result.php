@@ -36,34 +36,6 @@ class Result extends BaseModel
     const RESULT_STATUS_ERROR_OCCURED = 'errorOccured';
 
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['applied_preprocessor_entries'] = $data['applied_preprocessor_entries'] ?? null;
-        $this->container['asn_groups'] = $data['asn_groups'] ?? null;
-        $this->container['bread_crumb_trail'] = $data['bread_crumb_trail'] ?? null;
-        $this->container['campaigns_list'] = $data['campaigns_list'] ?? null;
-        $this->container['field_roles'] = $data['field_roles'] ?? null;
-        $this->container['filters'] = $data['filters'] ?? null;
-        $this->container['paging'] = $data['paging'] ?? null;
-        $this->container['records'] = $data['records'] ?? null;
-        $this->container['result_article_number_status'] = $data['result_article_number_status'] ?? null;
-        $this->container['result_count'] = $data['result_count'] ?? null;
-        $this->container['result_status'] = $data['result_status'] ?? null;
-        $this->container['results_per_page_list'] = $data['results_per_page_list'] ?? null;
-        $this->container['search_control_params'] = $data['search_control_params'] ?? null;
-        $this->container['search_params'] = $data['search_params'] ?? null;
-        $this->container['search_time'] = $data['search_time'] ?? null;
-        $this->container['simi_first_record'] = $data['simi_first_record'] ?? null;
-        $this->container['simi_last_record'] = $data['simi_last_record'] ?? null;
-        $this->container['single_word_results'] = $data['single_word_results'] ?? null;
-        $this->container['sorts_list'] = $data['sorts_list'] ?? null;
-        $this->container['timed_out'] = $data['timed_out'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

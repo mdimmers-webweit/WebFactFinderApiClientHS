@@ -9,21 +9,6 @@ namespace Web\FactFinderApi\Client\Model;
 abstract class SearchParamsBase extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['advisor_status'] = $data['advisor_status'] ?? null;
-        $this->container['channel'] = $data['channel'] ?? null;
-        $this->container['custom_parameters'] = $data['custom_parameters'] ?? null;
-        $this->container['filters'] = $data['filters'] ?? null;
-        $this->container['page'] = $data['page'] ?? null;
-        $this->container['query'] = $data['query'] ?? null;
-        $this->container['search_field'] = $data['search_field'] ?? null;
-    }
-
-    /**
      * @return \Web\FactFinderApi\Client\V3\Model\AdvisorCampaignStatusHolder
      */
     public function getAdvisorStatus()

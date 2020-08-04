@@ -29,16 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class AdvisorCampaignStatusHolder extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['answer_path'] = $data['answer_path'] ?? null;
-        $this->container['campaign_id'] = $data['campaign_id'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

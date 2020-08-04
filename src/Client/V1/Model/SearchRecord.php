@@ -29,20 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class SearchRecord extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['found_words'] = $data['found_words'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['keywords'] = $data['keywords'] ?? null;
-        $this->container['position'] = $data['position'] ?? null;
-        $this->container['record'] = $data['record'] ?? null;
-        $this->container['search_similarity'] = $data['search_similarity'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

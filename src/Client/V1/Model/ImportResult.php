@@ -29,16 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class ImportResult extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['messages'] = $data['messages'] ?? null;
-        $this->container['start_date'] = $data['start_date'] ?? null;
-    }
-
-    /**
      * Array of property to format mappings. Used for (de)serialization
      */
     public static function swaggerFormats(): array

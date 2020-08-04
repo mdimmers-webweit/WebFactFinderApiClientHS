@@ -33,21 +33,6 @@ class SearchParams extends SearchParamsBase
     const ARTICLE_NUMBER_SEARCH_NEVER = 'NEVER';
 
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        parent::__construct($data);
-        $this->container['article_number_search'] = $data['article_number_search'] ?? null;
-        $this->container['hits_per_page'] = $data['hits_per_page'] ?? null;
-        $this->container['location'] = $data['location'] ?? null;
-        $this->container['market_id'] = $data['market_id'] ?? null;
-        $this->container['max_count_variants'] = $data['max_count_variants'] ?? null;
-        $this->container['sort_items'] = $data['sort_items'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

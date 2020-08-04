@@ -29,16 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class Location extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['latitude'] = $data['latitude'] ?? null;
-        $this->container['longitude'] = $data['longitude'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

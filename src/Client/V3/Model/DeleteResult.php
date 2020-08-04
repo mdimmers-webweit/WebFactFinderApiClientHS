@@ -29,18 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class DeleteResult extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['error'] = $data['error'] ?? null;
-        $this->container['record_id'] = $data['record_id'] ?? null;
-        $this->container['success'] = $data['success'] ?? null;
-        $this->container['warnings'] = $data['warnings'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

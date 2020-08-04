@@ -29,16 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class LoginEvent extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['sid'] = $data['sid'] ?? null;
-        $this->container['user_id'] = $data['user_id'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

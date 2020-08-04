@@ -30,16 +30,6 @@ use Web\FactFinderApi\Client\Model\SearchParamsBase;
 class ResultSuggestion extends ResultSuggestionBase
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        parent::__construct($data);
-        $this->container['score'] = $data['score'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

@@ -45,23 +45,6 @@ class Facet extends BaseModel
     const TYPE_DATE = 'DATE';
 
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['detailed_links'] = $data['detailed_links'] ?? null;
-        $this->container['elements'] = $data['elements'] ?? null;
-        $this->container['filter_style'] = $data['filter_style'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['selected_elements'] = $data['selected_elements'] ?? null;
-        $this->container['selection_type'] = $data['selection_type'] ?? null;
-        $this->container['show_preview_images'] = $data['show_preview_images'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['unit'] = $data['unit'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

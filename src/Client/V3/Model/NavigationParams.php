@@ -29,24 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class NavigationParams extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['advisor_status'] = $data['advisor_status'] ?? null;
-        $this->container['channel'] = $data['channel'] ?? null;
-        $this->container['custom_parameters'] = $data['custom_parameters'] ?? null;
-        $this->container['filters'] = $data['filters'] ?? null;
-        $this->container['hits_per_page'] = $data['hits_per_page'] ?? null;
-        $this->container['location'] = $data['location'] ?? null;
-        $this->container['market_id'] = $data['market_id'] ?? null;
-        $this->container['max_count_variants'] = $data['max_count_variants'] ?? null;
-        $this->container['page'] = $data['page'] ?? null;
-        $this->container['sort_items'] = $data['sort_items'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

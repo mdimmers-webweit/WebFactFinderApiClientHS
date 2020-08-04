@@ -29,33 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class Result extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['answers'] = $data['answers'] ?? null;
-        $this->container['article_number_search'] = $data['article_number_search'] ?? null;
-        $this->container['bread_crumb_trail'] = $data['bread_crumb_trail'] ?? null;
-        $this->container['campaigns'] = $data['campaigns'] ?? null;
-        $this->container['facets'] = $data['facets'] ?? null;
-        $this->container['field_roles'] = $data['field_roles'] ?? null;
-        $this->container['filters'] = $data['filters'] ?? null;
-        $this->container['hits'] = $data['hits'] ?? null;
-        $this->container['paging'] = $data['paging'] ?? null;
-        $this->container['score_first_hit'] = $data['score_first_hit'] ?? null;
-        $this->container['score_last_hit'] = $data['score_last_hit'] ?? null;
-        $this->container['search_control_params'] = $data['search_control_params'] ?? null;
-        $this->container['search_params'] = $data['search_params'] ?? null;
-        $this->container['single_word_results'] = $data['single_word_results'] ?? null;
-        $this->container['sort_items'] = $data['sort_items'] ?? null;
-        $this->container['timed_out'] = $data['timed_out'] ?? null;
-        $this->container['took_total'] = $data['took_total'] ?? null;
-        $this->container['took_worldmatch'] = $data['took_worldmatch'] ?? null;
-        $this->container['total_hits'] = $data['total_hits'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

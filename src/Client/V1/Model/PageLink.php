@@ -29,18 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class PageLink extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['caption'] = $data['caption'] ?? null;
-        $this->container['current_page'] = $data['current_page'] ?? null;
-        $this->container['number'] = $data['number'] ?? null;
-        $this->container['search_params'] = $data['search_params'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

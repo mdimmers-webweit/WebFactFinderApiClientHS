@@ -29,18 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class SearchRequest extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['params'] = $data['params'] ?? null;
-        $this->container['search_control_params'] = $data['search_control_params'] ?? null;
-        $this->container['sid'] = $data['sid'] ?? null;
-        $this->container['user_input'] = $data['user_input'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

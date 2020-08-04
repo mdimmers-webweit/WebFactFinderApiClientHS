@@ -30,11 +30,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  */
 class Record extends BaseModel
 {
-    /* @phpstan-ignore-next-line */
-    public function __construct(?array $data = null)
-    {
-    }
-
     /**
      * Array of property to type mappings. Used for (de)serialization
      *
@@ -50,8 +45,7 @@ class Record extends BaseModel
      */
     public static function swaggerFormats(): array
     {
-        return [
-        ];
+        return [];
     }
 
     /**
@@ -62,8 +56,7 @@ class Record extends BaseModel
      */
     public static function attributeMap(): array
     {
-        return [
-        ];
+        return [];
     }
 
     /**
@@ -73,8 +66,7 @@ class Record extends BaseModel
      */
     public static function setters(): array
     {
-        return [
-        ];
+        return [];
     }
 
     /**
@@ -84,7 +76,6 @@ class Record extends BaseModel
      */
     public static function getters(): array
     {
-        return [
-        ];
+        return [];
     }
 }

@@ -29,20 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class Paging extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['current_page'] = $data['current_page'] ?? null;
-        $this->container['default_hits_per_page'] = $data['default_hits_per_page'] ?? null;
-        $this->container['hits_per_page'] = $data['hits_per_page'] ?? null;
-        $this->container['next_link'] = $data['next_link'] ?? null;
-        $this->container['page_count'] = $data['page_count'] ?? null;
-        $this->container['previous_link'] = $data['previous_link'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

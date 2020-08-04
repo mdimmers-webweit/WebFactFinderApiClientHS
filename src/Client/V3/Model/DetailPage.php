@@ -29,19 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class DetailPage extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['campaigns'] = $data['campaigns'] ?? null;
-        $this->container['field_roles'] = $data['field_roles'] ?? null;
-        $this->container['recommendations'] = $data['recommendations'] ?? null;
-        $this->container['record'] = $data['record'] ?? null;
-        $this->container['similar_products'] = $data['similar_products'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

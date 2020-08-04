@@ -29,22 +29,6 @@ use Web\FactFinderApi\Client\Model\SearchParamsBase;
 class Params extends SearchParamsBase
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        parent::__construct($data);
-        $this->container['ab_test'] = $data['ab_test'] ?? null;
-        $this->container['article_number'] = $data['article_number'] ?? null;
-        $this->container['follow_search'] = $data['follow_search'] ?? null;
-        $this->container['no_article_number_search'] = $data['no_article_number_search'] ?? null;
-        $this->container['results_per_page'] = $data['results_per_page'] ?? null;
-        $this->container['seo_path'] = $data['seo_path'] ?? null;
-        $this->container['sorts_list'] = $data['sorts_list'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

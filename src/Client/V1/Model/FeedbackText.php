@@ -29,20 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class FeedbackText extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['html'] = $data['html'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['position'] = $data['position'] ?? null;
-        $this->container['teaser'] = $data['teaser'] ?? null;
-        $this->container['text'] = $data['text'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

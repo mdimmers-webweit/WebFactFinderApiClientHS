@@ -29,17 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class CustomParameter extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['cache_irrelevant'] = $data['cache_irrelevant'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['values'] = $data['values'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

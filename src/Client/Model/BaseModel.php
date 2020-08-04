@@ -21,7 +21,16 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    abstract public function __construct(?array $data = null);
+    public function __construct(?array $data = null)
+    {
+        foreach (static::setters() as $field => $setter) {
+            if (isset($data[$field])) {
+                $this->$setter($data[$field]);
+            } else {
+                $this->container[$field] = null;
+            }
+        }
+    }
 
     /**
      * Gets the string presentation of the object

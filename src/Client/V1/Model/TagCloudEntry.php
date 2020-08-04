@@ -29,19 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class TagCloudEntry extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['nr'] = $data['nr'] ?? null;
-        $this->container['params'] = $data['params'] ?? null;
-        $this->container['search_count'] = $data['search_count'] ?? null;
-        $this->container['search_term'] = $data['search_term'] ?? null;
-        $this->container['weight'] = $data['weight'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

@@ -29,18 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class SingleWordSearchResult extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['preview_records'] = $data['preview_records'] ?? null;
-        $this->container['record_count'] = $data['record_count'] ?? null;
-        $this->container['search_params'] = $data['search_params'] ?? null;
-        $this->container['word'] = $data['word'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

@@ -32,18 +32,6 @@ class SortItem extends BaseModel
     const ORDER_DESC = 'desc';
 
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['order'] = $data['order'] ?? null;
-        $this->container['relevance_sort_item'] = $data['relevance_sort_item'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]

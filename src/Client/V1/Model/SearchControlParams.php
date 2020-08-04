@@ -29,24 +29,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
 class SearchControlParams extends BaseModel
 {
     /**
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(?array $data = null)
-    {
-        $this->container['disable_cache'] = $data['disable_cache'] ?? null;
-        $this->container['generate_advisor_tree'] = $data['generate_advisor_tree'] ?? null;
-        $this->container['ids_only'] = $data['ids_only'] ?? null;
-        $this->container['use_asn'] = $data['use_asn'] ?? null;
-        $this->container['use_aso'] = $data['use_aso'] ?? null;
-        $this->container['use_campaigns'] = $data['use_campaigns'] ?? null;
-        $this->container['use_found_words'] = $data['use_found_words'] ?? null;
-        $this->container['use_keywords'] = $data['use_keywords'] ?? null;
-        $this->container['use_personalization'] = $data['use_personalization'] ?? null;
-        $this->container['use_semantic_enhancer'] = $data['use_semantic_enhancer'] ?? null;
-    }
-
-    /**
      * Array of property to type mappings. Used for (de)serialization
      *
      * @var string[]
