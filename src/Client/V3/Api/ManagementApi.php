@@ -62,7 +62,6 @@ class ManagementApi extends ApiClient
      */
     public function changeLogLevelUsingPOSTWithHttpInfo($log_level)
     {
-        $returnType = '';
         $request = $this->changeLogLevelUsingPOSTRequest($log_level);
 
         return $this->executeEmptyRequest($request);
@@ -102,7 +101,6 @@ class ManagementApi extends ApiClient
      */
     public function changeLogLevelUsingPOSTAsyncWithHttpInfo($log_level)
     {
-        $returnType = '';
         $request = $this->changeLogLevelUsingPOSTRequest($log_level);
 
         return $this->client
@@ -238,7 +236,6 @@ class ManagementApi extends ApiClient
      */
     public function flushCacheUsingPOSTWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->flushCacheUsingPOSTRequest($channel);
 
         return $this->executeEmptyRequest($request);
@@ -278,7 +275,6 @@ class ManagementApi extends ApiClient
      */
     public function flushCacheUsingPOSTAsyncWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->flushCacheUsingPOSTRequest($channel);
 
         return $this->client
@@ -329,7 +325,6 @@ class ManagementApi extends ApiClient
      */
     public function flushLogsUsingPOSTWithHttpInfo()
     {
-        $returnType = '';
         $request = $this->flushLogsUsingPOSTRequest();
 
         return $this->executeEmptyRequest($request);
@@ -365,7 +360,6 @@ class ManagementApi extends ApiClient
      */
     public function flushLogsUsingPOSTAsyncWithHttpInfo()
     {
-        $returnType = '';
         $request = $this->flushLogsUsingPOSTRequest();
 
         return $this->client

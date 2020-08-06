@@ -213,7 +213,7 @@ class ObjectSerializer
      *
      * @return object|array|null an single or an array of $class instances
      */
-    public static function deserialize($data, $class, $httpHeaders = null)
+    public static function deserialize($data, ?string $class = null, ?array $httpHeaders = null)
     {
         if ($data === null) {
             return null;
@@ -238,7 +238,7 @@ class ObjectSerializer
 
             return $values;
         } elseif ($class === 'object') {
-            \settype($data, 'array');
+            $data = (array) $data;
 
             return $data;
         } elseif ($class === '\DateTime') {
@@ -278,7 +278,7 @@ class ObjectSerializer
         }
         $instance = new $class();
         foreach ($instance::swaggerTypes() as $property => $type) {
-            $propertySetter = 'set' . self::camelize($property); //$instance::setters()[$property];
+            $propertySetter = 'set' . self::camelize($property);
 
             if (!isset($propertySetter) || !isset($data->{$instance::attributeMap()[$property]})) {
                 continue;

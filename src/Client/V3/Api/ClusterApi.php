@@ -49,12 +49,9 @@ class ClusterApi extends ApiClient
     public function fullSyncUsingPOSTWithHttpInfo(): array
     {
         $resourcePath = '/rest/v3/cluster/database/sync/full';
-        $queryParams = [];
-        $params = '';
-        $returnType = '';
-        $request = $this->postQuery($resourcePath, $queryParams, $params);
+        $request = $this->postQuery($resourcePath, [], '');
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeEmptyRequest($request);
     }
 
     /**
@@ -84,11 +81,9 @@ class ClusterApi extends ApiClient
     public function fullSyncUsingPOSTAsyncWithHttpInfo(): PromiseInterface
     {
         $resourcePath = '/rest/v3/cluster/database/sync/full';
-        $returnType = '';
-        $queryParams = [];
-        $request = $this->postQuery($resourcePath, $queryParams, '');
+        $request = $this->postQuery($resourcePath, [], '');
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeEmptyAsyncRequest($request);
     }
 
     /**
@@ -122,10 +117,9 @@ class ClusterApi extends ApiClient
      */
     public function getDatabaseStateUsingGETWithHttpInfo(string $channel): array
     {
-        $returnType = DatabaseState::class;
         $request = $this->getDatabaseStateUsingGETRequest($channel);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeRequest($request, DatabaseState::class);
     }
 
     /**
@@ -158,10 +152,9 @@ class ClusterApi extends ApiClient
      */
     public function getDatabaseStateUsingGETAsyncWithHttpInfo(string $channel): PromiseInterface
     {
-        $returnType = DatabaseState::class;
         $request = $this->getDatabaseStateUsingGETRequest($channel);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeAsyncRequest($request, DatabaseState::class);
     }
 
     /**

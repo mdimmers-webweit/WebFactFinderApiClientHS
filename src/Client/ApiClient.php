@@ -9,6 +9,7 @@ namespace Web\FactFinderApi\Client;
 use GuzzleHttp6\Client;
 use GuzzleHttp6\ClientInterface;
 use GuzzleHttp6\Exception\RequestException;
+use GuzzleHttp6\Promise\PromiseInterface;
 use GuzzleHttp6\Psr7\Request;
 use GuzzleHttp6\RequestOptions;
 use Web\FactFinderApi\Client\Model\ApiError;
@@ -38,7 +39,32 @@ abstract class ApiClient
         return $this->config;
     }
 
-    public function executeAsyncRequest(Request $request, string $returnType)
+    public function executeEmptyAsyncRequest(Request $request): PromiseInterface
+    {
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception): void {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        \sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    public function executeAsyncRequest(Request $request, string $returnType): PromiseInterface
     {
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())

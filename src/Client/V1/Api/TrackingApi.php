@@ -60,7 +60,6 @@ class TrackingApi extends ApiClient
      */
     public function trackCartUsingPOSTWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackCartUsingPOSTRequest($channel, $events);
 
         return $this->executeEmptyRequest($request);
@@ -102,7 +101,6 @@ class TrackingApi extends ApiClient
      */
     public function trackCartUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackCartUsingPOSTRequest($channel, $events);
 
         return $this->client
@@ -159,7 +157,6 @@ class TrackingApi extends ApiClient
      */
     public function trackCheckoutUsingPOSTWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackCheckoutUsingPOSTRequest($channel, $events);
 
         return $this->executeEmptyRequest($request);
@@ -201,7 +198,6 @@ class TrackingApi extends ApiClient
      */
     public function trackCheckoutUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackCheckoutUsingPOSTRequest($channel, $events);
 
         return $this->client
@@ -258,7 +254,6 @@ class TrackingApi extends ApiClient
      */
     public function trackClickUsingPOSTWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackClickUsingPOSTRequest($channel, $events);
 
         return $this->executeEmptyRequest($request);
@@ -300,7 +295,6 @@ class TrackingApi extends ApiClient
      */
     public function trackClickUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackClickUsingPOSTRequest($channel, $events);
 
         return $this->client
@@ -357,7 +351,6 @@ class TrackingApi extends ApiClient
      */
     public function trackFeedbackUsingPOSTWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackFeedbackUsingPOSTRequest($channel, $events);
 
         return $this->executeEmptyRequest($request);
@@ -399,7 +392,6 @@ class TrackingApi extends ApiClient
      */
     public function trackFeedbackUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackFeedbackUsingPOSTRequest($channel, $events);
 
         return $this->client
@@ -456,7 +448,6 @@ class TrackingApi extends ApiClient
      */
     public function trackLogUsingPOSTWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackLogUsingPOSTRequest($channel, $events);
 
         return $this->executeEmptyRequest($request);
@@ -498,7 +489,6 @@ class TrackingApi extends ApiClient
      */
     public function trackLogUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackLogUsingPOSTRequest($channel, $events);
 
         return $this->client
@@ -555,7 +545,6 @@ class TrackingApi extends ApiClient
      */
     public function trackLoginUsingPOSTWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackLoginUsingPOSTRequest($channel, $events);
 
         return $this->executeEmptyRequest($request);
@@ -597,7 +586,6 @@ class TrackingApi extends ApiClient
      */
     public function trackLoginUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackLoginUsingPOSTRequest($channel, $events);
 
         return $this->client
@@ -654,7 +642,6 @@ class TrackingApi extends ApiClient
      */
     public function trackRecommendationClickUsingPOSTWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackRecommendationClickUsingPOSTRequest($channel, $events);
 
         return $this->executeEmptyRequest($request);
@@ -696,7 +683,6 @@ class TrackingApi extends ApiClient
      */
     public function trackRecommendationClickUsingPOSTAsyncWithHttpInfo(string $channel, $events)
     {
-        $returnType = '';
         $request = $this->trackRecommendationClickUsingPOSTRequest($channel, $events);
 
         return $this->client
