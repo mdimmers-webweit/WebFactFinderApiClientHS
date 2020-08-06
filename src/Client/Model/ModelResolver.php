@@ -25,7 +25,7 @@ class ModelResolver
     public function __call($method, $args)
     {
         if (\preg_match('/create(.*)/', $method, $matches) > 0) {
-            return \call_user_func_array([$this, 'createUnifiedModel'], $args);
+            return \call_user_func_array([$this, 'createUnifiedModel'], [$matches[1], ...$args]);
         }
         throw new \BadMethodCallException('Call to undefined method ' . \get_class($this) . '::' . $method . '()');
     }
