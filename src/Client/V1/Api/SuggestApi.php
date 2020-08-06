@@ -19,7 +19,7 @@ namespace Web\FactFinderApi\Client\V1\Api;
 
 use GuzzleHttp6\Psr7\Request;
 use Web\FactFinderApi\Client\ObjectSerializer;
-use Web\FactFinderApi\Client\V1\Model\Params;
+use Web\FactFinderApi\Client\V1\Model\SearchParams;
 
 /**
  * SuggestApi Class Doc Comment
@@ -108,14 +108,14 @@ class SuggestApi extends ApiClient
      *
      * Get suggestions with POST
      *
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $params params (required)
+     * @param \Web\FactFinderApi\Client\V1\Model\SearchParams $params params (required)
      *
+     *@throws \InvalidArgumentException
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      *
      * @return \Web\FactFinderApi\Client\V1\Model\ResultSuggestion[]
      */
-    public function getSuggestionsUsingPOST(Params $params)
+    public function getSuggestionsUsingPOST(SearchParams $params)
     {
         list($response) = $this->getSuggestionsUsingPOSTWithHttpInfo($params);
 
@@ -127,14 +127,14 @@ class SuggestApi extends ApiClient
      *
      * Get suggestions with POST
      *
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $params params (required)
+     * @param \Web\FactFinderApi\Client\V1\Model\SearchParams $params params (required)
      *
+     *@throws \InvalidArgumentException
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
      *
      * @return array of \Web\FactFinderApi\Client\V1\Model\ResultSuggestion[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSuggestionsUsingPOSTWithHttpInfo(Params $params)
+    public function getSuggestionsUsingPOSTWithHttpInfo(SearchParams $params)
     {
         $request = $this->getSuggestionsUsingPOSTRequest($params);
 
@@ -146,13 +146,13 @@ class SuggestApi extends ApiClient
      *
      * Get suggestions with POST
      *
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $params params (required)
+     * @param \Web\FactFinderApi\Client\V1\Model\SearchParams $params params (required)
      *
-     * @throws \InvalidArgumentException
+     *@throws \InvalidArgumentException
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getSuggestionsUsingPOSTAsync(Params $params)
+    public function getSuggestionsUsingPOSTAsync(SearchParams $params)
     {
         return $this->getSuggestionsUsingPOSTAsyncWithHttpInfo($params)
             ->then(
@@ -167,13 +167,13 @@ class SuggestApi extends ApiClient
      *
      * Get suggestions with POST
      *
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $params params (required)
+     * @param \Web\FactFinderApi\Client\V1\Model\SearchParams $params params (required)
      *
-     * @throws \InvalidArgumentException
+     *@throws \InvalidArgumentException
      *
      * @return \GuzzleHttp6\Promise\PromiseInterface
      */
-    public function getSuggestionsUsingPOSTAsyncWithHttpInfo(Params $params)
+    public function getSuggestionsUsingPOSTAsyncWithHttpInfo(SearchParams $params)
     {
         $request = $this->getSuggestionsUsingPOSTRequest($params);
 
@@ -222,13 +222,13 @@ class SuggestApi extends ApiClient
     /**
      * Create request for operation 'getSuggestionsUsingPOST'
      *
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $params params (required)
+     * @param \Web\FactFinderApi\Client\V1\Model\SearchParams $params params (required)
      *
-     * @throws \InvalidArgumentException
+     *@throws \InvalidArgumentException
      *
      * @return \GuzzleHttp6\Psr7\Request
      */
-    protected function getSuggestionsUsingPOSTRequest(Params $params)
+    protected function getSuggestionsUsingPOSTRequest(SearchParams $params)
     {
         $resourcePath = '/v1/suggest';
 

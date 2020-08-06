@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ExpirationMessage extends BaseModel
+class ExpirationMessage extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -37,18 +37,7 @@ class ExpirationMessage extends BaseModel
     {
         return [
             'channel' => 'string',
-            'expiration_data' => '\Web\FactFinderApi\Client\V3\Model\ExpirationData[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'channel' => null,
-            'expiration_data' => null,
+            'expiration_data' => static::getModelClass('ExpirationData', true),
         ];
     }
 
@@ -63,32 +52,6 @@ class ExpirationMessage extends BaseModel
         return [
             'channel' => 'channel',
             'expiration_data' => 'expirationData',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'channel' => 'setChannel',
-            'expiration_data' => 'setExpirationData',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'channel' => 'getChannel',
-            'expiration_data' => 'getExpirationData',
         ];
     }
 

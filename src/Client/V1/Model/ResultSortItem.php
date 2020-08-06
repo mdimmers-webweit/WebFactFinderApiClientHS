@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ResultSortItem extends BaseModel
+class ResultSortItem extends BaseModel implements ModelV1Interface
 {
     const ORDER_ASC = 'asc';
     const ORDER_DESC = 'desc';
@@ -43,23 +43,8 @@ class ResultSortItem extends BaseModel
             'name' => 'string',
             'order' => 'string',
             'relevance_sort_item' => 'bool',
-            'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+            'search_params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
             'selected' => 'bool',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'description' => null,
-            'name' => null,
-            'order' => null,
-            'relevance_sort_item' => null,
-            'search_params' => null,
-            'selected' => null,
         ];
     }
 
@@ -78,40 +63,6 @@ class ResultSortItem extends BaseModel
             'relevance_sort_item' => 'relevanceSortItem',
             'search_params' => 'searchParams',
             'selected' => 'selected',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'description' => 'setDescription',
-            'name' => 'setName',
-            'order' => 'setOrder',
-            'relevance_sort_item' => 'setRelevanceSortItem',
-            'search_params' => 'setSearchParams',
-            'selected' => 'setSelected',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'description' => 'getDescription',
-            'name' => 'getName',
-            'order' => 'getOrder',
-            'relevance_sort_item' => 'getRelevanceSortItem',
-            'search_params' => 'getSearchParams',
-            'selected' => 'getSelected',
         ];
     }
 
@@ -251,7 +202,7 @@ class ResultSortItem extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Params
+     * @return \Web\FactFinderApi\Client\V1\Model\SearchParams
      */
     public function getSearchParams()
     {
@@ -259,7 +210,7 @@ class ResultSortItem extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $search_params search_params
+     * @param \Web\FactFinderApi\Client\V1\Model\SearchParams $search_params search_params
      *
      * @return $this
      */

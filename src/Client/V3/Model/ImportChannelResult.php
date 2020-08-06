@@ -26,30 +26,13 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ImportChannelResult extends BaseModel
+class ImportChannelResult extends BaseModel implements ModelV3Interface
 {
     const IMPORT_TYPE_DATA = 'DATA';
     const IMPORT_TYPE_ATTRIBUTES_AND_DATA = 'ATTRIBUTES_AND_DATA';
     const IMPORT_TYPE_SUGGEST = 'SUGGEST';
     const IMPORT_TYPE_RECOMMENDATION = 'RECOMMENDATION';
     const IMPORT_TYPE_RANKING = 'RANKING';
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'channel' => null,
-            'duration_in_seconds' => 'int64',
-            'error_messages' => null,
-            'import_type' => null,
-            'imported_fields' => 'int32',
-            'imported_records' => 'int32',
-            'start_date' => 'date-time',
-            'status_messages' => null,
-        ];
-    }
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -87,44 +70,6 @@ class ImportChannelResult extends BaseModel
             'imported_records' => 'importedRecords',
             'start_date' => 'startDate',
             'status_messages' => 'statusMessages',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'channel' => 'setChannel',
-            'duration_in_seconds' => 'setDurationInSeconds',
-            'error_messages' => 'setErrorMessages',
-            'import_type' => 'setImportType',
-            'imported_fields' => 'setImportedFields',
-            'imported_records' => 'setImportedRecords',
-            'start_date' => 'setStartDate',
-            'status_messages' => 'setStatusMessages',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'channel' => 'getChannel',
-            'duration_in_seconds' => 'getDurationInSeconds',
-            'error_messages' => 'getErrorMessages',
-            'import_type' => 'getImportType',
-            'imported_fields' => 'getImportedFields',
-            'imported_records' => 'getImportedRecords',
-            'start_date' => 'getStartDate',
-            'status_messages' => 'getStatusMessages',
         ];
     }
 

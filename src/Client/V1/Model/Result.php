@@ -17,7 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V1\Model;
 
-use Web\FactFinderApi\Client\Model\BaseModel;
+use Web\FactFinderApi\Client\Model\ResultBase;
 
 /**
  * Result Class Doc Comment
@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Result extends BaseModel
+class Result extends ResultBase implements ModelV1Interface
 {
     const RESULT_ARTICLE_NUMBER_STATUS_NO_ARTICLE_NUMBER_SEARCH = 'noArticleNumberSearch';
     const RESULT_ARTICLE_NUMBER_STATUS_NOTHING_FOUND = 'nothingFound';
@@ -42,57 +42,18 @@ class Result extends BaseModel
      */
     public static function swaggerTypes(): array
     {
-        return [
-            'applied_preprocessor_entries' => '\Web\FactFinderApi\Client\V1\Model\PreprocessorEntry[]',
-            'asn_groups' => '\Web\FactFinderApi\Client\V1\Model\Group[]',
-            'bread_crumb_trail' => '\Web\FactFinderApi\Client\V1\Model\BreadCrumbTrailItem[]',
-            'campaigns_list' => '\Web\FactFinderApi\Client\V1\Model\Campaign[]',
-            'field_roles' => 'map[string,string]',
-            'filters' => '\Web\FactFinderApi\Client\V1\Model\Filter[]',
-            'paging' => '\Web\FactFinderApi\Client\V1\Model\Paging',
-            'records' => '\Web\FactFinderApi\Client\V1\Model\SearchRecord[]',
-            'result_article_number_status' => 'string',
-            'result_count' => 'int',
-            'result_status' => 'string',
-            'results_per_page_list' => '\Web\FactFinderApi\Client\V1\Model\ResultsPerPageOptionWithSearchParams[]',
-            'search_control_params' => '\Web\FactFinderApi\Client\V1\Model\SearchControlParams',
-            'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
-            'search_time' => 'int',
-            'simi_first_record' => 'int',
-            'simi_last_record' => 'int',
-            'single_word_results' => '\Web\FactFinderApi\Client\V1\Model\SingleWordSearchResult[]',
-            'sorts_list' => '\Web\FactFinderApi\Client\V1\Model\ResultSortItem[]',
-            'timed_out' => 'bool',
-        ];
-    }
+        $result = parent::swaggerTypes();
 
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'applied_preprocessor_entries' => null,
-            'asn_groups' => null,
-            'bread_crumb_trail' => null,
-            'campaigns_list' => null,
-            'field_roles' => null,
-            'filters' => null,
-            'paging' => null,
-            'records' => null,
-            'result_article_number_status' => null,
-            'result_count' => 'int32',
-            'result_status' => null,
-            'results_per_page_list' => null,
-            'search_control_params' => null,
-            'search_params' => null,
-            'search_time' => 'int64',
-            'simi_first_record' => 'int32',
-            'simi_last_record' => 'int32',
-            'single_word_results' => null,
-            'sorts_list' => null,
-            'timed_out' => null,
-        ];
+        $result = \array_merge($result, [
+            'applied_preprocessor_entries' => static::getModelClass('PreprocessorEntry', true),
+            'result_article_number_status' => 'string',
+            'result_status' => 'string',
+            'results_per_page_list' => static::getModelClass('ResultsPerPageOptionWithSearchParams', true),
+            'score_first_hit' => 'int',
+            'score_last_hit' => 'int',
+        ]);
+
+        return $result;
     }
 
     /**
@@ -103,90 +64,24 @@ class Result extends BaseModel
      */
     public static function attributeMap(): array
     {
-        return [
+        $result = parent::attributeMap();
+
+        $result = \array_merge($result, [
+            'facets' => 'asnGroups',
+            'campaigns' => 'campaignsList',
             'applied_preprocessor_entries' => 'appliedPreprocessorEntries',
-            'asn_groups' => 'asnGroups',
-            'bread_crumb_trail' => 'breadCrumbTrail',
-            'campaigns_list' => 'campaignsList',
-            'field_roles' => 'fieldRoles',
-            'filters' => 'filters',
-            'paging' => 'paging',
-            'records' => 'records',
             'result_article_number_status' => 'resultArticleNumberStatus',
-            'result_count' => 'resultCount',
             'result_status' => 'resultStatus',
             'results_per_page_list' => 'resultsPerPageList',
-            'search_control_params' => 'searchControlParams',
-            'search_params' => 'searchParams',
-            'search_time' => 'searchTime',
-            'simi_first_record' => 'simiFirstRecord',
-            'simi_last_record' => 'simiLastRecord',
-            'single_word_results' => 'singleWordResults',
-            'sorts_list' => 'sortsList',
-            'timed_out' => 'timedOut',
-        ];
-    }
+            'score_first_hit' => 'simiFirstRecord',
+            'score_last_hit' => 'simiLastRecord',
+            'took_total' => 'searchTime',
+            'total_hits' => 'resultCount',
+            'sort_items' => 'sortsList',
+            'hits' => 'records',
+        ]);
 
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'applied_preprocessor_entries' => 'setAppliedPreprocessorEntries',
-            'asn_groups' => 'setAsnGroups',
-            'bread_crumb_trail' => 'setBreadCrumbTrail',
-            'campaigns_list' => 'setCampaignsList',
-            'field_roles' => 'setFieldRoles',
-            'filters' => 'setFilters',
-            'paging' => 'setPaging',
-            'records' => 'setRecords',
-            'result_article_number_status' => 'setResultArticleNumberStatus',
-            'result_count' => 'setResultCount',
-            'result_status' => 'setResultStatus',
-            'results_per_page_list' => 'setResultsPerPageList',
-            'search_control_params' => 'setSearchControlParams',
-            'search_params' => 'setSearchParams',
-            'search_time' => 'setSearchTime',
-            'simi_first_record' => 'setSimiFirstRecord',
-            'simi_last_record' => 'setSimiLastRecord',
-            'single_word_results' => 'setSingleWordResults',
-            'sorts_list' => 'setSortsList',
-            'timed_out' => 'setTimedOut',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'applied_preprocessor_entries' => 'getAppliedPreprocessorEntries',
-            'asn_groups' => 'getAsnGroups',
-            'bread_crumb_trail' => 'getBreadCrumbTrail',
-            'campaigns_list' => 'getCampaignsList',
-            'field_roles' => 'getFieldRoles',
-            'filters' => 'getFilters',
-            'paging' => 'getPaging',
-            'records' => 'getRecords',
-            'result_article_number_status' => 'getResultArticleNumberStatus',
-            'result_count' => 'getResultCount',
-            'result_status' => 'getResultStatus',
-            'results_per_page_list' => 'getResultsPerPageList',
-            'search_control_params' => 'getSearchControlParams',
-            'search_params' => 'getSearchParams',
-            'search_time' => 'getSearchTime',
-            'simi_first_record' => 'getSimiFirstRecord',
-            'simi_last_record' => 'getSimiLastRecord',
-            'single_word_results' => 'getSingleWordResults',
-            'sorts_list' => 'getSortsList',
-            'timed_out' => 'getTimedOut',
-        ];
+        return $result;
     }
 
     /**
@@ -224,26 +119,8 @@ class Result extends BaseModel
      */
     public function listInvalidProperties(): array
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
-        if ($this->container['asn_groups'] === null) {
-            $invalidProperties[] = "'asn_groups' can't be null";
-        }
-        if ($this->container['bread_crumb_trail'] === null) {
-            $invalidProperties[] = "'bread_crumb_trail' can't be null";
-        }
-        if ($this->container['campaigns_list'] === null) {
-            $invalidProperties[] = "'campaigns_list' can't be null";
-        }
-        if ($this->container['field_roles'] === null) {
-            $invalidProperties[] = "'field_roles' can't be null";
-        }
-        if ($this->container['filters'] === null) {
-            $invalidProperties[] = "'filters' can't be null";
-        }
-        if ($this->container['records'] === null) {
-            $invalidProperties[] = "'records' can't be null";
-        }
         if ($this->container['result_article_number_status'] === null) {
             $invalidProperties[] = "'result_article_number_status' can't be null";
         }
@@ -255,9 +132,6 @@ class Result extends BaseModel
             );
         }
 
-        if ($this->container['result_count'] === null) {
-            $invalidProperties[] = "'result_count' can't be null";
-        }
         if ($this->container['result_status'] === null) {
             $invalidProperties[] = "'result_status' can't be null";
         }
@@ -271,24 +145,6 @@ class Result extends BaseModel
 
         if ($this->container['results_per_page_list'] === null) {
             $invalidProperties[] = "'results_per_page_list' can't be null";
-        }
-        if ($this->container['search_control_params'] === null) {
-            $invalidProperties[] = "'search_control_params' can't be null";
-        }
-        if ($this->container['search_time'] === null) {
-            $invalidProperties[] = "'search_time' can't be null";
-        }
-        if ($this->container['simi_first_record'] === null) {
-            $invalidProperties[] = "'simi_first_record' can't be null";
-        }
-        if ($this->container['simi_last_record'] === null) {
-            $invalidProperties[] = "'simi_last_record' can't be null";
-        }
-        if ($this->container['sorts_list'] === null) {
-            $invalidProperties[] = "'sorts_list' can't be null";
-        }
-        if ($this->container['timed_out'] === null) {
-            $invalidProperties[] = "'timed_out' can't be null";
         }
 
         return $invalidProperties;
@@ -310,146 +166,6 @@ class Result extends BaseModel
     public function setAppliedPreprocessorEntries($applied_preprocessor_entries)
     {
         $this->container['applied_preprocessor_entries'] = $applied_preprocessor_entries;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Group[]
-     */
-    public function getAsnGroups()
-    {
-        return $this->container['asn_groups'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Group[] $asn_groups asn_groups
-     *
-     * @return $this
-     */
-    public function setAsnGroups($asn_groups)
-    {
-        $this->container['asn_groups'] = $asn_groups;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\BreadCrumbTrailItem[]
-     */
-    public function getBreadCrumbTrail()
-    {
-        return $this->container['bread_crumb_trail'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\BreadCrumbTrailItem[] $bread_crumb_trail bread_crumb_trail
-     *
-     * @return $this
-     */
-    public function setBreadCrumbTrail($bread_crumb_trail)
-    {
-        $this->container['bread_crumb_trail'] = $bread_crumb_trail;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Campaign[]
-     */
-    public function getCampaignsList()
-    {
-        return $this->container['campaigns_list'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Campaign[] $campaigns_list campaigns_list
-     *
-     * @return $this
-     */
-    public function setCampaignsList($campaigns_list)
-    {
-        $this->container['campaigns_list'] = $campaigns_list;
-
-        return $this;
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getFieldRoles()
-    {
-        return $this->container['field_roles'];
-    }
-
-    /**
-     * @param string[] $field_roles field_roles
-     *
-     * @return $this
-     */
-    public function setFieldRoles($field_roles)
-    {
-        $this->container['field_roles'] = $field_roles;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Filter[]
-     */
-    public function getFilters()
-    {
-        return $this->container['filters'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Filter[] $filters filters
-     *
-     * @return $this
-     */
-    public function setFilters($filters)
-    {
-        $this->container['filters'] = $filters;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Paging
-     */
-    public function getPaging()
-    {
-        return $this->container['paging'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Paging $paging paging
-     *
-     * @return $this
-     */
-    public function setPaging($paging)
-    {
-        $this->container['paging'] = $paging;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\SearchRecord[]
-     */
-    public function getRecords()
-    {
-        return $this->container['records'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\SearchRecord[] $records records
-     *
-     * @return $this
-     */
-    public function setRecords($records)
-    {
-        $this->container['records'] = $records;
 
         return $this;
     }
@@ -479,26 +195,6 @@ class Result extends BaseModel
             );
         }
         $this->container['result_article_number_status'] = $result_article_number_status;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getResultCount()
-    {
-        return $this->container['result_count'];
-    }
-
-    /**
-     * @param int $result_count result_count
-     *
-     * @return $this
-     */
-    public function setResultCount($result_count)
-    {
-        $this->container['result_count'] = $result_count;
 
         return $this;
     }
@@ -548,166 +244,6 @@ class Result extends BaseModel
     public function setResultsPerPageList($results_per_page_list)
     {
         $this->container['results_per_page_list'] = $results_per_page_list;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\SearchControlParams
-     */
-    public function getSearchControlParams()
-    {
-        return $this->container['search_control_params'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\SearchControlParams $search_control_params search_control_params
-     *
-     * @return $this
-     */
-    public function setSearchControlParams($search_control_params)
-    {
-        $this->container['search_control_params'] = $search_control_params;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Params
-     */
-    public function getSearchParams()
-    {
-        return $this->container['search_params'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $search_params search_params
-     *
-     * @return $this
-     */
-    public function setSearchParams($search_params)
-    {
-        $this->container['search_params'] = $search_params;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getSearchTime()
-    {
-        return $this->container['search_time'];
-    }
-
-    /**
-     * @param int $search_time search_time
-     *
-     * @return $this
-     */
-    public function setSearchTime($search_time)
-    {
-        $this->container['search_time'] = $search_time;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getSimiFirstRecord()
-    {
-        return $this->container['simi_first_record'];
-    }
-
-    /**
-     * @param int $simi_first_record simi_first_record
-     *
-     * @return $this
-     */
-    public function setSimiFirstRecord($simi_first_record)
-    {
-        $this->container['simi_first_record'] = $simi_first_record;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getSimiLastRecord()
-    {
-        return $this->container['simi_last_record'];
-    }
-
-    /**
-     * @param int $simi_last_record simi_last_record
-     *
-     * @return $this
-     */
-    public function setSimiLastRecord($simi_last_record)
-    {
-        $this->container['simi_last_record'] = $simi_last_record;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\SingleWordSearchResult[]
-     */
-    public function getSingleWordResults()
-    {
-        return $this->container['single_word_results'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\SingleWordSearchResult[] $single_word_results single_word_results
-     *
-     * @return $this
-     */
-    public function setSingleWordResults($single_word_results)
-    {
-        $this->container['single_word_results'] = $single_word_results;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\ResultSortItem[]
-     */
-    public function getSortsList()
-    {
-        return $this->container['sorts_list'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\ResultSortItem[] $sorts_list sorts_list
-     *
-     * @return $this
-     */
-    public function setSortsList($sorts_list)
-    {
-        $this->container['sorts_list'] = $sorts_list;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getTimedOut()
-    {
-        return $this->container['timed_out'];
-    }
-
-    /**
-     * @param bool $timed_out timed_out
-     *
-     * @return $this
-     */
-    public function setTimedOut($timed_out)
-    {
-        $this->container['timed_out'] = $timed_out;
 
         return $this;
     }

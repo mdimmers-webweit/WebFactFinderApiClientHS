@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Group extends BaseModel
+class Group extends BaseModel implements ModelV3Interface
 {
     const ROLES_AFTER_SEARCH_NAVIGATION_MANAGER = 'AfterSearchNavigationManager';
     const ROLES_BACKUP_MANAGER = 'BackupManager';
@@ -78,18 +78,6 @@ class Group extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'id' => null,
-            'name' => null,
-            'roles' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -101,34 +89,6 @@ class Group extends BaseModel
             'id' => 'id',
             'name' => 'name',
             'roles' => 'roles',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'id' => 'setId',
-            'name' => 'setName',
-            'roles' => 'setRoles',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'id' => 'getId',
-            'name' => 'getName',
-            'roles' => 'getRoles',
         ];
     }
 

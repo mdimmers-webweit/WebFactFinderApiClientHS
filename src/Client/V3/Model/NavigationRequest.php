@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class NavigationRequest extends BaseModel
+class NavigationRequest extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,21 +36,9 @@ class NavigationRequest extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'params' => '\Web\FactFinderApi\Client\V3\Model\NavigationParams',
-            'search_control_params' => '\Web\FactFinderApi\Client\V3\Model\SearchControlParams',
+            'params' => static::getModelClass('NavigationParams'),
+            'search_control_params' => static::getModelClass('SearchControlParams'),
             'sid' => 'string',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'params' => null,
-            'search_control_params' => null,
-            'sid' => null,
         ];
     }
 
@@ -66,34 +54,6 @@ class NavigationRequest extends BaseModel
             'params' => 'params',
             'search_control_params' => 'searchControlParams',
             'sid' => 'sid',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'params' => 'setParams',
-            'search_control_params' => 'setSearchControlParams',
-            'sid' => 'setSid',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'params' => 'getParams',
-            'search_control_params' => 'getSearchControlParams',
-            'sid' => 'getSid',
         ];
     }
 

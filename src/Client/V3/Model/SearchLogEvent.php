@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class SearchLogEvent extends BaseModel
+class SearchLogEvent extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -38,7 +38,7 @@ class SearchLogEvent extends BaseModel
         return [
             'additional_info' => 'string',
             'custom_sorting' => 'bool',
-            'filters' => '\Web\FactFinderApi\Client\V3\Model\Filter[]',
+            'filters' => static::getModelClass('Filter', true),
             'hit_count' => 'int',
             'id' => 'string',
             'master_id' => 'string',
@@ -52,31 +52,6 @@ class SearchLogEvent extends BaseModel
             'sid' => 'string',
             'title' => 'string',
             'user_id' => 'string',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'additional_info' => null,
-            'custom_sorting' => null,
-            'filters' => null,
-            'hit_count' => 'int32',
-            'id' => null,
-            'master_id' => null,
-            'max_score' => 'int32',
-            'min_score' => 'int32',
-            'page' => 'int32',
-            'page_size' => 'int32',
-            'query' => null,
-            'search_field' => null,
-            'search_time' => 'int32',
-            'sid' => null,
-            'title' => null,
-            'user_id' => null,
         ];
     }
 
@@ -105,60 +80,6 @@ class SearchLogEvent extends BaseModel
             'sid' => 'sid',
             'title' => 'title',
             'user_id' => 'userId',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'additional_info' => 'setAdditionalInfo',
-            'custom_sorting' => 'setCustomSorting',
-            'filters' => 'setFilters',
-            'hit_count' => 'setHitCount',
-            'id' => 'setId',
-            'master_id' => 'setMasterId',
-            'max_score' => 'setMaxScore',
-            'min_score' => 'setMinScore',
-            'page' => 'setPage',
-            'page_size' => 'setPageSize',
-            'query' => 'setQuery',
-            'search_field' => 'setSearchField',
-            'search_time' => 'setSearchTime',
-            'sid' => 'setSid',
-            'title' => 'setTitle',
-            'user_id' => 'setUserId',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'additional_info' => 'getAdditionalInfo',
-            'custom_sorting' => 'getCustomSorting',
-            'filters' => 'getFilters',
-            'hit_count' => 'getHitCount',
-            'id' => 'getId',
-            'master_id' => 'getMasterId',
-            'max_score' => 'getMaxScore',
-            'min_score' => 'getMinScore',
-            'page' => 'getPage',
-            'page_size' => 'getPageSize',
-            'query' => 'getQuery',
-            'search_field' => 'getSearchField',
-            'search_time' => 'getSearchTime',
-            'sid' => 'getSid',
-            'title' => 'getTitle',
-            'user_id' => 'getUserId',
         ];
     }
 

@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class PredictiveBasketResult extends BaseModel
+class PredictiveBasketResult extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,17 +36,7 @@ class PredictiveBasketResult extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'result_records' => '\Web\FactFinderApi\Client\V1\Model\RecordWithId[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'result_records' => null,
+            'result_records' => static::getModelClass('RecordWithId', true),
         ];
     }
 
@@ -60,30 +50,6 @@ class PredictiveBasketResult extends BaseModel
     {
         return [
             'result_records' => 'resultRecords',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'result_records' => 'setResultRecords',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'result_records' => 'getResultRecords',
         ];
     }
 

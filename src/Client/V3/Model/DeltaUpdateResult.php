@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class DeltaUpdateResult extends BaseModel
+class DeltaUpdateResult extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,23 +36,10 @@ class DeltaUpdateResult extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'error' => '\Web\FactFinderApi\Client\V3\Model\ErrorDescription',
-            'record' => '\Web\FactFinderApi\Client\V3\Model\Record',
+            'error' => static::getModelClass('ErrorDescription'),
+            'record' => static::getModelClass('Record'),
             'success' => 'bool',
-            'warnings' => '\Web\FactFinderApi\Client\V3\Model\ErrorDescription[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'error' => null,
-            'record' => null,
-            'success' => null,
-            'warnings' => null,
+            'warnings' => static::getModelClass('ErrorDescription', true),
         ];
     }
 
@@ -69,36 +56,6 @@ class DeltaUpdateResult extends BaseModel
             'record' => 'record',
             'success' => 'success',
             'warnings' => 'warnings',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'error' => 'setError',
-            'record' => 'setRecord',
-            'success' => 'setSuccess',
-            'warnings' => 'setWarnings',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'error' => 'getError',
-            'record' => 'getRecord',
-            'success' => 'getSuccess',
-            'warnings' => 'getWarnings',
         ];
     }
 

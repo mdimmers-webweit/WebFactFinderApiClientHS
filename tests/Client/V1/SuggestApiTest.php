@@ -8,7 +8,7 @@ namespace Web\FactFinderApi\Tests\Client\V1;
 
 use GuzzleHttp6\Client;
 use Web\FactFinderApi\Client\V1\Api\SuggestApi;
-use Web\FactFinderApi\Client\V1\Model\Params;
+use Web\FactFinderApi\Client\V1\Model\SearchParams;
 
 class SuggestApiTest extends AbstractTestCase
 {
@@ -25,7 +25,7 @@ class SuggestApiTest extends AbstractTestCase
     /** @test */
     public function itShouldReturnSuggestionResult(): void
     {
-        $searchRequest = new Params(['channel' => $this->getChannel(), 'query' => 'bei', 'page' => 1]);
+        $searchRequest = new SearchParams(['channel' => $this->getChannel(), 'query' => 'bei', 'page' => 1]);
 
         $result = $this->sut->getSuggestionsUsingPOST($searchRequest);
 

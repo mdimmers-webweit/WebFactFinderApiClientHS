@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Target extends BaseModel
+class Target extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -42,17 +42,6 @@ class Target extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'destination' => null,
-            'name' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -63,32 +52,6 @@ class Target extends BaseModel
         return [
             'destination' => 'destination',
             'name' => 'name',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'destination' => 'setDestination',
-            'name' => 'setName',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'destination' => 'getDestination',
-            'name' => 'getName',
         ];
     }
 

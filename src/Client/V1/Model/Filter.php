@@ -17,7 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V1\Model;
 
-use Web\FactFinderApi\Client\Model\BaseModel;
+use Web\FactFinderApi\Client\Model\FilterBase;
 
 /**
  * Filter Class Doc Comment
@@ -26,156 +26,14 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Filter extends BaseModel
+class Filter extends FilterBase implements ModelV1Interface
 {
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
-     */
-    public static function swaggerTypes(): array
-    {
-        return [
-            'name' => 'string',
-            'substring' => 'bool',
-            'value_list' => '\Web\FactFinderApi\Client\V1\Model\FilterValue[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'name' => null,
-            'substring' => null,
-            'value_list' => null,
-        ];
-    }
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
     public static function attributeMap(): array
     {
         return [
             'name' => 'name',
             'substring' => 'substring',
-            'value_list' => 'valueList',
+            'values' => 'valueList',
         ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'name' => 'setName',
-            'substring' => 'setSubstring',
-            'value_list' => 'setValueList',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'name' => 'getName',
-            'substring' => 'getSubstring',
-            'value_list' => 'getValueList',
-        ];
-    }
-
-    /**
-     * Show all the invalid properties with reasons.
-     *
-     * @return array invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['substring'] === null) {
-            $invalidProperties[] = "'substring' can't be null";
-        }
-        if ($this->container['value_list'] === null) {
-            $invalidProperties[] = "'value_list' can't be null";
-        }
-
-        return $invalidProperties;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * @param string $name name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getSubstring()
-    {
-        return $this->container['substring'];
-    }
-
-    /**
-     * @param bool $substring substring
-     *
-     * @return $this
-     */
-    public function setSubstring($substring)
-    {
-        $this->container['substring'] = $substring;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\FilterValue[]
-     */
-    public function getValueList()
-    {
-        return $this->container['value_list'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\FilterValue[] $value_list value_list
-     *
-     * @return $this
-     */
-    public function setValueList($value_list)
-    {
-        $this->container['value_list'] = $value_list;
-
-        return $this;
     }
 }

@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class FeedbackEvent extends BaseModel
+class FeedbackEvent extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,19 +36,6 @@ class FeedbackEvent extends BaseModel
     public static function swaggerTypes(): array
     {
         return [1];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'message' => null,
-            'positive' => null,
-            'query' => null,
-            'sid' => null,
-        ];
     }
 
     /**
@@ -64,36 +51,6 @@ class FeedbackEvent extends BaseModel
             'positive' => 'positive',
             'query' => 'query',
             'sid' => 'sid',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'message' => 'setMessage',
-            'positive' => 'setPositive',
-            'query' => 'setQuery',
-            'sid' => 'setSid',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'message' => 'getMessage',
-            'positive' => 'getPositive',
-            'query' => 'getQuery',
-            'sid' => 'getSid',
         ];
     }
 

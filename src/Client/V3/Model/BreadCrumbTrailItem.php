@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class BreadCrumbTrailItem extends BaseModel
+class BreadCrumbTrailItem extends BaseModel implements ModelV3Interface
 {
     const TYPE_SEARCH = 'search';
     const TYPE_FILTER = 'filter';
@@ -42,24 +42,10 @@ class BreadCrumbTrailItem extends BaseModel
     {
         return [
             'associated_field_name' => 'string',
-            'search_params' => '\Web\FactFinderApi\Client\V3\Model\SearchParams',
+            'search_params' => static::getModelClass('SearchParams'),
             'text' => 'string',
             'type' => 'string',
             'value' => 'string',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'associated_field_name' => null,
-            'search_params' => null,
-            'text' => null,
-            'type' => null,
-            'value' => null,
         ];
     }
 
@@ -77,38 +63,6 @@ class BreadCrumbTrailItem extends BaseModel
             'text' => 'text',
             'type' => 'type',
             'value' => 'value',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'associated_field_name' => 'setAssociatedFieldName',
-            'search_params' => 'setSearchParams',
-            'text' => 'setText',
-            'type' => 'setType',
-            'value' => 'setValue',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'associated_field_name' => 'getAssociatedFieldName',
-            'search_params' => 'getSearchParams',
-            'text' => 'getText',
-            'type' => 'getType',
-            'value' => 'getValue',
         ];
     }
 

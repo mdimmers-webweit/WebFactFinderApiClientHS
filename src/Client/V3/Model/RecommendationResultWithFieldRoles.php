@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class RecommendationResultWithFieldRoles extends BaseModel
+class RecommendationResultWithFieldRoles extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -37,20 +37,8 @@ class RecommendationResultWithFieldRoles extends BaseModel
     {
         return [
             'field_roles' => 'map[string,string]',
-            'hits' => '\Web\FactFinderApi\Client\V3\Model\TypedFlatRecord[]',
+            'hits' => static::getModelClass('TypedFlatRecord', true),
             'timed_out' => 'bool',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'field_roles' => null,
-            'hits' => null,
-            'timed_out' => null,
         ];
     }
 
@@ -66,34 +54,6 @@ class RecommendationResultWithFieldRoles extends BaseModel
             'field_roles' => 'fieldRoles',
             'hits' => 'hits',
             'timed_out' => 'timedOut',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'field_roles' => 'setFieldRoles',
-            'hits' => 'setHits',
-            'timed_out' => 'setTimedOut',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'field_roles' => 'getFieldRoles',
-            'hits' => 'getHits',
-            'timed_out' => 'getTimedOut',
         ];
     }
 

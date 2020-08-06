@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Campaign extends BaseModel
+class Campaign extends BaseModel implements ModelV3Interface
 {
     const FLAVOUR_ADVISOR = 'ADVISOR';
     const FLAVOUR_REDIRECT = 'REDIRECT';
@@ -41,33 +41,15 @@ class Campaign extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'active_questions' => '\Web\FactFinderApi\Client\V3\Model\Question[]',
-            'advisor_tree' => '\Web\FactFinderApi\Client\V3\Model\Question[]',
+            'active_questions' => static::getModelClass('Question', true),
+            'advisor_tree' => static::getModelClass('Question', true),
             'category' => 'string',
-            'feedback_texts' => '\Web\FactFinderApi\Client\V3\Model\FeedbackText[]',
+            'feedback_texts' => static::getModelClass('FeedbackText', true),
             'flavour' => 'string',
-            'hits' => '\Web\FactFinderApi\Client\V3\Model\TypedFlatRecord[]',
+            'hits' => static::getModelClass('TypedFlatRecord', true),
             'id' => 'string',
             'name' => 'string',
-            'target' => '\Web\FactFinderApi\Client\V3\Model\Target',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'active_questions' => null,
-            'advisor_tree' => null,
-            'category' => null,
-            'feedback_texts' => null,
-            'flavour' => null,
-            'hits' => null,
-            'id' => null,
-            'name' => null,
-            'target' => null,
+            'target' => static::getModelClass('Target'),
         ];
     }
 
@@ -89,46 +71,6 @@ class Campaign extends BaseModel
             'id' => 'id',
             'name' => 'name',
             'target' => 'target',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'active_questions' => 'setActiveQuestions',
-            'advisor_tree' => 'setAdvisorTree',
-            'category' => 'setCategory',
-            'feedback_texts' => 'setFeedbackTexts',
-            'flavour' => 'setFlavour',
-            'hits' => 'setHits',
-            'id' => 'setId',
-            'name' => 'setName',
-            'target' => 'setTarget',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'active_questions' => 'getActiveQuestions',
-            'advisor_tree' => 'getAdvisorTree',
-            'category' => 'getCategory',
-            'feedback_texts' => 'getFeedbackTexts',
-            'flavour' => 'getFlavour',
-            'hits' => 'getHits',
-            'id' => 'getId',
-            'name' => 'getName',
-            'target' => 'getTarget',
         ];
     }
 

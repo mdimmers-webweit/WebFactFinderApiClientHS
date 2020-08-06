@@ -17,7 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V1\Model;
 
-use Web\FactFinderApi\Client\Model\BaseModel;
+use Web\FactFinderApi\Client\Model\SortItemBase;
 
 /**
  * SortItem Class Doc Comment
@@ -26,11 +26,8 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class SortItem extends BaseModel
+class SortItem extends SortItemBase implements ModelV1Interface
 {
-    const ORDER_ASC = 'asc';
-    const ORDER_DESC = 'desc';
-
     /**
      * Array of property to type mappings. Used for (de)serialization
      *
@@ -43,19 +40,6 @@ class SortItem extends BaseModel
             'name' => 'string',
             'order' => 'string',
             'relevance_sort_item' => 'bool',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'description' => null,
-            'name' => null,
-            'order' => null,
-            'relevance_sort_item' => null,
         ];
     }
 
@@ -76,72 +60,16 @@ class SortItem extends BaseModel
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'description' => 'setDescription',
-            'name' => 'setName',
-            'order' => 'setOrder',
-            'relevance_sort_item' => 'setRelevanceSortItem',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'description' => 'getDescription',
-            'name' => 'getName',
-            'order' => 'getOrder',
-            'relevance_sort_item' => 'getRelevanceSortItem',
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getOrderAllowableValues()
-    {
-        return [
-            self::ORDER_ASC,
-            self::ORDER_DESC,
-        ];
-    }
-
-    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
      */
     public function listInvalidProperties(): array
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
         if ($this->container['description'] === null) {
             $invalidProperties[] = "'description' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['order'] === null) {
-            $invalidProperties[] = "'order' can't be null";
-        }
-        $allowedValues = $this->getOrderAllowableValues();
-        if (!\is_null($this->container['order']) && !\in_array($this->container['order'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
-                "invalid value for 'order', must be one of '%s'",
-                \implode("', '", $allowedValues)
-            );
         }
 
         return $invalidProperties;
@@ -163,55 +91,6 @@ class SortItem extends BaseModel
     public function setDescription($description)
     {
         $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * @param string $name name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getOrder()
-    {
-        return $this->container['order'];
-    }
-
-    /**
-     * @param string $order order
-     *
-     * @return $this
-     */
-    public function setOrder($order)
-    {
-        $allowedValues = $this->getOrderAllowableValues();
-        if (!\in_array($order, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                \sprintf(
-                    "Invalid value for 'order', must be one of '%s'",
-                    \implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['order'] = $order;
 
         return $this;
     }

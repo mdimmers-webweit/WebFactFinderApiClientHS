@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class RecommendationClickEvent extends BaseModel
+class RecommendationClickEvent extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -46,21 +46,6 @@ class RecommendationClickEvent extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'id' => null,
-            'main_id' => null,
-            'master_id' => null,
-            'sid' => null,
-            'title' => null,
-            'user_id' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -75,40 +60,6 @@ class RecommendationClickEvent extends BaseModel
             'sid' => 'sid',
             'title' => 'title',
             'user_id' => 'userId',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'id' => 'setId',
-            'main_id' => 'setMainId',
-            'master_id' => 'setMasterId',
-            'sid' => 'setSid',
-            'title' => 'setTitle',
-            'user_id' => 'setUserId',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'id' => 'getId',
-            'main_id' => 'getMainId',
-            'master_id' => 'getMasterId',
-            'sid' => 'getSid',
-            'title' => 'getTitle',
-            'user_id' => 'getUserId',
         ];
     }
 

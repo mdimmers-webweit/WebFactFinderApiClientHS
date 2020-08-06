@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class GeoInformation extends BaseModel
+class GeoInformation extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -37,22 +37,9 @@ class GeoInformation extends BaseModel
     {
         return [
             'distance' => 'double',
-            'location' => '\Web\FactFinderApi\Client\V3\Model\Location',
+            'location' => static::getModelClass('Location'),
             'master_values' => 'object',
-            'variant_values' => '\Web\FactFinderApi\Client\V3\Model\VariantValues[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'distance' => 'double',
-            'location' => null,
-            'master_values' => null,
-            'variant_values' => null,
+            'variant_values' => static::getModelClass('VariantValues', true),
         ];
     }
 
@@ -69,36 +56,6 @@ class GeoInformation extends BaseModel
             'location' => 'location',
             'master_values' => 'masterValues',
             'variant_values' => 'variantValues',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'distance' => 'setDistance',
-            'location' => 'setLocation',
-            'master_values' => 'setMasterValues',
-            'variant_values' => 'setVariantValues',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'distance' => 'getDistance',
-            'location' => 'getLocation',
-            'master_values' => 'getMasterValues',
-            'variant_values' => 'getVariantValues',
         ];
     }
 

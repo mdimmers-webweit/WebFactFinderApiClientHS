@@ -17,7 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V1\Model;
 
-use Web\FactFinderApi\Client\Model\BaseModel;
+use Web\FactFinderApi\Client\Model\SearchRequestBase;
 
 /**
  * SearchRequest Class Doc Comment
@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class SearchRequest extends BaseModel
+class SearchRequest extends SearchRequestBase implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,165 +36,10 @@ class SearchRequest extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'params' => '\Web\FactFinderApi\Client\V1\Model\Params',
-            'search_control_params' => '\Web\FactFinderApi\Client\V1\Model\SearchControlParams',
+            'params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
+            'search_control_params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchControlParams',
             'sid' => 'string',
             'user_input' => 'string',
         ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'params' => null,
-            'search_control_params' => null,
-            'sid' => null,
-            'user_input' => null,
-        ];
-    }
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    public static function attributeMap(): array
-    {
-        return [
-            'params' => 'params',
-            'search_control_params' => 'searchControlParams',
-            'sid' => 'sid',
-            'user_input' => 'userInput',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'params' => 'setParams',
-            'search_control_params' => 'setSearchControlParams',
-            'sid' => 'setSid',
-            'user_input' => 'setUserInput',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'params' => 'getParams',
-            'search_control_params' => 'getSearchControlParams',
-            'sid' => 'getSid',
-            'user_input' => 'getUserInput',
-        ];
-    }
-
-    /**
-     * Show all the invalid properties with reasons.
-     *
-     * @return array invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['params'] === null) {
-            $invalidProperties[] = "'params' can't be null";
-        }
-
-        return $invalidProperties;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Params
-     */
-    public function getParams()
-    {
-        return $this->container['params'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $params params
-     *
-     * @return $this
-     */
-    public function setParams($params)
-    {
-        $this->container['params'] = $params;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\SearchControlParams
-     */
-    public function getSearchControlParams()
-    {
-        return $this->container['search_control_params'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\SearchControlParams $search_control_params search_control_params
-     *
-     * @return $this
-     */
-    public function setSearchControlParams($search_control_params)
-    {
-        $this->container['search_control_params'] = $search_control_params;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSid()
-    {
-        return $this->container['sid'];
-    }
-
-    /**
-     * @param string $sid sid
-     *
-     * @return $this
-     */
-    public function setSid($sid)
-    {
-        $this->container['sid'] = $sid;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUserInput()
-    {
-        return $this->container['user_input'];
-    }
-
-    /**
-     * @param string $user_input user_input
-     *
-     * @return $this
-     */
-    public function setUserInput($user_input)
-    {
-        $this->container['user_input'] = $user_input;
-
-        return $this;
     }
 }

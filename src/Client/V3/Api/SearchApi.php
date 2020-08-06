@@ -18,7 +18,9 @@
 namespace Web\FactFinderApi\Client\V3\Api;
 
 use GuzzleHttp6\Psr7\Request;
+use Web\FactFinderApi\Client\Api\SearchApiInterface;
 use Web\FactFinderApi\Client\ApiClient;
+use Web\FactFinderApi\Client\Model\SearchRequestBase;
 use Web\FactFinderApi\Client\ObjectSerializer;
 use Web\FactFinderApi\Client\V3\Model\CategoryNavigation;
 use Web\FactFinderApi\Client\V3\Model\NavigationRequest;
@@ -33,7 +35,7 @@ use Web\FactFinderApi\Client\V3\Model\SearchRequest;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class SearchApi extends ApiClient
+class SearchApi extends ApiClient implements SearchApiInterface
 {
     /**
      * Operation categoryNavigationUsingGET
@@ -179,7 +181,7 @@ class SearchApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V3\Model\Result
      */
-    public function searchUsingPOST(SearchRequest $search_request)
+    public function searchUsingPOST(SearchRequestBase $search_request)
     {
         list($response) = $this->searchUsingPOSTWithHttpInfo($search_request);
 

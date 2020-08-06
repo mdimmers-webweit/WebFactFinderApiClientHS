@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class PagingConfiguration extends BaseModel
+class PagingConfiguration extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -40,21 +40,7 @@ class PagingConfiguration extends BaseModel
             'link_count' => 'int',
             'next_caption' => 'string',
             'previous_caption' => 'string',
-            'results_per_page' => '\Web\FactFinderApi\Client\V1\Model\ResultsPerPageOption[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'default_results_per_page' => 'int32',
-            'link_count' => 'int32',
-            'next_caption' => null,
-            'previous_caption' => null,
-            'results_per_page' => null,
+            'results_per_page' => static::getModelClass('ResultsPerPageOption', true),
         ];
     }
 
@@ -72,38 +58,6 @@ class PagingConfiguration extends BaseModel
             'next_caption' => 'nextCaption',
             'previous_caption' => 'previousCaption',
             'results_per_page' => 'resultsPerPage',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'default_results_per_page' => 'setDefaultResultsPerPage',
-            'link_count' => 'setLinkCount',
-            'next_caption' => 'setNextCaption',
-            'previous_caption' => 'setPreviousCaption',
-            'results_per_page' => 'setResultsPerPage',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'default_results_per_page' => 'getDefaultResultsPerPage',
-            'link_count' => 'getLinkCount',
-            'next_caption' => 'getNextCaption',
-            'previous_caption' => 'getPreviousCaption',
-            'results_per_page' => 'getResultsPerPage',
         ];
     }
 

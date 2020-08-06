@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class DetailPage extends BaseModel
+class DetailPage extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,25 +36,11 @@ class DetailPage extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'campaigns' => '\Web\FactFinderApi\Client\V3\Model\Campaign[]',
+            'campaigns' => static::getModelClass('Campaign', true),
             'field_roles' => 'map[string,string]',
-            'recommendations' => '\Web\FactFinderApi\Client\V3\Model\RecommendationResult',
-            'record' => '\Web\FactFinderApi\Client\V3\Model\RecordWithId',
-            'similar_products' => '\Web\FactFinderApi\Client\V3\Model\SimilarProducts',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'campaigns' => null,
-            'field_roles' => null,
-            'recommendations' => null,
-            'record' => null,
-            'similar_products' => null,
+            'recommendations' => static::getModelClass('RecommendationResult'),
+            'record' => static::getModelClass('RecordWithId'),
+            'similar_products' => static::getModelClass('SimilarProducts'),
         ];
     }
 
@@ -72,38 +58,6 @@ class DetailPage extends BaseModel
             'recommendations' => 'recommendations',
             'record' => 'record',
             'similar_products' => 'similarProducts',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'campaigns' => 'setCampaigns',
-            'field_roles' => 'setFieldRoles',
-            'recommendations' => 'setRecommendations',
-            'record' => 'setRecord',
-            'similar_products' => 'setSimilarProducts',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'campaigns' => 'getCampaigns',
-            'field_roles' => 'getFieldRoles',
-            'recommendations' => 'getRecommendations',
-            'record' => 'getRecord',
-            'similar_products' => 'getSimilarProducts',
         ];
     }
 

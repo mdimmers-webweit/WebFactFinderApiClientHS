@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class PageLink extends BaseModel
+class PageLink extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -38,19 +38,7 @@ class PageLink extends BaseModel
         return [
             'current_page' => 'bool',
             'number' => 'int',
-            'search_params' => '\Web\FactFinderApi\Client\V3\Model\SearchParams',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'current_page' => null,
-            'number' => 'int32',
-            'search_params' => null,
+            'search_params' => static::getModelClass('SearchParams'),
         ];
     }
 
@@ -66,34 +54,6 @@ class PageLink extends BaseModel
             'current_page' => 'currentPage',
             'number' => 'number',
             'search_params' => 'searchParams',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'current_page' => 'setCurrentPage',
-            'number' => 'setNumber',
-            'search_params' => 'setSearchParams',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'current_page' => 'getCurrentPage',
-            'number' => 'getNumber',
-            'search_params' => 'getSearchParams',
         ];
     }
 

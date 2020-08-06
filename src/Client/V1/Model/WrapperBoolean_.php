@@ -26,6 +26,6 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class WrapperBoolean_ extends BaseModel
+class WrapperBoolean_ extends BaseModel implements ModelV1Interface
 {
 }

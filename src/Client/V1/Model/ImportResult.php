@@ -26,19 +26,8 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ImportResult extends BaseModel
+class ImportResult extends BaseModel implements ModelV1Interface
 {
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'messages' => null,
-            'start_date' => 'date-time',
-        ];
-    }
-
     /**
      * Array of property to type mappings. Used for (de)serialization
      *
@@ -63,32 +52,6 @@ class ImportResult extends BaseModel
         return [
             'messages' => 'messages',
             'start_date' => 'startDate',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'messages' => 'setMessages',
-            'start_date' => 'setStartDate',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'messages' => 'getMessages',
-            'start_date' => 'getStartDate',
         ];
     }
 

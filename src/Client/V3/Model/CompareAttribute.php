@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class CompareAttribute extends BaseModel
+class CompareAttribute extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -43,18 +43,6 @@ class CompareAttribute extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'different' => null,
-            'name' => null,
-            'source_field' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -66,34 +54,6 @@ class CompareAttribute extends BaseModel
             'different' => 'different',
             'name' => 'name',
             'source_field' => 'sourceField',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'different' => 'setDifferent',
-            'name' => 'setName',
-            'source_field' => 'setSourceField',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'different' => 'getDifferent',
-            'name' => 'getName',
-            'source_field' => 'getSourceField',
         ];
     }
 

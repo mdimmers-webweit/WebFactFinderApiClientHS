@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class RecordWithId extends BaseModel
+class RecordWithId extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -38,19 +38,7 @@ class RecordWithId extends BaseModel
         return [
             'id' => 'string',
             'master_values' => 'map[string,object]',
-            'variant_values' => '\Web\FactFinderApi\Client\V3\Model\VariantValues[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'id' => null,
-            'master_values' => null,
-            'variant_values' => null,
+            'variant_values' => static::getModelClass('VariantValues', true),
         ];
     }
 
@@ -66,34 +54,6 @@ class RecordWithId extends BaseModel
             'id' => 'id',
             'master_values' => 'masterValues',
             'variant_values' => 'variantValues',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'id' => 'setId',
-            'master_values' => 'setMasterValues',
-            'variant_values' => 'setVariantValues',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'id' => 'getId',
-            'master_values' => 'getMasterValues',
-            'variant_values' => 'getVariantValues',
         ];
     }
 

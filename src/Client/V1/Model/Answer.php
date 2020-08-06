@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Answer extends BaseModel
+class Answer extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -37,22 +37,9 @@ class Answer extends BaseModel
     {
         return [
             'id' => 'string',
-            'params' => '\Web\FactFinderApi\Client\V1\Model\Params',
-            'questions' => '\Web\FactFinderApi\Client\V1\Model\Question[]',
+            'params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
+            'questions' => static::getModelClass('Question', true),
             'text' => 'string',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'id' => null,
-            'params' => null,
-            'questions' => null,
-            'text' => null,
         ];
     }
 
@@ -69,36 +56,6 @@ class Answer extends BaseModel
             'params' => 'params',
             'questions' => 'questions',
             'text' => 'text',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'id' => 'setId',
-            'params' => 'setParams',
-            'questions' => 'setQuestions',
-            'text' => 'setText',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'id' => 'getId',
-            'params' => 'getParams',
-            'questions' => 'getQuestions',
-            'text' => 'getText',
         ];
     }
 
@@ -145,7 +102,7 @@ class Answer extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Params
+     * @return \Web\FactFinderApi\Client\V1\Model\SearchParams
      */
     public function getParams()
     {
@@ -153,7 +110,7 @@ class Answer extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $params params
+     * @param \Web\FactFinderApi\Client\V1\Model\SearchParams $params params
      *
      * @return $this
      */

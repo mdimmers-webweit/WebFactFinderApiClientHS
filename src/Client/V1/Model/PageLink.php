@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class PageLink extends BaseModel
+class PageLink extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -39,20 +39,7 @@ class PageLink extends BaseModel
             'caption' => 'string',
             'current_page' => 'bool',
             'number' => 'int',
-            'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'caption' => null,
-            'current_page' => null,
-            'number' => 'int32',
-            'search_params' => null,
+            'search_params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
         ];
     }
 
@@ -69,36 +56,6 @@ class PageLink extends BaseModel
             'current_page' => 'currentPage',
             'number' => 'number',
             'search_params' => 'searchParams',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'caption' => 'setCaption',
-            'current_page' => 'setCurrentPage',
-            'number' => 'setNumber',
-            'search_params' => 'setSearchParams',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'caption' => 'getCaption',
-            'current_page' => 'getCurrentPage',
-            'number' => 'getNumber',
-            'search_params' => 'getSearchParams',
         ];
     }
 
@@ -182,7 +139,7 @@ class PageLink extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Params
+     * @return \Web\FactFinderApi\Client\V1\Model\SearchParams
      */
     public function getSearchParams()
     {
@@ -190,7 +147,7 @@ class PageLink extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $search_params search_params
+     * @param \Web\FactFinderApi\Client\V1\Model\SearchParams $search_params search_params
      *
      * @return $this
      */

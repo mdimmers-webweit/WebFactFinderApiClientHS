@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class CartOrCheckoutEvent extends BaseModel
+class CartOrCheckoutEvent extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -50,25 +50,6 @@ class CartOrCheckoutEvent extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'campaign' => null,
-            'cookie_id' => null,
-            'count' => 'int32',
-            'extra_params' => null,
-            'id' => null,
-            'master_id' => null,
-            'price' => 'double',
-            'sid' => null,
-            'title' => null,
-            'user_id' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -87,48 +68,6 @@ class CartOrCheckoutEvent extends BaseModel
             'sid' => 'sid',
             'title' => 'title',
             'user_id' => 'userId',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'campaign' => 'setCampaign',
-            'cookie_id' => 'setCookieId',
-            'count' => 'setCount',
-            'extra_params' => 'setExtraParams',
-            'id' => 'setId',
-            'master_id' => 'setMasterId',
-            'price' => 'setPrice',
-            'sid' => 'setSid',
-            'title' => 'setTitle',
-            'user_id' => 'setUserId',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'campaign' => 'getCampaign',
-            'cookie_id' => 'getCookieId',
-            'count' => 'getCount',
-            'extra_params' => 'getExtraParams',
-            'id' => 'getId',
-            'master_id' => 'getMasterId',
-            'price' => 'getPrice',
-            'sid' => 'getSid',
-            'title' => 'getTitle',
-            'user_id' => 'getUserId',
         ];
     }
 

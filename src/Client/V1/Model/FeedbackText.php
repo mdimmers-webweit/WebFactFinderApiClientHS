@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class FeedbackText extends BaseModel
+class FeedbackText extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -46,21 +46,6 @@ class FeedbackText extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'html' => null,
-            'id' => 'int32',
-            'label' => null,
-            'position' => 'int32',
-            'teaser' => null,
-            'text' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -75,40 +60,6 @@ class FeedbackText extends BaseModel
             'position' => 'position',
             'teaser' => 'teaser',
             'text' => 'text',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'html' => 'setHtml',
-            'id' => 'setId',
-            'label' => 'setLabel',
-            'position' => 'setPosition',
-            'teaser' => 'setTeaser',
-            'text' => 'setText',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'html' => 'getHtml',
-            'id' => 'getId',
-            'label' => 'getLabel',
-            'position' => 'getPosition',
-            'teaser' => 'getTeaser',
-            'text' => 'getText',
         ];
     }
 

@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class TagCloudEntry extends BaseModel
+class TagCloudEntry extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -37,23 +37,9 @@ class TagCloudEntry extends BaseModel
     {
         return [
             'nr' => 'int',
-            'params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+            'params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
             'search_count' => 'int',
             'search_term' => 'string',
-            'weight' => 'double',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'nr' => 'int32',
-            'params' => null,
-            'search_count' => 'int32',
-            'search_term' => null,
             'weight' => 'double',
         ];
     }
@@ -72,38 +58,6 @@ class TagCloudEntry extends BaseModel
             'search_count' => 'searchCount',
             'search_term' => 'searchTerm',
             'weight' => 'weight',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'nr' => 'setNr',
-            'params' => 'setParams',
-            'search_count' => 'setSearchCount',
-            'search_term' => 'setSearchTerm',
-            'weight' => 'setWeight',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'nr' => 'getNr',
-            'params' => 'getParams',
-            'search_count' => 'getSearchCount',
-            'search_term' => 'getSearchTerm',
-            'weight' => 'getWeight',
         ];
     }
 
@@ -153,7 +107,7 @@ class TagCloudEntry extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Params
+     * @return \Web\FactFinderApi\Client\V1\Model\SearchParams
      */
     public function getParams()
     {
@@ -161,7 +115,7 @@ class TagCloudEntry extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $params params
+     * @param \Web\FactFinderApi\Client\V1\Model\SearchParams $params params
      *
      * @return $this
      */

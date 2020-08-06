@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Question extends BaseModel
+class Question extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,23 +36,10 @@ class Question extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'answers' => '\Web\FactFinderApi\Client\V3\Model\Answer[]',
+            'answers' => static::getModelClass('Answer', true),
             'id' => 'string',
             'text' => 'string',
             'visible' => 'bool',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'answers' => null,
-            'id' => null,
-            'text' => null,
-            'visible' => null,
         ];
     }
 
@@ -69,36 +56,6 @@ class Question extends BaseModel
             'id' => 'id',
             'text' => 'text',
             'visible' => 'visible',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'answers' => 'setAnswers',
-            'id' => 'setId',
-            'text' => 'setText',
-            'visible' => 'setVisible',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'answers' => 'getAnswers',
-            'id' => 'getId',
-            'text' => 'getText',
-            'visible' => 'getVisible',
         ];
     }
 

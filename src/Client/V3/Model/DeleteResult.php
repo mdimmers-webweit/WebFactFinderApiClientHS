@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class DeleteResult extends BaseModel
+class DeleteResult extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,23 +36,10 @@ class DeleteResult extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'error' => '\Web\FactFinderApi\Client\V3\Model\ErrorDescription',
+            'error' => static::getModelClass('ErrorDescription'),
             'record_id' => 'string',
             'success' => 'bool',
-            'warnings' => '\Web\FactFinderApi\Client\V3\Model\ErrorDescription[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'error' => null,
-            'record_id' => null,
-            'success' => null,
-            'warnings' => null,
+            'warnings' => static::getModelClass('ErrorDescription', true),
         ];
     }
 
@@ -69,36 +56,6 @@ class DeleteResult extends BaseModel
             'record_id' => 'recordId',
             'success' => 'success',
             'warnings' => 'warnings',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'error' => 'setError',
-            'record_id' => 'setRecordId',
-            'success' => 'setSuccess',
-            'warnings' => 'setWarnings',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'error' => 'getError',
-            'record_id' => 'getRecordId',
-            'success' => 'getSuccess',
-            'warnings' => 'getWarnings',
         ];
     }
 
