@@ -37,7 +37,7 @@ class ResultsPerPageOptionWithSearchParams extends BaseModel implements ModelV1I
     {
         return [
             'default_value' => 'bool',
-            'search_params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
+            'search_params' => static::getModelClass('SearchParams'),
             'selected' => 'bool',
             'value' => 'int',
         ];

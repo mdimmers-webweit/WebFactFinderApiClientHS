@@ -36,8 +36,8 @@ class SearchRequest extends SearchRequestBase implements ModelV1Interface
     public static function swaggerTypes(): array
     {
         return [
-            'params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
-            'search_control_params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchControlParams',
+            'params' => static::getModelClass('SearchParams'),
+            'search_control_params' => static::getModelClass('SearchControlParams'),
             'sid' => 'string',
             'user_input' => 'string',
         ];

@@ -37,13 +37,13 @@ class Paging extends BaseModel implements ModelV1Interface
     {
         return [
             'current_page' => 'int',
-            'first_link' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\PageLink',
-            'last_link' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\PageLink',
-            'next_link' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\PageLink',
+            'first_link' => static::getModelClass('PageLink'),
+            'last_link' => static::getModelClass('PageLink'),
+            'next_link' => static::getModelClass('PageLink'),
             'page_count' => 'int',
             'page_links' => static::getModelClass('PageLink', true),
-            'paging_config' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\PagingConfiguration',
-            'previous_link' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\PageLink',
+            'paging_config' => static::getModelClass('PagingConfiguration'),
+            'previous_link' => static::getModelClass('PageLink'),
             'results_per_page' => 'int',
         ];
     }

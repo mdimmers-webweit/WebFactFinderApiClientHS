@@ -43,7 +43,7 @@ class ResultSortItem extends BaseModel implements ModelV1Interface
             'name' => 'string',
             'order' => 'string',
             'relevance_sort_item' => 'bool',
-            'search_params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
+            'search_params' => static::getModelClass('SearchParams'),
             'selected' => 'bool',
         ];
     }

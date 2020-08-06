@@ -42,7 +42,7 @@ class BreadCrumbTrailItem extends BaseModel implements ModelV1Interface
     {
         return [
             'associated_field_name' => 'string',
-            'search_params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
+            'search_params' => static::getModelClass('SearchParams'),
             'text' => 'string',
             'type' => 'string',
             'value' => 'string',

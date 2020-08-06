@@ -37,7 +37,7 @@ class Answer extends BaseModel implements ModelV1Interface
     {
         return [
             'id' => 'string',
-            'params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
+            'params' => static::getModelClass('SearchParams'),
             'questions' => static::getModelClass('Question', true),
             'text' => 'string',
         ];

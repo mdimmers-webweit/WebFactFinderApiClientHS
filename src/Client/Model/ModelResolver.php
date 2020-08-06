@@ -30,21 +30,6 @@ class ModelResolver
         throw new \BadMethodCallException('Call to undefined method ' . \get_class($this) . '::' . $method . '()');
     }
 
-//    public function createFilter(?array $data = null): FilterBase
-//    {
-//        return $this->createUnifiedModel('Filter', $data);
-//    }
-//
-//    public function createFilterValue(?array $data = null): FilterValueBase
-//    {
-//        return $this->createUnifiedModel('FilterValue', $data);
-//    }
-//
-//    public function createSortItem(?array $data = null): SortItemBase
-//    {
-//        return $this->createUnifiedModel('SortItem', $data);
-//    }
-
     public function createUnifiedModel(string $modelName, ?array $data = null): BaseModel
     {
         $class = self::createUnifiedModelClass($this->isNG ? 'V3' : 'V1', $modelName);

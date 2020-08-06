@@ -37,7 +37,7 @@ class TagCloudEntry extends BaseModel implements ModelV1Interface
     {
         return [
             'nr' => 'int',
-            'params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
+            'params' => static::getModelClass('SearchParams'),
             'search_count' => 'int',
             'search_term' => 'string',
             'weight' => 'double',

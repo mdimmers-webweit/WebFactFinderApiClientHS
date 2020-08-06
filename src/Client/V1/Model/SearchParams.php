@@ -37,7 +37,7 @@ class SearchParams extends SearchParamsBase implements ModelV1Interface
     {
         return [
             'ab_test' => 'map[string,string]',
-            'advisor_status' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\AdvisorCampaignStatusHolder',
+            'advisor_status' => static::getModelClass('AdvisorCampaignStatusHolder'),
             'article_number' => 'bool',
             'channel' => 'string',
             'custom_parameters' => static::getModelClass('CustomParameter', true),

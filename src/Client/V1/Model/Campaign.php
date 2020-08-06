@@ -49,7 +49,7 @@ class Campaign extends BaseModel implements ModelV1Interface
             'id' => 'string',
             'name' => 'string',
             'pushed_products_records' => static::getModelClass('RecordWithId', true),
-            'target' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\Target',
+            'target' => static::getModelClass('Target'),
         ];
     }
 

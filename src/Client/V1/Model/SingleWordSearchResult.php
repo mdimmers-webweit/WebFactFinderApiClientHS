@@ -38,7 +38,7 @@ class SingleWordSearchResult extends BaseModel implements ModelV1Interface
         return [
             'preview_records' => static::getModelClass('SearchRecord', true),
             'record_count' => 'int',
-            'search_params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
+            'search_params' => static::getModelClass('SearchParams'),
             'word' => 'string',
         ];
     }

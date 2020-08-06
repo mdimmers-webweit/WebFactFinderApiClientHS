@@ -39,7 +39,7 @@ class PageLink extends BaseModel implements ModelV1Interface
             'caption' => 'string',
             'current_page' => 'bool',
             'number' => 'int',
-            'search_params' => '\Web\FactFinderApi\Client\\' . self::MODEL_VERSION . '\Model\SearchParams',
+            'search_params' => static::getModelClass('SearchParams'),
         ];
     }
 
