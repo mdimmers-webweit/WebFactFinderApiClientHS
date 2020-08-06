@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\SearchParamsBase;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Params extends SearchParamsBase
+class SearchParams extends SearchParamsBase implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -37,42 +37,19 @@ class Params extends SearchParamsBase
     {
         return [
             'ab_test' => 'map[string,string]',
-            'advisor_status' => '\Web\FactFinderApi\Client\V1\Model\AdvisorCampaignStatusHolder',
+            'advisor_status' => static::getModelClass('AdvisorCampaignStatusHolder'),
             'article_number' => 'bool',
             'channel' => 'string',
-            'custom_parameters' => '\Web\FactFinderApi\Client\V1\Model\CustomParameter[]',
-            'filters' => '\Web\FactFinderApi\Client\V1\Model\Filter[]',
+            'custom_parameters' => static::getModelClass('CustomParameter', true),
+            'filters' => static::getModelClass('Filter', true),
             'follow_search' => 'int',
             'no_article_number_search' => 'bool',
             'page' => 'int',
             'query' => 'string',
-            'results_per_page' => 'int',
+            'hits_per_page' => 'int',
             'search_field' => 'string',
             'seo_path' => 'string',
-            'sorts_list' => '\Web\FactFinderApi\Client\V1\Model\SortItem[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'ab_test' => null,
-            'advisor_status' => null,
-            'article_number' => null,
-            'channel' => null,
-            'custom_parameters' => null,
-            'filters' => null,
-            'follow_search' => 'int32',
-            'no_article_number_search' => null,
-            'page' => 'int32',
-            'query' => null,
-            'results_per_page' => 'int32',
-            'search_field' => null,
-            'seo_path' => null,
-            'sorts_list' => null,
+            'sort_items' => static::getModelClass('SortItem', true),
         ];
     }
 
@@ -95,60 +72,10 @@ class Params extends SearchParamsBase
             'no_article_number_search' => 'noArticleNumberSearch',
             'page' => 'page',
             'query' => 'query',
-            'results_per_page' => 'resultsPerPage',
+            'hits_per_page' => 'resultsPerPage',
             'search_field' => 'searchField',
             'seo_path' => 'seoPath',
-            'sorts_list' => 'sortsList',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'ab_test' => 'setAbTest',
-            'advisor_status' => 'setAdvisorStatus',
-            'article_number' => 'setArticleNumber',
-            'channel' => 'setChannel',
-            'custom_parameters' => 'setCustomParameters',
-            'filters' => 'setFilters',
-            'follow_search' => 'setFollowSearch',
-            'no_article_number_search' => 'setNoArticleNumberSearch',
-            'page' => 'setPage',
-            'query' => 'setQuery',
-            'results_per_page' => 'setResultsPerPage',
-            'search_field' => 'setSearchField',
-            'seo_path' => 'setSeoPath',
-            'sorts_list' => 'setSortsList',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'ab_test' => 'getAbTest',
-            'advisor_status' => 'getAdvisorStatus',
-            'article_number' => 'getArticleNumber',
-            'channel' => 'getChannel',
-            'custom_parameters' => 'getCustomParameters',
-            'filters' => 'getFilters',
-            'follow_search' => 'getFollowSearch',
-            'no_article_number_search' => 'getNoArticleNumberSearch',
-            'page' => 'getPage',
-            'query' => 'getQuery',
-            'results_per_page' => 'getResultsPerPage',
-            'search_field' => 'getSearchField',
-            'seo_path' => 'getSeoPath',
-            'sorts_list' => 'getSortsList',
+            'sort_items' => 'sortsList',
         ];
     }
 
@@ -374,26 +301,6 @@ class Params extends SearchParamsBase
     public function setSeoPath($seo_path)
     {
         $this->container['seo_path'] = $seo_path;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\SortItem[]
-     */
-    public function getSortsList()
-    {
-        return $this->container['sorts_list'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\SortItem[] $sorts_list sorts_list
-     *
-     * @return $this
-     */
-    public function setSortsList($sorts_list)
-    {
-        $this->container['sorts_list'] = $sorts_list;
 
         return $this;
     }

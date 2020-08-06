@@ -23,7 +23,8 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        foreach (static::setters() as $field => $setter) {
+        foreach (static::attributeMap() as $field => $externalName) {
+            $setter = 'set' . ObjectSerializer::camelize($field);
             if (isset($data[$field])) {
                 $this->$setter($data[$field]);
             } else {
@@ -43,6 +44,11 @@ abstract class BaseModel implements ModelInterface, \ArrayAccess
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
+    }
+
+    public static function getModelClass(string $modelName, bool $isArray = false): string
+    {
+        return ModelResolver::createUnifiedModelClass(static::MODEL_VERSION, $modelName, $isArray);
     }
 
     /**

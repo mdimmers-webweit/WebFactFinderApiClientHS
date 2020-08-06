@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Paging extends BaseModel
+class Paging extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -37,32 +37,14 @@ class Paging extends BaseModel
     {
         return [
             'current_page' => 'int',
-            'first_link' => '\Web\FactFinderApi\Client\V1\Model\PageLink',
-            'last_link' => '\Web\FactFinderApi\Client\V1\Model\PageLink',
-            'next_link' => '\Web\FactFinderApi\Client\V1\Model\PageLink',
+            'first_link' => static::getModelClass('PageLink'),
+            'last_link' => static::getModelClass('PageLink'),
+            'next_link' => static::getModelClass('PageLink'),
             'page_count' => 'int',
-            'page_links' => '\Web\FactFinderApi\Client\V1\Model\PageLink[]',
-            'paging_config' => '\Web\FactFinderApi\Client\V1\Model\PagingConfiguration',
-            'previous_link' => '\Web\FactFinderApi\Client\V1\Model\PageLink',
+            'page_links' => static::getModelClass('PageLink', true),
+            'paging_config' => static::getModelClass('PagingConfiguration'),
+            'previous_link' => static::getModelClass('PageLink'),
             'results_per_page' => 'int',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'current_page' => 'int32',
-            'first_link' => null,
-            'last_link' => null,
-            'next_link' => null,
-            'page_count' => 'int32',
-            'page_links' => null,
-            'paging_config' => null,
-            'previous_link' => null,
-            'results_per_page' => 'int32',
         ];
     }
 
@@ -84,46 +66,6 @@ class Paging extends BaseModel
             'paging_config' => 'pagingConfig',
             'previous_link' => 'previousLink',
             'results_per_page' => 'resultsPerPage',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'current_page' => 'setCurrentPage',
-            'first_link' => 'setFirstLink',
-            'last_link' => 'setLastLink',
-            'next_link' => 'setNextLink',
-            'page_count' => 'setPageCount',
-            'page_links' => 'setPageLinks',
-            'paging_config' => 'setPagingConfig',
-            'previous_link' => 'setPreviousLink',
-            'results_per_page' => 'setResultsPerPage',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'current_page' => 'getCurrentPage',
-            'first_link' => 'getFirstLink',
-            'last_link' => 'getLastLink',
-            'next_link' => 'getNextLink',
-            'page_count' => 'getPageCount',
-            'page_links' => 'getPageLinks',
-            'paging_config' => 'getPagingConfig',
-            'previous_link' => 'getPreviousLink',
-            'results_per_page' => 'getResultsPerPage',
         ];
     }
 

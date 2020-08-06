@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class JobTriggerResult extends BaseModel
+class JobTriggerResult extends BaseModel implements ModelV3Interface
 {
     const STATUS_SUCCESS = 'SUCCESS';
     const STATUS_FAILURE = 'FAILURE';
@@ -47,19 +47,6 @@ class JobTriggerResult extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'error_message' => null,
-            'job_group' => null,
-            'job_name' => null,
-            'status' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -72,36 +59,6 @@ class JobTriggerResult extends BaseModel
             'job_group' => 'jobGroup',
             'job_name' => 'jobName',
             'status' => 'status',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'error_message' => 'setErrorMessage',
-            'job_group' => 'setJobGroup',
-            'job_name' => 'setJobName',
-            'status' => 'setStatus',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'error_message' => 'getErrorMessage',
-            'job_group' => 'getJobGroup',
-            'job_name' => 'getJobName',
-            'status' => 'getStatus',
         ];
     }
 

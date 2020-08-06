@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class SearchControlParams extends BaseModel
+class SearchControlParams extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -52,27 +52,6 @@ class SearchControlParams extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'deduplication_field' => null,
-            'ids_only' => null,
-            'use_asn' => null,
-            'use_aso' => null,
-            'use_cache' => null,
-            'use_campaigns' => null,
-            'use_deduplication' => null,
-            'use_found_words' => null,
-            'use_geo' => null,
-            'use_personalization' => null,
-            'use_search' => null,
-            'use_semantic_enhancer' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -93,52 +72,6 @@ class SearchControlParams extends BaseModel
             'use_personalization' => 'usePersonalization',
             'use_search' => 'useSearch',
             'use_semantic_enhancer' => 'useSemanticEnhancer',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'deduplication_field' => 'setDeduplicationField',
-            'ids_only' => 'setIdsOnly',
-            'use_asn' => 'setUseAsn',
-            'use_aso' => 'setUseAso',
-            'use_cache' => 'setUseCache',
-            'use_campaigns' => 'setUseCampaigns',
-            'use_deduplication' => 'setUseDeduplication',
-            'use_found_words' => 'setUseFoundWords',
-            'use_geo' => 'setUseGeo',
-            'use_personalization' => 'setUsePersonalization',
-            'use_search' => 'setUseSearch',
-            'use_semantic_enhancer' => 'setUseSemanticEnhancer',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'deduplication_field' => 'getDeduplicationField',
-            'ids_only' => 'getIdsOnly',
-            'use_asn' => 'getUseAsn',
-            'use_aso' => 'getUseAso',
-            'use_cache' => 'getUseCache',
-            'use_campaigns' => 'getUseCampaigns',
-            'use_deduplication' => 'getUseDeduplication',
-            'use_found_words' => 'getUseFoundWords',
-            'use_geo' => 'getUseGeo',
-            'use_personalization' => 'getUsePersonalization',
-            'use_search' => 'getUseSearch',
-            'use_semantic_enhancer' => 'getUseSemanticEnhancer',
         ];
     }
 

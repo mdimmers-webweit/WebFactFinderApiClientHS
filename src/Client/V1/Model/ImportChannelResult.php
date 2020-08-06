@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ImportChannelResult extends BaseModel
+class ImportChannelResult extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -42,17 +42,6 @@ class ImportChannelResult extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'error_messages' => null,
-            'status_messages' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -63,32 +52,6 @@ class ImportChannelResult extends BaseModel
         return [
             'error_messages' => 'errorMessages',
             'status_messages' => 'statusMessages',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'error_messages' => 'setErrorMessages',
-            'status_messages' => 'setStatusMessages',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'error_messages' => 'getErrorMessages',
-            'status_messages' => 'getStatusMessages',
         ];
     }
 

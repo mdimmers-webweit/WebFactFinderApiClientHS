@@ -59,7 +59,6 @@ class RefreshdatabasesApi extends ApiClient
      */
     public function refreshAllDatabasesUsingPOSTWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->refreshAllDatabasesUsingPOSTRequest($channel);
 
         return $this->executeEmptyRequest($request);
@@ -99,7 +98,6 @@ class RefreshdatabasesApi extends ApiClient
      */
     public function refreshAllDatabasesUsingPOSTAsyncWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->refreshAllDatabasesUsingPOSTRequest($channel);
 
         return $this->client
@@ -154,7 +152,6 @@ class RefreshdatabasesApi extends ApiClient
      */
     public function refreshRecommendationDatabasesUsingPOSTWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->refreshRecommendationDatabasesUsingPOSTRequest($channel);
 
         return $this->executeEmptyRequest($request);
@@ -194,7 +191,6 @@ class RefreshdatabasesApi extends ApiClient
      */
     public function refreshRecommendationDatabasesUsingPOSTAsyncWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->refreshRecommendationDatabasesUsingPOSTRequest($channel);
 
         return $this->client
@@ -249,7 +245,6 @@ class RefreshdatabasesApi extends ApiClient
      */
     public function refreshSearchDatabasesUsingPOSTWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->refreshSearchDatabasesUsingPOSTRequest($channel);
 
         return $this->executeEmptyRequest($request);
@@ -289,7 +284,6 @@ class RefreshdatabasesApi extends ApiClient
      */
     public function refreshSearchDatabasesUsingPOSTAsyncWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->refreshSearchDatabasesUsingPOSTRequest($channel);
 
         return $this->client
@@ -344,7 +338,6 @@ class RefreshdatabasesApi extends ApiClient
      */
     public function refreshSuggestDatabasesUsingPOSTWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->refreshSuggestDatabasesUsingPOSTRequest($channel);
 
         return $this->executeEmptyRequest($request);
@@ -384,7 +377,6 @@ class RefreshdatabasesApi extends ApiClient
      */
     public function refreshSuggestDatabasesUsingPOSTAsyncWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->refreshSuggestDatabasesUsingPOSTRequest($channel);
 
         return $this->client

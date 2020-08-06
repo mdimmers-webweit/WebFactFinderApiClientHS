@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class User extends BaseModel
+class User extends BaseModel implements ModelV3Interface
 {
     const ROLES_AFTER_SEARCH_NAVIGATION_MANAGER = 'AfterSearchNavigationManager';
     const ROLES_BACKUP_MANAGER = 'BackupManager';
@@ -85,25 +85,6 @@ class User extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'name' => null,
-            'password' => null,
-            'roles' => null,
-            'channels' => null,
-            'groups' => null,
-            'hide_inactive_modules' => null,
-            'hide_error_notifications' => null,
-            'enable_advanced_mode' => null,
-            'allow_all_current_and_future_channels' => null,
-            'locale' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -122,48 +103,6 @@ class User extends BaseModel
             'enable_advanced_mode' => 'enableAdvancedMode',
             'allow_all_current_and_future_channels' => 'allowAllCurrentAndFutureChannels',
             'locale' => 'locale',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'name' => 'setName',
-            'password' => 'setPassword',
-            'roles' => 'setRoles',
-            'channels' => 'setChannels',
-            'groups' => 'setGroups',
-            'hide_inactive_modules' => 'setHideInactiveModules',
-            'hide_error_notifications' => 'setHideErrorNotifications',
-            'enable_advanced_mode' => 'setEnableAdvancedMode',
-            'allow_all_current_and_future_channels' => 'setAllowAllCurrentAndFutureChannels',
-            'locale' => 'setLocale',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'name' => 'getName',
-            'password' => 'getPassword',
-            'roles' => 'getRoles',
-            'channels' => 'getChannels',
-            'groups' => 'getGroups',
-            'hide_inactive_modules' => 'getHideInactiveModules',
-            'hide_error_notifications' => 'getHideErrorNotifications',
-            'enable_advanced_mode' => 'getEnableAdvancedMode',
-            'allow_all_current_and_future_channels' => 'getAllowAllCurrentAndFutureChannels',
-            'locale' => 'getLocale',
         ];
     }
 

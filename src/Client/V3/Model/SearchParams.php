@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\SearchParamsBase;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class SearchParams extends SearchParamsBase
+class SearchParams extends SearchParamsBase implements ModelV3Interface
 {
     const ARTICLE_NUMBER_SEARCH_DETECT = 'DETECT';
     const ARTICLE_NUMBER_SEARCH_ALWAYS = 'ALWAYS';
@@ -40,41 +40,19 @@ class SearchParams extends SearchParamsBase
     public static function swaggerTypes(): array
     {
         return [
-            'advisor_status' => '\Web\FactFinderApi\Client\V3\Model\AdvisorCampaignStatusHolder',
+            'advisor_status' => static::getModelClass('AdvisorCampaignStatusHolder'),
             'article_number_search' => 'string',
             'channel' => 'string',
-            'custom_parameters' => '\Web\FactFinderApi\Client\V3\Model\CustomParameter[]',
-            'filters' => '\Web\FactFinderApi\Client\V3\Model\Filter[]',
+            'custom_parameters' => static::getModelClass('CustomParameter', true),
+            'filters' => static::getModelClass('Filter', true),
             'hits_per_page' => 'int',
-            'location' => '\Web\FactFinderApi\Client\V3\Model\Location',
-            'market_id' => '\Web\FactFinderApi\Client\V3\Model\Filter',
+            'location' => static::getModelClass('Location'),
+            'market_id' => static::getModelClass('Filter'),
             'max_count_variants' => 'int',
             'page' => 'int',
             'query' => 'string',
             'search_field' => 'string',
-            'sort_items' => '\Web\FactFinderApi\Client\V3\Model\SortItem[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'advisor_status' => null,
-            'article_number_search' => null,
-            'channel' => null,
-            'custom_parameters' => null,
-            'filters' => null,
-            'hits_per_page' => 'int32',
-            'location' => null,
-            'market_id' => null,
-            'max_count_variants' => 'int32',
-            'page' => 'int32',
-            'query' => null,
-            'search_field' => null,
-            'sort_items' => null,
+            'sort_items' => static::getModelClass('SortItem', true),
         ];
     }
 
@@ -100,54 +78,6 @@ class SearchParams extends SearchParamsBase
             'query' => 'query',
             'search_field' => 'searchField',
             'sort_items' => 'sortItems',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'advisor_status' => 'setAdvisorStatus',
-            'article_number_search' => 'setArticleNumberSearch',
-            'channel' => 'setChannel',
-            'custom_parameters' => 'setCustomParameters',
-            'filters' => 'setFilters',
-            'hits_per_page' => 'setHitsPerPage',
-            'location' => 'setLocation',
-            'market_id' => 'setMarketId',
-            'max_count_variants' => 'setMaxCountVariants',
-            'page' => 'setPage',
-            'query' => 'setQuery',
-            'search_field' => 'setSearchField',
-            'sort_items' => 'setSortItems',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'advisor_status' => 'getAdvisorStatus',
-            'article_number_search' => 'getArticleNumberSearch',
-            'channel' => 'getChannel',
-            'custom_parameters' => 'getCustomParameters',
-            'filters' => 'getFilters',
-            'hits_per_page' => 'getHitsPerPage',
-            'location' => 'getLocation',
-            'market_id' => 'getMarketId',
-            'max_count_variants' => 'getMaxCountVariants',
-            'page' => 'getPage',
-            'query' => 'getQuery',
-            'search_field' => 'getSearchField',
-            'sort_items' => 'getSortItems',
         ];
     }
 
@@ -290,30 +220,6 @@ class SearchParams extends SearchParamsBase
     }
 
     /**
-     * @return int
-     */
-    public function getHitsPerPage()
-    {
-        return $this->container['hits_per_page'];
-    }
-
-    /**
-     * @param int|null $hits_per_page number of products on a single page
-     *
-     * @return $this
-     */
-    public function setHitsPerPage(?int $hits_per_page)
-    {
-        if (!\is_null($hits_per_page) && ($hits_per_page < 0)) {
-            throw new \InvalidArgumentException('invalid value for $hits_per_page when calling SearchParams., must be bigger than or equal to 0.');
-        }
-
-        $this->container['hits_per_page'] = $hits_per_page;
-
-        return $this;
-    }
-
-    /**
      * @return \Web\FactFinderApi\Client\V3\Model\Location
      */
     public function getLocation()
@@ -385,26 +291,6 @@ class SearchParams extends SearchParamsBase
         }
 
         $this->container['page'] = $page;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\SortItem[]
-     */
-    public function getSortItems()
-    {
-        return $this->container['sort_items'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\SortItem[] $sort_items specifies the sort order for the search result
-     *
-     * @return $this
-     */
-    public function setSortItems($sort_items)
-    {
-        $this->container['sort_items'] = $sort_items;
 
         return $this;
     }

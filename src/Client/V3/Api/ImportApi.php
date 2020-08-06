@@ -140,7 +140,6 @@ class ImportApi extends ApiClient
      */
     public function refreshRecommendationDatabasesUsingPOSTWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->refreshRecommendationDatabasesUsingPOSTRequest($channel);
 
         return $this->executeEmptyRequest($request);
@@ -180,7 +179,6 @@ class ImportApi extends ApiClient
      */
     public function refreshRecommendationDatabasesUsingPOSTAsyncWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->refreshRecommendationDatabasesUsingPOSTRequest($channel);
 
         return $this->client

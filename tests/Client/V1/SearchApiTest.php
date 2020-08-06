@@ -12,8 +12,8 @@ use Web\FactFinderApi\Client\V1\Api\SearchApi;
 use Web\FactFinderApi\Client\V1\Model\CustomParameter;
 use Web\FactFinderApi\Client\V1\Model\Filter;
 use Web\FactFinderApi\Client\V1\Model\FilterValue;
-use Web\FactFinderApi\Client\V1\Model\Params;
 use Web\FactFinderApi\Client\V1\Model\Result;
+use Web\FactFinderApi\Client\V1\Model\SearchParams;
 use Web\FactFinderApi\Client\V1\Model\SearchRequest;
 
 class SearchApiTest extends AbstractTestCase
@@ -50,7 +50,7 @@ class SearchApiTest extends AbstractTestCase
     /** @test */
     public function itShouldReturnNavigationResult(): void
     {
-        $params = new Params();
+        $params = new SearchParams();
         $params->setChannel($this->getChannel());
         $params->setPage(1);
 
@@ -61,7 +61,7 @@ class SearchApiTest extends AbstractTestCase
 
         $categoryFilter = new Filter();
         $categoryFilter->setName('CategoryPathROOT');
-        $categoryFilter->setValueList([$categoryValue]);
+        $categoryFilter->setValues([$categoryValue]);
 
         $params->setFilters([$categoryFilter]);
 

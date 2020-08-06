@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class SearchRecord extends BaseModel
+class SearchRecord extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -46,21 +46,6 @@ class SearchRecord extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'found_words' => null,
-            'id' => null,
-            'keywords' => null,
-            'position' => 'int32',
-            'record' => null,
-            'search_similarity' => 'float',
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -75,40 +60,6 @@ class SearchRecord extends BaseModel
             'position' => 'position',
             'record' => 'record',
             'search_similarity' => 'searchSimilarity',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'found_words' => 'setFoundWords',
-            'id' => 'setId',
-            'keywords' => 'setKeywords',
-            'position' => 'setPosition',
-            'record' => 'setRecord',
-            'search_similarity' => 'setSearchSimilarity',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'found_words' => 'getFoundWords',
-            'id' => 'getId',
-            'keywords' => 'getKeywords',
-            'position' => 'getPosition',
-            'record' => 'getRecord',
-            'search_similarity' => 'getSearchSimilarity',
         ];
     }
 

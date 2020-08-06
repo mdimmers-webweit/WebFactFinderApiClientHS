@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class UserNoPassword extends BaseModel
+class UserNoPassword extends BaseModel implements ModelV3Interface
 {
     const ROLES_AFTER_SEARCH_NAVIGATION_MANAGER = 'AfterSearchNavigationManager';
     const ROLES_BACKUP_MANAGER = 'BackupManager';
@@ -64,27 +64,6 @@ class UserNoPassword extends BaseModel
     const ROLES_API_USERS = 'ApiUsers';
     const ORIGIN_LOCAL = 'LOCAL';
     const ORIGIN_REMOTE = 'REMOTE';
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'id' => null,
-            'name' => null,
-            'roles' => null,
-            'channels' => null,
-            'groups' => null,
-            'hide_inactive_modules' => null,
-            'hide_error_notifications' => null,
-            'enable_advanced_mode' => null,
-            'allow_all_current_and_future_channels' => null,
-            'last_active' => 'date-time',
-            'origin' => null,
-            'locale' => null,
-        ];
-    }
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -130,52 +109,6 @@ class UserNoPassword extends BaseModel
             'last_active' => 'lastActive',
             'origin' => 'origin',
             'locale' => 'locale',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'id' => 'setId',
-            'name' => 'setName',
-            'roles' => 'setRoles',
-            'channels' => 'setChannels',
-            'groups' => 'setGroups',
-            'hide_inactive_modules' => 'setHideInactiveModules',
-            'hide_error_notifications' => 'setHideErrorNotifications',
-            'enable_advanced_mode' => 'setEnableAdvancedMode',
-            'allow_all_current_and_future_channels' => 'setAllowAllCurrentAndFutureChannels',
-            'last_active' => 'setLastActive',
-            'origin' => 'setOrigin',
-            'locale' => 'setLocale',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'id' => 'getId',
-            'name' => 'getName',
-            'roles' => 'getRoles',
-            'channels' => 'getChannels',
-            'groups' => 'getGroups',
-            'hide_inactive_modules' => 'getHideInactiveModules',
-            'hide_error_notifications' => 'getHideErrorNotifications',
-            'enable_advanced_mode' => 'getEnableAdvancedMode',
-            'allow_all_current_and_future_channels' => 'getAllowAllCurrentAndFutureChannels',
-            'last_active' => 'getLastActive',
-            'origin' => 'getOrigin',
-            'locale' => 'getLocale',
         ];
     }
 

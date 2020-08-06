@@ -27,7 +27,7 @@ use Web\FactFinderApi\Client\Model\SearchParamsBase;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ResultSuggestion extends ResultSuggestionBase
+class ResultSuggestion extends ResultSuggestionBase implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -48,22 +48,6 @@ class ResultSuggestion extends ResultSuggestionBase
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'attributes' => null,
-            'hit_count' => 'int32',
-            'image' => null,
-            'name' => null,
-            'score' => 'double',
-            'search_params' => null,
-            'type' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -79,42 +63,6 @@ class ResultSuggestion extends ResultSuggestionBase
             'score' => 'score',
             'search_params' => 'searchParams',
             'type' => 'type',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'attributes' => 'setAttributes',
-            'hit_count' => 'setHitCount',
-            'image' => 'setImage',
-            'name' => 'setName',
-            'score' => 'setScore',
-            'search_params' => 'setSearchParams',
-            'type' => 'setType',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'attributes' => 'getAttributes',
-            'hit_count' => 'getHitCount',
-            'image' => 'getImage',
-            'name' => 'getName',
-            'score' => 'getScore',
-            'search_params' => 'getSearchParams',
-            'type' => 'getType',
         ];
     }
 

@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class LoginEvent extends BaseModel
+class LoginEvent extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -43,18 +43,6 @@ class LoginEvent extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'cookie_id' => null,
-            'sid' => null,
-            'user_id' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -66,34 +54,6 @@ class LoginEvent extends BaseModel
             'cookie_id' => 'cookieId',
             'sid' => 'sid',
             'user_id' => 'userId',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'cookie_id' => 'setCookieId',
-            'sid' => 'setSid',
-            'user_id' => 'setUserId',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'cookie_id' => 'getCookieId',
-            'sid' => 'getSid',
-            'user_id' => 'getUserId',
         ];
     }
 

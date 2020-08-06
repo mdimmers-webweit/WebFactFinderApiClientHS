@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class CompareResult extends BaseModel
+class CompareResult extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,21 +36,9 @@ class CompareResult extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'attributes' => '\Web\FactFinderApi\Client\V3\Model\CompareAttribute[]',
+            'attributes' => static::getModelClass('CompareAttribute', true),
             'field_roles' => 'map[string,string]',
-            'records' => '\Web\FactFinderApi\Client\V3\Model\TypedFlatRecord[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'attributes' => null,
-            'field_roles' => null,
-            'records' => null,
+            'records' => static::getModelClass('TypedFlatRecord', true),
         ];
     }
 
@@ -66,34 +54,6 @@ class CompareResult extends BaseModel
             'attributes' => 'attributes',
             'field_roles' => 'fieldRoles',
             'records' => 'records',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'attributes' => 'setAttributes',
-            'field_roles' => 'setFieldRoles',
-            'records' => 'setRecords',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'attributes' => 'getAttributes',
-            'field_roles' => 'getFieldRoles',
-            'records' => 'getRecords',
         ];
     }
 

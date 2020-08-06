@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ResultsPerPageOption extends BaseModel
+class ResultsPerPageOption extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -43,18 +43,6 @@ class ResultsPerPageOption extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'default_value' => null,
-            'selected' => null,
-            'value' => 'int32',
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -66,34 +54,6 @@ class ResultsPerPageOption extends BaseModel
             'default_value' => 'defaultValue',
             'selected' => 'selected',
             'value' => 'value',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'default_value' => 'setDefaultValue',
-            'selected' => 'setSelected',
-            'value' => 'setValue',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'default_value' => 'getDefaultValue',
-            'selected' => 'getSelected',
-            'value' => 'getValue',
         ];
     }
 

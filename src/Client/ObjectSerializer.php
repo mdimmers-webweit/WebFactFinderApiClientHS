@@ -29,18 +29,16 @@ class ObjectSerializer
     /**
      * Serialize data
      *
-     * @param mixed  $data   the data to serialize
-     * @param string $type   the SwaggerType of the data
-     * @param string $format the format of the Swagger type of the data
+     * @param mixed $data the data to serialize
      *
      * @return string|object|array serialized form of $data
      */
-    public static function sanitizeForSerialization($data, $type = null, $format = null)
+    public static function sanitizeForSerialization($data)
     {
         if (\is_scalar($data) || $data === null) {
             return $data;
         } elseif ($data instanceof \DateTime) {
-            return ($format === 'date') ? $data->format('Y-m-d') : $data->format(\DateTime::ATOM);
+            return /*($format === 'date') ? $data->format('Y-m-d') :*/ $data->format(\DateTime::ATOM);
         } elseif (\is_array($data)) {
             foreach ($data as $property => $value) {
                 $data[$property] = self::sanitizeForSerialization($value);
@@ -55,19 +53,11 @@ class ObjectSerializer
             return $data;
         } elseif (\is_object($data)) {
             $values = [];
-            $formats = $data::swaggerFormats();
-            foreach ($data::swaggerTypes() as $property => $swaggerType) {
-                $getter = $data::getters()[$property];
+            foreach ($data::attributeMap() as $property => $externalName) {
+                $getter = 'get' . self::camelize($property);
                 $value = $data->$getter();
-                if ($value !== null
-                    && !\in_array($swaggerType, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)
-                    && \method_exists($swaggerType, 'getAllowableEnumValues')
-                    && /* @phpstan-ignore-line */!\in_array($value, $swaggerType::getAllowableEnumValues(), true)) {
-                    $imploded = \implode("', '", $swaggerType::getAllowableEnumValues()); /* @phpstan-ignore-line */
-                    throw new \InvalidArgumentException("Invalid value for enum '$swaggerType', must be one of: '$imploded'");
-                }
                 if ($value !== null) {
-                    $values[$data::attributeMap()[$property]] = self::sanitizeForSerialization($value, $swaggerType, $formats[$property]);
+                    $values[$externalName] = self::sanitizeForSerialization($value);
                 }
             }
 
@@ -223,7 +213,7 @@ class ObjectSerializer
      *
      * @return object|array|null an single or an array of $class instances
      */
-    public static function deserialize($data, $class, $httpHeaders = null)
+    public static function deserialize($data, ?string $class = null, ?array $httpHeaders = null)
     {
         if ($data === null) {
             return null;
@@ -248,7 +238,7 @@ class ObjectSerializer
 
             return $values;
         } elseif ($class === 'object') {
-            \settype($data, 'array');
+            $data = (array) $data;
 
             return $data;
         } elseif ($class === '\DateTime') {
@@ -285,17 +275,10 @@ class ObjectSerializer
             \fclose($file);
 
             return new \SplFileObject($filename, 'r');
-        } elseif (\method_exists($class, 'getAllowableEnumValues')) {
-            if (!\in_array($data, $class::getAllowableEnumValues(), true)) {
-                $imploded = \implode("', '", $class::getAllowableEnumValues());
-                throw new \InvalidArgumentException("Invalid value for enum '$class', must be one of: '$imploded'");
-            }
-
-            return $data;
         }
         $instance = new $class();
         foreach ($instance::swaggerTypes() as $property => $type) {
-            $propertySetter = $instance::setters()[$property];
+            $propertySetter = 'set' . self::camelize($property);
 
             if (!isset($propertySetter) || !isset($data->{$instance::attributeMap()[$property]})) {
                 continue;
@@ -306,5 +289,10 @@ class ObjectSerializer
         }
 
         return $instance;
+    }
+
+    public static function camelize($input, $separator = '_')
+    {
+        return \str_replace($separator, '', \ucwords($input, $separator));
     }
 }

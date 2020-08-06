@@ -26,21 +26,8 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ExpirationData extends BaseModel
+class ExpirationData extends BaseModel implements ModelV3Interface
 {
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'database' => null,
-            'error' => null,
-            'modified' => 'date-time',
-            'modified_loaded' => 'date-time',
-        ];
-    }
-
     /**
      * Array of property to type mappings. Used for (de)serialization
      *
@@ -69,36 +56,6 @@ class ExpirationData extends BaseModel
             'error' => 'error',
             'modified' => 'modified',
             'modified_loaded' => 'modifiedLoaded',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'database' => 'setDatabase',
-            'error' => 'setError',
-            'modified' => 'setModified',
-            'modified_loaded' => 'setModifiedLoaded',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'database' => 'getDatabase',
-            'error' => 'getError',
-            'modified' => 'getModified',
-            'modified_loaded' => 'getModifiedLoaded',
         ];
     }
 

@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class RecommendationResult extends BaseModel
+class RecommendationResult extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,19 +36,8 @@ class RecommendationResult extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'hits' => '\Web\FactFinderApi\Client\V3\Model\TypedFlatRecord[]',
+            'hits' => static::getModelClass('TypedFlatRecord', true),
             'timed_out' => 'bool',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'hits' => null,
-            'timed_out' => null,
         ];
     }
 
@@ -63,32 +52,6 @@ class RecommendationResult extends BaseModel
         return [
             'hits' => 'hits',
             'timed_out' => 'timedOut',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'hits' => 'setHits',
-            'timed_out' => 'setTimedOut',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'hits' => 'getHits',
-            'timed_out' => 'getTimedOut',
         ];
     }
 

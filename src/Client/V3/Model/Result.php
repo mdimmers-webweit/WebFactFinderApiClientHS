@@ -17,7 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V3\Model;
 
-use Web\FactFinderApi\Client\Model\BaseModel;
+use Web\FactFinderApi\Client\Model\ResultBase;
 
 /**
  * Result Class Doc Comment
@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Result extends BaseModel
+class Result extends ResultBase implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -35,55 +35,17 @@ class Result extends BaseModel
      */
     public static function swaggerTypes(): array
     {
-        return [
-            'answers' => '\Web\FactFinderApi\Client\V3\Model\Answer[]',
-            'article_number_search' => 'bool',
-            'bread_crumb_trail' => '\Web\FactFinderApi\Client\V3\Model\BreadCrumbTrailItem[]',
-            'campaigns' => '\Web\FactFinderApi\Client\V3\Model\Campaign[]',
-            'facets' => '\Web\FactFinderApi\Client\V3\Model\Facet[]',
-            'field_roles' => 'map[string,string]',
-            'filters' => '\Web\FactFinderApi\Client\V3\Model\Filter[]',
-            'hits' => '\Web\FactFinderApi\Client\V3\Model\SearchRecord[]',
-            'paging' => '\Web\FactFinderApi\Client\V3\Model\Paging',
-            'score_first_hit' => 'double',
-            'score_last_hit' => 'double',
-            'search_control_params' => '\Web\FactFinderApi\Client\V3\Model\SearchControlParams',
-            'search_params' => '\Web\FactFinderApi\Client\V3\Model\SearchParams',
-            'single_word_results' => '\Web\FactFinderApi\Client\V3\Model\SingleWordSearchResult[]',
-            'sort_items' => '\Web\FactFinderApi\Client\V3\Model\DescribedSortItem[]',
-            'timed_out' => 'bool',
-            'took_total' => 'int',
-            'took_worldmatch' => 'int',
-            'total_hits' => 'int',
-        ];
-    }
+        $result = parent::swaggerTypes();
 
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'answers' => null,
-            'article_number_search' => null,
-            'bread_crumb_trail' => null,
-            'campaigns' => null,
-            'facets' => null,
-            'field_roles' => null,
-            'filters' => null,
-            'hits' => null,
-            'paging' => null,
+        $result = \array_merge($result, [
+            'article_number_search' => 'bool',
+            'answers' => static::getModelClass('Answer', true),
+            'took_worldmatch' => 'int',
             'score_first_hit' => 'double',
             'score_last_hit' => 'double',
-            'search_control_params' => null,
-            'search_params' => null,
-            'single_word_results' => null,
-            'sort_items' => null,
-            'timed_out' => null,
-            'took_total' => 'int64',
-            'took_worldmatch' => 'int64',
-            'total_hits' => 'int32',
-        ];
+        ]);
+
+        return $result;
     }
 
     /**
@@ -94,87 +56,23 @@ class Result extends BaseModel
      */
     public static function attributeMap(): array
     {
-        return [
-            'answers' => 'answers',
-            'article_number_search' => 'articleNumberSearch',
-            'bread_crumb_trail' => 'breadCrumbTrail',
-            'campaigns' => 'campaigns',
+        $result = parent::attributeMap();
+
+        $result = \array_merge($result, [
             'facets' => 'facets',
-            'field_roles' => 'fieldRoles',
-            'filters' => 'filters',
-            'hits' => 'hits',
-            'paging' => 'paging',
-            'score_first_hit' => 'scoreFirstHit',
-            'score_last_hit' => 'scoreLastHit',
-            'search_control_params' => 'searchControlParams',
-            'search_params' => 'searchParams',
-            'single_word_results' => 'singleWordResults',
-            'sort_items' => 'sortItems',
-            'timed_out' => 'timedOut',
+            'article_number_search' => 'articleNumberSearch',
+            'answers' => 'answers',
+            'campaigns' => 'campaigns',
             'took_total' => 'tookTotal',
-            'took_worldmatch' => 'tookWorldmatch',
+            'took_worldmatch' => 'int64',
+            'score_first_hit' => 'double',
+            'score_last_hit' => 'double',
             'total_hits' => 'totalHits',
-        ];
-    }
+            'sort_items' => 'sortItems',
+            'hits' => 'hits',
+        ]);
 
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'answers' => 'setAnswers',
-            'article_number_search' => 'setArticleNumberSearch',
-            'bread_crumb_trail' => 'setBreadCrumbTrail',
-            'campaigns' => 'setCampaigns',
-            'facets' => 'setFacets',
-            'field_roles' => 'setFieldRoles',
-            'filters' => 'setFilters',
-            'hits' => 'setHits',
-            'paging' => 'setPaging',
-            'score_first_hit' => 'setScoreFirstHit',
-            'score_last_hit' => 'setScoreLastHit',
-            'search_control_params' => 'setSearchControlParams',
-            'search_params' => 'setSearchParams',
-            'single_word_results' => 'setSingleWordResults',
-            'sort_items' => 'setSortItems',
-            'timed_out' => 'setTimedOut',
-            'took_total' => 'setTookTotal',
-            'took_worldmatch' => 'setTookWorldmatch',
-            'total_hits' => 'setTotalHits',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'answers' => 'getAnswers',
-            'article_number_search' => 'getArticleNumberSearch',
-            'bread_crumb_trail' => 'getBreadCrumbTrail',
-            'campaigns' => 'getCampaigns',
-            'facets' => 'getFacets',
-            'field_roles' => 'getFieldRoles',
-            'filters' => 'getFilters',
-            'hits' => 'getHits',
-            'paging' => 'getPaging',
-            'score_first_hit' => 'getScoreFirstHit',
-            'score_last_hit' => 'getScoreLastHit',
-            'search_control_params' => 'getSearchControlParams',
-            'search_params' => 'getSearchParams',
-            'single_word_results' => 'getSingleWordResults',
-            'sort_items' => 'getSortItems',
-            'timed_out' => 'getTimedOut',
-            'took_total' => 'getTookTotal',
-            'took_worldmatch' => 'getTookWorldmatch',
-            'total_hits' => 'getTotalHits',
-        ];
+        return $result;
     }
 
     /**
@@ -184,7 +82,7 @@ class Result extends BaseModel
      */
     public function listInvalidProperties(): array
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
         if ($this->container['answers'] === null) {
             $invalidProperties[] = "'answers' can't be null";
@@ -192,50 +90,9 @@ class Result extends BaseModel
         if ($this->container['article_number_search'] === null) {
             $invalidProperties[] = "'article_number_search' can't be null";
         }
-        if ($this->container['bread_crumb_trail'] === null) {
-            $invalidProperties[] = "'bread_crumb_trail' can't be null";
-        }
-        if ($this->container['campaigns'] === null) {
-            $invalidProperties[] = "'campaigns' can't be null";
-        }
-        if ($this->container['facets'] === null) {
-            $invalidProperties[] = "'facets' can't be null";
-        }
-        if ($this->container['field_roles'] === null) {
-            $invalidProperties[] = "'field_roles' can't be null";
-        }
-        if ($this->container['filters'] === null) {
-            $invalidProperties[] = "'filters' can't be null";
-        }
-        if ($this->container['hits'] === null) {
-            $invalidProperties[] = "'hits' can't be null";
-        }
-        if ($this->container['score_first_hit'] === null) {
-            $invalidProperties[] = "'score_first_hit' can't be null";
-        }
-        if ($this->container['score_last_hit'] === null) {
-            $invalidProperties[] = "'score_last_hit' can't be null";
-        }
-        if ($this->container['search_control_params'] === null) {
-            $invalidProperties[] = "'search_control_params' can't be null";
-        }
-        if ($this->container['single_word_results'] === null) {
-            $invalidProperties[] = "'single_word_results' can't be null";
-        }
-        if ($this->container['sort_items'] === null) {
-            $invalidProperties[] = "'sort_items' can't be null";
-        }
-        if ($this->container['timed_out'] === null) {
-            $invalidProperties[] = "'timed_out' can't be null";
-        }
-        if ($this->container['took_total'] === null) {
-            $invalidProperties[] = "'took_total' can't be null";
-        }
+
         if ($this->container['took_worldmatch'] === null) {
             $invalidProperties[] = "'took_worldmatch' can't be null";
-        }
-        if ($this->container['total_hits'] === null) {
-            $invalidProperties[] = "'total_hits' can't be null";
         }
 
         return $invalidProperties;
@@ -282,306 +139,6 @@ class Result extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\BreadCrumbTrailItem[]
-     */
-    public function getBreadCrumbTrail()
-    {
-        return $this->container['bread_crumb_trail'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\BreadCrumbTrailItem[] $bread_crumb_trail Describes the actions that lead to the current result. This may be used to return to an intermediate search result.
-     *
-     * @return $this
-     */
-    public function setBreadCrumbTrail($bread_crumb_trail)
-    {
-        $this->container['bread_crumb_trail'] = $bread_crumb_trail;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\Campaign[]
-     */
-    public function getCampaigns()
-    {
-        return $this->container['campaigns'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\Campaign[] $campaigns contains the active campaigns for this result
-     *
-     * @return $this
-     */
-    public function setCampaigns($campaigns)
-    {
-        $this->container['campaigns'] = $campaigns;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\Facet[]
-     */
-    public function getFacets()
-    {
-        return $this->container['facets'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\Facet[] $facets the ASN filters (for after search navigation)
-     *
-     * @return $this
-     */
-    public function setFacets($facets)
-    {
-        $this->container['facets'] = $facets;
-
-        return $this;
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getFieldRoles()
-    {
-        return $this->container['field_roles'];
-    }
-
-    /**
-     * @param string[] $field_roles A field to role mapping. For example, a field role may be 'brand', meaning that the field contains the manufacturer's name. (key = field role, value = field name)
-     *
-     * @return $this
-     */
-    public function setFieldRoles($field_roles)
-    {
-        $this->container['field_roles'] = $field_roles;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\Filter[]
-     */
-    public function getFilters()
-    {
-        return $this->container['filters'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\Filter[] $filters the filter applied for this result
-     *
-     * @return $this
-     */
-    public function setFilters($filters)
-    {
-        $this->container['filters'] = $filters;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\SearchRecord[]
-     */
-    public function getHits()
-    {
-        return $this->container['hits'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\SearchRecord[] $hits the relevant products
-     *
-     * @return $this
-     */
-    public function setHits($hits)
-    {
-        $this->container['hits'] = $hits;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\Paging
-     */
-    public function getPaging()
-    {
-        return $this->container['paging'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\Paging $paging defines the paging properties
-     *
-     * @return $this
-     */
-    public function setPaging($paging)
-    {
-        $this->container['paging'] = $paging;
-
-        return $this;
-    }
-
-    /**
-     * @return float
-     */
-    public function getScoreFirstHit()
-    {
-        return $this->container['score_first_hit'];
-    }
-
-    /**
-     * @param float $score_first_hit the score of the best match in the search result
-     *
-     * @return $this
-     */
-    public function setScoreFirstHit($score_first_hit)
-    {
-        $this->container['score_first_hit'] = $score_first_hit;
-
-        return $this;
-    }
-
-    /**
-     * @return float
-     */
-    public function getScoreLastHit()
-    {
-        return $this->container['score_last_hit'];
-    }
-
-    /**
-     * @param float $score_last_hit the score of the worst match in the search result
-     *
-     * @return $this
-     */
-    public function setScoreLastHit($score_last_hit)
-    {
-        $this->container['score_last_hit'] = $score_last_hit;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\SearchControlParams
-     */
-    public function getSearchControlParams()
-    {
-        return $this->container['search_control_params'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\SearchControlParams $search_control_params the search control parameters used to generate this search result
-     *
-     * @return $this
-     */
-    public function setSearchControlParams($search_control_params)
-    {
-        $this->container['search_control_params'] = $search_control_params;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\SearchParams
-     */
-    public function getSearchParams()
-    {
-        return $this->container['search_params'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\SearchParams $search_params the search parameter used to generate this search result
-     *
-     * @return $this
-     */
-    public function setSearchParams($search_params)
-    {
-        $this->container['search_params'] = $search_params;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\SingleWordSearchResult[]
-     */
-    public function getSingleWordResults()
-    {
-        return $this->container['single_word_results'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\SingleWordSearchResult[] $single_word_results contains the result from the single word search
-     *
-     * @return $this
-     */
-    public function setSingleWordResults($single_word_results)
-    {
-        $this->container['single_word_results'] = $single_word_results;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\DescribedSortItem[]
-     */
-    public function getSortItems()
-    {
-        return $this->container['sort_items'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\DescribedSortItem[] $sort_items Contains the available sortings
-     *
-     * @return $this
-     */
-    public function setSortItems($sort_items)
-    {
-        $this->container['sort_items'] = $sort_items;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getTimedOut()
-    {
-        return $this->container['timed_out'];
-    }
-
-    /**
-     * @param bool $timed_out If true, this search took longer than the timeout currently defined. Therefore, the results may not contain all relevant products.
-     *
-     * @return $this
-     */
-    public function setTimedOut($timed_out)
-    {
-        $this->container['timed_out'] = $timed_out;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTookTotal()
-    {
-        return $this->container['took_total'];
-    }
-
-    /**
-     * @param int $took_total the time required to produce the results in the framework (in ms)
-     *
-     * @return $this
-     */
-    public function setTookTotal($took_total)
-    {
-        $this->container['took_total'] = $took_total;
-
-        return $this;
-    }
-
-    /**
      * @return int
      */
     public function getTookWorldmatch()
@@ -597,26 +154,6 @@ class Result extends BaseModel
     public function setTookWorldmatch($took_worldmatch)
     {
         $this->container['took_worldmatch'] = $took_worldmatch;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTotalHits()
-    {
-        return $this->container['total_hits'];
-    }
-
-    /**
-     * @param int $total_hits total number of items in the search result
-     *
-     * @return $this
-     */
-    public function setTotalHits($total_hits)
-    {
-        $this->container['total_hits'] = $total_hits;
 
         return $this;
     }

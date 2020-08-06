@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class CustomParameter extends BaseModel
+class CustomParameter extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -43,18 +43,6 @@ class CustomParameter extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'cache_ignored' => null,
-            'name' => null,
-            'values' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -66,34 +54,6 @@ class CustomParameter extends BaseModel
             'cache_ignored' => 'cacheIgnored',
             'name' => 'name',
             'values' => 'values',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'cache_ignored' => 'setCacheIgnored',
-            'name' => 'setName',
-            'values' => 'setValues',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'cache_ignored' => 'getCacheIgnored',
-            'name' => 'getName',
-            'values' => 'getValues',
         ];
     }
 

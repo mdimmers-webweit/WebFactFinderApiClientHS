@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class SearchRecord extends BaseModel
+class SearchRecord extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -37,28 +37,12 @@ class SearchRecord extends BaseModel
     {
         return [
             'found_words' => 'string[]',
-            'geo_information' => '\Web\FactFinderApi\Client\V3\Model\GeoInformation',
+            'geo_information' => static::getModelClass('GeoInformation'),
             'id' => 'string',
             'master_values' => 'map[string,object]',
             'position' => 'int',
             'score' => 'float',
-            'variant_values' => '\Web\FactFinderApi\Client\V3\Model\VariantValues[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'found_words' => null,
-            'geo_information' => null,
-            'id' => null,
-            'master_values' => null,
-            'position' => 'int32',
-            'score' => 'float',
-            'variant_values' => null,
+            'variant_values' => static::getModelClass('VariantValues', true),
         ];
     }
 
@@ -78,42 +62,6 @@ class SearchRecord extends BaseModel
             'position' => 'position',
             'score' => 'score',
             'variant_values' => 'variantValues',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'found_words' => 'setFoundWords',
-            'geo_information' => 'setGeoInformation',
-            'id' => 'setId',
-            'master_values' => 'setMasterValues',
-            'position' => 'setPosition',
-            'score' => 'setScore',
-            'variant_values' => 'setVariantValues',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'found_words' => 'getFoundWords',
-            'geo_information' => 'getGeoInformation',
-            'id' => 'getId',
-            'master_values' => 'getMasterValues',
-            'position' => 'getPosition',
-            'score' => 'getScore',
-            'variant_values' => 'getVariantValues',
         ];
     }
 

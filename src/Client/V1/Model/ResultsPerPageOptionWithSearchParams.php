@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ResultsPerPageOptionWithSearchParams extends BaseModel
+class ResultsPerPageOptionWithSearchParams extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -37,22 +37,9 @@ class ResultsPerPageOptionWithSearchParams extends BaseModel
     {
         return [
             'default_value' => 'bool',
-            'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+            'search_params' => static::getModelClass('SearchParams'),
             'selected' => 'bool',
             'value' => 'int',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'default_value' => null,
-            'search_params' => null,
-            'selected' => null,
-            'value' => 'int32',
         ];
     }
 
@@ -69,36 +56,6 @@ class ResultsPerPageOptionWithSearchParams extends BaseModel
             'search_params' => 'searchParams',
             'selected' => 'selected',
             'value' => 'value',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'default_value' => 'setDefaultValue',
-            'search_params' => 'setSearchParams',
-            'selected' => 'setSelected',
-            'value' => 'setValue',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'default_value' => 'getDefaultValue',
-            'search_params' => 'getSearchParams',
-            'selected' => 'getSelected',
-            'value' => 'getValue',
         ];
     }
 
@@ -145,7 +102,7 @@ class ResultsPerPageOptionWithSearchParams extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Params
+     * @return \Web\FactFinderApi\Client\V1\Model\SearchParams
      */
     public function getSearchParams()
     {
@@ -153,7 +110,7 @@ class ResultsPerPageOptionWithSearchParams extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $search_params search_params
+     * @param \Web\FactFinderApi\Client\V1\Model\SearchParams $search_params search_params
      *
      * @return $this
      */

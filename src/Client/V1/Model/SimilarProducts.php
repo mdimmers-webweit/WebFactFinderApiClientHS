@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class SimilarProducts extends BaseModel
+class SimilarProducts extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,19 +36,8 @@ class SimilarProducts extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'attributes' => '\Web\FactFinderApi\Client\V1\Model\SimilarAttributeInfo[]',
-            'records' => '\Web\FactFinderApi\Client\V1\Model\RecordWithId[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'attributes' => null,
-            'records' => null,
+            'attributes' => static::getModelClass('SimilarAttributeInfo', true),
+            'records' => static::getModelClass('RecordWithId', true),
         ];
     }
 
@@ -63,32 +52,6 @@ class SimilarProducts extends BaseModel
         return [
             'attributes' => 'attributes',
             'records' => 'records',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'attributes' => 'setAttributes',
-            'records' => 'setRecords',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'attributes' => 'getAttributes',
-            'records' => 'getRecords',
         ];
     }
 

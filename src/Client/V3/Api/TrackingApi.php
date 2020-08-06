@@ -51,10 +51,9 @@ class TrackingApi extends ApiClient
      */
     public function trackCartUsingPOSTWithHttpInfo(string $channel, array $events): array
     {
-        $returnType = '';
         $request = $this->trackCartUsingPOSTRequest($channel, $events);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeEmptyRequest($request);
     }
 
     /**
@@ -89,10 +88,9 @@ class TrackingApi extends ApiClient
      */
     public function trackCartUsingPOSTAsyncWithHttpInfo(string $channel, array $events): PromiseInterface
     {
-        $returnType = '';
         $request = $this->trackCartUsingPOSTRequest($channel, $events);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeEmptyAsyncRequest($request);
     }
 
     /**
@@ -126,10 +124,9 @@ class TrackingApi extends ApiClient
      */
     public function trackCheckoutUsingPOSTWithHttpInfo(string $channel, array $events): array
     {
-        $returnType = '';
         $request = $this->trackCheckoutUsingPOSTRequest($channel, $events);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeEmptyRequest($request);
     }
 
     /**
@@ -164,10 +161,9 @@ class TrackingApi extends ApiClient
      */
     public function trackCheckoutUsingPOSTAsyncWithHttpInfo(string $channel, array $events): PromiseInterface
     {
-        $returnType = '';
         $request = $this->trackCheckoutUsingPOSTRequest($channel, $events);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeEmptyAsyncRequest($request);
     }
 
     /**
@@ -201,10 +197,9 @@ class TrackingApi extends ApiClient
      */
     public function trackClickUsingPOSTWithHttpInfo(string $channel, array $events): array
     {
-        $returnType = '';
         $request = $this->trackClickUsingPOSTRequest($channel, $events);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeEmptyRequest($request);
     }
 
     /**
@@ -239,10 +234,9 @@ class TrackingApi extends ApiClient
      */
     public function trackClickUsingPOSTAsyncWithHttpInfo(string $channel, array $events): PromiseInterface
     {
-        $returnType = '';
         $request = $this->trackClickUsingPOSTRequest($channel, $events);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeEmptyAsyncRequest($request);
     }
 
     /**
@@ -276,10 +270,9 @@ class TrackingApi extends ApiClient
      */
     public function trackFeedbackUsingPOSTWithHttpInfo(string $channel, array $events): array
     {
-        $returnType = '';
         $request = $this->trackFeedbackUsingPOSTRequest($channel, $events);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeEmptyRequest($request);
     }
 
     /**
@@ -314,10 +307,9 @@ class TrackingApi extends ApiClient
      */
     public function trackFeedbackUsingPOSTAsyncWithHttpInfo(string $channel, array $events): PromiseInterface
     {
-        $returnType = '';
         $request = $this->trackFeedbackUsingPOSTRequest($channel, $events);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeEmptyAsyncRequest($request);
     }
 
     /**
@@ -351,10 +343,9 @@ class TrackingApi extends ApiClient
      */
     public function trackLogUsingPOSTWithHttpInfo(string $channel, array $events): array
     {
-        $returnType = '';
         $request = $this->trackLogUsingPOSTRequest($channel, $events);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeEmptyRequest($request);
     }
 
     /**
@@ -389,10 +380,9 @@ class TrackingApi extends ApiClient
      */
     public function trackLogUsingPOSTAsyncWithHttpInfo(string $channel, array $events): PromiseInterface
     {
-        $returnType = '';
         $request = $this->trackLogUsingPOSTRequest($channel, $events);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeEmptyAsyncRequest($request);
     }
 
     /**
@@ -426,10 +416,9 @@ class TrackingApi extends ApiClient
      */
     public function trackLoginUsingPOSTWithHttpInfo(string $channel, array $events): array
     {
-        $returnType = '';
         $request = $this->trackLoginUsingPOSTRequest($channel, $events);
 
-        return $this->executeRequest($request, $returnType);
+        return $this->executeEmptyRequest($request);
     }
 
     /**
@@ -464,10 +453,9 @@ class TrackingApi extends ApiClient
      */
     public function trackLoginUsingPOSTAsyncWithHttpInfo(string $channel, array $events): PromiseInterface
     {
-        $returnType = '';
         $request = $this->trackLoginUsingPOSTRequest($channel, $events);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeEmptyAsyncRequest($request);
     }
 
     /**
@@ -538,10 +526,9 @@ class TrackingApi extends ApiClient
      */
     public function trackRecommendationClickUsingPOSTAsyncWithHttpInfo(string $channel, array $events): PromiseInterface
     {
-        $returnType = '';
         $request = $this->trackRecommendationClickUsingPOSTRequest($channel, $events);
 
-        return $this->executeAsyncRequest($request, $returnType);
+        return $this->executeEmptyAsyncRequest($request);
     }
 
     /**

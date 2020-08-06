@@ -27,7 +27,7 @@ use Web\FactFinderApi\Client\Model\SearchParamsBase;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ResultSuggestion extends ResultSuggestionBase
+class ResultSuggestion extends ResultSuggestionBase implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -42,24 +42,8 @@ class ResultSuggestion extends ResultSuggestionBase
             'image' => 'string',
             'name' => 'string',
             'priority' => 'int',
-            'search_params' => Params::class,
+            'search_params' => SearchParams::class,
             'type' => 'string',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'attributes' => null,
-            'hit_count' => 'int32',
-            'image' => null,
-            'name' => null,
-            'priority' => 'int32',
-            'search_params' => null,
-            'type' => null,
         ];
     }
 
@@ -79,42 +63,6 @@ class ResultSuggestion extends ResultSuggestionBase
             'priority' => 'priority',
             'search_params' => 'searchParams',
             'type' => 'type',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'attributes' => 'setAttributes',
-            'hit_count' => 'setHitCount',
-            'image' => 'setImage',
-            'name' => 'setName',
-            'priority' => 'setPriority',
-            'search_params' => 'setSearchParams',
-            'type' => 'setType',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'attributes' => 'getAttributes',
-            'hit_count' => 'getHitCount',
-            'image' => 'getImage',
-            'name' => 'getName',
-            'priority' => 'getPriority',
-            'search_params' => 'getSearchParams',
-            'type' => 'getType',
         ];
     }
 
@@ -155,7 +103,7 @@ class ResultSuggestion extends ResultSuggestionBase
     }
 
     /**
-     * @return Params
+     * @return SearchParams
      */
     public function getSearchParams(): SearchParamsBase
     {
@@ -163,7 +111,7 @@ class ResultSuggestion extends ResultSuggestionBase
     }
 
     /**
-     * @param Params $search_params search_params
+     * @param SearchParams $search_params search_params
      *
      * @return $this
      */

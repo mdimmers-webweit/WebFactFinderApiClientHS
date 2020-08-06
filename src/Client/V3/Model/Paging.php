@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Paging extends BaseModel
+class Paging extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -39,24 +39,9 @@ class Paging extends BaseModel
             'current_page' => 'int',
             'default_hits_per_page' => 'int',
             'hits_per_page' => 'int',
-            'next_link' => '\Web\FactFinderApi\Client\V3\Model\PageLink',
+            'next_link' => static::getModelClass('PageLink'),
             'page_count' => 'int',
-            'previous_link' => '\Web\FactFinderApi\Client\V3\Model\PageLink',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'current_page' => 'int32',
-            'default_hits_per_page' => 'int32',
-            'hits_per_page' => 'int32',
-            'next_link' => null,
-            'page_count' => 'int32',
-            'previous_link' => null,
+            'previous_link' => static::getModelClass('PageLink'),
         ];
     }
 
@@ -75,40 +60,6 @@ class Paging extends BaseModel
             'next_link' => 'nextLink',
             'page_count' => 'pageCount',
             'previous_link' => 'previousLink',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'current_page' => 'setCurrentPage',
-            'default_hits_per_page' => 'setDefaultHitsPerPage',
-            'hits_per_page' => 'setHitsPerPage',
-            'next_link' => 'setNextLink',
-            'page_count' => 'setPageCount',
-            'previous_link' => 'setPreviousLink',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'current_page' => 'getCurrentPage',
-            'default_hits_per_page' => 'getDefaultHitsPerPage',
-            'hits_per_page' => 'getHitsPerPage',
-            'next_link' => 'getNextLink',
-            'page_count' => 'getPageCount',
-            'previous_link' => 'getPreviousLink',
         ];
     }
 

@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class NavigationParams extends BaseModel
+class NavigationParams extends BaseModel implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,35 +36,16 @@ class NavigationParams extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'advisor_status' => '\Web\FactFinderApi\Client\V3\Model\AdvisorCampaignStatusHolder',
+            'advisor_status' => static::getModelClass('AdvisorCampaignStatusHolder'),
             'channel' => 'string',
-            'custom_parameters' => '\Web\FactFinderApi\Client\V3\Model\CustomParameter[]',
-            'filters' => '\Web\FactFinderApi\Client\V3\Model\Filter[]',
+            'custom_parameters' => static::getModelClass('CustomParameter', true),
+            'filters' => static::getModelClass('Filter', true),
             'hits_per_page' => 'int',
-            'location' => '\Web\FactFinderApi\Client\V3\Model\Location',
-            'market_id' => '\Web\FactFinderApi\Client\V3\Model\Filter',
+            'location' => static::getModelClass('Location'),
+            'market_id' => static::getModelClass('Filter'),
             'max_count_variants' => 'int',
             'page' => 'int',
-            'sort_items' => '\Web\FactFinderApi\Client\V3\Model\SortItem[]',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'advisor_status' => null,
-            'channel' => null,
-            'custom_parameters' => null,
-            'filters' => null,
-            'hits_per_page' => 'int32',
-            'location' => null,
-            'market_id' => null,
-            'max_count_variants' => 'int32',
-            'page' => 'int32',
-            'sort_items' => null,
+            'sort_items' => static::getModelClass('SortItem', true),
         ];
     }
 
@@ -87,48 +68,6 @@ class NavigationParams extends BaseModel
             'max_count_variants' => 'maxCountVariants',
             'page' => 'page',
             'sort_items' => 'sortItems',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'advisor_status' => 'setAdvisorStatus',
-            'channel' => 'setChannel',
-            'custom_parameters' => 'setCustomParameters',
-            'filters' => 'setFilters',
-            'hits_per_page' => 'setHitsPerPage',
-            'location' => 'setLocation',
-            'market_id' => 'setMarketId',
-            'max_count_variants' => 'setMaxCountVariants',
-            'page' => 'setPage',
-            'sort_items' => 'setSortItems',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'advisor_status' => 'getAdvisorStatus',
-            'channel' => 'getChannel',
-            'custom_parameters' => 'getCustomParameters',
-            'filters' => 'getFilters',
-            'hits_per_page' => 'getHitsPerPage',
-            'location' => 'getLocation',
-            'market_id' => 'getMarketId',
-            'max_count_variants' => 'getMaxCountVariants',
-            'page' => 'getPage',
-            'sort_items' => 'getSortItems',
         ];
     }
 

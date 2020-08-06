@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class DescribedSortItem extends BaseModel
+class ResultSortItem extends BaseModel implements ModelV3Interface
 {
     const ORDER_ASC = 'asc';
     const ORDER_DESC = 'desc';
@@ -42,22 +42,8 @@ class DescribedSortItem extends BaseModel
             'description' => 'string',
             'name' => 'string',
             'order' => 'string',
-            'search_params' => '\Web\FactFinderApi\Client\V3\Model\SearchParams',
+            'search_params' => static::getModelClass('SearchParams'),
             'selected' => 'bool',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'description' => null,
-            'name' => null,
-            'order' => null,
-            'search_params' => null,
-            'selected' => null,
         ];
     }
 
@@ -75,38 +61,6 @@ class DescribedSortItem extends BaseModel
             'order' => 'order',
             'search_params' => 'searchParams',
             'selected' => 'selected',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'description' => 'setDescription',
-            'name' => 'setName',
-            'order' => 'setOrder',
-            'search_params' => 'setSearchParams',
-            'selected' => 'setSelected',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'description' => 'getDescription',
-            'name' => 'getName',
-            'order' => 'getOrder',
-            'search_params' => 'getSearchParams',
-            'selected' => 'getSelected',
         ];
     }
 

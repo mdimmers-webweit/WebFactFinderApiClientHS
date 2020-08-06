@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class SingleWordSearchResult extends BaseModel
+class SingleWordSearchResult extends BaseModel implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -36,23 +36,10 @@ class SingleWordSearchResult extends BaseModel
     public static function swaggerTypes(): array
     {
         return [
-            'preview_records' => '\Web\FactFinderApi\Client\V1\Model\SearchRecord[]',
+            'preview_records' => static::getModelClass('SearchRecord', true),
             'record_count' => 'int',
-            'search_params' => '\Web\FactFinderApi\Client\V1\Model\Params',
+            'search_params' => static::getModelClass('SearchParams'),
             'word' => 'string',
-        ];
-    }
-
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'preview_records' => null,
-            'record_count' => 'int32',
-            'search_params' => null,
-            'word' => null,
         ];
     }
 
@@ -69,36 +56,6 @@ class SingleWordSearchResult extends BaseModel
             'record_count' => 'recordCount',
             'search_params' => 'searchParams',
             'word' => 'word',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'preview_records' => 'setPreviewRecords',
-            'record_count' => 'setRecordCount',
-            'search_params' => 'setSearchParams',
-            'word' => 'setWord',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'preview_records' => 'getPreviewRecords',
-            'record_count' => 'getRecordCount',
-            'search_params' => 'getSearchParams',
-            'word' => 'getWord',
         ];
     }
 
@@ -165,7 +122,7 @@ class SingleWordSearchResult extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Params
+     * @return \Web\FactFinderApi\Client\V1\Model\SearchParams
      */
     public function getSearchParams()
     {
@@ -173,7 +130,7 @@ class SingleWordSearchResult extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Params $search_params search_params
+     * @param \Web\FactFinderApi\Client\V1\Model\SearchParams $search_params search_params
      *
      * @return $this
      */

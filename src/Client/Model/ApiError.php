@@ -43,18 +43,6 @@ class ApiError extends BaseModel
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
-     */
-    public static function swaggerFormats(): array
-    {
-        return [
-            'error' => null,
-            'error_description' => null,
-            'stacktrace' => null,
-        ];
-    }
-
-    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -66,34 +54,6 @@ class ApiError extends BaseModel
             'error' => 'error',
             'error_description' => 'errorDescription',
             'stacktrace' => 'stacktrace',
-        ];
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    public static function setters(): array
-    {
-        return [
-            'error' => 'setError',
-            'error_description' => 'setErrorDescription',
-            'stacktrace' => 'setStacktrace',
-        ];
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    public static function getters(): array
-    {
-        return [
-            'error' => 'getError',
-            'error_description' => 'getErrorDescription',
-            'stacktrace' => 'getStacktrace',
         ];
     }
 

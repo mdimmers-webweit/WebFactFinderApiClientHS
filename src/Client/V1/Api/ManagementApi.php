@@ -62,7 +62,6 @@ class ManagementApi extends ApiClient
      */
     public function importWhatsHotUsingPOSTWithHttpInfo($channel = null, bool $send_notifications = false)
     {
-        $returnType = '';
         $request = $this->importWhatsHotUsingPOSTRequest($channel, $send_notifications);
 
         return $this->executeEmptyRequest($request);
@@ -158,7 +157,6 @@ class ManagementApi extends ApiClient
      */
     public function reloadConfigurationUsingPOSTWithHttpInfo($channel = null)
     {
-        $returnType = '';
         $request = $this->reloadConfigurationUsingPOSTRequest($channel);
 
         return $this->executeEmptyRequest($request);
