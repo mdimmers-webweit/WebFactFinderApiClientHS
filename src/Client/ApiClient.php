@@ -14,7 +14,7 @@ use GuzzleHttp6\Psr7\Request;
 use GuzzleHttp6\RequestOptions;
 use Web\FactFinderApi\Client\Model\ApiError;
 
-abstract class ApiClient
+abstract class ApiClient implements ApiClientInterface
 {
     /**
      * @var ClientInterface

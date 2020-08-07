@@ -216,7 +216,7 @@ abstract class ResultBase extends BaseModel
      */
     public function getHits()
     {
-        return $this->container['records'];
+        return $this->container['hits'];
     }
 
     /**
@@ -226,7 +226,7 @@ abstract class ResultBase extends BaseModel
      */
     public function setHits($hits)
     {
-        $this->container['records'] = $hits;
+        $this->container['hits'] = $hits;
 
         return $this;
     }

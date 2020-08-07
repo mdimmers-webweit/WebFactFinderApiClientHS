@@ -7,11 +7,13 @@
 namespace Web\FactFinderApi\Client\Model;
 
 /**
- * @method FilterBase        createFilter(?array $data = null)
- * @method FilterValueBase   createFilterValue(?array $data = null)
- * @method SortItemBase      createSortItem(?array $data = null)
- * @method SearchParamsBase  createSearchParams(?array $data = null)
- * @method SearchRequestBase createSearchRequest(?array $data = null)
+ * @method FilterBase            createFilter(?array $data = null)
+ * @method FilterValueBase       createFilterValue(?array $data = null)
+ * @method SortItemBase          createSortItem(?array $data = null)
+ * @method SearchParamsBase      createSearchParams(?array $data = null)
+ * @method SearchRequestBase     createSearchRequest(?array $data = null)
+ * @method NavigationParamsBase  createNavigationParams(?array $data = null)
+ * @method NavigationRequestBase createNavigationRequest(?array $data = null)
  */
 class ModelResolver
 {
