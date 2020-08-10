@@ -39,21 +39,16 @@ class SearchParams extends SearchParamsBase implements ModelV3Interface
      */
     public static function swaggerTypes(): array
     {
-        return [
-            'advisor_status' => static::getModelClass('AdvisorCampaignStatusHolder'),
+        $result = parent::swaggerTypes();
+
+        $result += [
             'article_number_search' => 'string',
-            'channel' => 'string',
-            'custom_parameters' => static::getModelClass('CustomParameter', true),
-            'filters' => static::getModelClass('Filter', true),
-            'hits_per_page' => 'int',
             'location' => static::getModelClass('Location'),
             'market_id' => static::getModelClass('Filter'),
             'max_count_variants' => 'int',
-            'page' => 'int',
-            'query' => 'string',
-            'search_field' => 'string',
-            'sort_items' => static::getModelClass('SortItem', true),
         ];
+
+        return $result;
     }
 
     /**
@@ -64,21 +59,18 @@ class SearchParams extends SearchParamsBase implements ModelV3Interface
      */
     public static function attributeMap(): array
     {
-        return [
-            'advisor_status' => 'advisorStatus',
+        $result = parent::attributeMap();
+
+        $result += [
             'article_number_search' => 'articleNumberSearch',
-            'channel' => 'channel',
-            'custom_parameters' => 'customParameters',
-            'filters' => 'filters',
             'hits_per_page' => 'hitsPerPage',
             'location' => 'location',
             'market_id' => 'marketId',
             'max_count_variants' => 'maxCountVariants',
-            'page' => 'page',
-            'query' => 'query',
-            'search_field' => 'searchField',
             'sort_items' => 'sortItems',
         ];
+
+        return $result;
     }
 
     /**
@@ -131,26 +123,6 @@ class SearchParams extends SearchParamsBase implements ModelV3Interface
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\AdvisorCampaignStatusHolder
-     */
-    public function getAdvisorStatus()
-    {
-        return $this->container['advisor_status'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\AdvisorCampaignStatusHolder $advisor_status describes the advisor campaign that is currently active
-     *
-     * @return $this
-     */
-    public function setAdvisorStatus($advisor_status)
-    {
-        $this->container['advisor_status'] = $advisor_status;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getArticleNumberSearch()
@@ -175,46 +147,6 @@ class SearchParams extends SearchParamsBase implements ModelV3Interface
             );
         }
         $this->container['article_number_search'] = $article_number_search;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\CustomParameter[]
-     */
-    public function getCustomParameters()
-    {
-        return $this->container['custom_parameters'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\CustomParameter[] $custom_parameters may be used to provide custom parameters, such as for custom classes
-     *
-     * @return $this
-     */
-    public function setCustomParameters($custom_parameters)
-    {
-        $this->container['custom_parameters'] = $custom_parameters;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\Filter[]
-     */
-    public function getFilters()
-    {
-        return $this->container['filters'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\Filter[] $filters the filters to limit the search result
-     *
-     * @return $this
-     */
-    public function setFilters($filters)
-    {
-        $this->container['filters'] = $filters;
 
         return $this;
     }

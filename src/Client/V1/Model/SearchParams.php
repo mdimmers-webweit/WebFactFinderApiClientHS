@@ -35,22 +35,17 @@ class SearchParams extends SearchParamsBase implements ModelV1Interface
      */
     public static function swaggerTypes(): array
     {
-        return [
+        $result = parent::swaggerTypes();
+
+        $result += [
             'ab_test' => 'map[string,string]',
-            'advisor_status' => static::getModelClass('AdvisorCampaignStatusHolder'),
             'article_number' => 'bool',
-            'channel' => 'string',
-            'custom_parameters' => static::getModelClass('CustomParameter', true),
-            'filters' => static::getModelClass('Filter', true),
             'follow_search' => 'int',
             'no_article_number_search' => 'bool',
-            'page' => 'int',
-            'query' => 'string',
-            'hits_per_page' => 'int',
-            'search_field' => 'string',
             'seo_path' => 'string',
-            'sort_items' => static::getModelClass('SortItem', true),
         ];
+
+        return $result;
     }
 
     /**
@@ -61,22 +56,19 @@ class SearchParams extends SearchParamsBase implements ModelV1Interface
      */
     public static function attributeMap(): array
     {
-        return [
+        $result = parent::attributeMap();
+
+        $result += [
             'ab_test' => 'abTest',
-            'advisor_status' => 'advisorStatus',
             'article_number' => 'articleNumber',
-            'channel' => 'channel',
-            'custom_parameters' => 'customParameters',
-            'filters' => 'filters',
             'follow_search' => 'followSearch',
             'no_article_number_search' => 'noArticleNumberSearch',
-            'page' => 'page',
-            'query' => 'query',
             'hits_per_page' => 'resultsPerPage',
-            'search_field' => 'searchField',
             'seo_path' => 'seoPath',
             'sort_items' => 'sortsList',
         ];
+
+        return $result;
     }
 
     /**
@@ -134,26 +126,6 @@ class SearchParams extends SearchParamsBase implements ModelV1Interface
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\AdvisorCampaignStatusHolder
-     */
-    public function getAdvisorStatus()
-    {
-        return $this->container['advisor_status'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\AdvisorCampaignStatusHolder $advisor_status advisor_status
-     *
-     * @return $this
-     */
-    public function setAdvisorStatus($advisor_status)
-    {
-        $this->container['advisor_status'] = $advisor_status;
-
-        return $this;
-    }
-
-    /**
      * @return bool
      */
     public function getArticleNumber()
@@ -169,46 +141,6 @@ class SearchParams extends SearchParamsBase implements ModelV1Interface
     public function setArticleNumber($article_number)
     {
         $this->container['article_number'] = $article_number;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\CustomParameter[]
-     */
-    public function getCustomParameters()
-    {
-        return $this->container['custom_parameters'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\CustomParameter[] $custom_parameters custom_parameters
-     *
-     * @return $this
-     */
-    public function setCustomParameters($custom_parameters)
-    {
-        $this->container['custom_parameters'] = $custom_parameters;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Filter[]
-     */
-    public function getFilters()
-    {
-        return $this->container['filters'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Filter[] $filters filters
-     *
-     * @return $this
-     */
-    public function setFilters($filters)
-    {
-        $this->container['filters'] = $filters;
 
         return $this;
     }
@@ -261,26 +193,6 @@ class SearchParams extends SearchParamsBase implements ModelV1Interface
     public function setPage(?int $page)
     {
         $this->container['page'] = $page;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getResultsPerPage()
-    {
-        return $this->container['results_per_page'];
-    }
-
-    /**
-     * @param int $results_per_page results_per_page
-     *
-     * @return $this
-     */
-    public function setResultsPerPage($results_per_page)
-    {
-        $this->container['results_per_page'] = $results_per_page;
 
         return $this;
     }

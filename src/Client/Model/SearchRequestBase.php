@@ -24,7 +24,7 @@ namespace Web\FactFinderApi\Client\Model;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-abstract class SearchRequestBase extends BaseModel
+abstract class SearchRequestBase extends NavigationRequestBase
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -33,12 +33,14 @@ abstract class SearchRequestBase extends BaseModel
      */
     public static function swaggerTypes(): array
     {
-        return [
+        $result = parent::swaggerTypes();
+
+        $result += [
             'params' => static::getModelClass('SearchParams'),
-            'search_control_params' => static::getModelClass('SearchControlParams'),
-            'sid' => 'string',
             'user_input' => 'string',
         ];
+
+        return $result;
     }
 
     /**
@@ -49,28 +51,14 @@ abstract class SearchRequestBase extends BaseModel
      */
     public static function attributeMap(): array
     {
-        return [
+        $result = parent::attributeMap();
+
+        $result += [
             'params' => 'params',
-            'search_control_params' => 'searchControlParams',
-            'sid' => 'sid',
             'user_input' => 'userInput',
         ];
-    }
 
-    /**
-     * Show all the invalid properties with reasons.
-     *
-     * @return array invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['params'] === null) {
-            $invalidProperties[] = "'params' can't be null";
-        }
-
-        return $invalidProperties;
+        return $result;
     }
 
     /**
@@ -89,46 +77,6 @@ abstract class SearchRequestBase extends BaseModel
     public function setParams($params)
     {
         $this->container['params'] = $params;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\SearchControlParams
-     */
-    public function getSearchControlParams()
-    {
-        return $this->container['search_control_params'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\SearchControlParams $search_control_params The search control parameter to control how the search will be executed. E.g. if campaigns should be used.
-     *
-     * @return $this
-     */
-    public function setSearchControlParams($search_control_params)
-    {
-        $this->container['search_control_params'] = $search_control_params;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSid()
-    {
-        return $this->container['sid'];
-    }
-
-    /**
-     * @param string $sid the session ID of the user sending this search request
-     *
-     * @return $this
-     */
-    public function setSid($sid)
-    {
-        $this->container['sid'] = $sid;
 
         return $this;
     }

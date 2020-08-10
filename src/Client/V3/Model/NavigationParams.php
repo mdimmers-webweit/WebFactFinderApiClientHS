@@ -17,7 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V3\Model;
 
-use Web\FactFinderApi\Client\Model\BaseModel;
+use Web\FactFinderApi\Client\Model\NavigationParamsBase;
 
 /**
  * NavigationParams Class Doc Comment
@@ -26,7 +26,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class NavigationParams extends BaseModel implements ModelV3Interface
+class NavigationParams extends NavigationParamsBase implements ModelV3Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -35,18 +35,15 @@ class NavigationParams extends BaseModel implements ModelV3Interface
      */
     public static function swaggerTypes(): array
     {
-        return [
-            'advisor_status' => static::getModelClass('AdvisorCampaignStatusHolder'),
-            'channel' => 'string',
-            'custom_parameters' => static::getModelClass('CustomParameter', true),
-            'filters' => static::getModelClass('Filter', true),
-            'hits_per_page' => 'int',
+        $result = parent::swaggerTypes();
+
+        $result += [
             'location' => static::getModelClass('Location'),
             'market_id' => static::getModelClass('Filter'),
             'max_count_variants' => 'int',
-            'page' => 'int',
-            'sort_items' => static::getModelClass('SortItem', true),
         ];
+
+        return $result;
     }
 
     /**
@@ -57,18 +54,15 @@ class NavigationParams extends BaseModel implements ModelV3Interface
      */
     public static function attributeMap(): array
     {
-        return [
-            'advisor_status' => 'advisorStatus',
-            'channel' => 'channel',
-            'custom_parameters' => 'customParameters',
-            'filters' => 'filters',
-            'hits_per_page' => 'hitsPerPage',
+        $result = parent::attributeMap();
+
+        $result += [
             'location' => 'location',
             'market_id' => 'marketId',
             'max_count_variants' => 'maxCountVariants',
-            'page' => 'page',
-            'sort_items' => 'sortItems',
         ];
+
+        return $result;
     }
 
     /**
@@ -95,99 +89,11 @@ class NavigationParams extends BaseModel implements ModelV3Interface
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\AdvisorCampaignStatusHolder
-     */
-    public function getAdvisorStatus()
-    {
-        return $this->container['advisor_status'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\AdvisorCampaignStatusHolder $advisor_status describes the advisor campaign that is currently active
+     * @param int|null $hits_per_page number of products on a single page
      *
      * @return $this
      */
-    public function setAdvisorStatus($advisor_status)
-    {
-        $this->container['advisor_status'] = $advisor_status;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getChannel()
-    {
-        return $this->container['channel'];
-    }
-
-    /**
-     * @param string $channel the channel in which the search should be performed
-     *
-     * @return $this
-     */
-    public function setChannel($channel)
-    {
-        $this->container['channel'] = $channel;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\CustomParameter[]
-     */
-    public function getCustomParameters()
-    {
-        return $this->container['custom_parameters'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\CustomParameter[] $custom_parameters may be used to provide custom parameters, such as for custom classes
-     *
-     * @return $this
-     */
-    public function setCustomParameters($custom_parameters)
-    {
-        $this->container['custom_parameters'] = $custom_parameters;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V3\Model\Filter[]
-     */
-    public function getFilters()
-    {
-        return $this->container['filters'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V3\Model\Filter[] $filters the filters to limit the search result
-     *
-     * @return $this
-     */
-    public function setFilters($filters)
-    {
-        $this->container['filters'] = $filters;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getHitsPerPage()
-    {
-        return $this->container['hits_per_page'];
-    }
-
-    /**
-     * @param int $hits_per_page number of products on a single page
-     *
-     * @return $this
-     */
-    public function setHitsPerPage($hits_per_page)
+    public function setHitsPerPage(?int $hits_per_page = null)
     {
         if (!\is_null($hits_per_page) && ($hits_per_page < 0)) {
             throw new \InvalidArgumentException('invalid value for $hits_per_page when calling NavigationParams., must be bigger than or equal to 0.');

@@ -107,6 +107,11 @@ class Configuration
      */
     private $postfix;
 
+    /**
+     * @var string
+     */
+    private $defaultChannel;
+
     public function __construct(string $username, string $password, string $host)
     {
         $this->tempFolderPath = \sys_get_temp_dir();
@@ -114,6 +119,16 @@ class Configuration
         $this->username = $username;
         $this->password = $password;
         $this->host = $host;
+    }
+
+    public function setDefaultChannel(string $channel): void
+    {
+        $this->defaultChannel = $channel;
+    }
+
+    public function getDefaultChannel(): string
+    {
+        return $this->defaultChannel;
     }
 
     /**
