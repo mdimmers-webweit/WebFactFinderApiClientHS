@@ -18,9 +18,10 @@
 namespace Web\FactFinderApi\Client\V1\Api;
 
 use GuzzleHttp6\Psr7\Request;
+use Web\FactFinderApi\Client\Api\CampaignApiInterface;
 use Web\FactFinderApi\Client\ObjectSerializer;
 
-class CampaignApi extends ApiClient
+class CampaignApi extends ApiClient implements CampaignApiInterface
 {
     /**
      * Operation getPageCampaignsUsingGET
@@ -84,7 +85,7 @@ class CampaignApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\Campaign[]
      */
-    public function getProductCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
+    public function getProductCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, ?string $sid = null, ?string $advisor_status = null): array
     {
         list($response) = $this->getProductCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only, $sid, $advisor_status);
 
@@ -177,7 +178,7 @@ class CampaignApi extends ApiClient
      *
      * @return \Web\FactFinderApi\Client\V1\Model\Campaign[]
      */
-    public function getShoppingCartCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, $sid = null, $advisor_status = null)
+    public function getShoppingCartCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, ?string $sid = null, ?string $advisor_status = null): array
     {
         list($response) = $this->getShoppingCartCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only, $sid, $advisor_status);
 

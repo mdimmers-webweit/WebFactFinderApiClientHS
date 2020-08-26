@@ -20,6 +20,7 @@ namespace Web\FactFinderApi\Client\V3\Api;
 use GuzzleHttp6\Client;
 use GuzzleHttp6\Psr7\Request;
 use GuzzleHttp6\RequestOptions;
+use Web\FactFinderApi\Client\Api\CampaignApiInterface;
 use Web\FactFinderApi\Client\ApiClient;
 use Web\FactFinderApi\Client\ObjectSerializer;
 
@@ -30,7 +31,7 @@ use Web\FactFinderApi\Client\ObjectSerializer;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class CampaignApi extends ApiClient
+class CampaignApi extends ApiClient implements CampaignApiInterface
 {
     /**
      * Operation getPageCampaignsUsingGET
@@ -85,13 +86,14 @@ class CampaignApi extends ApiClient
      * @param string $product_number Use this parameter to pass a product ID for which you wish to obtain campaigns. (required)
      * @param bool   $ids_only       If the value true is passed, then only the record IDs will be returned, streamlining the results. If you do not need the other information in the results, this will help you to improve performance. (optional, default to false)
      * @param string $sid            This parameter is used to pass an id for the user session. This is important for recognising the user, if you want to trigger personalised campaigns, as well as for FACT-Finder tracking. (optional)
+     * @param string $advisor_status Unused
      *
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      *
      * @return \Web\FactFinderApi\Client\V3\Model\Campaign[]
      */
-    public function getProductCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, $sid = null)
+    public function getProductCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, ?string $sid = null, ?string $advisor_status = null): array
     {
         list($response) = $this->getProductCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only, $sid);
 
@@ -174,13 +176,14 @@ class CampaignApi extends ApiClient
      * @param string[] $product_number Use this parameter to pass product ID(s) for which you wish to obtain campaigns. (required)
      * @param bool     $ids_only       If the value true is passed, then only the record IDs will be returned, streamlining the results. If you do not need the other information in the results, this will help you to improve performance. (optional, default to false)
      * @param string   $sid            This parameter is used to pass an id for the user session. This is important for recognising the user, if you want to trigger personalised campaigns, as well as for FACT-Finder tracking. (optional)
+     * @param string   $advisor_status Unused
      *
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      *
      * @return \Web\FactFinderApi\Client\V3\Model\Campaign[]
      */
-    public function getShoppingCartCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, $sid = null)
+    public function getShoppingCartCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, ?string $sid = null, ?string $advisor_status = null): array
     {
         list($response) = $this->getShoppingCartCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only, $sid);
 
