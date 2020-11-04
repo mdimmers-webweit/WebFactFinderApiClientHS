@@ -17,9 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V3\Api;
 
-use GuzzleHttp6\Client;
 use GuzzleHttp6\Psr7\Request;
-use GuzzleHttp6\RequestOptions;
 use Web\FactFinderApi\Client\ApiClient;
 use Web\FactFinderApi\Client\ApiException;
 use Web\FactFinderApi\Client\ObjectSerializer;

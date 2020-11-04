@@ -17,7 +17,7 @@
 
 namespace Web\FactFinderApi\Client\V1\Model;
 
-use Web\FactFinderApi\Client\Model\BaseModel;
+use Web\FactFinderApi\Client\Model\ResultSortItemBase;
 
 /**
  * ResultSortItem Class Doc Comment
@@ -26,11 +26,8 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ResultSortItem extends BaseModel implements ModelV1Interface
+class ResultSortItem extends ResultSortItemBase implements ModelV1Interface
 {
-    const ORDER_ASC = 'asc';
-    const ORDER_DESC = 'desc';
-
     /**
      * Array of property to type mappings. Used for (de)serialization
      *
@@ -38,14 +35,13 @@ class ResultSortItem extends BaseModel implements ModelV1Interface
      */
     public static function swaggerTypes(): array
     {
-        return [
-            'description' => 'string',
-            'name' => 'string',
-            'order' => 'string',
+        $result = parent::swaggerTypes();
+
+        $result = \array_merge($result, [
             'relevance_sort_item' => 'bool',
-            'search_params' => static::getModelClass('SearchParams'),
-            'selected' => 'bool',
-        ];
+        ]);
+
+        return $result;
     }
 
     /**
@@ -56,129 +52,13 @@ class ResultSortItem extends BaseModel implements ModelV1Interface
      */
     public static function attributeMap(): array
     {
-        return [
-            'description' => 'description',
-            'name' => 'name',
-            'order' => 'order',
+        $result = parent::attributeMap();
+
+        $result = \array_merge($result, [
             'relevance_sort_item' => 'relevanceSortItem',
-            'search_params' => 'searchParams',
-            'selected' => 'selected',
-        ];
-    }
+        ]);
 
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getOrderAllowableValues()
-    {
-        return [
-            self::ORDER_ASC,
-            self::ORDER_DESC,
-        ];
-    }
-
-    /**
-     * Show all the invalid properties with reasons.
-     *
-     * @return array invalid properties with reasons
-     */
-    public function listInvalidProperties(): array
-    {
-        $invalidProperties = [];
-
-        if ($this->container['description'] === null) {
-            $invalidProperties[] = "'description' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['order'] === null) {
-            $invalidProperties[] = "'order' can't be null";
-        }
-        $allowedValues = $this->getOrderAllowableValues();
-        if (!\is_null($this->container['order']) && !\in_array($this->container['order'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
-                "invalid value for 'order', must be one of '%s'",
-                \implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['selected'] === null) {
-            $invalidProperties[] = "'selected' can't be null";
-        }
-
-        return $invalidProperties;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * @param string $description description
-     *
-     * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * @param string $name name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getOrder()
-    {
-        return $this->container['order'];
-    }
-
-    /**
-     * @param string $order order
-     *
-     * @return $this
-     */
-    public function setOrder($order)
-    {
-        $allowedValues = $this->getOrderAllowableValues();
-        if (!\in_array($order, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                \sprintf(
-                    "Invalid value for 'order', must be one of '%s'",
-                    \implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['order'] = $order;
-
-        return $this;
+        return $result;
     }
 
     /**
@@ -197,46 +77,6 @@ class ResultSortItem extends BaseModel implements ModelV1Interface
     public function setRelevanceSortItem($relevance_sort_item)
     {
         $this->container['relevance_sort_item'] = $relevance_sort_item;
-
-        return $this;
-    }
-
-    /**
-     * @return \Web\FactFinderApi\Client\V1\Model\SearchParams
-     */
-    public function getSearchParams()
-    {
-        return $this->container['search_params'];
-    }
-
-    /**
-     * @param \Web\FactFinderApi\Client\V1\Model\SearchParams $search_params search_params
-     *
-     * @return $this
-     */
-    public function setSearchParams($search_params)
-    {
-        $this->container['search_params'] = $search_params;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getSelected()
-    {
-        return $this->container['selected'];
-    }
-
-    /**
-     * @param bool $selected selected
-     *
-     * @return $this
-     */
-    public function setSelected($selected)
-    {
-        $this->container['selected'] = $selected;
 
         return $this;
     }
