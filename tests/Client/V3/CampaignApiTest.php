@@ -7,6 +7,7 @@
 namespace Web\FactFinderApi\Tests\Client\V3;
 
 use GuzzleHttp6\Client;
+use Monolog\Logger;
 use Web\FactFinderApi\Client\V3\Api\CampaignApi;
 use Web\FactFinderApi\Client\V3\Model\Campaign;
 
@@ -19,7 +20,7 @@ class CampaignApiTest extends AbstractTestCase
 
     public function setUp(): void
     {
-        $this->sut = new CampaignApi(new Client(), $this->getConfiguration());
+        $this->sut = new CampaignApi(new Client(), $this->getConfiguration(), new Logger('dummy'));
     }
 
     /** @test */

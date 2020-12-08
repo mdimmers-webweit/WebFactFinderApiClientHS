@@ -7,6 +7,7 @@
 namespace Web\FactFinderApi\Tests\Client\V1;
 
 use GuzzleHttp6\Client;
+use Monolog\Logger;
 use Web\FactFinderApi\Client\ApiException;
 use Web\FactFinderApi\Client\V1\Api\SearchApi;
 use Web\FactFinderApi\Client\V1\Model\CustomParameter;
@@ -25,7 +26,7 @@ class SearchApiTest extends AbstractTestCase
 
     public function setUp(): void
     {
-        $this->sut = new SearchApi(new Client(), $this->getConfiguration());
+        $this->sut = new SearchApi(new Client(), $this->getConfiguration(), new Logger('dummy'));
     }
 
     /** @test */

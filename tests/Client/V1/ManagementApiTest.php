@@ -7,6 +7,7 @@
 namespace Web\FactFinderApi\Tests\Client\V1;
 
 use GuzzleHttp6\Client;
+use Monolog\Logger;
 use Web\FactFinderApi\Client\V1\Api\ManagementApi;
 
 class ManagementApiTest extends AbstractTestCase
@@ -18,7 +19,7 @@ class ManagementApiTest extends AbstractTestCase
 
     public function setUp(): void
     {
-        $this->sut = new ManagementApi(new Client(), $this->getConfiguration());
+        $this->sut = new ManagementApi(new Client(), $this->getConfiguration(), new Logger('dummy'));
     }
 
     /** @test */

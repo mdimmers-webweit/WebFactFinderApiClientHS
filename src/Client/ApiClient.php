@@ -6,12 +6,13 @@
 
 namespace Web\FactFinderApi\Client;
 
-use GuzzleHttp6\Client;
 use GuzzleHttp6\ClientInterface;
 use GuzzleHttp6\Exception\RequestException;
 use GuzzleHttp6\Promise\PromiseInterface;
 use GuzzleHttp6\Psr7\Request;
 use GuzzleHttp6\RequestOptions;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Log\LoggerInterface;
 use Web\FactFinderApi\Client\Model\ApiError;
 
 abstract class ApiClient implements ApiClientInterface
@@ -26,12 +27,19 @@ abstract class ApiClient implements ApiClientInterface
      */
     protected $config;
 
+    /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
     public function __construct(
         ClientInterface $client,
-        Configuration $config
+        Configuration $config,
+        LoggerInterface $logger
     ) {
         $this->client = $client;
         $this->config = $config;
+        $this->logger = $logger;
     }
 
     public function getConfig(): Configuration
@@ -44,22 +52,17 @@ abstract class ApiClient implements ApiClientInterface
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        \sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
+                function ($response) use ($request) {
+                    $this->logRequest($request, $response);
+
+                    return [
+                        null,
+                        $response->getStatusCode(),
                         $response->getHeaders(),
-                        $response->getBody()
-                    );
+                    ];
+                },
+                function ($exception) use ($request): void {
+                    $this->processException($exception, $request);
                 }
             );
     }
@@ -69,16 +72,10 @@ abstract class ApiClient implements ApiClientInterface
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                            $content = \json_decode($content);
-                        }
-                    }
+                function ($response) use ($returnType, $request) {
+                    $this->logRequest($request, $response);
+
+                    $content = $this->processResponseBody($response, $returnType);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -86,21 +83,30 @@ abstract class ApiClient implements ApiClientInterface
                         $response->getHeaders(),
                     ];
                 },
-                function ($exception): void {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        \sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
+                function ($exception) use ($request): void {
+                    $this->processException($exception, $request);
                 }
             );
+    }
+
+    /**
+     * Create http client option
+     *
+     * @throws \RuntimeException on file opening failure
+     *
+     * @return array of http client options
+     */
+    protected function createHttpClientOption()
+    {
+        $options = [];
+        if ($this->config->getDebug()) {
+            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
+            if (!$options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            }
+        }
+
+        return $options;
     }
 
     protected function getQuery(string $resourcePath, array $queryParams): Request
@@ -145,46 +151,13 @@ abstract class ApiClient implements ApiClientInterface
     protected function executeRequest(Request $request, string $returnType): array
     {
         try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+            $response = $this->processRequest($request);
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                    $content = \json_decode($content);
-                }
-            }
+            $content = $this->processResponseBody($response, $returnType);
 
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
-                $statusCode,
+                $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
@@ -207,34 +180,13 @@ abstract class ApiClient implements ApiClientInterface
     protected function executeEmptyRequest(Request $request): array
     {
         try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
+            $response = $this->processRequest($request);
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    \sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
+            return [
+                null,
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
         } catch (ApiException $e) {
             if (\in_array($e->getCode(), [400, 401, 403, 500], true)) {
                 $data = ObjectSerializer::deserialize(
@@ -263,26 +215,6 @@ abstract class ApiClient implements ApiClientInterface
         return $this->query('DELETE', $resourcePath, $queryParams, $params, $oauth);
     }
 
-    /**
-     * Create http client option
-     *
-     * @throws \RuntimeException on file opening failure
-     *
-     * @return array of http client options
-     */
-    protected function createHttpClientOption()
-    {
-        $options = [];
-        if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
-        }
-
-        return $options;
-    }
-
     protected function addChannelToResourcePath($channel, string $resourcePath): string
     {
         if ($channel !== null) {
@@ -294,6 +226,98 @@ abstract class ApiClient implements ApiClientInterface
         }
 
         return $resourcePath;
+    }
+
+    protected function logRequest(Request $request, ?ResponseInterface $response = null): void
+    {
+        $this->logger->info('FACT-Finder request', $this->getLogParams($request, $response));
+    }
+
+    protected function logError(Request $request, ?ResponseInterface $response = null): void
+    {
+        $this->logger->error('FACT-Finder error', $this->getLogParams($request, $response));
+    }
+
+    protected function getLogParams(Request $request, ?ResponseInterface $response = null): array
+    {
+        return [
+            'uri' => (string) $request->getUri(),
+            'body' => (string) $request->getBody()->getContents(),
+            'code' => $response ? $response->getStatusCode() : null,
+            'responseBody' => $response ? $response->getBody()->getContents() : null,
+        ];
+    }
+
+    protected function processRequest(Request $request): ResponseInterface
+    {
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $this->logError($request, $e->getResponse());
+
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            $this->logError($request, $response);
+            throw new ApiException(
+                \sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                $response->getBody()
+            );
+        }
+
+        $this->logRequest($request, $response);
+
+        return $response;
+    }
+
+    protected function processResponseBody(ResponseInterface $response, string $returnType)
+    {
+        $responseBody = $response->getBody();
+
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = $responseBody->getContents();
+            if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
+                $content = \json_decode($content);
+            }
+        }
+
+        return $content;
+    }
+
+    protected function processException($exception, Request $request): void
+    {
+        $response = $exception->getResponse();
+        $statusCode = $response->getStatusCode();
+
+        $this->logError($request, $response);
+
+        throw new ApiException(
+            \sprintf(
+                '[%d] Error connecting to the API (%s)',
+                $statusCode,
+                $exception->getRequest()->getUri()
+            ),
+            $statusCode,
+            $response->getHeaders(),
+            $response->getBody()
+        );
     }
 
     private function query(string $action, string $resourcePath, array $queryParams, $params, bool $oauth = false): Request

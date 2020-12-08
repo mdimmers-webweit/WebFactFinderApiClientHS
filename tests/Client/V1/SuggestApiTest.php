@@ -7,6 +7,7 @@
 namespace Web\FactFinderApi\Tests\Client\V1;
 
 use GuzzleHttp6\Client;
+use Monolog\Logger;
 use Web\FactFinderApi\Client\V1\Api\SuggestApi;
 use Web\FactFinderApi\Client\V1\Model\SearchParams;
 
@@ -19,7 +20,7 @@ class SuggestApiTest extends AbstractTestCase
 
     public function setUp(): void
     {
-        $this->sut = new SuggestApi(new Client(), $this->getConfiguration());
+        $this->sut = new SuggestApi(new Client(), $this->getConfiguration(), new Logger('dummy'));
     }
 
     /** @test */
