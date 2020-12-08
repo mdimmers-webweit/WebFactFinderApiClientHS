@@ -112,7 +112,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\BreadCrumbTrailItem[]
+     * @return \Web\FactFinderApi\Client\V4\Model\BreadCrumbTrailItem[]
      */
     public function getBreadCrumbTrail()
     {
@@ -120,7 +120,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V3\Model\BreadCrumbTrailItem[] $bread_crumb_trail Describes the actions that lead to the current result. This may be used to return to an intermediate search result.
+     * @param \Web\FactFinderApi\Client\V4\Model\BreadCrumbTrailItem[] $bread_crumb_trail Describes the actions that lead to the current result. This may be used to return to an intermediate search result.
      *
      * @return $this
      */
@@ -132,7 +132,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\Campaign[]
+     * @return \Web\FactFinderApi\Client\V4\Model\Campaign[]
      */
     public function getCampaigns()
     {
@@ -140,7 +140,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V3\Model\Campaign[] $campaigns contains the active campaigns for this result
+     * @param \Web\FactFinderApi\Client\V4\Model\Campaign[] $campaigns contains the active campaigns for this result
      *
      * @return $this
      */
@@ -152,7 +152,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\Facet[]
+     * @return \Web\FactFinderApi\Client\V4\Model\Facet[]
      */
     public function getFacets()
     {
@@ -160,7 +160,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V3\Model\Facet[] $facets the ASN filters (for after search navigation)
+     * @param \Web\FactFinderApi\Client\V4\Model\Facet[] $facets the ASN filters (for after search navigation)
      *
      * @return $this
      */
@@ -192,7 +192,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\Filter[]
+     * @return \Web\FactFinderApi\Client\V4\Model\Filter[]
      */
     public function getFilters()
     {
@@ -200,7 +200,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V3\Model\Filter[] $filters the filter applied for this result
+     * @param \Web\FactFinderApi\Client\V4\Model\Filter[] $filters the filter applied for this result
      *
      * @return $this
      */
@@ -212,7 +212,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\SearchRecord[]
+     * @return \Web\FactFinderApi\Client\V4\Model\SearchRecord[]
      */
     public function getHits()
     {
@@ -220,7 +220,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V3\Model\SearchRecord[] $hits the relevant products
+     * @param \Web\FactFinderApi\Client\V4\Model\SearchRecord[] $hits the relevant products
      *
      * @return $this
      */
@@ -232,7 +232,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\Paging
+     * @return \Web\FactFinderApi\Client\V4\Model\Paging
      */
     public function getPaging()
     {
@@ -240,7 +240,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V3\Model\Paging $paging defines the paging properties
+     * @param \Web\FactFinderApi\Client\V4\Model\Paging $paging defines the paging properties
      *
      * @return $this
      */
@@ -292,7 +292,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\SearchControlParams
+     * @return \Web\FactFinderApi\Client\V4\Model\SearchControlParams
      */
     public function getSearchControlParams()
     {
@@ -300,7 +300,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V3\Model\SearchControlParams $search_control_params the search control parameters used to generate this search result
+     * @param \Web\FactFinderApi\Client\V4\Model\SearchControlParams $search_control_params the search control parameters used to generate this search result
      *
      * @return $this
      */
@@ -312,7 +312,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\SearchParams
+     * @return \Web\FactFinderApi\Client\V4\Model\SearchParams
      */
     public function getSearchParams()
     {
@@ -320,7 +320,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V3\Model\SearchParams $search_params the search parameter used to generate this search result
+     * @param \Web\FactFinderApi\Client\V4\Model\SearchParams $search_params the search parameter used to generate this search result
      *
      * @return $this
      */
@@ -332,7 +332,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\SingleWordSearchResult[]
+     * @return \Web\FactFinderApi\Client\V4\Model\SingleWordSearchResult[]
      */
     public function getSingleWordResults()
     {
@@ -340,7 +340,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V3\Model\SingleWordSearchResult[] $single_word_results contains the result from the single word search
+     * @param \Web\FactFinderApi\Client\V4\Model\SingleWordSearchResult[] $single_word_results contains the result from the single word search
      *
      * @return $this
      */
@@ -352,7 +352,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V3\Model\ResultSortItem[]
+     * @return \Web\FactFinderApi\Client\V4\Model\ResultSortItem[]
      */
     public function getSortItems()
     {
@@ -360,7 +360,7 @@ abstract class ResultBase extends BaseModel
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V3\Model\ResultSortItem[] $sort_items Contains the available sortings
+     * @param \Web\FactFinderApi\Client\V4\Model\ResultSortItem[] $sort_items Contains the available sortings
      *
      * @return $this
      */

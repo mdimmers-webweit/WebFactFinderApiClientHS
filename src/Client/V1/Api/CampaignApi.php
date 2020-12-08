@@ -85,7 +85,7 @@ class CampaignApi extends ApiClient implements CampaignApiInterface
      *
      * @return \Web\FactFinderApi\Client\V1\Model\Campaign[]
      */
-    public function getProductCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, ?string $sid = null, ?string $advisor_status = null): array
+    public function getProductCampaignsUsingGET(string $channel, $product_number, string $id_type = 'productNumber', bool $ids_only = false, ?string $sid = null, ?string $advisor_status = null): array
     {
         list($response) = $this->getProductCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only, $sid, $advisor_status);
 

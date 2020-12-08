@@ -1,0 +1,164 @@
+<?php declare(strict_types=1);
+/*
+ * FACT-Finder REST API Client
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
+
+
+
+namespace Web\FactFinderApi\Client\V4\Api;
+
+use GuzzleHttp6\Psr7\Request;
+use Web\FactFinderApi\Client\ApiClient;
+use Web\FactFinderApi\Client\ObjectSerializer;
+use Web\FactFinderApi\Client\V4\Model\PredictiveBasketResult;
+
+/**
+ * PredbasketApi Class Doc Comment
+ *
+ * @author   Swagger Codegen team
+ *
+ * @see     https://github.com/swagger-api/swagger-codegen
+ */
+class PredbasketApi extends ApiClient
+{
+    /**
+     * Operation getPredictionsUsingGET
+     *
+     * @param string   $channel     channel (required)
+     * @param string   $user_id     This parameter contains a unique user identifier. It is essential for predictive basket results. (required)
+     * @param int      $max_results Limit for the amount of predictions to return. (optional, default to 0)
+     * @param string[] $blacklist   IDs of products to exclude from predictions. (optional)
+     * @param bool     $ids_only    If the value true is passed, then only the record IDs will be returned, streamlining the results. If you do not need the other information in the results, this will help you to improve performance. (optional, default to false)
+     *
+     * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     *
+     * @return \Web\FactFinderApi\Client\V4\Model\PredictiveBasketResult
+     */
+    public function getPredictionsUsingGET(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
+    {
+        list($response) = $this->getPredictionsUsingGETWithHttpInfo($channel, $user_id, $max_results, $blacklist, $ids_only);
+
+        return $response;
+    }
+
+    /**
+     * Operation getPredictionsUsingGETWithHttpInfo
+     *
+     * @param string   $channel     channel (required)
+     * @param string   $user_id     This parameter contains a unique user identifier. It is essential for predictive basket results. (required)
+     * @param int      $max_results Limit for the amount of predictions to return. (optional, default to 0)
+     * @param string[] $blacklist   IDs of products to exclude from predictions. (optional)
+     * @param bool     $ids_only    If the value true is passed, then only the record IDs will be returned, streamlining the results. If you do not need the other information in the results, this will help you to improve performance. (optional, default to false)
+     *
+     * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     *
+     * @return array of \Web\FactFinderApi\Client\V4\Model\PredictiveBasketResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPredictionsUsingGETWithHttpInfo(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
+    {
+        $request = $this->getPredictionsUsingGETRequest($channel, $user_id, $max_results, $blacklist, $ids_only);
+
+        return $this->executeRequest($request, PredictiveBasketResult::class);
+    }
+
+    /**
+     * Operation getPredictionsUsingGETAsync
+     *
+     * @param string   $channel     channel (required)
+     * @param string   $user_id     This parameter contains a unique user identifier. It is essential for predictive basket results. (required)
+     * @param int      $max_results Limit for the amount of predictions to return. (optional, default to 0)
+     * @param string[] $blacklist   IDs of products to exclude from predictions. (optional)
+     * @param bool     $ids_only    If the value true is passed, then only the record IDs will be returned, streamlining the results. If you do not need the other information in the results, this will help you to improve performance. (optional, default to false)
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @return \GuzzleHttp6\Promise\PromiseInterface
+     */
+    public function getPredictionsUsingGETAsync(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
+    {
+        return $this->getPredictionsUsingGETAsyncWithHttpInfo($channel, $user_id, $max_results, $blacklist, $ids_only)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPredictionsUsingGETAsyncWithHttpInfo
+     *
+     * @param string   $channel     channel (required)
+     * @param string   $user_id     This parameter contains a unique user identifier. It is essential for predictive basket results. (required)
+     * @param int      $max_results Limit for the amount of predictions to return. (optional, default to 0)
+     * @param string[] $blacklist   IDs of products to exclude from predictions. (optional)
+     * @param bool     $ids_only    If the value true is passed, then only the record IDs will be returned, streamlining the results. If you do not need the other information in the results, this will help you to improve performance. (optional, default to false)
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @return \GuzzleHttp6\Promise\PromiseInterface
+     */
+    public function getPredictionsUsingGETAsyncWithHttpInfo(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
+    {
+        $request = $this->getPredictionsUsingGETRequest($channel, $user_id, $max_results, $blacklist, $ids_only);
+
+        return $this->executeAsyncRequest($request, \Web\FactFinderApi\Client\V4\Model\PredictiveBasketResult::class);
+    }
+
+    /**
+     * Create request for operation 'getPredictionsUsingGET'
+     *
+     * @param string   $channel     channel (required)
+     * @param string   $user_id     This parameter contains a unique user identifier. It is essential for predictive basket results. (required)
+     * @param int      $max_results Limit for the amount of predictions to return. (optional, default to 0)
+     * @param string[] $blacklist   IDs of products to exclude from predictions. (optional)
+     * @param bool     $ids_only    If the value true is passed, then only the record IDs will be returned, streamlining the results. If you do not need the other information in the results, this will help you to improve performance. (optional, default to false)
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @return Request
+     */
+    protected function getPredictionsUsingGETRequest(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
+    {
+        // verify the required parameter 'channel' is set
+        if ($channel === null || (\is_array($channel) && \count($channel) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $channel when calling getPredictionsUsingGET'
+            );
+        }
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (\is_array($user_id) && \count($user_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $user_id when calling getPredictionsUsingGET'
+            );
+        }
+
+        $resourcePath = '/rest/v4/predictivebasket/{channel}';
+        $queryParams = [];
+        $httpBody = '';
+        // query params
+        if ($user_id !== null) {
+            $queryParams['userId'] = ObjectSerializer::toQueryValue($user_id);
+        }
+        // query params
+        if ($max_results !== null) {
+            $queryParams['maxResults'] = ObjectSerializer::toQueryValue($max_results);
+        }
+        // query params
+        if (\is_array($blacklist)) {
+            $queryParams['blacklist'] = $blacklist;
+        } elseif ($blacklist !== null) {
+            $queryParams['blacklist'] = ObjectSerializer::toQueryValue($blacklist);
+        }
+        // query params
+        if ($ids_only !== null) {
+            $queryParams['idsOnly'] = ObjectSerializer::toQueryValue($ids_only);
+        }
+
+        $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
+
+        return $this->getQuery($resourcePath, $queryParams);
+    }
+}

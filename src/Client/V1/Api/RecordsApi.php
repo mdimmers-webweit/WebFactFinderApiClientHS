@@ -65,7 +65,7 @@ class RecordsApi extends ApiClient
     {
         $request = $this->deleteUsingDELETERequest($channel, $record_id, $save);
 
-        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V3\Model\Campaign[]');
+        return $this->executeRequest($request, '\Web\FactFinderApi\Client\V4\Model\Campaign[]');
     }
 
     /**

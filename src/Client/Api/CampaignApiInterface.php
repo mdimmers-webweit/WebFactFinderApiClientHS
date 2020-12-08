@@ -12,5 +12,5 @@ interface CampaignApiInterface extends ApiClientInterface
 {
     public function getShoppingCartCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, ?string $sid = null, ?string $advisor_status = null): array;
 
-    public function getProductCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, ?string $sid = null, ?string $advisor_status = null): array;
+    public function getProductCampaignsUsingGET(string $channel, $product_number, string $id_type = 'productNumber', bool $ids_only = false, ?string $sid = null, ?string $advisor_status = null): array;
 }

@@ -22,7 +22,7 @@ use Web\FactFinderApi\Client\Api\SearchApiInterface;
 use Web\FactFinderApi\Client\Model\SearchRequestBase;
 use Web\FactFinderApi\Client\ObjectSerializer;
 use Web\FactFinderApi\Client\V1\Model\SearchRequest;
-use Web\FactFinderApi\Client\V3\Model\Result;
+use Web\FactFinderApi\Client\V4\Model\Result;
 
 /**
  * SearchApi Class Doc Comment
@@ -312,7 +312,7 @@ class SearchApi extends ApiClient implements SearchApiInterface
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      *
-     * @return array of \Web\FactFinderApi\Client\V3\Model\Result, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Web\FactFinderApi\Client\V4\Model\Result, HTTP status code, HTTP response headers (array of strings)
      */
     public function navigationUsingPOSTWithHttpInfo($navigation_request)
     {

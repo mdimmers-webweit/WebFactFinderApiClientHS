@@ -240,12 +240,18 @@ abstract class ApiClient implements ApiClientInterface
 
     protected function getLogParams(Request $request, ?ResponseInterface $response = null): array
     {
-        return [
+        $result = [
             'uri' => (string) $request->getUri(),
             'body' => (string) $request->getBody()->getContents(),
             'code' => $response ? $response->getStatusCode() : null,
             'responseBody' => $response ? $response->getBody()->getContents() : null,
         ];
+
+        if ($response) {
+            $response->getBody()->rewind();
+        }
+
+        return $result;
     }
 
     protected function processRequest(Request $request): ResponseInterface

@@ -34,7 +34,7 @@ class ModelResolver
 
     public function createUnifiedModel(string $modelName, ?array $data = null): BaseModel
     {
-        $class = self::createUnifiedModelClass($this->isNG ? 'V3' : 'V1', $modelName);
+        $class = self::createUnifiedModelClass($this->isNG ? 'V4' : 'V1', $modelName);
 
         return new $class($data);
     }
