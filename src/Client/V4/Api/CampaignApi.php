@@ -4,8 +4,6 @@
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
-
-
 namespace Web\FactFinderApi\Client\V4\Api;
 
 use GuzzleHttp6\Psr7\Request;
@@ -282,11 +280,11 @@ class CampaignApi extends ApiClient implements CampaignApiInterface
     /**
      * Create request for operation 'getProductCampaignsUsingGET'
      *
-     * @param string $channel        channel (required)
-     * @param string $id             Use this parameter to pass a ID (master or product) for which you wish to obtain campaigns.(required)
-     * @param string $id_type        Specifies which type of id is given.
-     * @param bool   $ids_only       If the value true is passed, then only the record IDs will be returned, streamlining the results. If you do not need the other information in the results, this will help you to improve performance. (optional, default to false)
-     * @param string $sid            This parameter is used to pass an id for the user session. This is important for recognising the user, if you want to trigger personalised campaigns, as well as for FACT-Finder tracking. (optional)
+     * @param string $channel  channel (required)
+     * @param string $id       Use this parameter to pass a ID (master or product) for which you wish to obtain campaigns.(required)
+     * @param string $id_type  specifies which type of id is given
+     * @param bool   $ids_only If the value true is passed, then only the record IDs will be returned, streamlining the results. If you do not need the other information in the results, this will help you to improve performance. (optional, default to false)
+     * @param string $sid      This parameter is used to pass an id for the user session. This is important for recognising the user, if you want to trigger personalised campaigns, as well as for FACT-Finder tracking. (optional)
      *
      * @throws \InvalidArgumentException
      *

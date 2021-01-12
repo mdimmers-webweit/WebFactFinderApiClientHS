@@ -8,6 +8,10 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
+            -   name: Install PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '7.4'
             -   uses: actions/checkout@v2
             -   name: Validate composer.json and composer.lock
                 run: composer validate --no-check-version
@@ -23,7 +27,7 @@ jobs:
                         ${{ runner.os }}-composer-
             -   name: Install dependencies
                 if: steps.composer-cache.outputs.cache-hit != 'true'
-                run: composer install --prefer-dist --no-progress --no-suggest
+                run: composer install --prefer-dist --no-progress
             -   name: Run unit tests
                 run: ./vendor/phpunit/phpunit/phpunit
                 env:

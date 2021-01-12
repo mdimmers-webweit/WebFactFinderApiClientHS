@@ -4,8 +4,6 @@
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
-
-
 namespace Web\FactFinderApi\Client\V4\Model;
 
 use Web\FactFinderApi\Client\Model\FilterValueBase;
@@ -21,8 +19,8 @@ class FilterValue extends FilterValueBase implements ModelV4Interface
 {
     public static function swaggerTypes(): array
     {
-        return parent::swaggerTypes() +
-            [
+        return parent::swaggerTypes()
+            + [
                 'value' => 'object',
             ];
     }

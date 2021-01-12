@@ -4,8 +4,6 @@
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
-
-
 namespace Web\FactFinderApi\Client\V4\Api;
 
 use GuzzleHttp6\Psr7\Request;
@@ -18,6 +16,7 @@ use Web\FactFinderApi\Client\V4\Model\NavigationRequest;
 use Web\FactFinderApi\Client\V4\Model\Result;
 use Web\FactFinderApi\Client\V4\Model\SearchParams;
 use Web\FactFinderApi\Client\V4\Model\SearchRequest;
+use Web\FactFinderApi\Client\V4\Model\SuggestionResult;
 
 /**
  * SearchApi Class Doc Comment
@@ -93,10 +92,8 @@ class SearchApi extends ApiClient implements SearchApiInterface
      *
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     *
-     * @return \Web\FactFinderApi\Client\V4\Model\ResultSuggestion[]
      */
-    public function getSuggestionsUsingPOST($params): array
+    public function getSuggestionsUsingPOST($params): SuggestionResult
     {
         list($response) = $this->getSuggestionsUsingPOSTWithHttpInfo($params);
 
@@ -113,13 +110,13 @@ class SearchApi extends ApiClient implements SearchApiInterface
      * @throws \Web\FactFinderApi\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      *
-     * @return array of \Web\FactFinderApi\Client\V4\Model\ResultSuggestion[], HTTP status code, HTTP response headers (array of strings)
+     * @return \Web\FactFinderApi\Client\V4\Model\SuggestionResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSuggestionsUsingPOSTWithHttpInfo($params)
+    public function getSuggestionsUsingPOSTWithHttpInfo($params): array
     {
         $request = $this->getSuggestionsUsingPOSTRequest($params);
 
-        return $this->executeRequest($request, 'Web\FactFinderApi\Client\V4\Model\ResultSuggestion[]');
+        return $this->executeRequest($request, SuggestionResult::class);
     }
 
     /**

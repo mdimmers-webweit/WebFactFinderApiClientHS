@@ -4,8 +4,6 @@
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
-
-
 namespace Web\FactFinderApi\Client\V4\Model;
 
 use Web\FactFinderApi\Client\Model\FacetBase;
@@ -26,8 +24,6 @@ class Facet extends FacetBase implements ModelV4Interface
     const TYPE_CATEGORY_PATH = 'CATEGORY_PATH';
     const TYPE_BOOLEAN = 'BOOLEAN';
     const TYPE_DATE = 'DATE';
-
-
 
     /**
      * Gets allowable values of the enum

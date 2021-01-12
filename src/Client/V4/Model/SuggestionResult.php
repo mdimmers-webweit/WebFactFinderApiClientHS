@@ -15,7 +15,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class CompareResult extends BaseModel implements ModelV4Interface
+class SuggestionResult extends BaseModel implements ModelV4Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -25,9 +25,9 @@ class CompareResult extends BaseModel implements ModelV4Interface
     public static function swaggerTypes(): array
     {
         return [
-            'attributes' => static::getModelClass('CompareAttribute', true),
+            'article_number_search_allowed' => 'bool',
             'field_roles' => 'map[string,string]',
-            'records' => static::getModelClass('TypedFlatRecord', true),
+            'suggestions' => static::getModelClass('ResultSuggestion', true),
         ];
     }
 
@@ -40,9 +40,9 @@ class CompareResult extends BaseModel implements ModelV4Interface
     public static function attributeMap(): array
     {
         return [
-            'attributes' => 'attributes',
+            'article_number_search_allowed' => 'articleNumberSearchAllowed',
             'field_roles' => 'fieldRoles',
-            'records' => 'records',
+            'suggestions' => 'suggestions',
         ];
     }
 
@@ -55,35 +55,35 @@ class CompareResult extends BaseModel implements ModelV4Interface
     {
         $invalidProperties = [];
 
-        if ($this->container['attributes'] === null) {
-            $invalidProperties[] = "'attributes' can't be null";
+        if ($this->container['article_number_search_allowed'] === null) {
+            $invalidProperties[] = "'article_number_search_allowed' can't be null";
         }
         if ($this->container['field_roles'] === null) {
             $invalidProperties[] = "'field_roles' can't be null";
         }
-        if ($this->container['records'] === null) {
-            $invalidProperties[] = "'records' can't be null";
+        if ($this->container['suggestions'] === null) {
+            $invalidProperties[] = "'suggestions' can't be null";
         }
 
         return $invalidProperties;
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V4\Model\CompareAttribute[]
+     * @return bool
      */
-    public function getAttributes()
+    public function getArticleNumberSearchAllowed()
     {
-        return $this->container['attributes'];
+        return $this->container['article_number_search_allowed'];
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V4\Model\CompareAttribute[] $attributes the result of the comparison process, with information about differences
+     * @param bool
      *
      * @return $this
      */
-    public function setAttributes($attributes)
+    public function setArticleNumberSearchAllowed($articleNumberSearchAllowed)
     {
-        $this->container['attributes'] = $attributes;
+        $this->container['article_number_search_allowed'] = $articleNumberSearchAllowed;
 
         return $this;
     }
@@ -109,21 +109,21 @@ class CompareResult extends BaseModel implements ModelV4Interface
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V4\Model\TypedFlatRecord[]
+     * @return \Web\FactFinderApi\Client\V4\Model\ResultSuggestion[]
      */
-    public function getRecords()
+    public function getSuggestions()
     {
-        return $this->container['records'];
+        return $this->container['suggestions'];
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V4\Model\TypedFlatRecord[] $records the records that were compared
+     * @param \Web\FactFinderApi\Client\V4\Model\ResultSuggestion[] $records
      *
      * @return $this
      */
-    public function setRecords($records)
+    public function setSuggestions($records)
     {
-        $this->container['records'] = $records;
+        $this->container['suggestions'] = $records;
 
         return $this;
     }

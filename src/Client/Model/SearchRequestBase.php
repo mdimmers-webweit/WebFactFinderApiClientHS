@@ -4,8 +4,6 @@
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
-
-
 namespace Web\FactFinderApi\Client\Model;
 
 /**

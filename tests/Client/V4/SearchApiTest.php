@@ -13,8 +13,10 @@ use Web\FactFinderApi\Client\V4\Api\SearchApi;
 use Web\FactFinderApi\Client\V4\Model\CategoryNavigation;
 use Web\FactFinderApi\Client\V4\Model\NavigationRequest;
 use Web\FactFinderApi\Client\V4\Model\Result;
+use Web\FactFinderApi\Client\V4\Model\ResultSuggestion;
 use Web\FactFinderApi\Client\V4\Model\SearchParams;
 use Web\FactFinderApi\Client\V4\Model\SearchRequest;
+use Web\FactFinderApi\Client\V4\Model\SuggestionResult;
 
 class SearchApiTest extends AbstractTestCase
 {
@@ -54,7 +56,7 @@ class SearchApiTest extends AbstractTestCase
 
         $result = $this->sut->getSuggestionsUsingPOST($searchRequest);
 
-        static::assertIsArray($result);
+        static::assertInstanceOf(SuggestionResult::class, $result);
     }
 
     /** @test */

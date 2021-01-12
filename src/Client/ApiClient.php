@@ -240,6 +240,8 @@ abstract class ApiClient implements ApiClientInterface
 
     protected function getLogParams(Request $request, ?ResponseInterface $response = null): array
     {
+        $request->getBody()->rewind();
+
         $result = [
             'uri' => (string) $request->getUri(),
             'body' => (string) $request->getBody()->getContents(),

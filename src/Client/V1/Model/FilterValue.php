@@ -30,8 +30,8 @@ class FilterValue extends FilterValueBase implements ModelV1Interface
 {
     public static function swaggerTypes(): array
     {
-        return parent::swaggerTypes() +
-            [
+        return parent::swaggerTypes()
+            + [
                 'value' => 'string',
             ];
     }
