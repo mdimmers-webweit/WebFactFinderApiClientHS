@@ -10,7 +10,9 @@
     "php": ">=7.2",
     "psr/http-message": "^1.0",
     "monolog/monolog": "^1.25 || ^2.0",
-    "symfony/dotenv": "^3.4 || ^4.4"
+    "symfony/dotenv": "^3.4 || ^4.4",
+    "friendsofphp/php-cs-fixer": "^2.18",
+    "kubawerlos/php-cs-fixer-custom-fixers": "^2.4"
   },
   "autoload": {
     "psr-4": {

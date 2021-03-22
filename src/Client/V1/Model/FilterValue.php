@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /*
  * FACT-Finder REST API Client
  * Copyright © webweit GmbH (https://www.webweit.de)

@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /*
  * FACT-Finder REST API Client
  * Copyright © webweit GmbH (https://www.webweit.de)
@@ -13,7 +14,6 @@ use Web\FactFinderApi\Client\V4\Api\SearchApi;
 use Web\FactFinderApi\Client\V4\Model\CategoryNavigation;
 use Web\FactFinderApi\Client\V4\Model\NavigationRequest;
 use Web\FactFinderApi\Client\V4\Model\Result;
-use Web\FactFinderApi\Client\V4\Model\ResultSuggestion;
 use Web\FactFinderApi\Client\V4\Model\SearchParams;
 use Web\FactFinderApi\Client\V4\Model\SearchRequest;
 use Web\FactFinderApi\Client\V4\Model\SuggestionResult;
