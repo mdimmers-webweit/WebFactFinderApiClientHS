@@ -19,11 +19,9 @@ use Web\FactFinderApi\Client\Model\ApiError;
 abstract class ApiClient implements ApiClientInterface
 {
     public function __construct(
-    protected ClientInterface $client,
-
-    protected Configuration $config,
-
-    protected LoggerInterface $logger
+        protected ClientInterface $client,
+        protected Configuration $config,
+        protected LoggerInterface $logger
     ) {
     }
 

@@ -26,7 +26,7 @@ class CachingStream implements StreamInterface
      * @param StreamInterface $target Optionally specify where data is cached
      */
     public function __construct(
-    private StreamInterface $remoteStream,
+        private StreamInterface $remoteStream,
         ?StreamInterface $target = null
     ) {
         $this->stream = $target ?: new Stream(fopen('php://temp', 'r+'));

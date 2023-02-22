@@ -102,8 +102,7 @@ class Configuration
      * The host
      */
     protected string $host
-    )
-    {
+    ) {
         $this->tempFolderPath = sys_get_temp_dir();
     }
 
