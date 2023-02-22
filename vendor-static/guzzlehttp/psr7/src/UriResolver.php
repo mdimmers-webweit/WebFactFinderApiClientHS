@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Psr7;
 
@@ -34,16 +39,16 @@ final class UriResolver
         }
 
         $results = [];
-        $segments = \explode('/', $path);
+        $segments = explode('/', $path);
         foreach ($segments as $segment) {
             if ($segment === '..') {
-                \array_pop($results);
+                array_pop($results);
             } elseif ($segment !== '.') {
                 $results[] = $segment;
             }
         }
 
-        $newPath = \implode('/', $results);
+        $newPath = implode('/', $results);
 
         if ($path[0] === '/' && (!isset($newPath[0]) || $newPath[0] !== '/')) {
             // Re-add the leading slash if necessary for cases like "/.."
@@ -94,11 +99,11 @@ final class UriResolver
                     if ($targetAuthority !== '' && $base->getPath() === '') {
                         $targetPath = '/' . $rel->getPath();
                     } else {
-                        $lastSlashPos = \mb_strrpos($base->getPath(), '/');
+                        $lastSlashPos = mb_strrpos($base->getPath(), '/');
                         if ($lastSlashPos === false) {
                             $targetPath = $rel->getPath();
                         } else {
-                            $targetPath = \mb_substr($base->getPath(), 0, $lastSlashPos + 1) . $rel->getPath();
+                            $targetPath = mb_substr($base->getPath(), 0, $lastSlashPos + 1) . $rel->getPath();
                         }
                     }
                 }
@@ -178,8 +183,8 @@ final class UriResolver
         // If the base URI has a query but the target has none, we cannot return an empty path reference as it would
         // inherit the base query component when resolving.
         if ($target->getQuery() === '') {
-            $segments = \explode('/', $target->getPath());
-            $lastSegment = \end($segments);
+            $segments = explode('/', $target->getPath());
+            $lastSegment = end($segments);
 
             return $emptyPathUri->withPath($lastSegment === '' ? './' : $lastSegment);
         }
@@ -189,10 +194,10 @@ final class UriResolver
 
     private static function getRelativePath(UriInterface $base, UriInterface $target)
     {
-        $sourceSegments = \explode('/', $base->getPath());
-        $targetSegments = \explode('/', $target->getPath());
-        \array_pop($sourceSegments);
-        $targetLastSegment = \array_pop($targetSegments);
+        $sourceSegments = explode('/', $base->getPath());
+        $targetSegments = explode('/', $target->getPath());
+        array_pop($sourceSegments);
+        $targetLastSegment = array_pop($targetSegments);
         foreach ($sourceSegments as $i => $segment) {
             if (isset($targetSegments[$i]) && $segment === $targetSegments[$i]) {
                 unset($sourceSegments[$i], $targetSegments[$i]);
@@ -201,12 +206,12 @@ final class UriResolver
             }
         }
         $targetSegments[] = $targetLastSegment;
-        $relativePath = \str_repeat('../', \count($sourceSegments)) . \implode('/', $targetSegments);
+        $relativePath = str_repeat('../', \count($sourceSegments)) . implode('/', $targetSegments);
 
         // A reference to am empty last segment or an empty first sub-segment must be prefixed with "./".
         // This also applies to a segment with a colon character (e.g., "file:colon") that cannot be used
         // as the first segment of a relative-path reference, as it would be mistaken for a scheme name.
-        if ($relativePath === '' || \mb_strpos(\explode('/', $relativePath, 2)[0], ':') !== false) {
+        if ($relativePath === '' || mb_strpos(explode('/', $relativePath, 2)[0], ':') !== false) {
             $relativePath = "./$relativePath";
         } elseif ($relativePath[0] === '/') {
             if ($base->getAuthority() !== '' && $base->getPath() === '') {

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -16,13 +16,11 @@ namespace Web\FactFinderApi\Client\Model;
  */
 abstract class SortItemBase extends BaseModel
 {
-    const ORDER_ASC = 'asc';
-    const ORDER_DESC = 'desc';
+    public const ORDER_ASC = 'asc';
+    public const ORDER_DESC = 'desc';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
@@ -35,8 +33,6 @@ abstract class SortItemBase extends BaseModel
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {
@@ -76,9 +72,9 @@ abstract class SortItemBase extends BaseModel
         }
         $allowedValues = $this->getOrderAllowableValues();
         if (!\is_null($this->container['order']) && !\in_array($this->container['order'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
+            $invalidProperties[] = sprintf(
                 "invalid value for 'order', must be one of '%s'",
-                \implode("', '", $allowedValues)
+                implode("', '", $allowedValues)
             );
         }
 
@@ -123,9 +119,9 @@ abstract class SortItemBase extends BaseModel
         $allowedValues = $this->getOrderAllowableValues();
         if (!\in_array($order, $allowedValues, true)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'order', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }

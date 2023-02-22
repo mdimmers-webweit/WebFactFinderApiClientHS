@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Psr7;
 
@@ -46,11 +51,6 @@ class ServerRequest extends Request implements ServerRequestInterface
     /**
      * @var array
      */
-    private $serverParams;
-
-    /**
-     * @var array
-     */
     private $uploadedFiles = [];
 
     /**
@@ -67,10 +67,9 @@ class ServerRequest extends Request implements ServerRequestInterface
         array $headers = [],
         $body = null,
         $version = '1.1',
-        array $serverParams = []
-    ) {
-        $this->serverParams = $serverParams;
 
+    private array $serverParams = []
+    ) {
         parent::__construct($method, $uri, $headers, $body, $version);
     }
 
@@ -115,11 +114,11 @@ class ServerRequest extends Request implements ServerRequestInterface
      */
     public static function fromGlobals()
     {
-        $method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'GET';
+        $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
         $headers = getallheaders();
         $uri = self::getUriFromGlobals();
         $body = new CachingStream(new LazyOpenStream('php://input', 'r+'));
-        $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? \str_replace('HTTP/', '', $_SERVER['SERVER_PROTOCOL']) : '1.1';
+        $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? str_replace('HTTP/', '', $_SERVER['SERVER_PROTOCOL']) : '1.1';
 
         $serverRequest = new ServerRequest($method, $uri, $headers, $body, $protocol, $_SERVER);
 
@@ -143,7 +142,7 @@ class ServerRequest extends Request implements ServerRequestInterface
 
         $hasPort = false;
         if (isset($_SERVER['HTTP_HOST'])) {
-            list($host, $port) = self::extractHostAndPortFromAuthority($_SERVER['HTTP_HOST']);
+            [$host, $port] = self::extractHostAndPortFromAuthority($_SERVER['HTTP_HOST']);
             if ($host !== null) {
                 $uri = $uri->withHost($host);
             }
@@ -164,7 +163,7 @@ class ServerRequest extends Request implements ServerRequestInterface
 
         $hasQuery = false;
         if (isset($_SERVER['REQUEST_URI'])) {
-            $requestUriParts = \explode('?', $_SERVER['REQUEST_URI'], 2);
+            $requestUriParts = explode('?', $_SERVER['REQUEST_URI'], 2);
             $uri = $uri->withPath($requestUriParts[0]);
             if (isset($requestUriParts[1])) {
                 $hasQuery = true;
@@ -346,7 +345,7 @@ class ServerRequest extends Request implements ServerRequestInterface
     {
         $normalizedFiles = [];
 
-        foreach (\array_keys($files['tmp_name']) as $key) {
+        foreach (array_keys($files['tmp_name']) as $key) {
             $spec = [
                 'tmp_name' => $files['tmp_name'][$key],
                 'size' => $files['size'][$key],
@@ -363,13 +362,13 @@ class ServerRequest extends Request implements ServerRequestInterface
     private static function extractHostAndPortFromAuthority($authority)
     {
         $uri = 'http://' . $authority;
-        $parts = \parse_url($uri);
+        $parts = parse_url($uri);
         if ($parts === false) {
             return [null, null];
         }
 
-        $host = isset($parts['host']) ? $parts['host'] : null;
-        $port = isset($parts['port']) ? $parts['port'] : null;
+        $host = $parts['host'] ?? null;
+        $port = $parts['port'] ?? null;
 
         return [$host, $port];
     }

@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Psr7;
 
@@ -41,7 +46,7 @@ class Request implements RequestInterface
             $uri = new Uri($uri);
         }
 
-        $this->method = \mb_strtoupper($method);
+        $this->method = mb_strtoupper($method);
         $this->uri = $uri;
         $this->setHeaders($headers);
         $this->protocol = $version;
@@ -74,7 +79,7 @@ class Request implements RequestInterface
 
     public function withRequestTarget($requestTarget)
     {
-        if (\preg_match('#\s#', $requestTarget)) {
+        if (preg_match('#\s#', $requestTarget)) {
             throw new \InvalidArgumentException(
                 'Invalid request target provided; cannot contain whitespace'
             );
@@ -95,7 +100,7 @@ class Request implements RequestInterface
     {
         $this->assertMethod($method);
         $new = clone $this;
-        $new->method = \mb_strtoupper($method);
+        $new->method = mb_strtoupper($method);
 
         return $new;
     }

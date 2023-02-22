@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -48,7 +48,7 @@ class SimilarproductsApi extends ApiClient
      */
     public function getSimilarProductsUsingGET(string $channel, $id, bool $ids_only = false, int $max_results = 10)
     {
-        list($response) = $this->getSimilarProductsUsingGETWithHttpInfo($channel, $id, $ids_only, $max_results);
+        [$response] = $this->getSimilarProductsUsingGETWithHttpInfo($channel, $id, $ids_only, $max_results);
 
         return $response;
     }

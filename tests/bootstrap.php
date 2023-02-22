@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
 use Symfony\Component\Dotenv\Dotenv;
 
-if (\file_exists(\dirname(__DIR__) . '/vendor/autoload.php')) {
+if (file_exists(\dirname(__DIR__) . '/vendor/autoload.php')) {
     require \dirname(__DIR__) . '/vendor/autoload.php';
 } else {
     require 'vendor/autoload.php';
 }
 
-if (\method_exists(Dotenv::class, 'loadEnv')) {
+if (method_exists(Dotenv::class, 'loadEnv')) {
     (new Dotenv())->loadEnv(\dirname(__DIR__) . '/.env');
 }
 
@@ -33,6 +33,6 @@ $variables = [
 
 foreach ($variables as $var) {
     if (!isset($_ENV[$var])) {
-        $_ENV[$var] = \getenv($var);
+        $_ENV[$var] = getenv($var);
     }
 }

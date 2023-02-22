@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -29,23 +29,21 @@ use Web\FactFinderApi\Client\Model\ResultBase;
  */
 class Result extends ResultBase implements ModelV1Interface
 {
-    const RESULT_ARTICLE_NUMBER_STATUS_NO_ARTICLE_NUMBER_SEARCH = 'noArticleNumberSearch';
-    const RESULT_ARTICLE_NUMBER_STATUS_NOTHING_FOUND = 'nothingFound';
-    const RESULT_ARTICLE_NUMBER_STATUS_RESULTS_FOUND = 'resultsFound';
-    const RESULT_STATUS_RESULTS_FOUND = 'resultsFound';
-    const RESULT_STATUS_NOTHING_FOUND = 'nothingFound';
-    const RESULT_STATUS_ERROR_OCCURED = 'errorOccured';
+    public const RESULT_ARTICLE_NUMBER_STATUS_NO_ARTICLE_NUMBER_SEARCH = 'noArticleNumberSearch';
+    public const RESULT_ARTICLE_NUMBER_STATUS_NOTHING_FOUND = 'nothingFound';
+    public const RESULT_ARTICLE_NUMBER_STATUS_RESULTS_FOUND = 'resultsFound';
+    public const RESULT_STATUS_RESULTS_FOUND = 'resultsFound';
+    public const RESULT_STATUS_NOTHING_FOUND = 'nothingFound';
+    public const RESULT_STATUS_ERROR_OCCURED = 'errorOccured';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
         $result = parent::swaggerTypes();
 
-        $result = \array_merge($result, [
+        $result = array_merge($result, [
             'applied_preprocessor_entries' => static::getModelClass('PreprocessorEntry', true),
             'result_article_number_status' => 'string',
             'result_status' => 'string',
@@ -60,14 +58,12 @@ class Result extends ResultBase implements ModelV1Interface
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {
         $result = parent::attributeMap();
 
-        $result = \array_merge($result, [
+        $result = array_merge($result, [
             'facets' => 'asnGroups',
             'campaigns' => 'campaignsList',
             'applied_preprocessor_entries' => 'appliedPreprocessorEntries',
@@ -127,9 +123,9 @@ class Result extends ResultBase implements ModelV1Interface
         }
         $allowedValues = $this->getResultArticleNumberStatusAllowableValues();
         if (!\is_null($this->container['result_article_number_status']) && !\in_array($this->container['result_article_number_status'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
+            $invalidProperties[] = sprintf(
                 "invalid value for 'result_article_number_status', must be one of '%s'",
-                \implode("', '", $allowedValues)
+                implode("', '", $allowedValues)
             );
         }
 
@@ -138,9 +134,9 @@ class Result extends ResultBase implements ModelV1Interface
         }
         $allowedValues = $this->getResultStatusAllowableValues();
         if (!\is_null($this->container['result_status']) && !\in_array($this->container['result_status'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
+            $invalidProperties[] = sprintf(
                 "invalid value for 'result_status', must be one of '%s'",
-                \implode("', '", $allowedValues)
+                implode("', '", $allowedValues)
             );
         }
 
@@ -189,9 +185,9 @@ class Result extends ResultBase implements ModelV1Interface
         $allowedValues = $this->getResultArticleNumberStatusAllowableValues();
         if (!\in_array($result_article_number_status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'result_article_number_status', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }
@@ -218,9 +214,9 @@ class Result extends ResultBase implements ModelV1Interface
         $allowedValues = $this->getResultStatusAllowableValues();
         if (!\in_array($result_status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'result_status', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }

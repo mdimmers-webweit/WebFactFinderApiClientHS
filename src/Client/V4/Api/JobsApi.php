@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -35,7 +35,7 @@ class JobsApi extends ApiClient
      */
     public function startJobUsingPOST($job_name, $job_group)
     {
-        list($response) = $this->startJobUsingPOSTWithHttpInfo($job_name, $job_group);
+        [$response] = $this->startJobUsingPOSTWithHttpInfo($job_name, $job_group);
 
         return $response;
     }
@@ -115,7 +115,7 @@ class JobsApi extends ApiClient
      */
     public function startJobsWithGroupNameUsingPOST($job_group)
     {
-        list($response) = $this->startJobsWithGroupNameUsingPOSTWithHttpInfo($job_group);
+        [$response] = $this->startJobsWithGroupNameUsingPOSTWithHttpInfo($job_group);
 
         return $response;
     }
@@ -192,7 +192,7 @@ class JobsApi extends ApiClient
      */
     public function startJobsWithNameUsingPOST($job_name)
     {
-        list($response) = $this->startJobsWithNameUsingPOSTWithHttpInfo($job_name);
+        [$response] = $this->startJobsWithNameUsingPOSTWithHttpInfo($job_name);
 
         return $response;
     }

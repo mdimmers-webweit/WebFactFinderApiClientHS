@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Promise;
 
@@ -14,7 +19,7 @@ class FulfilledPromise implements PromiseInterface
 
     public function __construct($value)
     {
-        if (\method_exists($value, 'then')) {
+        if (method_exists($value, 'then')) {
             throw new \InvalidArgumentException(
                 'You cannot create a FulfilledPromise with a promise.'
             );

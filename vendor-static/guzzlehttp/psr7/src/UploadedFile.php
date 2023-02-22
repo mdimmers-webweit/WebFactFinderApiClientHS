@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Psr7;
 
@@ -128,9 +133,9 @@ class UploadedFile implements UploadedFileInterface
         }
 
         if ($this->file) {
-            $this->moved = \php_sapi_name() === 'cli'
-                ? \rename($this->file, $targetPath)
-                : \move_uploaded_file($this->file, $targetPath);
+            $this->moved = php_sapi_name() === 'cli'
+                ? rename($this->file, $targetPath)
+                : move_uploaded_file($this->file, $targetPath);
         } else {
             copy_to_stream(
                 $this->getStream(),
@@ -142,7 +147,7 @@ class UploadedFile implements UploadedFileInterface
 
         if ($this->moved === false) {
             throw new \RuntimeException(
-                \sprintf('Uploaded file could not be moved to %s', $targetPath)
+                sprintf('Uploaded file could not be moved to %s', $targetPath)
             );
         }
     }

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -50,27 +50,6 @@ class Configuration
     protected $accessToken = '';
 
     /**
-     * Username for HTTP basic authentication
-     *
-     * @var string
-     */
-    protected $username = '';
-
-    /**
-     * Password for HTTP basic authentication
-     *
-     * @var string
-     */
-    protected $password = '';
-
-    /**
-     * The host
-     *
-     * @var string
-     */
-    protected $host;
-
-    /**
      * User agent of the HTTP request, set to "PHP-Swagger" by default
      *
      * @var string
@@ -113,13 +92,19 @@ class Configuration
      */
     private $defaultChannel;
 
-    public function __construct(string $username, string $password, string $host)
+    public function __construct(/**
+     * Username for HTTP basic authentication
+     */
+    protected string $username, /**
+     * Password for HTTP basic authentication
+     */
+    protected string $password, /**
+     * The host
+     */
+    protected string $host
+    )
     {
-        $this->tempFolderPath = \sys_get_temp_dir();
-
-        $this->username = $username;
-        $this->password = $password;
-        $this->host = $host;
+        $this->tempFolderPath = sys_get_temp_dir();
     }
 
     public function setDefaultChannel(string $channel): void
@@ -392,10 +377,10 @@ class Configuration
     public static function toDebugReport()
     {
         $report = 'PHP SDK (Web\FactFinderApi\Client) Debug Report:' . PHP_EOL;
-        $report .= '    OS: ' . \php_uname() . PHP_EOL;
+        $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    OpenAPI Spec Version: v2' . PHP_EOL;
-        $report .= '    Temp Folder Path: ' . \sys_get_temp_dir() . PHP_EOL;
+        $report .= '    Temp Folder Path: ' . sys_get_temp_dir() . PHP_EOL;
 
         return $report;
     }

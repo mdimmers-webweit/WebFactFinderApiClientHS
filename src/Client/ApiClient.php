@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -18,29 +18,13 @@ use Web\FactFinderApi\Client\Model\ApiError;
 
 abstract class ApiClient implements ApiClientInterface
 {
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
-
-    /**
-     * @var Configuration
-     */
-    protected $config;
-
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
     public function __construct(
-        ClientInterface $client,
-        Configuration $config,
-        LoggerInterface $logger
+    protected ClientInterface $client,
+
+    protected Configuration $config,
+
+    protected LoggerInterface $logger
     ) {
-        $this->client = $client;
-        $this->config = $config;
-        $this->logger = $logger;
     }
 
     public function getConfig(): Configuration
@@ -101,7 +85,7 @@ abstract class ApiClient implements ApiClientInterface
     {
         $options = [];
         if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = \fopen($this->config->getDebugFile(), 'a');
+            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
                 throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
@@ -119,7 +103,7 @@ abstract class ApiClient implements ApiClientInterface
 
         // this endpoint requires HTTP basic authentication
         if (!empty($this->config->getUsername()) || !empty($this->config->getPassword())) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
         }
         // this endpoint requires OAuth (access token)
         if (!empty($this->config->getAccessToken())) {
@@ -131,7 +115,7 @@ abstract class ApiClient implements ApiClientInterface
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
-        $headers = \array_merge(
+        $headers = array_merge(
             $defaultHeaders,
             $headers
         );
@@ -219,7 +203,7 @@ abstract class ApiClient implements ApiClientInterface
     protected function addChannelToResourcePath($channel, string $resourcePath): string
     {
         if ($channel !== null) {
-            $resourcePath = \str_replace(
+            $resourcePath = str_replace(
                 '{channel}',
                 ObjectSerializer::toPathValue($channel),
                 $resourcePath
@@ -278,7 +262,7 @@ abstract class ApiClient implements ApiClientInterface
         if ($statusCode < 200 || $statusCode > 299) {
             $this->logError($request, $response);
             throw new ApiException(
-                \sprintf(
+                sprintf(
                     '[%d] Error connecting to the API (%s)',
                     $statusCode,
                     $request->getUri()
@@ -299,11 +283,11 @@ abstract class ApiClient implements ApiClientInterface
         $responseBody = $response->getBody();
 
         if ($returnType === '\SplFileObject') {
-            $content = $responseBody; //stream goes to serializer
+            $content = $responseBody; // stream goes to serializer
         } else {
             $content = $responseBody->getContents();
             if (!\in_array($returnType, ['string', 'integer', 'bool'], true)) {
-                $content = \json_decode($content);
+                $content = json_decode($content);
             }
         }
 
@@ -318,7 +302,7 @@ abstract class ApiClient implements ApiClientInterface
         $this->logError($request, $response);
 
         throw new ApiException(
-            \sprintf(
+            sprintf(
                 '[%d] Error connecting to the API (%s)',
                 $statusCode,
                 $exception->getRequest()->getUri()
@@ -336,7 +320,7 @@ abstract class ApiClient implements ApiClientInterface
             'Accept' => 'application/json',
         ];
 
-        $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
+        $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
 
         if ($oauth) {
             // this endpoint requires OAuth (access token)
@@ -356,7 +340,7 @@ abstract class ApiClient implements ApiClientInterface
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
-        $headers = \array_merge(
+        $headers = array_merge(
             $defaultHeaders,
             $headers
         );

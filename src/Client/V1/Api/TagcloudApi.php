@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -45,7 +45,7 @@ class TagcloudApi extends ApiClient
      */
     public function getTagCloudUsingGET(string $channel, int $word_count = 0)
     {
-        list($response) = $this->getTagCloudUsingGETWithHttpInfo($channel, $word_count);
+        [$response] = $this->getTagCloudUsingGETWithHttpInfo($channel, $word_count);
 
         return $response;
     }

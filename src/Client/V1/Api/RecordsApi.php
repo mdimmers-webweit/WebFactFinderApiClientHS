@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -119,7 +119,7 @@ class RecordsApi extends ApiClient
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
-                        \sprintf(
+                        sprintf(
                             '[%d] Error connecting to the API (%s)',
                             $statusCode,
                             $exception->getRequest()->getUri()
@@ -145,7 +145,7 @@ class RecordsApi extends ApiClient
      */
     public function getRecordsUsingGET(string $channel, $record_id)
     {
-        list($response) = $this->getRecordsUsingGETWithHttpInfo($channel, $record_id);
+        [$response] = $this->getRecordsUsingGETWithHttpInfo($channel, $record_id);
 
         return $response;
     }
@@ -293,7 +293,7 @@ class RecordsApi extends ApiClient
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
-                        \sprintf(
+                        sprintf(
                             '[%d] Error connecting to the API (%s)',
                             $statusCode,
                             $exception->getRequest()->getUri()
@@ -394,7 +394,7 @@ class RecordsApi extends ApiClient
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
-                        \sprintf(
+                        sprintf(
                             '[%d] Error connecting to the API (%s)',
                             $statusCode,
                             $exception->getRequest()->getUri()

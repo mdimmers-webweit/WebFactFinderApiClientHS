@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -16,19 +16,17 @@ namespace Web\FactFinderApi\Client\Model;
  */
 abstract class FacetBase extends BaseModel
 {
-    const FILTER_STYLE__DEFAULT = 'DEFAULT';
-    const FILTER_STYLE_SLIDER = 'SLIDER';
-    const FILTER_STYLE_MULTISELECT = 'MULTISELECT';
-    const FILTER_STYLE_TREE = 'TREE';
-    const SELECTION_TYPE_SINGLE_HIDE_UNSELECTED = 'singleHideUnselected';
-    const SELECTION_TYPE_SINGLE_SHOW_UNSELECTED = 'singleShowUnselected';
-    const SELECTION_TYPE_MULTI_SELECT_OR = 'multiSelectOr';
-    const SELECTION_TYPE_MULTI_SELECT_AND = 'multiSelectAnd';
+    public const FILTER_STYLE__DEFAULT = 'DEFAULT';
+    public const FILTER_STYLE_SLIDER = 'SLIDER';
+    public const FILTER_STYLE_MULTISELECT = 'MULTISELECT';
+    public const FILTER_STYLE_TREE = 'TREE';
+    public const SELECTION_TYPE_SINGLE_HIDE_UNSELECTED = 'singleHideUnselected';
+    public const SELECTION_TYPE_SINGLE_SHOW_UNSELECTED = 'singleShowUnselected';
+    public const SELECTION_TYPE_MULTI_SELECT_OR = 'multiSelectOr';
+    public const SELECTION_TYPE_MULTI_SELECT_AND = 'multiSelectAnd';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
@@ -49,8 +47,6 @@ abstract class FacetBase extends BaseModel
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {
@@ -125,9 +121,9 @@ abstract class FacetBase extends BaseModel
         }
         $allowedValues = $this->getFilterStyleAllowableValues();
         if (!\is_null($this->container['filter_style']) && !\in_array($this->container['filter_style'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
+            $invalidProperties[] = sprintf(
                 "invalid value for 'filter_style', must be one of '%s'",
-                \implode("', '", $allowedValues)
+                implode("', '", $allowedValues)
             );
         }
 
@@ -139,9 +135,9 @@ abstract class FacetBase extends BaseModel
         }
         $allowedValues = $this->getSelectionTypeAllowableValues();
         if (!\is_null($this->container['selection_type']) && !\in_array($this->container['selection_type'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
+            $invalidProperties[] = sprintf(
                 "invalid value for 'selection_type', must be one of '%s'",
-                \implode("', '", $allowedValues)
+                implode("', '", $allowedValues)
             );
         }
 
@@ -150,9 +146,9 @@ abstract class FacetBase extends BaseModel
         }
         $allowedValues = $this->getTypeAllowableValues();
         if (!\is_null($this->container['type']) && !\in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
+            $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
-                \implode("', '", $allowedValues)
+                implode("', '", $allowedValues)
             );
         }
 
@@ -217,9 +213,9 @@ abstract class FacetBase extends BaseModel
         $allowedValues = $this->getFilterStyleAllowableValues();
         if (!\in_array($filter_style, $allowedValues, true)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'filter_style', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }
@@ -286,9 +282,9 @@ abstract class FacetBase extends BaseModel
         $allowedValues = $this->getSelectionTypeAllowableValues();
         if (!\in_array($selection_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'selection_type', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }
@@ -335,9 +331,9 @@ abstract class FacetBase extends BaseModel
         $allowedValues = $this->getTypeAllowableValues();
         if (!\is_null($type) && !\in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'type', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }

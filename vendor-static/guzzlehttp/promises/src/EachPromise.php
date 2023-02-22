@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Promise;
 
@@ -89,7 +94,7 @@ class EachPromise implements PromisorInterface
     {
         $this->mutex = false;
         $this->aggregate = new Promise(function (): void {
-            \reset($this->pending);
+            reset($this->pending);
             if (empty($this->pending) && !$this->iterable->valid()) {
                 $this->aggregate->resolve(null);
 
@@ -98,8 +103,8 @@ class EachPromise implements PromisorInterface
 
             // Consume a potentially fluctuating list of promises while
             // ensuring that indexes are maintained (precluding array_shift).
-            while ($promise = \current($this->pending)) {
-                \next($this->pending);
+            while ($promise = current($this->pending)) {
+                next($this->pending);
                 $promise->wait();
                 if ($this->aggregate->getState() !== PromiseInterface::PENDING) {
                     return;
@@ -120,7 +125,8 @@ class EachPromise implements PromisorInterface
     {
         if (!$this->concurrency) {
             // Add all pending promises.
-            while ($this->addPending() && $this->advanceIterator());
+            while ($this->addPending() && $this->advanceIterator()) {
+            }
 
             return;
         }
@@ -129,7 +135,7 @@ class EachPromise implements PromisorInterface
         $concurrency = \is_callable($this->concurrency)
             ? \call_user_func($this->concurrency, \count($this->pending))
             : $this->concurrency;
-        $concurrency = \max($concurrency - \count($this->pending), 0);
+        $concurrency = max($concurrency - \count($this->pending), 0);
         // Concurrency may be set to 0 to disallow new promises.
         if (!$concurrency) {
             return;
@@ -142,7 +148,8 @@ class EachPromise implements PromisorInterface
         // next value to yield until promise callbacks are called.
         while (--$concurrency
             && $this->advanceIterator()
-            && $this->addPending());
+            && $this->addPending()) {
+        }
     }
 
     private function addPending()

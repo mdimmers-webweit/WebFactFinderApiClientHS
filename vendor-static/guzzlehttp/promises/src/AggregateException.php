@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Promise;
 
@@ -11,7 +16,7 @@ class AggregateException extends RejectionException
     {
         parent::__construct(
             $reasons,
-            \sprintf('%s; %d rejected promises', $msg, \count($reasons))
+            sprintf('%s; %d rejected promises', $msg, \count($reasons))
         );
     }
 }

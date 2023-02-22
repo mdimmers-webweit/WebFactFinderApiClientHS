@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -18,15 +18,13 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  */
 class BreadCrumbTrailItem extends BaseModel implements ModelV4Interface
 {
-    const TYPE_SEARCH = 'search';
-    const TYPE_FILTER = 'filter';
-    const TYPE_ADVISOR = 'advisor';
-    const TYPE_UNSPECIFIED = 'unspecified';
+    public const TYPE_SEARCH = 'search';
+    public const TYPE_FILTER = 'filter';
+    public const TYPE_ADVISOR = 'advisor';
+    public const TYPE_UNSPECIFIED = 'unspecified';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
@@ -42,8 +40,6 @@ class BreadCrumbTrailItem extends BaseModel implements ModelV4Interface
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {
@@ -85,9 +81,9 @@ class BreadCrumbTrailItem extends BaseModel implements ModelV4Interface
         }
         $allowedValues = $this->getTypeAllowableValues();
         if (!\is_null($this->container['type']) && !\in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
+            $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
-                \implode("', '", $allowedValues)
+                implode("', '", $allowedValues)
             );
         }
 
@@ -172,9 +168,9 @@ class BreadCrumbTrailItem extends BaseModel implements ModelV4Interface
         $allowedValues = $this->getTypeAllowableValues();
         if (!\in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'type', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }

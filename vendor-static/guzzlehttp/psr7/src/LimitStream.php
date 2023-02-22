@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Psr7;
 
@@ -25,11 +30,10 @@ class LimitStream implements StreamInterface
      *                                works on seekable streams)
      */
     public function __construct(
-        StreamInterface $stream,
+        public StreamInterface $stream,
         $limit = -1,
         $offset = 0
     ) {
-        $this->stream = $stream;
         $this->setLimit($limit);
         $this->setOffset($offset);
     }
@@ -61,7 +65,7 @@ class LimitStream implements StreamInterface
             return $length - $this->offset;
         }
 
-        return \min($this->limit, $length - $this->offset);
+        return min($this->limit, $length - $this->offset);
     }
 
     /**
@@ -71,7 +75,7 @@ class LimitStream implements StreamInterface
     public function seek($offset, $whence = SEEK_SET): void
     {
         if ($whence !== SEEK_SET || $offset < 0) {
-            throw new \RuntimeException(\sprintf(
+            throw new \RuntimeException(sprintf(
                 'Cannot seek to offset %s with whence %s',
                 $offset,
                 $whence
@@ -147,7 +151,7 @@ class LimitStream implements StreamInterface
         if ($remaining > 0) {
             // Only return the amount of requested data, ensuring that the byte
             // limit is not exceeded
-            return $this->stream->read(\min($remaining, $length));
+            return $this->stream->read(min($remaining, $length));
         }
 
         return '';

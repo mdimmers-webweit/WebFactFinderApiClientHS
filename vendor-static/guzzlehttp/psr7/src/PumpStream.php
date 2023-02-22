@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Psr7;
 
@@ -44,8 +49,8 @@ class PumpStream implements StreamInterface
     public function __construct(callable $source, array $options = [])
     {
         $this->source = $source;
-        $this->size = isset($options['size']) ? $options['size'] : null;
-        $this->metadata = isset($options['metadata']) ? $options['metadata'] : [];
+        $this->size = $options['size'] ?? null;
+        $this->metadata = $options['metadata'] ?? [];
         $this->buffer = new BufferStream();
     }
 
@@ -117,14 +122,14 @@ class PumpStream implements StreamInterface
     public function read($length)
     {
         $data = $this->buffer->read($length);
-        $readLen = \mb_strlen($data);
+        $readLen = mb_strlen($data);
         $this->tellPos += $readLen;
         $remaining = $length - $readLen;
 
         if ($remaining) {
             $this->pump($remaining);
             $data .= $this->buffer->read($remaining);
-            $this->tellPos += \mb_strlen($data) - $readLen;
+            $this->tellPos += mb_strlen($data) - $readLen;
         }
 
         return $data;
@@ -146,7 +151,7 @@ class PumpStream implements StreamInterface
             return $this->metadata;
         }
 
-        return isset($this->metadata[$key]) ? $this->metadata[$key] : null;
+        return $this->metadata[$key] ?? null;
     }
 
     private function pump($length): void
@@ -160,7 +165,7 @@ class PumpStream implements StreamInterface
                     return;
                 }
                 $this->buffer->write($data);
-                $length -= \mb_strlen($data);
+                $length -= mb_strlen($data);
             } while ($length > 0);
         }
     }

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -39,7 +39,7 @@ class ObjectSerializer
         if (\is_scalar($data) || $data === null) {
             return $data;
         } elseif ($data instanceof \DateTime) {
-            return /*($format === 'date') ? $data->format('Y-m-d') :*/ $data->format(\DateTime::ATOM);
+            return /* ($format === 'date') ? $data->format('Y-m-d') : */ $data->format(\DateTime::ATOM);
         } elseif (\is_array($data)) {
             foreach ($data as $property => $value) {
                 $data[$property] = self::sanitizeForSerialization($value);
@@ -78,7 +78,7 @@ class ObjectSerializer
      */
     public static function sanitizeFilename($filename)
     {
-        if (\preg_match("/.*[\/\\\\](.*)$/", $filename, $match)) {
+        if (preg_match("/.*[\/\\\\](.*)$/", $filename, $match)) {
             return $match[1];
         }
 
@@ -95,7 +95,7 @@ class ObjectSerializer
      */
     public static function toPathValue($value)
     {
-        return \rawurlencode(self::toString($value));
+        return rawurlencode(self::toString($value));
     }
 
     /**
@@ -111,7 +111,7 @@ class ObjectSerializer
     public static function toQueryValue($object)
     {
         if (\is_array($object)) {
-            return \implode(',', $object);
+            return implode(',', $object);
         }
 
         if (\is_bool($object)) {
@@ -186,22 +186,22 @@ class ObjectSerializer
         if ($allowCollectionFormatMulti && ($collectionFormat === 'multi')) {
             // http_build_query() almost does the job for us. We just
             // need to fix the result of multidimensional arrays.
-            return \preg_replace('/%5B[0-9]+%5D=/', '=', \http_build_query($collection, '', '&'));
+            return preg_replace('/%5B[0-9]+%5D=/', '=', http_build_query($collection, '', '&'));
         }
         switch ($collectionFormat) {
             case 'pipes':
-                return \implode('|', $collection);
+                return implode('|', $collection);
 
             case 'tsv':
-                return \implode("\t", $collection);
+                return implode("\t", $collection);
 
             case 'ssv':
-                return \implode(' ', $collection);
+                return implode(' ', $collection);
 
             case 'csv':
                 // Deliberate fall through. CSV is default format.
             default:
-                return \implode(',', $collection);
+                return implode(',', $collection);
         }
     }
 
@@ -218,11 +218,11 @@ class ObjectSerializer
     {
         if ($data === null) {
             return null;
-        } elseif (\mb_substr($class, 0, 4) === 'map[') { // for associative array e.g. map[string,int]
-            $inner = \mb_substr($class, 4, -1);
+        } elseif (mb_substr($class, 0, 4) === 'map[') { // for associative array e.g. map[string,int]
+            $inner = mb_substr($class, 4, -1);
             $deserialized = [];
-            if (\mb_strrpos($inner, ',') !== false) {
-                $subClass_array = \explode(',', $inner, 2);
+            if (mb_strrpos($inner, ',') !== false) {
+                $subClass_array = explode(',', $inner, 2);
                 $subClass = $subClass_array[1];
                 foreach ($data as $key => $value) {
                     $deserialized[$key] = self::deserialize($value, $subClass, null);
@@ -230,8 +230,8 @@ class ObjectSerializer
             }
 
             return $deserialized;
-        } elseif (\strcasecmp(\mb_substr($class, -2), '[]') === 0) {
-            $subClass = \mb_substr($class, 0, -2);
+        } elseif (strcasecmp(mb_substr($class, -2), '[]') === 0) {
+            $subClass = mb_substr($class, 0, -2);
             $values = [];
             foreach ($data as $key => $value) {
                 $values[] = self::deserialize($value, $subClass, null);
@@ -255,7 +255,7 @@ class ObjectSerializer
 
             return null;
         } elseif (\in_array($class, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
-            \settype($data, $class);
+            settype($data, $class);
 
             return $data;
         } elseif ($class === '\SplFileObject') {
@@ -263,17 +263,17 @@ class ObjectSerializer
 
             // determine file name
             if (\array_key_exists('Content-Disposition', $httpHeaders)
-                && \preg_match('/inline; filename=[\'"]?([^\'"\s]+)[\'"]?$/i', $httpHeaders['Content-Disposition'], $match)) {
-                $filename = \sys_get_temp_dir() . DIRECTORY_SEPARATOR . self::sanitizeFilename($match[1]);
+                && preg_match('/inline; filename=[\'"]?([^\'"\s]+)[\'"]?$/i', $httpHeaders['Content-Disposition'], $match)) {
+                $filename = sys_get_temp_dir() . DIRECTORY_SEPARATOR . self::sanitizeFilename($match[1]);
             } else {
-                $filename = \tempnam(\sys_get_temp_dir(), '');
+                $filename = tempnam(sys_get_temp_dir(), '');
             }
 
-            $file = \fopen($filename, 'w');
+            $file = fopen($filename, 'w');
             while ($chunk = $data->read(200)) {
-                \fwrite($file, $chunk);
+                fwrite($file, $chunk);
             }
-            \fclose($file);
+            fclose($file);
 
             return new \SplFileObject($filename, 'r');
         }
@@ -294,6 +294,6 @@ class ObjectSerializer
 
     public static function camelize($input, $separator = '_')
     {
-        return \str_replace($separator, '', \ucwords($input, $separator));
+        return str_replace($separator, '', ucwords($input, $separator));
     }
 }

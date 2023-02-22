@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -18,16 +18,14 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  */
 class ImportChannelResult extends BaseModel implements ModelV4Interface
 {
-    const IMPORT_TYPE_DATA = 'DATA';
-    const IMPORT_TYPE_ATTRIBUTES_AND_DATA = 'ATTRIBUTES_AND_DATA';
-    const IMPORT_TYPE_SUGGEST = 'SUGGEST';
-    const IMPORT_TYPE_RECOMMENDATION = 'RECOMMENDATION';
-    const IMPORT_TYPE_RANKING = 'RANKING';
+    public const IMPORT_TYPE_DATA = 'DATA';
+    public const IMPORT_TYPE_ATTRIBUTES_AND_DATA = 'ATTRIBUTES_AND_DATA';
+    public const IMPORT_TYPE_SUGGEST = 'SUGGEST';
+    public const IMPORT_TYPE_RECOMMENDATION = 'RECOMMENDATION';
+    public const IMPORT_TYPE_RANKING = 'RANKING';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
@@ -46,8 +44,6 @@ class ImportChannelResult extends BaseModel implements ModelV4Interface
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {
@@ -102,9 +98,9 @@ class ImportChannelResult extends BaseModel implements ModelV4Interface
         }
         $allowedValues = $this->getImportTypeAllowableValues();
         if (!\is_null($this->container['import_type']) && !\in_array($this->container['import_type'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
+            $invalidProperties[] = sprintf(
                 "invalid value for 'import_type', must be one of '%s'",
-                \implode("', '", $allowedValues)
+                implode("', '", $allowedValues)
             );
         }
 
@@ -202,9 +198,9 @@ class ImportChannelResult extends BaseModel implements ModelV4Interface
         $allowedValues = $this->getImportTypeAllowableValues();
         if (!\in_array($import_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'import_type', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }

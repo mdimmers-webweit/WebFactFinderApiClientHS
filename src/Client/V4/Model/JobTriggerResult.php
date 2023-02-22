@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -18,13 +18,11 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  */
 class JobTriggerResult extends BaseModel implements ModelV4Interface
 {
-    const STATUS_SUCCESS = 'SUCCESS';
-    const STATUS_FAILURE = 'FAILURE';
+    public const STATUS_SUCCESS = 'SUCCESS';
+    public const STATUS_FAILURE = 'FAILURE';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
@@ -39,8 +37,6 @@ class JobTriggerResult extends BaseModel implements ModelV4Interface
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {
@@ -79,9 +75,9 @@ class JobTriggerResult extends BaseModel implements ModelV4Interface
         }
         $allowedValues = $this->getStatusAllowableValues();
         if (!\is_null($this->container['status']) && !\in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
+            $invalidProperties[] = sprintf(
                 "invalid value for 'status', must be one of '%s'",
-                \implode("', '", $allowedValues)
+                implode("', '", $allowedValues)
             );
         }
 
@@ -166,9 +162,9 @@ class JobTriggerResult extends BaseModel implements ModelV4Interface
         $allowedValues = $this->getStatusAllowableValues();
         if (!\in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'status', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }

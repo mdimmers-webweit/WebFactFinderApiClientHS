@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Psr7;
 
@@ -171,7 +176,7 @@ class AppendStream implements StreamInterface
 
         // Seek to the actual position by reading from each stream
         while ($this->pos < $offset && !$this->eof()) {
-            $result = $this->read(\min(8096, $offset - $this->pos));
+            $result = $this->read(min(8096, $offset - $this->pos));
             if ($result === '') {
                 break;
             }
@@ -209,10 +214,10 @@ class AppendStream implements StreamInterface
             }
 
             $buffer .= $result;
-            $remaining = $length - \mb_strlen($buffer);
+            $remaining = $length - mb_strlen($buffer);
         }
 
-        $this->pos += \mb_strlen($buffer);
+        $this->pos += mb_strlen($buffer);
 
         return $buffer;
     }

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -38,7 +38,7 @@ class RecordsApi extends ApiClient
      */
     public function compareUsingGET(string $channel, bool $ids_only = false, $id = null)
     {
-        list($response) = $this->compareUsingGETWithHttpInfo($channel, $ids_only, $id);
+        [$response] = $this->compareUsingGETWithHttpInfo($channel, $ids_only, $id);
 
         return $response;
     }
@@ -125,7 +125,7 @@ class RecordsApi extends ApiClient
      */
     public function deleteUsingDELETE(string $channel, $record_id = null, $delete_request = null, $id_type = 'productNumber', bool $verbose = false)
     {
-        list($response) = $this->deleteUsingDELETEWithHttpInfo($channel, $record_id, $delete_request, $id_type, $verbose);
+        [$response] = $this->deleteUsingDELETEWithHttpInfo($channel, $record_id, $delete_request, $id_type, $verbose);
 
         return $response;
     }
@@ -226,7 +226,7 @@ class RecordsApi extends ApiClient
      */
     public function getDetailPageUsingGET(string $channel, $id, $id_type = 'id', bool $ids_only = false, int $max_results_recommendations = 0, int $max_results_similar_products = 10, bool $use_personalization = true, $sid = null, int $max_count_variants = 5, bool $with_campaigns = true, bool $with_recommendations = true, bool $with_similar_products = true, bool $with_record = true)
     {
-        list($response) = $this->getDetailPageUsingGETWithHttpInfo($channel, $id, $id_type, $ids_only, $max_results_recommendations, $max_results_similar_products, $use_personalization, $sid, $max_count_variants, $with_campaigns, $with_recommendations, $with_similar_products, $with_record);
+        [$response] = $this->getDetailPageUsingGETWithHttpInfo($channel, $id, $id_type, $ids_only, $max_results_recommendations, $max_results_similar_products, $use_personalization, $sid, $max_count_variants, $with_campaigns, $with_recommendations, $with_similar_products, $with_record);
 
         return $response;
     }
@@ -342,7 +342,7 @@ class RecordsApi extends ApiClient
      */
     public function getFullRecordsUsingGET(string $channel, $record_id, $id_type = 'id', int $max_count_variants = 5)
     {
-        list($response) = $this->getFullRecordsUsingGETWithHttpInfo($channel, $record_id, $id_type, $max_count_variants);
+        [$response] = $this->getFullRecordsUsingGETWithHttpInfo($channel, $record_id, $id_type, $max_count_variants);
 
         return $response;
     }
@@ -431,7 +431,7 @@ class RecordsApi extends ApiClient
      */
     public function getRecommendationUsingGET(string $channel, $id, int $max_results = 0, $sid = null, bool $ids_only = false, bool $use_personalization = true)
     {
-        list($response) = $this->getRecommendationUsingGETWithHttpInfo($channel, $id, $max_results, $sid, $ids_only, $use_personalization);
+        [$response] = $this->getRecommendationUsingGETWithHttpInfo($channel, $id, $max_results, $sid, $ids_only, $use_personalization);
 
         return $response;
     }
@@ -517,7 +517,7 @@ class RecordsApi extends ApiClient
      */
     public function getRecordsUsingGET(string $channel, $product_number, bool $verbose = false)
     {
-        list($response) = $this->getRecordsUsingGETWithHttpInfo($channel, $product_number, $verbose);
+        [$response] = $this->getRecordsUsingGETWithHttpInfo($channel, $product_number, $verbose);
 
         return $response;
     }
@@ -598,7 +598,7 @@ class RecordsApi extends ApiClient
      */
     public function getSimilarProductsUsingGET(string $channel, $id, $id_type, bool $ids_only = false, int $max_results = 10)
     {
-        list($response) = $this->getSimilarProductsUsingGETWithHttpInfo($channel, $id, $id_type, $ids_only, $max_results);
+        [$response] = $this->getSimilarProductsUsingGETWithHttpInfo($channel, $id, $id_type, $ids_only, $max_results);
 
         return $response;
     }
@@ -689,7 +689,7 @@ class RecordsApi extends ApiClient
      */
     public function insertRecordsUsingPOST(string $channel, $records, bool $verbose = false)
     {
-        list($response) = $this->insertRecordsUsingPOSTWithHttpInfo($channel, $records, $verbose);
+        [$response] = $this->insertRecordsUsingPOSTWithHttpInfo($channel, $records, $verbose);
 
         return $response;
     }
@@ -774,7 +774,7 @@ class RecordsApi extends ApiClient
      */
     public function updateUsingPUT(string $channel, $records, bool $verbose = false)
     {
-        list($response) = $this->updateUsingPUTWithHttpInfo($channel, $records, $verbose);
+        [$response] = $this->updateUsingPUTWithHttpInfo($channel, $records, $verbose);
 
         return $response;
     }
@@ -859,7 +859,7 @@ class RecordsApi extends ApiClient
      */
     public function upsertRecordsUsingPUT(string $channel, $records, bool $verbose = false)
     {
-        list($response) = $this->upsertRecordsUsingPUTWithHttpInfo($channel, $records, $verbose);
+        [$response] = $this->upsertRecordsUsingPUTWithHttpInfo($channel, $records, $verbose);
 
         return $response;
     }
@@ -1039,7 +1039,7 @@ class RecordsApi extends ApiClient
 
         // this endpoint requires HTTP basic authentication
         if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
-            $headers['Authorization'] = 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
         }
         // this endpoint requires OAuth (access token)
         if ($this->config->getAccessToken() !== null) {
@@ -1051,7 +1051,7 @@ class RecordsApi extends ApiClient
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
-        $headers = \array_merge(
+        $headers = array_merge(
             $defaultHeaders,
             $headers
         );
@@ -1153,7 +1153,7 @@ class RecordsApi extends ApiClient
         $resourcePath = $this->addChannelToResourcePath($channel, $resourcePath);
         // path params
         if ($id !== null) {
-            $resourcePath = \str_replace(
+            $resourcePath = str_replace(
                 '{id}',
                 ObjectSerializer::toPathValue($id),
                 $resourcePath

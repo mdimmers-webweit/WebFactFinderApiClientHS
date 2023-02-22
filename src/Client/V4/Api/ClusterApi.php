@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -99,7 +99,7 @@ class ClusterApi extends ApiClient
      */
     public function getDatabaseStateUsingGET(string $channel): DatabaseState
     {
-        list($response) = $this->getDatabaseStateUsingGETWithHttpInfo($channel);
+        [$response] = $this->getDatabaseStateUsingGETWithHttpInfo($channel);
 
         return $response;
     }
@@ -170,7 +170,7 @@ class ClusterApi extends ApiClient
      */
     public function pruneUsingPOST(string $channel): string
     {
-        list($response) = $this->pruneUsingPOSTWithHttpInfo($channel);
+        [$response] = $this->pruneUsingPOSTWithHttpInfo($channel);
 
         return $response;
     }
@@ -244,7 +244,7 @@ class ClusterApi extends ApiClient
      */
     public function syncDatabaseUsingPOST(string $channel, bool $verbose = false): array
     {
-        list($response) = $this->syncDatabaseUsingPOSTWithHttpInfo($channel, $verbose);
+        [$response] = $this->syncDatabaseUsingPOSTWithHttpInfo($channel, $verbose);
 
         return $response;
     }

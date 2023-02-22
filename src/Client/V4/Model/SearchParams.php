@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -18,14 +18,12 @@ use Web\FactFinderApi\Client\Model\SearchParamsBase;
  */
 class SearchParams extends SearchParamsBase implements ModelV4Interface
 {
-    const ARTICLE_NUMBER_SEARCH_DETECT = 'DETECT';
-    const ARTICLE_NUMBER_SEARCH_ALWAYS = 'ALWAYS';
-    const ARTICLE_NUMBER_SEARCH_NEVER = 'NEVER';
+    public const ARTICLE_NUMBER_SEARCH_DETECT = 'DETECT';
+    public const ARTICLE_NUMBER_SEARCH_ALWAYS = 'ALWAYS';
+    public const ARTICLE_NUMBER_SEARCH_NEVER = 'NEVER';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
@@ -44,8 +42,6 @@ class SearchParams extends SearchParamsBase implements ModelV4Interface
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {
@@ -88,9 +84,9 @@ class SearchParams extends SearchParamsBase implements ModelV4Interface
 
         $allowedValues = $this->getArticleNumberSearchAllowableValues();
         if (!\is_null($this->container['article_number_search']) && !\in_array($this->container['article_number_search'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
+            $invalidProperties[] = sprintf(
                 "invalid value for 'article_number_search', must be one of '%s'",
-                \implode("', '", $allowedValues)
+                implode("', '", $allowedValues)
             );
         }
 
@@ -130,9 +126,9 @@ class SearchParams extends SearchParamsBase implements ModelV4Interface
         $allowedValues = $this->getArticleNumberSearchAllowableValues();
         if (!\is_null($article_number_search) && !\in_array($article_number_search, $allowedValues, true)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'article_number_search', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }

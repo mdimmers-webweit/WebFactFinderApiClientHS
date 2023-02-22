@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Psr7;
 
@@ -45,12 +50,12 @@ trait MessageTrait
 
     public function hasHeader($header)
     {
-        return isset($this->headerNames[\mb_strtolower($header)]);
+        return isset($this->headerNames[mb_strtolower($header)]);
     }
 
     public function getHeader($header)
     {
-        $header = \mb_strtolower($header);
+        $header = mb_strtolower($header);
 
         if (!isset($this->headerNames[$header])) {
             return [];
@@ -63,14 +68,14 @@ trait MessageTrait
 
     public function getHeaderLine($header)
     {
-        return \implode(', ', $this->getHeader($header));
+        return implode(', ', $this->getHeader($header));
     }
 
     public function withHeader($header, $value)
     {
         $this->assertHeader($header);
         $value = $this->normalizeHeaderValue($value);
-        $normalized = \mb_strtolower($header);
+        $normalized = mb_strtolower($header);
 
         $new = clone $this;
         if (isset($new->headerNames[$normalized])) {
@@ -86,12 +91,12 @@ trait MessageTrait
     {
         $this->assertHeader($header);
         $value = $this->normalizeHeaderValue($value);
-        $normalized = \mb_strtolower($header);
+        $normalized = mb_strtolower($header);
 
         $new = clone $this;
         if (isset($new->headerNames[$normalized])) {
             $header = $this->headerNames[$normalized];
-            $new->headers[$header] = \array_merge($this->headers[$header], $value);
+            $new->headers[$header] = array_merge($this->headers[$header], $value);
         } else {
             $new->headerNames[$normalized] = $header;
             $new->headers[$header] = $value;
@@ -102,7 +107,7 @@ trait MessageTrait
 
     public function withoutHeader($header)
     {
-        $normalized = \mb_strtolower($header);
+        $normalized = mb_strtolower($header);
 
         if (!isset($this->headerNames[$normalized])) {
             return $this;
@@ -148,10 +153,10 @@ trait MessageTrait
             }
             $this->assertHeader($header);
             $value = $this->normalizeHeaderValue($value);
-            $normalized = \mb_strtolower($header);
+            $normalized = mb_strtolower($header);
             if (isset($this->headerNames[$normalized])) {
                 $header = $this->headerNames[$normalized];
-                $this->headers[$header] = \array_merge($this->headers[$header], $value);
+                $this->headers[$header] = array_merge($this->headers[$header], $value);
             } else {
                 $this->headerNames[$normalized] = $header;
                 $this->headers[$header] = $value;
@@ -188,22 +193,22 @@ trait MessageTrait
      */
     private function trimHeaderValues(array $values)
     {
-        return \array_map(function ($value) {
+        return array_map(function ($value) {
             if (!\is_scalar($value) && $value !== null) {
-                throw new \InvalidArgumentException(\sprintf(
+                throw new \InvalidArgumentException(sprintf(
                     'Header value must be scalar or null but %s provided.',
                     \is_object($value) ? \get_class($value) : \gettype($value)
                 ));
             }
 
-            return \trim((string) $value, " \t");
+            return trim((string) $value, " \t");
         }, $values);
     }
 
     private function assertHeader($header): void
     {
         if (!\is_string($header)) {
-            throw new \InvalidArgumentException(\sprintf(
+            throw new \InvalidArgumentException(sprintf(
                 'Header name must be a string but %s provided.',
                 \is_object($header) ? \get_class($header) : \gettype($header)
             ));

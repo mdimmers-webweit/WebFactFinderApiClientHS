@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -29,15 +29,13 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  */
 class Campaign extends BaseModel implements ModelV1Interface
 {
-    const FLAVOUR_ADVISOR = 'ADVISOR';
-    const FLAVOUR_REDIRECT = 'REDIRECT';
-    const FLAVOUR_FEEDBACK = 'FEEDBACK';
-    const FLAVOUR_PRODUCT = 'PRODUCT';
+    public const FLAVOUR_ADVISOR = 'ADVISOR';
+    public const FLAVOUR_REDIRECT = 'REDIRECT';
+    public const FLAVOUR_FEEDBACK = 'FEEDBACK';
+    public const FLAVOUR_PRODUCT = 'PRODUCT';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
@@ -57,8 +55,6 @@ class Campaign extends BaseModel implements ModelV1Interface
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {
@@ -110,9 +106,9 @@ class Campaign extends BaseModel implements ModelV1Interface
         }
         $allowedValues = $this->getFlavourAllowableValues();
         if (!\is_null($this->container['flavour']) && !\in_array($this->container['flavour'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
+            $invalidProperties[] = sprintf(
                 "invalid value for 'flavour', must be one of '%s'",
-                \implode("', '", $allowedValues)
+                implode("', '", $allowedValues)
             );
         }
 
@@ -217,9 +213,9 @@ class Campaign extends BaseModel implements ModelV1Interface
         $allowedValues = $this->getFlavourAllowableValues();
         if (!\in_array($flavour, $allowedValues, true)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'flavour', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }

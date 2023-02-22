@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -44,7 +44,7 @@ class SuggestApi extends ApiClient
      */
     public function getSuggestionsUsingGET(string $channel, $query)
     {
-        list($response) = $this->getSuggestionsUsingGETWithHttpInfo($channel, $query);
+        [$response] = $this->getSuggestionsUsingGETWithHttpInfo($channel, $query);
 
         return $response;
     }
@@ -118,7 +118,7 @@ class SuggestApi extends ApiClient
      */
     public function getSuggestionsUsingPOST(SearchParams $params)
     {
-        list($response) = $this->getSuggestionsUsingPOSTWithHttpInfo($params);
+        [$response] = $this->getSuggestionsUsingPOSTWithHttpInfo($params);
 
         return $response;
     }

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -20,14 +20,12 @@ class Result extends ResultBase implements ModelV4Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
         $result = parent::swaggerTypes();
 
-        $result = \array_merge($result, [
+        $result = array_merge($result, [
             'article_number_search' => 'bool',
             'answers' => static::getModelClass('Answer', true),
             'took_worldmatch' => 'int',
@@ -41,14 +39,12 @@ class Result extends ResultBase implements ModelV4Interface
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {
         $result = parent::attributeMap();
 
-        $result = \array_merge($result, [
+        $result = array_merge($result, [
             'facets' => 'facets',
             'article_number_search' => 'articleNumberSearch',
             'answers' => 'answers',

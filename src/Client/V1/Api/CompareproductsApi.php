@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -48,7 +48,7 @@ class CompareproductsApi extends ApiClient
      */
     public function compareUsingGET(string $channel, $id, bool $ids_only = false, $custom_parameters = null)
     {
-        list($response) = $this->compareUsingGETWithHttpInfo($channel, $id, $ids_only, $custom_parameters);
+        [$response] = $this->compareUsingGETWithHttpInfo($channel, $id, $ids_only, $custom_parameters);
 
         return $response;
     }

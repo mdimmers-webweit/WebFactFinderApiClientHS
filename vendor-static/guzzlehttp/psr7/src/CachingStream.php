@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Psr7;
 
@@ -12,29 +17,24 @@ class CachingStream implements StreamInterface
 {
     use StreamDecoratorTrait;
 
-    /** @var StreamInterface Stream being wrapped */
-    private $remoteStream;
-
     /** @var int Number of bytes to skip reading due to a write on the buffer */
     private $skipReadBytes = 0;
 
     /**
      * We will treat the buffer object as the body of the stream
      *
-     * @param StreamInterface $stream Stream to cache
      * @param StreamInterface $target Optionally specify where data is cached
      */
     public function __construct(
-        StreamInterface $stream,
+    private StreamInterface $remoteStream,
         ?StreamInterface $target = null
     ) {
-        $this->remoteStream = $stream;
-        $this->stream = $target ?: new Stream(\fopen('php://temp', 'r+'));
+        $this->stream = $target ?: new Stream(fopen('php://temp', 'r+'));
     }
 
     public function getSize()
     {
-        return \max($this->stream->getSize(), $this->remoteStream->getSize());
+        return max($this->stream->getSize(), $this->remoteStream->getSize());
     }
 
     public function rewind(): void
@@ -77,7 +77,7 @@ class CachingStream implements StreamInterface
     {
         // Perform a regular read on any previously read data from the buffer
         $data = $this->stream->read($length);
-        $remaining = $length - \mb_strlen($data);
+        $remaining = $length - mb_strlen($data);
 
         // More data was requested so read from the remote stream
         if ($remaining) {
@@ -90,9 +90,9 @@ class CachingStream implements StreamInterface
             );
 
             if ($this->skipReadBytes) {
-                $len = \mb_strlen($remoteData);
-                $remoteData = \mb_substr($remoteData, $this->skipReadBytes);
-                $this->skipReadBytes = \max(0, $this->skipReadBytes - $len);
+                $len = mb_strlen($remoteData);
+                $remoteData = mb_substr($remoteData, $this->skipReadBytes);
+                $this->skipReadBytes = max(0, $this->skipReadBytes - $len);
             }
 
             $data .= $remoteData;
@@ -108,7 +108,7 @@ class CachingStream implements StreamInterface
         // to skip bytes from being read from the remote stream to emulate
         // other stream wrappers. Basically replacing bytes of data of a fixed
         // length.
-        $overflow = (\mb_strlen($string) + $this->tell()) - $this->remoteStream->tell();
+        $overflow = (mb_strlen($string) + $this->tell()) - $this->remoteStream->tell();
         if ($overflow > 0) {
             $this->skipReadBytes += $overflow;
         }

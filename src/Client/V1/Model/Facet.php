@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -29,15 +29,13 @@ use Web\FactFinderApi\Client\Model\FacetBase;
  */
 class Facet extends FacetBase implements ModelV1Interface
 {
-    const TYPE_NUMBER = 'number';
-    const TYPE_MULTI = 'multi';
-    const TYPE_TEXT = 'text';
-    const TYPE_CATEGORY_PATH = 'categoryPath';
+    public const TYPE_NUMBER = 'number';
+    public const TYPE_MULTI = 'multi';
+    public const TYPE_TEXT = 'text';
+    public const TYPE_CATEGORY_PATH = 'categoryPath';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
@@ -51,8 +49,6 @@ class Facet extends FacetBase implements ModelV1Interface
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {

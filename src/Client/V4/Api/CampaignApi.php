@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -38,7 +38,7 @@ class CampaignApi extends ApiClient implements CampaignApiInterface
      */
     public function getPageCampaignsUsingGET(string $channel, $page_id, bool $ids_only = false, $sid = null)
     {
-        list($response) = $this->getPageCampaignsUsingGETWithHttpInfo($channel, $page_id, $ids_only, $sid);
+        [$response] = $this->getPageCampaignsUsingGETWithHttpInfo($channel, $page_id, $ids_only, $sid);
 
         return $response;
     }
@@ -83,7 +83,7 @@ class CampaignApi extends ApiClient implements CampaignApiInterface
      */
     public function getProductCampaignsUsingGET(string $channel, $product_number, string $id_type = 'productNumber', bool $ids_only = false, ?string $sid = null, ?string $advisor_status = null): array
     {
-        list($response) = $this->getProductCampaignsUsingGETWithHttpInfo($channel, $product_number, $id_type, $ids_only, $sid);
+        [$response] = $this->getProductCampaignsUsingGETWithHttpInfo($channel, $product_number, $id_type, $ids_only, $sid);
 
         return $response;
     }
@@ -173,7 +173,7 @@ class CampaignApi extends ApiClient implements CampaignApiInterface
      */
     public function getShoppingCartCampaignsUsingGET(string $channel, $product_number, bool $ids_only = false, ?string $sid = null, ?string $advisor_status = null): array
     {
-        list($response) = $this->getShoppingCartCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only, $sid);
+        [$response] = $this->getShoppingCartCampaignsUsingGETWithHttpInfo($channel, $product_number, $ids_only, $sid);
 
         return $response;
     }

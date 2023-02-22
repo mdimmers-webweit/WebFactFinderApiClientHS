@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -18,16 +18,13 @@ namespace Web\FactFinderApi\Client\Model;
  */
 class ModelResolver
 {
-    private bool $isNG;
-
-    public function __construct(bool $isNG = true)
+    public function __construct(private bool $isNG = true)
     {
-        $this->isNG = $isNG;
     }
 
     public function __call($method, $args)
     {
-        if (\preg_match('/create(.*)/', $method, $matches) > 0) {
+        if (preg_match('/create(.*)/', $method, $matches) > 0) {
             return \call_user_func_array([$this, 'createUnifiedModel'], [$matches[1], ...$args]);
         }
         throw new \BadMethodCallException('Call to undefined method ' . \get_class($this) . '::' . $method . '()');

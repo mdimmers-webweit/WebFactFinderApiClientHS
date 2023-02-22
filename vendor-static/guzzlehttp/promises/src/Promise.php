@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Promise;
 
@@ -155,7 +160,7 @@ class Promise implements PromiseInterface
 
         // If the value was not a settled promise or a thenable, then resolve
         // it in the task queue using the correct ID.
-        if (!\method_exists($value, 'then')) {
+        if (!method_exists($value, 'then')) {
             $id = $state === self::FULFILLED ? 1 : 2;
             // It's a success, so resolve the handlers in the queue.
             queue()->add(static function () use ($id, $value, $handlers): void {
@@ -167,7 +172,7 @@ class Promise implements PromiseInterface
             && $value->getState() === self::PENDING
         ) {
             // We can just merge our handlers onto the next promise.
-            $value->handlers = \array_merge($value->handlers, $handlers);
+            $value->handlers = array_merge($value->handlers, $handlers);
         } else {
             // Resolve the handlers when the forwarded promise is resolved.
             $value->then(

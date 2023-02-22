@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -50,7 +50,7 @@ class SearchApi extends ApiClient implements SearchApiInterface
      */
     public function categoryNavigationUsingGET(string $channel, $sid = null, $start_level = null, $end_level = null, $filter = null, $substring_filter = null, $latitude = null, $longitude = null, $market_id = null, bool $use_cache = true, bool $use_geo = true): CategoryNavigation
     {
-        list($response) = $this->categoryNavigationUsingGETWithHttpInfo($channel, $sid, $start_level, $end_level, $filter, $substring_filter, $latitude, $longitude, $market_id, $use_cache, $use_geo);
+        [$response] = $this->categoryNavigationUsingGETWithHttpInfo($channel, $sid, $start_level, $end_level, $filter, $substring_filter, $latitude, $longitude, $market_id, $use_cache, $use_geo);
 
         return $response;
     }
@@ -96,7 +96,7 @@ class SearchApi extends ApiClient implements SearchApiInterface
      */
     public function getSuggestionsUsingPOST($params): SuggestionResult
     {
-        list($response) = $this->getSuggestionsUsingPOSTWithHttpInfo($params);
+        [$response] = $this->getSuggestionsUsingPOSTWithHttpInfo($params);
 
         return $response;
     }
@@ -134,7 +134,7 @@ class SearchApi extends ApiClient implements SearchApiInterface
      */
     public function navigationUsingPOST($navigation_request)
     {
-        list($response) = $this->navigationUsingPOSTWithHttpInfo($navigation_request);
+        [$response] = $this->navigationUsingPOSTWithHttpInfo($navigation_request);
 
         return $response;
     }
@@ -172,7 +172,7 @@ class SearchApi extends ApiClient implements SearchApiInterface
      */
     public function searchUsingPOST(SearchRequestBase $search_request)
     {
-        list($response) = $this->searchUsingPOSTWithHttpInfo($search_request);
+        [$response] = $this->searchUsingPOSTWithHttpInfo($search_request);
 
         return $response;
     }

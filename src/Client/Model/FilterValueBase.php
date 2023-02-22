@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -16,13 +16,11 @@ namespace Web\FactFinderApi\Client\Model;
  */
 class FilterValueBase extends BaseModel
 {
-    const TYPE__OR = 'or';
-    const TYPE__AND = 'and';
+    public const TYPE__OR = 'or';
+    public const TYPE__AND = 'and';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
@@ -35,8 +33,6 @@ class FilterValueBase extends BaseModel
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {
@@ -77,9 +73,9 @@ class FilterValueBase extends BaseModel
         }
         $allowedValues = $this->getTypeAllowableValues();
         if (!\is_null($this->container['type']) && !\in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = \sprintf(
+            $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
-                \implode("', '", $allowedValues)
+                implode("', '", $allowedValues)
             );
         }
 
@@ -124,9 +120,9 @@ class FilterValueBase extends BaseModel
         $allowedValues = $this->getTypeAllowableValues();
         if (!\in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'type', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }

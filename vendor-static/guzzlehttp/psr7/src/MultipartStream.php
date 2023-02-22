@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Psr7;
 
@@ -28,7 +33,7 @@ class MultipartStream implements StreamInterface
      */
     public function __construct(array $elements = [], $boundary = null)
     {
-        $this->boundary = $boundary ?: \sha1(\uniqid('', true));
+        $this->boundary = $boundary ?: sha1(uniqid('', true));
         $this->stream = $this->createStream($elements);
     }
 
@@ -74,7 +79,7 @@ class MultipartStream implements StreamInterface
             $str .= "{$key}: {$value}\r\n";
         }
 
-        return "--{$this->boundary}\r\n" . \trim($str) . "\r\n\r\n";
+        return "--{$this->boundary}\r\n" . trim($str) . "\r\n\r\n";
     }
 
     private function addElement(AppendStream $stream, array $element): void
@@ -89,16 +94,16 @@ class MultipartStream implements StreamInterface
 
         if (empty($element['filename'])) {
             $uri = $element['contents']->getMetadata('uri');
-            if (\mb_substr($uri, 0, 6) !== 'php://') {
+            if (mb_substr($uri, 0, 6) !== 'php://') {
                 $element['filename'] = $uri;
             }
         }
 
-        list($body, $headers) = $this->createElement(
+        [$body, $headers] = $this->createElement(
             $element['name'],
             $element['contents'],
-            isset($element['filename']) ? $element['filename'] : null,
-            isset($element['headers']) ? $element['headers'] : []
+            $element['filename'] ?? null,
+            $element['headers'] ?? []
         );
 
         $stream->addStream(stream_for($this->getHeaders($headers)));
@@ -115,10 +120,10 @@ class MultipartStream implements StreamInterface
         $disposition = $this->getHeader($headers, 'content-disposition');
         if (!$disposition) {
             $headers['Content-Disposition'] = ($filename === '0' || $filename)
-                ? \sprintf(
+                ? sprintf(
                     'form-data; name="%s"; filename="%s"',
                     $name,
-                    \basename($filename)
+                    basename($filename)
                 )
                 : "form-data; name=\"{$name}\"";
         }
@@ -144,9 +149,9 @@ class MultipartStream implements StreamInterface
 
     private function getHeader(array $headers, $key)
     {
-        $lowercaseHeader = \mb_strtolower($key);
+        $lowercaseHeader = mb_strtolower($key);
         foreach ($headers as $k => $v) {
-            if (\mb_strtolower($k) === $lowercaseHeader) {
+            if (mb_strtolower($k) === $lowercaseHeader) {
                 return $v;
             }
         }

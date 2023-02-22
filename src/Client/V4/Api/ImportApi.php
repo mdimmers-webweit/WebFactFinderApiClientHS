@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -36,7 +36,7 @@ class ImportApi extends ApiClient
      */
     public function isImportRunningUsingGET($channel)
     {
-        list($response) = $this->isImportRunningUsingGETWithHttpInfo($channel);
+        [$response] = $this->isImportRunningUsingGETWithHttpInfo($channel);
 
         return $response;
     }
@@ -179,7 +179,7 @@ class ImportApi extends ApiClient
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
-                        \sprintf(
+                        sprintf(
                             '[%d] Error connecting to the API (%s)',
                             $statusCode,
                             $exception->getRequest()->getUri()
@@ -207,7 +207,7 @@ class ImportApi extends ApiClient
      */
     public function startRankingImportUsingPOST($channel = null, bool $quiet = false)
     {
-        list($response) = $this->startRankingImportUsingPOSTWithHttpInfo($channel, $quiet);
+        [$response] = $this->startRankingImportUsingPOSTWithHttpInfo($channel, $quiet);
 
         return $response;
     }
@@ -288,7 +288,7 @@ class ImportApi extends ApiClient
      */
     public function startRecommendationImportUsingPOST($channel = null, bool $quiet = false)
     {
-        list($response) = $this->startRecommendationImportUsingPOSTWithHttpInfo($channel, $quiet);
+        [$response] = $this->startRecommendationImportUsingPOSTWithHttpInfo($channel, $quiet);
 
         return $response;
     }
@@ -371,7 +371,7 @@ class ImportApi extends ApiClient
      */
     public function startSearchImportUsingPOST($channel = null, bool $download = false, bool $quiet = false, $import_stage = 'FULL')
     {
-        list($response) = $this->startSearchImportUsingPOSTWithHttpInfo($channel, $download, $quiet, $import_stage);
+        [$response] = $this->startSearchImportUsingPOSTWithHttpInfo($channel, $download, $quiet, $import_stage);
 
         return $response;
     }
@@ -458,7 +458,7 @@ class ImportApi extends ApiClient
      */
     public function startSuggestImportUsingPOST($channel = null, bool $quiet = false)
     {
-        list($response) = $this->startSuggestImportUsingPOSTWithHttpInfo($channel, $quiet);
+        [$response] = $this->startSuggestImportUsingPOSTWithHttpInfo($channel, $quiet);
 
         return $response;
     }

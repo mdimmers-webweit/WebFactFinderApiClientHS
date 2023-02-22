@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -46,7 +46,7 @@ class PredbasketApi extends ApiClient
      */
     public function getPredictionsUsingGET(string $channel, $user_id, int $max_results = 0, $blacklist = null, bool $ids_only = false)
     {
-        list($response) = $this->getPredictionsUsingGETWithHttpInfo($channel, $user_id, $max_results, $blacklist, $ids_only);
+        [$response] = $this->getPredictionsUsingGETWithHttpInfo($channel, $user_id, $max_results, $blacklist, $ids_only);
 
         return $response;
     }

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -31,14 +31,12 @@ class ResultSortItem extends ResultSortItemBase implements ModelV1Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
         $result = parent::swaggerTypes();
 
-        $result = \array_merge($result, [
+        $result = array_merge($result, [
             'relevance_sort_item' => 'bool',
         ]);
 
@@ -48,14 +46,12 @@ class ResultSortItem extends ResultSortItemBase implements ModelV1Interface
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {
         $result = parent::attributeMap();
 
-        $result = \array_merge($result, [
+        $result = array_merge($result, [
             'relevance_sort_item' => 'relevanceSortItem',
         ]);
 

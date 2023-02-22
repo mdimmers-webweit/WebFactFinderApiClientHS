@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -38,7 +38,7 @@ class UsersApi extends ApiClient
      */
     public function createGroupUsingPOST($group)
     {
-        list($response) = $this->createGroupUsingPOSTWithHttpInfo($group);
+        [$response] = $this->createGroupUsingPOSTWithHttpInfo($group);
 
         return $response;
     }
@@ -115,7 +115,7 @@ class UsersApi extends ApiClient
      */
     public function createUserUsingPOST($user)
     {
-        list($response) = $this->createUserUsingPOSTWithHttpInfo($user);
+        [$response] = $this->createUserUsingPOSTWithHttpInfo($user);
 
         return $response;
     }
@@ -192,7 +192,7 @@ class UsersApi extends ApiClient
      */
     public function deleteGroupUsingDELETE($name)
     {
-        list($response) = $this->deleteGroupUsingDELETEWithHttpInfo($name);
+        [$response] = $this->deleteGroupUsingDELETEWithHttpInfo($name);
 
         return $response;
     }
@@ -269,7 +269,7 @@ class UsersApi extends ApiClient
      */
     public function deleteGroupsUsingDELETE($name)
     {
-        list($response) = $this->deleteGroupsUsingDELETEWithHttpInfo($name);
+        [$response] = $this->deleteGroupsUsingDELETEWithHttpInfo($name);
 
         return $response;
     }
@@ -346,7 +346,7 @@ class UsersApi extends ApiClient
      */
     public function deleteUserUsingDELETE($username)
     {
-        list($response) = $this->deleteUserUsingDELETEWithHttpInfo($username);
+        [$response] = $this->deleteUserUsingDELETEWithHttpInfo($username);
 
         return $response;
     }
@@ -423,7 +423,7 @@ class UsersApi extends ApiClient
      */
     public function deleteUsersUsingDELETE($name)
     {
-        list($response) = $this->deleteUsersUsingDELETEWithHttpInfo($name);
+        [$response] = $this->deleteUsersUsingDELETEWithHttpInfo($name);
 
         return $response;
     }
@@ -499,7 +499,7 @@ class UsersApi extends ApiClient
      */
     public function getGroupsUsingGET($name = null, $role = null)
     {
-        list($response) = $this->getGroupsUsingGETWithHttpInfo($name, $role);
+        [$response] = $this->getGroupsUsingGETWithHttpInfo($name, $role);
 
         return $response;
     }
@@ -574,7 +574,7 @@ class UsersApi extends ApiClient
      */
     public function getUsersUsingGET($name = null, $role = null, $channel = null, $group = null)
     {
-        list($response) = $this->getUsersUsingGETWithHttpInfo($name, $role, $channel, $group);
+        [$response] = $this->getUsersUsingGETWithHttpInfo($name, $role, $channel, $group);
 
         return $response;
     }
@@ -652,7 +652,7 @@ class UsersApi extends ApiClient
      */
     public function getVisibleChannelsUsingGET()
     {
-        list($response) = $this->getVisibleChannelsUsingGETWithHttpInfo();
+        [$response] = $this->getVisibleChannelsUsingGETWithHttpInfo();
 
         return $response;
     }
@@ -723,7 +723,7 @@ class UsersApi extends ApiClient
      */
     public function updateGroupUsingPUT($group)
     {
-        list($response) = $this->updateGroupUsingPUTWithHttpInfo($group);
+        [$response] = $this->updateGroupUsingPUTWithHttpInfo($group);
 
         return $response;
     }
@@ -800,7 +800,7 @@ class UsersApi extends ApiClient
      */
     public function updateUserUsingPUT($user)
     {
-        list($response) = $this->updateUserUsingPUTWithHttpInfo($user);
+        [$response] = $this->updateUserUsingPUTWithHttpInfo($user);
 
         return $response;
     }
@@ -908,7 +908,7 @@ class UsersApi extends ApiClient
     {
         $resourcePath = '/rest/v4/groups/{name}';
         // path params
-        $resourcePath = \str_replace(
+        $resourcePath = str_replace(
             '{name}',
             ObjectSerializer::toPathValue($name),
             $resourcePath
@@ -961,7 +961,7 @@ class UsersApi extends ApiClient
         $resourcePath = '/rest/v4/users/{username}';
         // path params
         if ($username !== null) {
-            $resourcePath = \str_replace(
+            $resourcePath = str_replace(
                 '{username}',
                 ObjectSerializer::toPathValue($username),
                 $resourcePath

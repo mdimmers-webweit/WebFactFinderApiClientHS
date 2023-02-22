@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Promise;
 
@@ -71,9 +76,9 @@ function promise_for($value)
     }
 
     // Return a Guzzle promise that shadows the given promise.
-    if (\method_exists($value, 'then')) {
-        $wfn = \method_exists($value, 'wait') ? [$value, 'wait'] : null;
-        $cfn = \method_exists($value, 'cancel') ? [$value, 'cancel'] : null;
+    if (method_exists($value, 'then')) {
+        $wfn = method_exists($value, 'wait') ? [$value, 'wait'] : null;
+        $cfn = method_exists($value, 'cancel') ? [$value, 'cancel'] : null;
         $promise = new Promise($wfn, $cfn);
         $value->then([$promise, 'resolve'], [$promise, 'reject']);
 
@@ -229,7 +234,7 @@ function all($promises)
             $aggregate->reject($reason);
         }
     )->then(function () use (&$results) {
-        \ksort($results);
+        ksort($results);
 
         return $results;
     });
@@ -278,9 +283,9 @@ function some($count, $promises)
                     $rejections
                 );
             }
-            \ksort($results);
+            ksort($results);
 
-            return \array_values($results);
+            return array_values($results);
         }
     );
 }
@@ -323,7 +328,7 @@ function settle($promises)
             $results[$idx] = ['state' => PromiseInterface::REJECTED, 'reason' => $reason];
         }
     )->then(function () use (&$results) {
-        \ksort($results);
+        ksort($results);
 
         return $results;
     });

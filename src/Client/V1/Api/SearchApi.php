@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -72,7 +72,7 @@ class SearchApi extends ApiClient implements SearchApiInterface
      */
     public function searchUsingGET(string $channel, $sid = null, $user_input = null, $page = null, $products_per_page = null, $no_article_number_search = null, $search_field = null, $follow_search = null, $seo_path = null, $query = null, bool $use_asn = true, bool $use_found_words = false, bool $use_campaigns = true, bool $ids_only = false, bool $use_keywords = false, bool $generate_advisor_tree = true, bool $disable_cache = false, bool $use_personalization = true, bool $use_semantic_enhancer = true, bool $use_aso = true, $filter_facet_id = null, bool $navigation = false, $sort_fieldname = null, $query_from_suggest = null, $advisor_status = null)
     {
-        list($response) = $this->searchUsingGETWithHttpInfo($channel, $sid, $user_input, $page, $products_per_page, $no_article_number_search, $search_field, $follow_search, $seo_path, $query, $use_asn, $use_found_words, $use_campaigns, $ids_only, $use_keywords, $generate_advisor_tree, $disable_cache, $use_personalization, $use_semantic_enhancer, $use_aso, $filter_facet_id, $navigation, $sort_fieldname, $query_from_suggest, $advisor_status);
+        [$response] = $this->searchUsingGETWithHttpInfo($channel, $sid, $user_input, $page, $products_per_page, $no_article_number_search, $search_field, $follow_search, $seo_path, $query, $use_asn, $use_found_words, $use_campaigns, $ids_only, $use_keywords, $generate_advisor_tree, $disable_cache, $use_personalization, $use_semantic_enhancer, $use_aso, $filter_facet_id, $navigation, $sort_fieldname, $query_from_suggest, $advisor_status);
 
         return $response;
     }
@@ -221,7 +221,7 @@ class SearchApi extends ApiClient implements SearchApiInterface
      */
     public function searchUsingPOST(SearchRequestBase $search_request)
     {
-        list($response) = $this->searchUsingPOSTWithHttpInfo($search_request);
+        [$response] = $this->searchUsingPOSTWithHttpInfo($search_request);
 
         return $response;
     }
@@ -298,7 +298,7 @@ class SearchApi extends ApiClient implements SearchApiInterface
      */
     public function navigationUsingPOST($navigation_request)
     {
-        list($response) = $this->navigationUsingPOSTWithHttpInfo($navigation_request);
+        [$response] = $this->navigationUsingPOSTWithHttpInfo($navigation_request);
 
         return $response;
     }

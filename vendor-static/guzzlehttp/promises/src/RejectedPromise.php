@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Promise;
 
@@ -14,7 +19,7 @@ class RejectedPromise implements PromiseInterface
 
     public function __construct($reason)
     {
-        if (\method_exists($reason, 'then')) {
+        if (method_exists($reason, 'then')) {
             throw new \InvalidArgumentException(
                 'You cannot create a RejectedPromise with a promise.'
             );

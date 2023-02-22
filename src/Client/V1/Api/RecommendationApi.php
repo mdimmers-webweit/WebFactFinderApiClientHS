@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -48,7 +48,7 @@ class RecommendationApi extends ApiClient
      */
     public function getRecommendationUsingGET(string $channel, $id, int $max_results = 0, $sid = null, bool $ids_only = false, bool $use_personalization = true)
     {
-        list($response) = $this->getRecommendationUsingGETWithHttpInfo($channel, $id, $max_results, $sid, $ids_only, $use_personalization);
+        [$response] = $this->getRecommendationUsingGETWithHttpInfo($channel, $id, $max_results, $sid, $ids_only, $use_personalization);
 
         return $response;
     }

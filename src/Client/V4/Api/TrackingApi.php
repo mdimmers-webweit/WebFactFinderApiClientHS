@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -667,12 +667,12 @@ class TrackingApi extends ApiClient
     {
         if (empty($channel)) {
             throw new \InvalidArgumentException(
-                \sprintf('Missing the required parameter $channel when calling %s', $functionName)
+                sprintf('Missing the required parameter $channel when calling %s', $functionName)
             );
         }
         if (empty($events)) {
             throw new \InvalidArgumentException(
-                \sprintf('Missing the required parameter $events when calling %s', $functionName)
+                sprintf('Missing the required parameter $events when calling %s', $functionName)
             );
         }
     }

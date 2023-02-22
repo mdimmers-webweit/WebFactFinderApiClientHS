@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -53,9 +53,9 @@ class ApiClient extends ApiClientBase
         if ($apiKey !== null) {
             $headers['Authorization'] = $apiKey;
         } else {
-            $timestamp = \time() * 1000;
-            $password = \md5(\sprintf('%s%s%s%s', $this->config->getPrefix(), $timestamp, \md5($this->config->getPassword()), $this->config->getPostfix()));
-            $headers['Authorization'] = $this->config->getUsername() . ':' . $password . ':' . $timestamp; //'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
+            $timestamp = time() * 1000;
+            $password = md5(sprintf('%s%s%s%s', $this->config->getPrefix(), $timestamp, md5($this->config->getPassword()), $this->config->getPostfix()));
+            $headers['Authorization'] = $this->config->getUsername() . ':' . $password . ':' . $timestamp; // 'Basic ' . \base64_encode($this->config->getUsername() . ':' . $this->config->getPassword());
         }
 
         $defaultHeaders = [];
@@ -63,7 +63,7 @@ class ApiClient extends ApiClientBase
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
-        $headers = \array_merge(
+        $headers = array_merge(
             $defaultHeaders,
             $headers
         );
@@ -83,11 +83,11 @@ class ApiClient extends ApiClientBase
 
                 // \stdClass has no __toString(), so we should encode it manually
                 if ($params instanceof \stdClass) {
-                    $httpBody = \json_encode($params);
+                    $httpBody = json_encode($params);
                 }
                 // array has no __toString(), so we should encode it manually
                 if (\is_array($params)) {
-                    $httpBody = \json_encode(ObjectSerializer::sanitizeForSerialization($params));
+                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($params));
                 }
             }
         }

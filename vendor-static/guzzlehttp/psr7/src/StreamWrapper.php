@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Psr7;
 
@@ -40,7 +45,7 @@ class StreamWrapper
                 . 'writable, or both.');
         }
 
-        return \fopen('guzzle://stream', $mode, null, self::createStreamContext($stream));
+        return fopen('guzzle://stream', $mode, null, self::createStreamContext($stream));
     }
 
     /**
@@ -50,7 +55,7 @@ class StreamWrapper
      */
     public static function createStreamContext(StreamInterface $stream)
     {
-        return \stream_context_create([
+        return stream_context_create([
             'guzzle' => ['stream' => $stream],
         ]);
     }
@@ -60,14 +65,14 @@ class StreamWrapper
      */
     public static function register(): void
     {
-        if (!\in_array('guzzle', \stream_get_wrappers(), true)) {
-            \stream_wrapper_register('guzzle', __CLASS__);
+        if (!\in_array('guzzle', stream_get_wrappers(), true)) {
+            stream_wrapper_register('guzzle', __CLASS__);
         }
     }
 
     public function stream_open($path, $mode, $options, &$opened_path)
     {
-        $options = \stream_context_get_options($this->context);
+        $options = stream_context_get_options($this->context);
 
         if (!isset($options['guzzle']['stream'])) {
             return false;

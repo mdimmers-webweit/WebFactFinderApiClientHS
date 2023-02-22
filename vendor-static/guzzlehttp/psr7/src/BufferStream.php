@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace GuzzleHttp6\Psr7;
 
@@ -55,7 +60,7 @@ class BufferStream implements StreamInterface
 
     public function getSize()
     {
-        return \mb_strlen($this->buffer);
+        return mb_strlen($this->buffer);
     }
 
     public function isReadable()
@@ -85,7 +90,7 @@ class BufferStream implements StreamInterface
 
     public function eof()
     {
-        return \mb_strlen($this->buffer) === 0;
+        return mb_strlen($this->buffer) === 0;
     }
 
     public function tell(): void
@@ -98,7 +103,7 @@ class BufferStream implements StreamInterface
      */
     public function read($length)
     {
-        $currentLength = \mb_strlen($this->buffer);
+        $currentLength = mb_strlen($this->buffer);
 
         if ($length >= $currentLength) {
             // No need to slice the buffer because we don't have enough data.
@@ -106,8 +111,8 @@ class BufferStream implements StreamInterface
             $this->buffer = '';
         } else {
             // Slice up the result to provide a subset of the buffer.
-            $result = \mb_substr($this->buffer, 0, $length);
-            $this->buffer = \mb_substr($this->buffer, $length);
+            $result = mb_substr($this->buffer, 0, $length);
+            $this->buffer = mb_substr($this->buffer, $length);
         }
 
         return $result;
@@ -121,11 +126,11 @@ class BufferStream implements StreamInterface
         $this->buffer .= $string;
 
         // TODO: What should happen here?
-        if (\mb_strlen($this->buffer) >= $this->hwm) {
+        if (mb_strlen($this->buffer) >= $this->hwm) {
             return false;
         }
 
-        return \mb_strlen($string);
+        return mb_strlen($string);
     }
 
     public function getMetadata($key = null)

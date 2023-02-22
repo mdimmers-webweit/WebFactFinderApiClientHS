@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -18,13 +18,13 @@ use Web\FactFinderApi\Client\Model\FacetBase;
  */
 class Facet extends FacetBase implements ModelV4Interface
 {
-    const TYPE_FLOAT = 'FLOAT';
-    const TYPE_INTEGER = 'INTEGER';
-    const TYPE_MULTI = 'MULTI';
-    const TYPE_TEXT = 'TEXT';
-    const TYPE_CATEGORY_PATH = 'CATEGORY_PATH';
-    const TYPE_BOOLEAN = 'BOOLEAN';
-    const TYPE_DATE = 'DATE';
+    public const TYPE_FLOAT = 'FLOAT';
+    public const TYPE_INTEGER = 'INTEGER';
+    public const TYPE_MULTI = 'MULTI';
+    public const TYPE_TEXT = 'TEXT';
+    public const TYPE_CATEGORY_PATH = 'CATEGORY_PATH';
+    public const TYPE_BOOLEAN = 'BOOLEAN';
+    public const TYPE_DATE = 'DATE';
 
     /**
      * Gets allowable values of the enum

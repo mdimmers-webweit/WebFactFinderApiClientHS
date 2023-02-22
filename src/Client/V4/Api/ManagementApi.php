@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -101,7 +101,7 @@ class ManagementApi extends ApiClient
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
-                        \sprintf(
+                        sprintf(
                             '[%d] Error connecting to the API (%s)',
                             $statusCode,
                             $exception->getRequest()->getUri()
@@ -129,7 +129,7 @@ class ManagementApi extends ApiClient
      */
     public function deployUsingPOST($channel, $type)
     {
-        list($response) = $this->deployUsingPOSTWithHttpInfo($channel, $type);
+        [$response] = $this->deployUsingPOSTWithHttpInfo($channel, $type);
 
         return $response;
     }
@@ -275,7 +275,7 @@ class ManagementApi extends ApiClient
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
-                        \sprintf(
+                        sprintf(
                             '[%d] Error connecting to the API (%s)',
                             $statusCode,
                             $exception->getRequest()->getUri()
@@ -360,7 +360,7 @@ class ManagementApi extends ApiClient
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
-                        \sprintf(
+                        sprintf(
                             '[%d] Error connecting to the API (%s)',
                             $statusCode,
                             $exception->getRequest()->getUri()
@@ -387,7 +387,7 @@ class ManagementApi extends ApiClient
      */
     public function getExpirationMessagesUsingGET($channel = null)
     {
-        list($response) = $this->getExpirationMessagesUsingGETWithHttpInfo($channel);
+        [$response] = $this->getExpirationMessagesUsingGETWithHttpInfo($channel);
 
         return $response;
     }
@@ -522,7 +522,7 @@ class ManagementApi extends ApiClient
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
-                        \sprintf(
+                        sprintf(
                             '[%d] Error connecting to the API (%s)',
                             $statusCode,
                             $exception->getRequest()->getUri()

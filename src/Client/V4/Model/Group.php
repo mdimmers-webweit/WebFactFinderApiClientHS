@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -18,45 +18,43 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  */
 class Group extends BaseModel implements ModelV4Interface
 {
-    const ROLES_AFTER_SEARCH_NAVIGATION_MANAGER = 'AfterSearchNavigationManager';
-    const ROLES_BACKUP_MANAGER = 'BackupManager';
-    const ROLES_CACHE_MANAGER = 'CacheManager';
-    const ROLES_CAMPAIGN_MANAGER = 'CampaignManager';
-    const ROLES_CONFIGURATOR_MANAGER = 'ConfiguratorManager';
-    const ROLES_DEPLOYMENT_MANAGER = 'DeploymentManager';
-    const ROLES_IMPORT_MANAGER = 'ImportManager';
-    const ROLES_INSTALL_MANAGER = 'InstallManager';
-    const ROLES_LANGUAGE_MANAGER = 'LanguageManager';
-    const ROLES_LOGFILE_ANALYZER_MANAGER = 'LogfileAnalyzerManager';
-    const ROLES_MAY_CHANGE_PASSWORD = 'MayChangePassword';
-    const ROLES_MESSAGES_MANAGER = 'MessagesManager';
-    const ROLES_NOTIFICATION_MANAGER = 'NotificationManager';
-    const ROLES_PREPROCESSOR_MANAGER = 'PreprocessorManager';
-    const ROLES_RANKING_MANAGER = 'RankingManager';
-    const ROLES_RECOMMENDATION_ENGINE_MANAGER = 'RecommendationEngineManager';
-    const ROLES_SEARCH_INTERFACE_USER = 'SearchInterfaceUser';
-    const ROLES_SEARCH_MANAGER = 'SearchManager';
-    const ROLES_SHOW_HELP_SECTION = 'ShowHelpSection';
-    const ROLES_SUGGEST_MANAGER = 'SuggestManager';
-    const ROLES_THESAURUS_MANAGER = 'ThesaurusManager';
-    const ROLES_USER_MANAGER = 'UserManager';
-    const ROLES_WORD_VALUES_MANAGER = 'WordValuesManager';
-    const ROLES_API_IMPORT = 'ApiImport';
-    const ROLES_API_ANALYTICS = 'ApiAnalytics';
-    const ROLES_API_PUBLIC_QUERIES = 'ApiPublicQueries';
-    const ROLES_API_CONFIG = 'ApiConfig';
-    const ROLES_API_JOBS = 'ApiJobs';
-    const ROLES_API_DEPLOY = 'ApiDeploy';
-    const ROLES_API_INSTORE_ADS = 'ApiInstoreAds';
-    const ROLES_API_DATABASE = 'ApiDatabase';
-    const ROLES_API_MANAGE = 'ApiManage';
-    const ROLES_API_LICENCE = 'ApiLicence';
-    const ROLES_API_USERS = 'ApiUsers';
+    public const ROLES_AFTER_SEARCH_NAVIGATION_MANAGER = 'AfterSearchNavigationManager';
+    public const ROLES_BACKUP_MANAGER = 'BackupManager';
+    public const ROLES_CACHE_MANAGER = 'CacheManager';
+    public const ROLES_CAMPAIGN_MANAGER = 'CampaignManager';
+    public const ROLES_CONFIGURATOR_MANAGER = 'ConfiguratorManager';
+    public const ROLES_DEPLOYMENT_MANAGER = 'DeploymentManager';
+    public const ROLES_IMPORT_MANAGER = 'ImportManager';
+    public const ROLES_INSTALL_MANAGER = 'InstallManager';
+    public const ROLES_LANGUAGE_MANAGER = 'LanguageManager';
+    public const ROLES_LOGFILE_ANALYZER_MANAGER = 'LogfileAnalyzerManager';
+    public const ROLES_MAY_CHANGE_PASSWORD = 'MayChangePassword';
+    public const ROLES_MESSAGES_MANAGER = 'MessagesManager';
+    public const ROLES_NOTIFICATION_MANAGER = 'NotificationManager';
+    public const ROLES_PREPROCESSOR_MANAGER = 'PreprocessorManager';
+    public const ROLES_RANKING_MANAGER = 'RankingManager';
+    public const ROLES_RECOMMENDATION_ENGINE_MANAGER = 'RecommendationEngineManager';
+    public const ROLES_SEARCH_INTERFACE_USER = 'SearchInterfaceUser';
+    public const ROLES_SEARCH_MANAGER = 'SearchManager';
+    public const ROLES_SHOW_HELP_SECTION = 'ShowHelpSection';
+    public const ROLES_SUGGEST_MANAGER = 'SuggestManager';
+    public const ROLES_THESAURUS_MANAGER = 'ThesaurusManager';
+    public const ROLES_USER_MANAGER = 'UserManager';
+    public const ROLES_WORD_VALUES_MANAGER = 'WordValuesManager';
+    public const ROLES_API_IMPORT = 'ApiImport';
+    public const ROLES_API_ANALYTICS = 'ApiAnalytics';
+    public const ROLES_API_PUBLIC_QUERIES = 'ApiPublicQueries';
+    public const ROLES_API_CONFIG = 'ApiConfig';
+    public const ROLES_API_JOBS = 'ApiJobs';
+    public const ROLES_API_DEPLOY = 'ApiDeploy';
+    public const ROLES_API_INSTORE_ADS = 'ApiInstoreAds';
+    public const ROLES_API_DATABASE = 'ApiDatabase';
+    public const ROLES_API_MANAGE = 'ApiManage';
+    public const ROLES_API_LICENCE = 'ApiLicence';
+    public const ROLES_API_USERS = 'ApiUsers';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
-     *
-     * @var string[]
      */
     public static function swaggerTypes(): array
     {
@@ -70,8 +68,6 @@ class Group extends BaseModel implements ModelV4Interface
     /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
-     *
-     * @var string[]
      */
     public static function attributeMap(): array
     {
@@ -202,11 +198,11 @@ class Group extends BaseModel implements ModelV4Interface
     public function setRoles($roles)
     {
         $allowedValues = $this->getRolesAllowableValues();
-        if (\array_diff($roles, $allowedValues)) {
+        if (array_diff($roles, $allowedValues)) {
             throw new \InvalidArgumentException(
-                \sprintf(
+                sprintf(
                     "Invalid value for 'roles', must be one of '%s'",
-                    \implode("', '", $allowedValues)
+                    implode("', '", $allowedValues)
                 )
             );
         }

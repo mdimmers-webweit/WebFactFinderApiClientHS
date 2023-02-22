@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 /*
- * FACT-Finder REST API Client
+ * FACT-Finder
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
@@ -45,7 +45,7 @@ class ImportApi extends ApiClient
      */
     public function isImportRunningUsingGET($channel)
     {
-        list($response) = $this->isImportRunningUsingGETWithHttpInfo($channel);
+        [$response] = $this->isImportRunningUsingGETWithHttpInfo($channel);
 
         return $response;
     }
@@ -123,7 +123,7 @@ class ImportApi extends ApiClient
      */
     public function startRecommendationImportUsingPOST($channel = null, bool $quiet = false)
     {
-        list($response) = $this->startRecommendationImportUsingPOSTWithHttpInfo($channel, $quiet);
+        [$response] = $this->startRecommendationImportUsingPOSTWithHttpInfo($channel, $quiet);
 
         return $response;
     }
@@ -205,7 +205,7 @@ class ImportApi extends ApiClient
      */
     public function startSearchImportUsingPOST($channel = null, bool $download = false, bool $quiet = false)
     {
-        list($response) = $this->startSearchImportUsingPOSTWithHttpInfo($channel, $download, $quiet);
+        [$response] = $this->startSearchImportUsingPOSTWithHttpInfo($channel, $download, $quiet);
 
         return $response;
     }
@@ -289,7 +289,7 @@ class ImportApi extends ApiClient
      */
     public function startSuggestImportUsingPOST($channel = null, bool $quiet = false)
     {
-        list($response) = $this->startSuggestImportUsingPOSTWithHttpInfo($channel, $quiet);
+        [$response] = $this->startSuggestImportUsingPOSTWithHttpInfo($channel, $quiet);
 
         return $response;
     }
