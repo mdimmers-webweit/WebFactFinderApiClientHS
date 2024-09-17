@@ -30,7 +30,7 @@ class SearchRecord extends BaseModel implements ModelV4Interface
             'master_values' => 'map[string,object]',
             'position' => 'int',
             'score' => 'float',
-            'variant_values' => static::getModelClass('VariantValues', true),
+            'variant_values' => 'map[string,object]',
         ];
     }
 
@@ -203,7 +203,7 @@ class SearchRecord extends BaseModel implements ModelV4Interface
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V4\Model\VariantValues[]
+     * @return object[]
      */
     public function getVariantValues()
     {
@@ -211,7 +211,7 @@ class SearchRecord extends BaseModel implements ModelV4Interface
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V4\Model\VariantValues[] $variant_values Contains variants. The values are mapped from field names to the field value.
+     * @param object[] $variant_values Contains variants. The values are mapped from field names to the field value.
      *
      * @return $this
      */
