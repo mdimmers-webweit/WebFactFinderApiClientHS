@@ -5,11 +5,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="Web\FactFinderApi\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="false" packagePrefix="Web\FactFinderApi\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/vendor-static/guzzlehttp/guzzle/src" isTestSource="false" packagePrefix="GuzzleHttp\" />
-      <sourceFolder url="file://$MODULE_DIR$/vendor-static/guzzlehttp/guzzle/src" isTestSource="false" packagePrefix="GuzzleHttp6\" />
       <sourceFolder url="file://$MODULE_DIR$/vendor-static/guzzlehttp/guzzle/tests" isTestSource="true" packagePrefix="GuzzleHttp\Tests\" />
-      <sourceFolder url="file://$MODULE_DIR$/vendor-static/guzzlehttp/promises/src" isTestSource="false" packagePrefix="GuzzleHttp6\Promise\" />
       <sourceFolder url="file://$MODULE_DIR$/vendor-static/guzzlehttp/promises/src" isTestSource="false" packagePrefix="GuzzleHttp\Promise\" />
-      <sourceFolder url="file://$MODULE_DIR$/vendor-static/guzzlehttp/psr7/src" isTestSource="false" packagePrefix="GuzzleHttp6\Psr7\" />
       <sourceFolder url="file://$MODULE_DIR$/vendor-static/guzzlehttp/psr7/src" isTestSource="false" packagePrefix="GuzzleHttp\Psr7\" />
       <sourceFolder url="file://$MODULE_DIR$/vendor-static/guzzlehttp/psr7/tests" isTestSource="true" packagePrefix="GuzzleHttp\Tests\Psr7\" />
     </content>
