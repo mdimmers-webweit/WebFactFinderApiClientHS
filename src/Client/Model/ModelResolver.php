@@ -34,6 +34,7 @@ class ModelResolver
     {
         $class = self::createUnifiedModelClass($this->isNG ? 'V4' : 'V1', $modelName);
 
+
         return new $class($data);
     }
 

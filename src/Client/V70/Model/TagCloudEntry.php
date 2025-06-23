@@ -1,0 +1,175 @@
+<?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
+
+
+namespace Web\FactFinderApi\Client\V70\Model;
+
+use Web\FactFinderApi\Client\Model\BaseModel;
+
+/**
+ * TagCloudEntry Class Doc Comment
+ *
+ * @author   Swagger Codegen team
+ *
+ * @see     https://github.com/swagger-api/swagger-codegen
+ */
+class TagCloudEntry extends BaseModel implements ModelV70Interface
+{
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     */
+    public static function swaggerTypes(): array
+    {
+        return [
+            'nr' => 'int',
+            'params' => static::getModelClass('SearchParams'),
+            'search_count' => 'int',
+            'search_term' => 'string',
+            'weight' => 'double',
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'nr' => 'nr',
+            'params' => 'params',
+            'search_count' => 'searchCount',
+            'search_term' => 'searchTerm',
+            'weight' => 'weight',
+        ];
+    }
+
+    /**
+     * Show all the invalid properties with reasons.
+     *
+     * @return array invalid properties with reasons
+     */
+    public function listInvalidProperties(): array
+    {
+        $invalidProperties = [];
+
+        if ($this->container['nr'] === null) {
+            $invalidProperties[] = "'nr' can't be null";
+        }
+        if ($this->container['search_count'] === null) {
+            $invalidProperties[] = "'search_count' can't be null";
+        }
+        if ($this->container['search_term'] === null) {
+            $invalidProperties[] = "'search_term' can't be null";
+        }
+        if ($this->container['weight'] === null) {
+            $invalidProperties[] = "'weight' can't be null";
+        }
+
+        return $invalidProperties;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNr()
+    {
+        return $this->container['nr'];
+    }
+
+    /**
+     * @param int $nr nr
+     *
+     * @return $this
+     */
+    public function setNr($nr)
+    {
+        $this->container['nr'] = $nr;
+
+        return $this;
+    }
+
+    /**
+     * @return \Web\FactFinderApi\Client\V70\Model\SearchParams
+     */
+    public function getParams()
+    {
+        return $this->container['params'];
+    }
+
+    /**
+     * @param \Web\FactFinderApi\Client\V70\Model\SearchParams $params params
+     *
+     * @return $this
+     */
+    public function setParams($params)
+    {
+        $this->container['params'] = $params;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSearchCount()
+    {
+        return $this->container['search_count'];
+    }
+
+    /**
+     * @param int $search_count search_count
+     *
+     * @return $this
+     */
+    public function setSearchCount($search_count)
+    {
+        $this->container['search_count'] = $search_count;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSearchTerm()
+    {
+        return $this->container['search_term'];
+    }
+
+    /**
+     * @param string $search_term search_term
+     *
+     * @return $this
+     */
+    public function setSearchTerm($search_term)
+    {
+        $this->container['search_term'] = $search_term;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getWeight()
+    {
+        return $this->container['weight'];
+    }
+
+    /**
+     * @param float $weight weight
+     *
+     * @return $this
+     */
+    public function setWeight($weight)
+    {
+        $this->container['weight'] = $weight;
+
+        return $this;
+    }
+}

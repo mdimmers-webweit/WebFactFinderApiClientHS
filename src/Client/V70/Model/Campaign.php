@@ -5,8 +5,7 @@ declare(strict_types=1);
  * Copyright © webweit GmbH (https://www.webweit.de)
  */
 
-
-namespace Web\FactFinderApi\Client\V1\Model;
+namespace Web\FactFinderApi\Client\V70\Model;
 
 use Web\FactFinderApi\Client\Model\BaseModel;
 
@@ -17,7 +16,7 @@ use Web\FactFinderApi\Client\Model\BaseModel;
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class Campaign extends BaseModel implements ModelV1Interface
+class Campaign extends BaseModel implements ModelV70Interface
 {
     public const FLAVOUR_ADVISOR = 'ADVISOR';
     public const FLAVOUR_REDIRECT = 'REDIRECT';
@@ -106,19 +105,19 @@ class Campaign extends BaseModel implements ModelV1Interface
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Question[]
+     * @return Question[]
      */
-    public function getActiveQuestions()
+    public function getActiveQuestions(): array
     {
         return $this->container['active_questions'];
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Question[] $active_questions active_questions
+     * @param Question[] $active_questions active_questions
      *
      * @return $this
      */
-    public function setActiveQuestions($active_questions)
+    public function setActiveQuestions(array $active_questions): static
     {
         $this->container['active_questions'] = $active_questions;
 
@@ -126,19 +125,19 @@ class Campaign extends BaseModel implements ModelV1Interface
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Question[]
+     * @return Question[]
      */
-    public function getAdvisorTree()
+    public function getAdvisorTree(): array
     {
         return $this->container['advisor_tree'];
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Question[] $advisor_tree advisor_tree
+     * @param Question[] $advisor_tree advisor_tree
      *
      * @return $this
      */
-    public function setAdvisorTree($advisor_tree)
+    public function setAdvisorTree(array $advisor_tree): static
     {
         $this->container['advisor_tree'] = $advisor_tree;
 
@@ -148,7 +147,7 @@ class Campaign extends BaseModel implements ModelV1Interface
     /**
      * @return string
      */
-    public function getCategory()
+    public function getCategory(): string
     {
         return $this->container['category'];
     }
@@ -158,7 +157,7 @@ class Campaign extends BaseModel implements ModelV1Interface
      *
      * @return $this
      */
-    public function setCategory($category)
+    public function setCategory(string $category): static
     {
         $this->container['category'] = $category;
 
@@ -166,19 +165,19 @@ class Campaign extends BaseModel implements ModelV1Interface
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\FeedbackText[]
+     * @return FeedbackText[]
      */
-    public function getFeedbackTexts()
+    public function getFeedbackTexts(): array
     {
         return $this->container['feedback_texts'];
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V1\Model\FeedbackText[] $feedback_texts feedback_texts
+     * @param FeedbackText[] $feedback_texts feedback_texts
      *
      * @return $this
      */
-    public function setFeedbackTexts($feedback_texts)
+    public function setFeedbackTexts(array $feedback_texts): static
     {
         $this->container['feedback_texts'] = $feedback_texts;
 
@@ -188,7 +187,7 @@ class Campaign extends BaseModel implements ModelV1Interface
     /**
      * @return string
      */
-    public function getFlavour()
+    public function getFlavour(): string
     {
         return $this->container['flavour'];
     }
@@ -198,7 +197,7 @@ class Campaign extends BaseModel implements ModelV1Interface
      *
      * @return $this
      */
-    public function setFlavour($flavour)
+    public function setFlavour(string $flavour): static
     {
         $allowedValues = $this->getFlavourAllowableValues();
         if (!\in_array($flavour, $allowedValues, true)) {
@@ -217,7 +216,7 @@ class Campaign extends BaseModel implements ModelV1Interface
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->container['id'];
     }
@@ -227,7 +226,7 @@ class Campaign extends BaseModel implements ModelV1Interface
      *
      * @return $this
      */
-    public function setId($id)
+    public function setId(string $id): static
     {
         $this->container['id'] = $id;
 
@@ -237,7 +236,7 @@ class Campaign extends BaseModel implements ModelV1Interface
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->container['name'];
     }
@@ -247,7 +246,7 @@ class Campaign extends BaseModel implements ModelV1Interface
      *
      * @return $this
      */
-    public function setName($name)
+    public function setName(string $name): static
     {
         $this->container['name'] = $name;
 
@@ -255,15 +254,15 @@ class Campaign extends BaseModel implements ModelV1Interface
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\RecordWithId[]
+     * @return RecordWithId[]
      */
-    public function getPushedProductsRecords()
+    public function getPushedProductsRecords(): array
     {
         return $this->container['pushed_products_records'];
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V1\Model\RecordWithId[] $pushed_products_records pushed_products_records
+     * @param \Web\FactFinderApi\Client\V70\Model\RecordWithId[] $pushed_products_records pushed_products_records
      *
      * @return $this
      */
@@ -275,19 +274,19 @@ class Campaign extends BaseModel implements ModelV1Interface
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V1\Model\Target
+     * @return Target
      */
-    public function getTarget()
+    public function getTarget(): Target
     {
         return $this->container['target'];
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V1\Model\Target $target target
+     * @param Target $target target
      *
      * @return $this
      */
-    public function setTarget($target)
+    public function setTarget(Target $target): static
     {
         $this->container['target'] = $target;
 
