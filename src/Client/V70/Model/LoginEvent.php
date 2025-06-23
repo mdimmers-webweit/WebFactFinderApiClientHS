@@ -19,15 +19,16 @@ declare(strict_types=1);
 namespace Web\FactFinderApi\Client\V70\Model;
 
 use Web\FactFinderApi\Client\Model\BaseModel;
+use Web\FactFinderApi\Client\V70\Model\ModelV70Interface;
 
 /**
- * ImportChannelResult Class Doc Comment
+ * LoginEvent Class Doc Comment
  *
  * @author   Swagger Codegen team
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ImportChannelResult extends BaseModel implements ModelV70Interface
+class LoginEvent extends BaseModel implements ModelV70Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -35,8 +36,9 @@ class ImportChannelResult extends BaseModel implements ModelV70Interface
     public static function swaggerTypes(): array
     {
         return [
-            'error_messages' => 'string[]',
-            'status_messages' => 'string[]',
+            'cookie_id' => 'string',
+            'sid' => 'string',
+            'user_id' => 'string',
         ];
     }
 
@@ -47,8 +49,9 @@ class ImportChannelResult extends BaseModel implements ModelV70Interface
     public static function attributeMap(): array
     {
         return [
-            'error_messages' => 'errorMessages',
-            'status_messages' => 'statusMessages',
+            'cookie_id' => 'cookieId',
+            'sid' => 'sid',
+            'user_id' => 'userId',
         ];
     }
 
@@ -61,45 +64,72 @@ class ImportChannelResult extends BaseModel implements ModelV70Interface
     {
         $invalidProperties = [];
 
+        if ($this->container['sid'] === null) {
+            $invalidProperties[] = "'sid' can't be null";
+        }
+        if ($this->container['user_id'] === null) {
+            $invalidProperties[] = "'user_id' can't be null";
+        }
+
         return $invalidProperties;
     }
 
     /**
-     * @return string[]
+     * @return string
      */
-    public function getErrorMessages()
+    public function getCookieId()
     {
-        return $this->container['error_messages'];
+        return $this->container['cookie_id'];
     }
 
     /**
-     * @param string[] $error_messages error_messages
+     * @param string $cookie_id cookie_id
      *
      * @return $this
      */
-    public function setErrorMessages($error_messages)
+    public function setCookieId($cookie_id)
     {
-        $this->container['error_messages'] = $error_messages;
+        $this->container['cookie_id'] = $cookie_id;
 
         return $this;
     }
 
     /**
-     * @return string[]
+     * @return string
      */
-    public function getStatusMessages()
+    public function getSid()
     {
-        return $this->container['status_messages'];
+        return $this->container['sid'];
     }
 
     /**
-     * @param string[] $status_messages status_messages
+     * @param string $sid sid
      *
      * @return $this
      */
-    public function setStatusMessages($status_messages)
+    public function setSid($sid)
     {
-        $this->container['status_messages'] = $status_messages;
+        $this->container['sid'] = $sid;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * @param string $user_id user_id
+     *
+     * @return $this
+     */
+    public function setUserId($user_id)
+    {
+        $this->container['user_id'] = $user_id;
 
         return $this;
     }

@@ -1,11 +1,187 @@
 <?php
+declare(strict_types=1);
+/*
+ * FACT-Finder
+ * Copyright © webweit GmbH (https://www.webweit.de)
+ */
 
 namespace Web\FactFinderApi\Client\V70\Model;
 
-class FeedbackText
-{
+use Web\FactFinderApi\Client\Model\BaseModel;
 
-    public function __construct()
+/**
+ * FeedbackText Class Doc Comment
+ *
+ * @author   Swagger Codegen team
+ *
+ * @see     https://github.com/swagger-api/swagger-codegen
+ */
+class FeedbackText extends BaseModel implements ModelV70Interface
+{
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     */
+    public static function swaggerTypes(): array
     {
+        return [
+            'html' => 'bool',
+            'id' => 'int',
+            'label' => 'string',
+            'position' => 'int',
+            'teaser' => 'bool',
+            'text' => 'string',
+        ];
+    }
+
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     */
+    public static function attributeMap(): array
+    {
+        return [
+            'html' => 'html',
+            'id' => 'id',
+            'label' => 'label',
+            'position' => 'position',
+            'teaser' => 'teaser',
+            'text' => 'text',
+        ];
+    }
+
+    /**
+     * Show all the invalid properties with reasons.
+     *
+     * @return array invalid properties with reasons
+     */
+    public function listInvalidProperties(): array
+    {
+        $invalidProperties = [];
+
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+
+        return $invalidProperties;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getHtml()
+    {
+        return $this->container['html'];
+    }
+
+    /**
+     * @param bool $html html
+     *
+     * @return $this
+     */
+    public function setHtml($html)
+    {
+        $this->container['html'] = $html;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * @param int $id id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * @param string $label label
+     *
+     * @return $this
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->container['position'];
+    }
+
+    /**
+     * @param int $position position
+     *
+     * @return $this
+     */
+    public function setPosition($position)
+    {
+        $this->container['position'] = $position;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getTeaser()
+    {
+        return $this->container['teaser'];
+    }
+
+    /**
+     * @param bool $teaser teaser
+     *
+     * @return $this
+     */
+    public function setTeaser($teaser)
+    {
+        $this->container['teaser'] = $teaser;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /**
+     * @param string $text text
+     *
+     * @return $this
+     */
+    public function setText($text)
+    {
+        $this->container['text'] = $text;
+
+        return $this;
     }
 }

@@ -10,7 +10,7 @@ class ModelResolver extends BaseModelResolver
 {
     public function __construct()
     {
-        parent::__construct(false); // V70 basiert auf V1
+        parent::__construct(false); // V70 basiert auf V70
     }
 
     public function createUnifiedModel(string $modelName, ?array $data = null): BaseModel
@@ -18,8 +18,8 @@ class ModelResolver extends BaseModelResolver
         $class = '\\Web\\FactFinderApi\\Client\\V70\\Model\\' . $modelName;
 
         if (!class_exists($class)) {
-            // Fallback zu V1
-            $class = '\\Web\\FactFinderApi\\Client\\V1\\Model\\' . $modelName;
+            // Fallback zu V70
+            $class = '\\Web\\FactFinderApi\\Client\\V70\\Model\\' . $modelName;
         }
 
         return new $class($data);

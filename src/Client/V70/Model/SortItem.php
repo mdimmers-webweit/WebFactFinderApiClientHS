@@ -18,16 +18,17 @@ declare(strict_types=1);
 
 namespace Web\FactFinderApi\Client\V70\Model;
 
-use Web\FactFinderApi\Client\Model\BaseModel;
+use Web\FactFinderApi\Client\Model\SortItemBase;
+use Web\FactFinderApi\Client\V70\Model\ModelV70Interface;
 
 /**
- * ImportChannelResult Class Doc Comment
+ * SortItem Class Doc Comment
  *
  * @author   Swagger Codegen team
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ImportChannelResult extends BaseModel implements ModelV70Interface
+class SortItem extends SortItemBase implements ModelV70Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -35,8 +36,10 @@ class ImportChannelResult extends BaseModel implements ModelV70Interface
     public static function swaggerTypes(): array
     {
         return [
-            'error_messages' => 'string[]',
-            'status_messages' => 'string[]',
+            'description' => 'string',
+            'name' => 'string',
+            'order' => 'string',
+            'relevance_sort_item' => 'bool',
         ];
     }
 
@@ -47,8 +50,10 @@ class ImportChannelResult extends BaseModel implements ModelV70Interface
     public static function attributeMap(): array
     {
         return [
-            'error_messages' => 'errorMessages',
-            'status_messages' => 'statusMessages',
+            'description' => 'description',
+            'name' => 'name',
+            'order' => 'order',
+            'relevance_sort_item' => 'relevanceSortItem',
         ];
     }
 
@@ -59,47 +64,51 @@ class ImportChannelResult extends BaseModel implements ModelV70Interface
      */
     public function listInvalidProperties(): array
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
+
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
+        }
 
         return $invalidProperties;
     }
 
     /**
-     * @return string[]
+     * @return string
      */
-    public function getErrorMessages()
+    public function getDescription()
     {
-        return $this->container['error_messages'];
+        return $this->container['description'];
     }
 
     /**
-     * @param string[] $error_messages error_messages
+     * @param string $description description
      *
      * @return $this
      */
-    public function setErrorMessages($error_messages)
+    public function setDescription($description)
     {
-        $this->container['error_messages'] = $error_messages;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * @return string[]
+     * @return bool
      */
-    public function getStatusMessages()
+    public function getRelevanceSortItem()
     {
-        return $this->container['status_messages'];
+        return $this->container['relevance_sort_item'];
     }
 
     /**
-     * @param string[] $status_messages status_messages
+     * @param bool $relevance_sort_item relevance_sort_item
      *
      * @return $this
      */
-    public function setStatusMessages($status_messages)
+    public function setRelevanceSortItem($relevance_sort_item)
     {
-        $this->container['status_messages'] = $status_messages;
+        $this->container['relevance_sort_item'] = $relevance_sort_item;
 
         return $this;
     }

@@ -21,13 +21,13 @@ namespace Web\FactFinderApi\Client\V70\Model;
 use Web\FactFinderApi\Client\Model\BaseModel;
 
 /**
- * RecommendationResult Class Doc Comment
+ * ResultsPerPageOption Class Doc Comment
  *
  * @author   Swagger Codegen team
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class RecommendationResult extends BaseModel implements ModelV70Interface
+class ResultsPerPageOption extends BaseModel implements ModelV70Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -35,8 +35,9 @@ class RecommendationResult extends BaseModel implements ModelV70Interface
     public static function swaggerTypes(): array
     {
         return [
-            'result_records' => static::getModelClass('RecordWithId', true),
-            'timed_out' => 'bool',
+            'default_value' => 'bool',
+            'selected' => 'bool',
+            'value' => 'int',
         ];
     }
 
@@ -47,8 +48,9 @@ class RecommendationResult extends BaseModel implements ModelV70Interface
     public static function attributeMap(): array
     {
         return [
-            'result_records' => 'resultRecords',
-            'timed_out' => 'timedOut',
+            'default_value' => 'defaultValue',
+            'selected' => 'selected',
+            'value' => 'value',
         ];
     }
 
@@ -61,32 +63,35 @@ class RecommendationResult extends BaseModel implements ModelV70Interface
     {
         $invalidProperties = [];
 
-        if ($this->container['result_records'] === null) {
-            $invalidProperties[] = "'result_records' can't be null";
+        if ($this->container['default_value'] === null) {
+            $invalidProperties[] = "'default_value' can't be null";
         }
-        if ($this->container['timed_out'] === null) {
-            $invalidProperties[] = "'timed_out' can't be null";
+        if ($this->container['selected'] === null) {
+            $invalidProperties[] = "'selected' can't be null";
+        }
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
         }
 
         return $invalidProperties;
     }
 
     /**
-     * @return \Web\FactFinderApi\Client\V70\Model\RecordWithId[]
+     * @return bool
      */
-    public function getResultRecords()
+    public function getDefaultValue()
     {
-        return $this->container['result_records'];
+        return $this->container['default_value'];
     }
 
     /**
-     * @param \Web\FactFinderApi\Client\V70\Model\RecordWithId[] $result_records result_records
+     * @param bool $default_value default_value
      *
      * @return $this
      */
-    public function setResultRecords($result_records)
+    public function setDefaultValue($default_value)
     {
-        $this->container['result_records'] = $result_records;
+        $this->container['default_value'] = $default_value;
 
         return $this;
     }
@@ -94,19 +99,39 @@ class RecommendationResult extends BaseModel implements ModelV70Interface
     /**
      * @return bool
      */
-    public function getTimedOut()
+    public function getSelected()
     {
-        return $this->container['timed_out'];
+        return $this->container['selected'];
     }
 
     /**
-     * @param bool $timed_out timed_out
+     * @param bool $selected selected
      *
      * @return $this
      */
-    public function setTimedOut($timed_out)
+    public function setSelected($selected)
     {
-        $this->container['timed_out'] = $timed_out;
+        $this->container['selected'] = $selected;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * @param int $value value
+     *
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
 
         return $this;
     }

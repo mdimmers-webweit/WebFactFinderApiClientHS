@@ -3,157 +3,89 @@ declare(strict_types=1);
 
 namespace Web\FactFinderApi\Client\V70\Model;
 
-class Facet extends BaseModel
+use Web\FactFinderApi\Client\Model\FacetBase;
+use Web\FactFinderApi\Client\V70\Model\ModelV70Interface;
+
+class Facet extends FacetBase implements ModelV70Interface
 {
-    public const FILTER_STYLE_DEFAULT = 'DEFAULT';
-    public const FILTER_STYLE_SLIDER = 'SLIDER';
-    public const FILTER_STYLE_MULTISELECT = 'MULTISELECT';
-    public const FILTER_STYLE_TREE = 'TREE';
+    public const TYPE_NUMBER = 'number';
+    public const TYPE_MULTI = 'multi';
+    public const TYPE_TEXT = 'text';
+    public const TYPE_CATEGORY_PATH = 'categoryPath';
 
-    public const SELECTION_TYPE_SINGLE_HIDE_UNSELECTED = 'singleHideUnselected';
-    public const SELECTION_TYPE_SINGLE_SHOW_UNSELECTED = 'singleShowUnselected';
-    public const SELECTION_TYPE_MULTI_SELECT_OR = 'multiSelectOr';
-    public const SELECTION_TYPE_MULTI_SELECT_AND = 'multiSelectAnd';
-
+    /**
+     * Array of property to type mappings. Used for (de)serialization
+     */
     public static function swaggerTypes(): array
     {
-        return [
-            'detailed_links' => 'int',
-            'elements' => static::getModelClass('FacetElement', true),
-            'filter_style' => 'string',
-            'name' => 'string',
-            'selected_elements' => static::getModelClass('FacetElement', true),
-            'selection_type' => 'string',
-            'show_preview_images' => 'bool',
-            'type' => 'string',
-            'unit' => 'string',
-            'associated_field_name' => 'string',
-        ];
+        $result = parent::swaggerTypes();
+
+        $result['group_order'] = 'int';
+
+        return $result;
     }
 
+    /**
+     * Array of attributes where the key is the local name,
+     * and the value is the original name
+     */
     public static function attributeMap(): array
     {
+        $result = parent::attributeMap();
+
+        $result['group_order'] = 'groupOrder';
+
+        return $result;
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
         return [
-            'detailed_links' => 'detailedLinks',
-            'elements' => 'elements',
-            'filter_style' => 'filterStyle',
-            'name' => 'name',
-            'selected_elements' => 'selectedElements',
-            'selection_type' => 'selectionType',
-            'show_preview_images' => 'showPreviewImages',
-            'type' => 'type',
-            'unit' => 'unit',
-            'associated_field_name' => 'associatedFieldName',
+            self::TYPE_NUMBER,
+            self::TYPE_MULTI,
+            self::TYPE_TEXT,
+            self::TYPE_CATEGORY_PATH,
         ];
     }
 
-    public function getDetailedLinks(): int
+    /**
+     * Show all the invalid properties with reasons.
+     *
+     * @return array invalid properties with reasons
+     */
+    public function listInvalidProperties(): array
     {
-        return $this->container['detailed_links'] ?? 0;
+        $invalidProperties = parent::listInvalidProperties();
+
+        if ($this->container['group_order'] === null) {
+            $invalidProperties[] = "'group_order' can't be null";
+        }
+
+        return $invalidProperties;
     }
 
-    public function setDetailedLinks(int $detailed_links): self
+    /**
+     * @return int
+     */
+    public function getGroupOrder()
     {
-        $this->container['detailed_links'] = $detailed_links;
-        return $this;
+        return $this->container['group_order'];
     }
 
-    public function getElements(): array
+    /**
+     * @param int $group_order group_order
+     *
+     * @return $this
+     */
+    public function setGroupOrder($group_order)
     {
-        return $this->container['elements'] ?? [];
-    }
+        $this->container['group_order'] = $group_order;
 
-    public function setElements(array $elements): self
-    {
-        $this->container['elements'] = $elements;
-        return $this;
-    }
-
-    public function getFilterStyle(): string
-    {
-        return $this->container['filter_style'] ?? self::FILTER_STYLE_DEFAULT;
-    }
-
-    public function setFilterStyle(string $filter_style): self
-    {
-        $this->container['filter_style'] = $filter_style;
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->container['name'];
-    }
-
-    public function setName(?string $name): self
-    {
-        $this->container['name'] = $name;
-        return $this;
-    }
-
-    public function getSelectedElements(): array
-    {
-        return $this->container['selected_elements'] ?? [];
-    }
-
-    public function setSelectedElements(array $selected_elements): self
-    {
-        $this->container['selected_elements'] = $selected_elements;
-        return $this;
-    }
-
-    public function getSelectionType(): string
-    {
-        return $this->container['selection_type'] ?? self::SELECTION_TYPE_MULTI_SELECT_OR;
-    }
-
-    public function setSelectionType(string $selection_type): self
-    {
-        $this->container['selection_type'] = $selection_type;
-        return $this;
-    }
-
-    public function getShowPreviewImages(): bool
-    {
-        return $this->container['show_preview_images'] ?? false;
-    }
-
-    public function setShowPreviewImages(bool $show_preview_images): self
-    {
-        $this->container['show_preview_images'] = $show_preview_images;
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->container['type'];
-    }
-
-    public function setType(?string $type): self
-    {
-        $this->container['type'] = $type;
-        return $this;
-    }
-
-    public function getUnit(): ?string
-    {
-        return $this->container['unit'];
-    }
-
-    public function setUnit(?string $unit): self
-    {
-        $this->container['unit'] = $unit;
-        return $this;
-    }
-
-    public function getAssociatedFieldName(): ?string
-    {
-        return $this->container['associated_field_name'];
-    }
-
-    public function setAssociatedFieldName(?string $associated_field_name): self
-    {
-        $this->container['associated_field_name'] = $associated_field_name;
         return $this;
     }
 }

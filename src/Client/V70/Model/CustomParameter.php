@@ -21,13 +21,13 @@ namespace Web\FactFinderApi\Client\V70\Model;
 use Web\FactFinderApi\Client\Model\BaseModel;
 
 /**
- * ImportChannelResult Class Doc Comment
+ * CustomParameter Class Doc Comment
  *
  * @author   Swagger Codegen team
  *
  * @see     https://github.com/swagger-api/swagger-codegen
  */
-class ImportChannelResult extends BaseModel implements ModelV70Interface
+class CustomParameter extends BaseModel implements ModelV70Interface
 {
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -35,8 +35,9 @@ class ImportChannelResult extends BaseModel implements ModelV70Interface
     public static function swaggerTypes(): array
     {
         return [
-            'error_messages' => 'string[]',
-            'status_messages' => 'string[]',
+            'cache_ignored' => 'bool',
+            'name' => 'string',
+            'values' => 'string[]',
         ];
     }
 
@@ -47,8 +48,9 @@ class ImportChannelResult extends BaseModel implements ModelV70Interface
     public static function attributeMap(): array
     {
         return [
-            'error_messages' => 'errorMessages',
-            'status_messages' => 'statusMessages',
+            'cache_ignored' => 'cacheIgnored',
+            'name' => 'name',
+            'values' => 'values',
         ];
     }
 
@@ -61,25 +63,55 @@ class ImportChannelResult extends BaseModel implements ModelV70Interface
     {
         $invalidProperties = [];
 
+        if ($this->container['cache_ignored'] === null) {
+            $invalidProperties[] = "'cache_ignored' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['values'] === null) {
+            $invalidProperties[] = "'values' can't be null";
+        }
+
         return $invalidProperties;
     }
 
     /**
-     * @return string[]
+     * @return bool
      */
-    public function getErrorMessages()
+    public function getCacheIgnored()
     {
-        return $this->container['error_messages'];
+        return $this->container['cache_ignored'];
     }
 
     /**
-     * @param string[] $error_messages error_messages
+     * @param bool $cache_ignored cache_ignored
      *
      * @return $this
      */
-    public function setErrorMessages($error_messages)
+    public function setCacheIgnored($cache_ignored)
     {
-        $this->container['error_messages'] = $error_messages;
+        $this->container['cache_ignored'] = $cache_ignored;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * @param string $name name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -87,19 +119,19 @@ class ImportChannelResult extends BaseModel implements ModelV70Interface
     /**
      * @return string[]
      */
-    public function getStatusMessages()
+    public function getValues()
     {
-        return $this->container['status_messages'];
+        return $this->container['values'];
     }
 
     /**
-     * @param string[] $status_messages status_messages
+     * @param string[] $values values
      *
      * @return $this
      */
-    public function setStatusMessages($status_messages)
+    public function setValues($values)
     {
-        $this->container['status_messages'] = $status_messages;
+        $this->container['values'] = $values;
 
         return $this;
     }
